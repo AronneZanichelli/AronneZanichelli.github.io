@@ -1,11 +1,21 @@
 const translations = {
   en: {
-    nav: { about: 'About', skills: 'Skills', timeline: 'Education', portfolio: 'Portfolio', editing: 'Editing', contact: 'Contact' },
+    nav: { home: 'Home', editing: 'Editing', featured: 'Featured Projects' },
+    toc: {
+      title: 'On this page',
+      home: 'Intro',
+      about: 'About',
+      availability: 'Availability',
+      skills: 'Skills',
+      timeline: 'Timeline',
+      cv: 'CV',
+      contact: 'Contact'
+    },
     hero: {
       positioning: 'Junior Developer with creative and AI-oriented skills.',
       subtitle:
         'I build practical digital experiences by combining development fundamentals, visual communication, and strategic content thinking.',
-      ctaProjects: 'View Projects',
+      ctaProjects: 'View Featured Projects',
       ctaCv: 'Download CV',
       ctaContact: 'Contact'
     },
@@ -49,33 +59,21 @@ const translations = {
     },
     timeline: {
       title: 'Education & Experience',
-      educationTitle: 'IT Diploma (2019-2025) - Istituto Superiore Statale S. D\'Arzo',
+      educationDate: '2019-2025',
+      educationTitle: 'IT Diploma - Istituto Superiore Statale S. D\'Arzo',
       educationDesc: 'Technical diploma in computer science and telecommunications.',
-      conadTitle: 'Cashier / Warehouse Assistant - Conad (May 2021 - Sep 2021)',
+      conadDate: 'May 2021 - Sep 2021',
+      conadTitle: 'Cashier / Warehouse Assistant - Conad',
       conadDesc: 'Managed cashier operations, shelf restocking, and warehouse organization with operational autonomy.',
-      sinegoTitle: 'Public Relations Assistant - Sinego Srl (Sep 2021 - Aug 2022)',
+      sinegoDate: 'Sep 2021 - Aug 2022',
+      sinegoTitle: 'Public Relations Assistant - Sinego Srl',
       sinegoDesc: 'Front-facing communication support and relationship management in customer-facing activities.',
-      optimaTitle: 'Commercial Consultant - Optima Spa (May 2024 - Jul 2025)',
+      optimaDate: 'May 2024 - Jul 2025',
+      optimaTitle: 'Commercial Consultant - Optima Spa',
       optimaDesc: 'Consulting for telecom services targeted to both private clients and businesses.',
-      currentTitle: 'Current - IFTS Graphic Technician & AI-based Social Media Manager',
+      currentDate: 'Current',
+      currentTitle: 'IFTS Graphic Technician & AI-based Social Media Manager',
       currentDesc: 'Training path combining visual design, media strategy, and AI-oriented digital workflows.'
-    },
-    portfolio: {
-      title: 'Portfolio',
-      project1Title: 'Web Landing Page for Tech Profile',
-      project1Desc:
-        'Designed and built a responsive personal landing page focused on clear value proposition, bilingual content, and recruiter-ready structure.',
-      project2Title: 'Visual Content Workflow Concept',
-      project2Desc:
-        'Created a production workflow concept integrating copy, graphics, and short video editing using DaVinci Resolve and Adobe tools.',
-      inProgressTitle: 'Projects in Development',
-      inProgressDesc:
-        'Dependency Monitoring App: concept and implementation of a lightweight app to track package dependencies, detect outdated modules, and improve project maintenance visibility.',
-      featuredTitle: 'Featured Projects (Building Block)',
-      featuredIntro: 'This section is ready to grow with concrete projects and measurable outcomes.',
-      featuredOne: 'Project 01 template: Problem → Solution → Stack → Result → Repo/Live link.',
-      featuredTwo: 'Project 02 template: production workflow + before/after impact.',
-      featuredThree: 'Project 03 template: game/web prototype with short demo and learnings.'
     },
     cv: {
       title: 'Download CV',
@@ -91,18 +89,27 @@ const translations = {
       formMessage: 'Message',
       send: 'Send message',
       success: 'Thanks! Your message was sent successfully.',
-      error: 'Please complete all fields with a valid email.',
-      integrationTitle: 'Form integration snippets'
+      error: 'Please complete all fields with a valid email.'
     },
     footer: { language: 'Language: English' }
   },
   it: {
-    nav: { about: 'Chi sono', skills: 'Competenze', timeline: 'Formazione', portfolio: 'Portfolio', editing: 'Editing', contact: 'Contatti' },
+    nav: { home: 'Home', editing: 'Editing', featured: 'Featured Projects' },
+    toc: {
+      title: 'In questa pagina',
+      home: 'Intro',
+      about: 'Chi sono',
+      availability: 'Disponibilità',
+      skills: 'Competenze',
+      timeline: 'Timeline',
+      cv: 'CV',
+      contact: 'Contatti'
+    },
     hero: {
       positioning: 'Junior Developer con competenze creative e AI-oriented.',
       subtitle:
         'Realizzo esperienze digitali pratiche unendo basi di sviluppo, comunicazione visiva e pensiero strategico sui contenuti.',
-      ctaProjects: 'Vedi progetti',
+      ctaProjects: 'Vedi Featured Projects',
       ctaCv: 'Scarica CV',
       ctaContact: 'Contattami'
     },
@@ -146,33 +153,21 @@ const translations = {
     },
     timeline: {
       title: 'Formazione ed esperienza',
-      educationTitle: 'Diploma IT (2019-2025) - Istituto Superiore Statale S. D\'Arzo',
+      educationDate: '2019-2025',
+      educationTitle: 'Diploma IT - Istituto Superiore Statale S. D\'Arzo',
       educationDesc: 'Diploma tecnico in Informatica e Telecomunicazioni.',
-      conadTitle: 'Cassiere / Magazziniere - Conad (Mag 2021 - Set 2021)',
+      conadDate: 'Mag 2021 - Set 2021',
+      conadTitle: 'Cassiere / Magazziniere - Conad',
       conadDesc: 'Gestione cassa, rifornimento scaffali e organizzazione magazzino in autonomia.',
-      sinegoTitle: 'Addetto alle Pubbliche Relazioni - Sinego Srl (Set 2021 - Ago 2022)',
+      sinegoDate: 'Set 2021 - Ago 2022',
+      sinegoTitle: 'Addetto alle Pubbliche Relazioni - Sinego Srl',
       sinegoDesc: 'Supporto nella comunicazione front-facing e gestione relazionale con il pubblico.',
-      optimaTitle: 'Consulente Commerciale - Optima Spa (Mag 2024 - Lug 2025)',
+      optimaDate: 'Mag 2024 - Lug 2025',
+      optimaTitle: 'Consulente Commerciale - Optima Spa',
       optimaDesc: 'Consulenza su servizi di telecomunicazione rivolta ad aziende e privati.',
-      currentTitle: 'Attualmente - IFTS Tecnico Grafico & Social Media Manager AI-based',
+      currentDate: 'Attuale',
+      currentTitle: 'IFTS Tecnico Grafico & Social Media Manager AI-based',
       currentDesc: 'Percorso che integra design visivo, strategia media e workflow digitali orientati all\'AI.'
-    },
-    portfolio: {
-      title: 'Portfolio',
-      project1Title: 'Landing Page Web per profilo tech',
-      project1Desc:
-        'Progettazione e sviluppo di una landing page personale responsive con posizionamento chiaro, contenuti bilingue e struttura orientata ai recruiter.',
-      project2Title: 'Concept workflow per contenuti visual',
-      project2Desc:
-        'Creazione di un concept di produzione che integra copy, grafica ed editing video breve usando DaVinci Resolve e strumenti Adobe.',
-      inProgressTitle: 'Progetti in sviluppo',
-      inProgressDesc:
-        'App di monitoraggio delle dipendenze: progettazione e sviluppo di una app leggera per tracciare dipendenze, individuare moduli obsoleti e migliorare la visibilità sulla manutenzione.',
-      featuredTitle: 'Featured Projects (base pronta)',
-      featuredIntro: 'Questa sezione è pronta per crescere con progetti concreti e risultati misurabili.',
-      featuredOne: 'Template progetto 01: Problema → Soluzione → Stack → Risultato → Link repo/live.',
-      featuredTwo: 'Template progetto 02: workflow produzione + impatto prima/dopo.',
-      featuredThree: 'Template progetto 03: prototipo game/web con demo breve e learnings.'
     },
     cv: {
       title: 'Download CV',
@@ -188,8 +183,7 @@ const translations = {
       formMessage: 'Messaggio',
       send: 'Invia messaggio',
       success: 'Grazie! Il messaggio è stato inviato con successo.',
-      error: 'Compila tutti i campi con una email valida.',
-      integrationTitle: 'Snippet integrazione form'
+      error: 'Compila tutti i campi con una email valida.'
     },
     footer: { language: 'Lingua: Italiano' }
   }
@@ -214,20 +208,25 @@ function applyLanguage(lang) {
 }
 
 function setupTheme() {
+  const toggle = document.getElementById('themeToggle');
+  if (!toggle) return;
+
   const savedTheme = localStorage.getItem('theme') || 'dark';
   document.body.classList.toggle('light', savedTheme === 'light');
-  document.getElementById('themeToggle').textContent = savedTheme === 'light' ? '☀︎' : '☾';
+  toggle.textContent = savedTheme === 'light' ? '☀︎' : '☾';
 
-  document.getElementById('themeToggle').addEventListener('click', () => {
+  toggle.addEventListener('click', () => {
     const isLight = document.body.classList.toggle('light');
     localStorage.setItem('theme', isLight ? 'light' : 'dark');
-    document.getElementById('themeToggle').textContent = isLight ? '☀︎' : '☾';
+    toggle.textContent = isLight ? '☀︎' : '☾';
   });
 }
 
 function setupMenu() {
   const toggle = document.getElementById('menuToggle');
   const menu = document.getElementById('navMenu');
+  if (!toggle || !menu) return;
+
   toggle.addEventListener('click', () => {
     const open = menu.classList.toggle('open');
     toggle.setAttribute('aria-expanded', String(open));
@@ -237,6 +236,7 @@ function setupMenu() {
 function setupContactForm() {
   const form = document.getElementById('contactForm');
   const feedback = document.getElementById('formFeedback');
+  if (!form || !feedback) return;
 
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -260,15 +260,11 @@ function setupContactForm() {
       });
 
       if (response.ok) {
-        if (typeof window.gtag === 'function') {
-          window.gtag('event', 'submit_contact_form_success');
-        }
+        if (typeof window.gtag === 'function') window.gtag('event', 'submit_contact_form_success');
         feedback.textContent = translations[lang].contact.success;
         form.reset();
       } else {
-        if (typeof window.gtag === 'function') {
-          window.gtag('event', 'submit_contact_form_error');
-        }
+        if (typeof window.gtag === 'function') window.gtag('event', 'submit_contact_form_error');
         feedback.textContent = translations[lang].contact.error;
       }
     } catch {
@@ -284,73 +280,28 @@ function setupAnalyticsEvents() {
     }
   };
 
-  document.getElementById('viewProjectsCta')?.addEventListener('click', () => {
-    track('click_cta', { cta: 'view_projects' });
+  document.getElementById('viewFeaturedCta')?.addEventListener('click', () => {
+    track('click_cta', { cta: 'view_featured_projects' });
   });
 
-  document.getElementById('downloadCvEn')?.addEventListener('click', () => {
-    track('download_cv', { language: 'en' });
-  });
-
-  document.getElementById('downloadCvIt')?.addEventListener('click', () => {
-    track('download_cv', { language: 'it' });
-  });
-
-  document.getElementById('printCv')?.addEventListener('click', () => {
-    track('print_cv');
-  });
-
-  document.getElementById('linkedinLink')?.addEventListener('click', () => {
-    track('click_social', { platform: 'linkedin' });
-  });
-
-  document.getElementById('githubLink')?.addEventListener('click', () => {
-    track('click_social', { platform: 'github' });
-  });
-
-  document.getElementById('emailLink')?.addEventListener('click', () => {
-    track('click_email');
-  });
+  document.getElementById('downloadCvEn')?.addEventListener('click', () => track('download_cv', { language: 'en' }));
+  document.getElementById('downloadCvIt')?.addEventListener('click', () => track('download_cv', { language: 'it' }));
+  document.getElementById('printCv')?.addEventListener('click', () => track('print_cv'));
+  document.getElementById('linkedinLink')?.addEventListener('click', () => track('click_social', { platform: 'linkedin' }));
+  document.getElementById('githubLink')?.addEventListener('click', () => track('click_social', { platform: 'github' }));
+  document.getElementById('emailLink')?.addEventListener('click', () => track('click_email'));
 
   document.querySelectorAll('.lang-btn').forEach((btn) => {
     btn.addEventListener('click', () => {
       track('switch_language', { language: btn.dataset.lang });
+      applyLanguage(btn.dataset.lang);
     });
-  });
-
-  let scroll50Tracked = false;
-  let scroll90Tracked = false;
-  window.addEventListener('scroll', () => {
-    const pageHeight = document.documentElement.scrollHeight - window.innerHeight;
-    if (pageHeight <= 0) return;
-    const progress = (window.scrollY / pageHeight) * 100;
-
-    if (!scroll50Tracked && progress >= 50) {
-      scroll50Tracked = true;
-      track('scroll_depth', { percent: 50 });
-    }
-
-    if (!scroll90Tracked && progress >= 90) {
-      scroll90Tracked = true;
-      track('scroll_depth', { percent: 90 });
-    }
-  });
-
-  setTimeout(() => track('engaged_time', { seconds: 30 }), 30000);
-  setTimeout(() => track('engaged_time', { seconds: 90 }), 90000);
-
-  document.getElementById('contactForm')?.addEventListener('submit', () => {
-    track('submit_contact_form_attempt');
   });
 }
 
 function init() {
   const preferredLang = localStorage.getItem('lang') || 'en';
   applyLanguage(preferredLang);
-
-  document.querySelectorAll('.lang-btn').forEach((btn) => {
-    btn.addEventListener('click', () => applyLanguage(btn.dataset.lang));
-  });
 
   setupTheme();
   setupMenu();
