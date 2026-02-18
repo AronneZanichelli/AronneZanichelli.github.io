@@ -212,14 +212,52 @@ function setupContactForm() {
       });
 
       if (response.ok) {
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'submit_contact_form_success');
+        }
         feedback.textContent = translations[lang].contact.success;
         form.reset();
       } else {
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'submit_contact_form_error');
+        }
         feedback.textContent = translations[lang].contact.error;
       }
     } catch {
       feedback.textContent = translations[lang].contact.error;
     }
+  });
+}
+
+function setupAnalyticsEvents() {
+  const track = (eventName, params = {}) => {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', eventName, params);
+    }
+  };
+
+  document.getElementById('downloadCvEn')?.addEventListener('click', () => {
+    track('download_cv', { language: 'en' });
+  });
+
+  document.getElementById('downloadCvIt')?.addEventListener('click', () => {
+    track('download_cv', { language: 'it' });
+  });
+
+  document.getElementById('printCv')?.addEventListener('click', () => {
+    track('print_cv');
+  });
+
+  document.getElementById('linkedinLink')?.addEventListener('click', () => {
+    track('click_social', { platform: 'linkedin' });
+  });
+
+  document.getElementById('githubLink')?.addEventListener('click', () => {
+    track('click_social', { platform: 'github' });
+  });
+
+  document.getElementById('contactForm')?.addEventListener('submit', () => {
+    track('submit_contact_form_attempt');
   });
 }
 
@@ -234,6 +272,7 @@ function init() {
   setupTheme();
   setupMenu();
   setupContactForm();
+  setupAnalyticsEvents();
 
   document.getElementById('printCv').addEventListener('click', () => window.print());
   document.getElementById('year').textContent = new Date().getFullYear();
