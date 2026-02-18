@@ -66,7 +66,7 @@ const translations = {
       formEmail: 'Email',
       formMessage: 'Message',
       send: 'Send message',
-      success: 'Thanks! Your mail client is opening.',
+      success: 'Thanks! Your message was sent successfully.',
       error: 'Please complete all fields with a valid email.',
       integrationTitle: 'Form integration snippets'
     },
@@ -139,7 +139,7 @@ const translations = {
       formEmail: 'Email',
       formMessage: 'Messaggio',
       send: 'Invia messaggio',
-      success: 'Grazie! Il client email si sta aprendo.',
+      success: 'Grazie! Il messaggio è stato inviato con successo.',
       error: 'Compila tutti i campi con una email valida.',
       integrationTitle: 'Snippet integrazione form'
     },
@@ -190,7 +190,7 @@ function setupContactForm() {
   const form = document.getElementById('contactForm');
   const feedback = document.getElementById('formFeedback');
 
-  form.addEventListener('submit', (event) => {
+  form.addEventListener('submit', async (event) => {
     event.preventDefault();
     const lang = localStorage.getItem('lang') || 'en';
 
@@ -204,11 +204,22 @@ function setupContactForm() {
       return;
     }
 
-    const subject = encodeURIComponent(`Portfolio contact from ${name}`);
-    const body = encodeURIComponent(`${message}\n\nFrom: ${name} (${email})`);
-    window.location.href = `mailto:aronnezanichelli@gmail.com?subject=${subject}&body=${body}`;
-    feedback.textContent = translations[lang].contact.success;
-    form.reset();
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: new FormData(form)
+      });
+
+      if (response.ok) {
+        feedback.textContent = translations[lang].contact.success;
+        form.reset();
+      } else {
+        feedback.textContent = translations[lang].contact.error;
+      }
+    } catch {
+      feedback.textContent = translations[lang].contact.error;
+    }
   });
 }
 
