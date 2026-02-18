@@ -18,12 +18,12 @@ const translations = {
     },
     skills: {
       title: 'Technical Skills',
-      html: 'HTML and CSS for responsive interfaces',
+      html: 'HTML and CSS for responsive interfaces (solid foundations)',
       java: 'Java for object-oriented projects',
       cpp: 'C++ foundations for logic and performance',
-      python: 'Python (basic) for scripting and automation',
+      python: 'Python (beginner level, currently building fundamentals)',
       sql: 'SQL and relational database fundamentals',
-      creative: 'DaVinci Resolve, Advanced Office Suite, Adobe Suite (intermediate)'
+      creative: 'DaVinci Resolve, Office Suite, Adobe Suite (basic/intermediate)'
     },
     softSkills: {
       title: 'Soft Skills',
@@ -91,12 +91,12 @@ const translations = {
     },
     skills: {
       title: 'Competenze tecniche',
-      html: 'HTML e CSS per interfacce responsive',
+      html: 'HTML e CSS per interfacce responsive (basi solide)',
       java: 'Java per progetti orientati agli oggetti',
       cpp: 'Basi di C++ per logica e performance',
-      python: 'Python (base) per scripting e automazione',
+      python: 'Python (livello iniziale, sto consolidando i fondamentali)',
       sql: 'SQL e fondamenti di database relazionali',
-      creative: 'DaVinci Resolve, Pacchetto Office (avanzato), Pacchetto Adobe (discreto)'
+      creative: 'DaVinci Resolve, Pacchetto Office, Pacchetto Adobe (base/intermedio)'
     },
     softSkills: {
       title: 'Soft Skills',
