@@ -12,11 +12,12 @@ Applicazione desktop Windows che si affianca a Europa Universalis IV in tempo qu
 
 | Parametro | Valore |
 |---|---|
-| Monitor | 2 — EU4 su monitor principale (fullscreen borderless), companion su secondo monitor |
-| Versione EU4 | Sempre l'ultima (auto-update) |
+| Monitor | 2 — EU4 su monitor principale (fullscreen borderless, 2560x1440), companion su secondo monitor |
+| Versione EU4 | Sempre l'ultima (auto-update), installata via Steam |
 | DLC | Tutti attivi |
-| Mod | Grafiche / QoL (non modificano meccaniche) |
-| Lingua UI | Italiano |
+| Mod | Grafiche / QoL + mod parziale traduzione IT (non modifica meccaniche) |
+| Lingua EU4 | Inglese (con mod traduzione parziale IT) |
+| Lingua UI companion | Italiano |
 | Tema | Scuro (coerente con EU4) |
 
 ---
@@ -37,7 +38,7 @@ Il sistema ha **una sola modalità attiva per volta**, selezionabile tramite con
 
 ### 3.3 Full-bot (switch globale)
 - Uno switch dedicato in UI attiva la modalità full-bot.
-- Prima dell'attivazione appare un pannello parametri configurabili (budget, limiti, priorità).
+- Prima dell'attivazione appare un pannello parametri configurabili (budget, limiti, priorità, modalità colonial bot).
 - Il bot gestisce in autonomia le categorie abilitate, entro i guardrail impostati.
 - Uno switch visibile e sempre accessibile permette di disattivarlo istantaneamente.
 - I parametri configurati vengono **salvati tra sessioni**.
@@ -62,6 +63,8 @@ L'app invia `F1` (tasto pausa EU4) automaticamente quando rileva:
 - **Ribellione imminente** — unrest massimo in una o più province
 - **Guerra dichiarata** — un paese ha dichiarato guerra al giocatore
 
+> Funzionalità presente ma non critica per l'utente — implementata con bassa priorità, non deve impattare stabilità.
+
 ### 5.2 Hotkey
 - `F2` (configurabile) — mostra/nasconde la finestra companion sul secondo monitor
 
@@ -69,6 +72,25 @@ L'app invia `F1` (tasto pausa EU4) automaticamente quando rileva:
 - Modalità attiva al momento della chiusura
 - Parametri full-bot configurati
 - Changelog mostrato al primo avvio dopo un aggiornamento
+
+### 5.4 Gestione errori del bot
+Quando il bot fallisce un'azione (pre-check negativo, post-check mismatch, eccezione):
+
+**Classificazione errori:**
+- **Critico** — azione eseguita ma con effetto sbagliato, stato di gioco potenzialmente alterato → bot si ferma, notifica visiva + suono, attende conferma esplicita "Riprendi" prima di continuare.
+- **Minore** — azione non eseguita (es. elemento UI non trovato in pre-check) → bot si ferma, notifica visiva + suono, riprende automaticamente al prossimo autosave.
+
+**Notifica errore:** banner rosso in cima all'UI con descrizione dell'errore, audio alert, badge sul log. Il bot entra in stato `errore` (distinto da `pausa` e `off`).
+
+### 5.5 Stati del full-bot
+Il full-bot ha tre stati distinti, sempre visibili in UI:
+
+| Stato | Icona | Comportamento |
+|---|---|---|
+| **Attivo** | ● verde | Esegue azioni in autonomia |
+| **In pausa** | ⏸ giallo | Monitora ma non esegue, riprende con un click |
+| **Errore** | ✕ rosso | Fermo per errore, riprende solo dopo conferma (se critico) o automaticamente (se minore) |
+| **Off** | ○ grigio | Disattivato, solo advisor passivo |
 
 ---
 
@@ -111,7 +133,7 @@ La finestra ricorda posizione e dimensioni tra sessioni.
 
 ### 6.5 Esecuzione azioni (Semi/Full-bot)
 
-Azioni via `pyautogui` + `win32api`. Ogni azione:
+Azioni via `pyautogui` + `win32api`. Template matching basato su elementi UI inglesi (lingua base EU4), non sul testo tradotto dalla mod — in questo modo la mod di traduzione non interferisce con il riconoscimento UI. Ogni azione:
 - Verifica pre-esecuzione (template matching screenshot region)
 - Esecuzione click/tastiera
 - Verifica post-esecuzione (conferma effetto atteso)
@@ -214,7 +236,10 @@ class GameSnapshot:
 ### 8.5 `eu4_assistant_bot.decision_engine` *(esteso M6, M7)*
 - Risk evaluation + top-3 raccomandazioni ordinate per priorità.
 - **M6 — Military:** stack scoring vs combat width, alert eserciti sotto-dimensionati.
-- **M7 — Colonial:** ranking province per valore × sicurezza, reindirizzamento coloni.
+- **M7 — Colonial:** due modalità operative:
+  - *Autonomo*: ranking province per valore × sicurezza, sceglie e colonizza in autonomia.
+  - *Lista target*: il giocatore spunta province specifiche, il bot le colonizza in ordine.
+  La modalità attiva è configurabile dal pannello full-bot e persistente tra sessioni.
 - **M7 — Economy:** steering mercanti, alert tech con MP insufficienti.
 - Ogni raccomandazione include: titolo, categoria, score, testo "perché", flag `executable: bool`.
 
@@ -241,11 +266,12 @@ Costruito con PyQt6. Layout a tre colonne sul secondo monitor.
 - Manpower, force limit, stability, prestige, legitimacy
 
 **Advisor (centro — principale):**
-- Top-3 recommendation cards: titolo, categoria, score, testo "perché"
+- Top-3 recommendation cards sempre visibili (anche senza alert attivi): titolo, categoria, score, testo "perché"
 - Pulsante **[Esegui]** su ogni card eseguibile
 - Badge alert visivi (AE, coalition, debt, manpower, rebels, war)
-- Switch modalità: `Advisor | Semi-bot | Full-bot`
-- Pannello parametri full-bot (espandibile sotto lo switch)
+- Switch modalità: `Advisor | ⏸ Full-bot` con stato bot visibile (attivo / pausa / errore / off)
+- Pannello parametri full-bot (espandibile): budget, limiti, categorie abilitate, modalità colonial (autonomo / lista target)
+- Soglie alert configurabili: coalition risk threshold, manpower ratio threshold (le altre usano default)
 
 **Log (destra):**
 - Feed eventi cronologico in tempo reale
@@ -406,6 +432,11 @@ Non altera regole di gioco. Compatibile con achievement.
 - [ ] Switch full-bot disattivabile istantaneamente
 - [ ] Log sessione esportabile in CSV
 - [ ] Changelog mostrato a ogni aggiornamento
+- [ ] Colonial bot: modalità autonoma e lista target entrambe funzionanti
+- [ ] Full-bot: stati attivo / pausa / errore / off distinti e visibili
+- [ ] Gestione errori bot: notifica visiva + suono, distinzione critico/minore
+- [ ] Soglie alert configurabili: coalition e manpower threshold
+- [ ] Template matching basato su UI inglese (immune alla mod traduzione IT)
 - [ ] Nessun crash su campagna completa (1444 → fine partita)
 - [ ] Eseguibile Windows standalone senza dipendenze esterne
 
