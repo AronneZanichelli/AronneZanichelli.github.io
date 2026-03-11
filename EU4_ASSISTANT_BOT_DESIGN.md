@@ -1,198 +1,287 @@
-# EU4 Assistant + Bot — Progettazione v1.0
+# EU4 Assistant + Bot — Progettazione v1.0 (definitiva)
 
 ## 1. Obiettivo del progetto
 
-Realizzare un'**applicazione desktop Windows** che si affianca a Europa Universalis IV in tempo quasi-reale, supportando il giocatore in tre modalità progressive:
+Applicazione desktop Windows che si affianca a Europa Universalis IV in tempo quasi-reale, con tre modalità operative selezionabili durante la sessione di gioco.
 
-| Modalità | Comportamento |
-|---|---|
-| **Assist** | Legge lo stato di gioco e mostra raccomandazioni + alert. Nessuna azione automatica. |
-| **Semi-bot** | Propone azioni specifiche che il giocatore conferma prima dell'esecuzione. |
-| **Full-bot** | Esegue autonomamente task configurati entro guardrail di sicurezza. |
-
-Supporto completo a campagne **vanilla**, **tutti i DLC** e **mod attive**, in modalità **normale**.
-
-> **Scope v1.0:** Ironman è escluso. L'obiettivo primario è un'applicazione stabile dall'inizio alla fine di una campagna normale, senza crash o comportamenti inattesi, su qualsiasi combinazione di DLC attivi.
+> **Scope v1.0:** campagne normali con tutti i DLC attivi, mod grafiche/QoL compatibili. Ironman escluso. Obiettivo primario: stabilità completa dall'inizio alla fine di una campagna, zero crash.
 
 ---
 
-## 2. Vincoli tecnici e scelte progettuali
+## 2. Contesto d'uso
 
-### 2.1 Sorgente dati: autosave file watching
+| Parametro | Valore |
+|---|---|
+| Monitor | 2 — EU4 su monitor principale (fullscreen borderless), companion su secondo monitor |
+| Versione EU4 | Sempre l'ultima (auto-update) |
+| DLC | Tutti attivi |
+| Mod | Grafiche / QoL (non modificano meccaniche) |
+| Lingua UI | Italiano |
+| Tema | Scuro (coerente con EU4) |
+
+---
+
+## 3. Modalità operative e flusso UX
+
+Il sistema ha **una sola modalità attiva per volta**, selezionabile tramite controlli in UI.
+
+### 3.1 Advisor (default)
+- L'app legge il save, analizza lo stato e mostra raccomandazioni + alert.
+- **Nessuna azione automatica.**
+- Ogni raccomandazione ha un pulsante **"Esegui"** per delegare quella singola azione al bot.
+
+### 3.2 Semi-bot (per singola azione)
+- Attivato cliccando "Esegui" su una raccomandazione specifica.
+- L'app mostra un dialog di conferma con dettaglio dell'azione prima di procedere.
+- Dopo l'esecuzione torna automaticamente in modalità Advisor.
+
+### 3.3 Full-bot (switch globale)
+- Uno switch dedicato in UI attiva la modalità full-bot.
+- Prima dell'attivazione appare un pannello parametri configurabili (budget, limiti, priorità).
+- Il bot gestisce in autonomia le categorie abilitate, entro i guardrail impostati.
+- Uno switch visibile e sempre accessibile permette di disattivarlo istantaneamente.
+- I parametri configurati vengono **salvati tra sessioni**.
+
+---
+
+## 4. Funzionalità per priorità
+
+| Priorità | Area | Descrizione |
+|---|---|---|
+| 1 | **Advisor** | Raccomandazioni contestuali top-3 con spiegazione, alert rischio in tempo reale |
+| 2 | **Colonial bot** | Ranking province, gestione invio coloni, ottimizzazione budget coloniale |
+| 3 | **Military bot** | Composizione stack, reclutamento, movement eserciti |
+| 4 | **Economy advisor** | Steering mercanti, ottimizzazione tech timing, gestione budget |
+
+---
+
+## 5. Comportamenti automatici
+
+### 5.1 Pausa automatica EU4
+L'app invia `F1` (tasto pausa EU4) automaticamente quando rileva:
+- **Ribellione imminente** — unrest massimo in una o più province
+- **Guerra dichiarata** — un paese ha dichiarato guerra al giocatore
+
+### 5.2 Hotkey
+- `F2` (configurabile) — mostra/nasconde la finestra companion sul secondo monitor
+
+### 5.3 Persistenza tra sessioni
+- Modalità attiva al momento della chiusura
+- Parametri full-bot configurati
+- Changelog mostrato al primo avvio dopo un aggiornamento
+
+---
+
+## 6. Vincoli tecnici e scelte progettuali
+
+### 6.1 Sorgente dati: autosave file watching
 
 EU4 non espone API esterne. L'unico canale di lettura affidabile è il **file autosave**.
 
-**Approccio adottato:**
-- Un file watcher (`watchdog`) monitora `autosave.eu4` nella cartella documenti di Paradox.
-- Una **mod leggera** forza il salvataggio mensile (ogni mese in-game), che su velocità normale corrisponde a pochi secondi reali.
-- Ad ogni modifica del file, viene avviata una pipeline di parsing → extraction → decision.
+- Un file watcher (`watchdog`) monitora `autosave.eu4` nella cartella documenti Paradox.
+- Una **mod leggera** forza il salvataggio ogni mese in-game (compatibile achievement).
+- Ad ogni modifica del file: parsing → extraction → decision → aggiornamento UI.
+- Latenza attesa: **1–3 secondi** dal salvataggio all'UI aggiornata.
 
-**Perché non OCR:**
-- L'OCR richiede risoluzione stabile, layout fisso, e overhead CPU significativo.
-- Il save file contiene dati più completi e strutturati di qualsiasi schermata.
-- OCR rimane fallback opzionale per versioni future su dati non presenti nel save.
+### 6.2 Formato save EU4
 
-### 2.2 Formato save EU4
+I save file sono in formato **Clausewitz testuale** compressi in ZIP.
 
-I save file EU4 sono in formato **Clausewitz** in due varianti:
+- Parser custom Python ricorsivo per testo Clausewitz completo.
+- `SaveUnzipper` gestisce la decompressione ZIP pre-parsing.
+- Ironman (binary Clausewitz) è fuori scope per v1.0.
 
-| Tipo | Formato interno |
-|---|---|
-| Campagna normale | ZIP contenente testo Clausewitz |
+### 6.3 Compatibilità DLC
 
-**Parser:** implementazione custom Python per testo Clausewitz completo (M3).
-Ironman (binary Clausewitz) è fuori scope per v1.0.
+I DLC aggiungono meccaniche che modificano la struttura del save (estates, parliaments, fervor, harmonization, ecc.). Strategia:
 
-
-### 2.3 Compatibilità DLC
-
-I DLC di EU4 aggiungono meccaniche (es. Dharma, Emperor, Leviathan) che modificano la struttura del save file. La strategia di compatibilità è:
-
-- **Parsing difensivo:** ogni campo estratto da `StateExtractor` ha un valore di default safe se assente.
-- **Nessuna assunzione su sezioni opzionali:** le sezioni introdotte da DLC specifici (es. `estates`, `parliaments`, `fervor`) vengono estratte se presenti, ignorate se assenti.
-- **Test su sample save:** la suite di test include save campione generati con diverse combinazioni DLC attivi.
+- **Parsing difensivo:** ogni campo ha un valore di default safe se assente.
+- **Nessuna assunzione su sezioni opzionali:** estratte se presenti, ignorate se assenti.
 - **Graceful degradation:** se una sezione DLC non è parsata, l'advisor mostra i dati disponibili senza crashare.
+- **Test su sample save:** suite di test con save campione da diverse combinazioni DLC.
 
-### 2.3 UI: overlay separato (PyQt6)
+### 6.4 UI: finestra dedicata sul secondo monitor (PyQt6)
 
-Finestra separata sempre in primo piano, posizionabile liberamente. PyQt6 scelto per:
-- Controllo completo su trasparenza e stay-on-top su Windows
-- Widget nativi e rendering fluido
+Finestra standard (non overlay) sul secondo monitor. PyQt6 scelto per:
+- Widget nativi Windows, rendering fluido
+- Controllo completo su tema scuro e layout
 - Packaging agevole con PyInstaller
 
-### 2.4 Esecuzione azioni (Semi/Full-bot)
+La finestra ricorda posizione e dimensioni tra sessioni.
 
-Azioni via simulazione input mouse/tastiera (`pyautogui` + `win32api`). Ogni azione include:
-- Verifica pre-esecuzione (template matching screenshot)
+### 6.5 Esecuzione azioni (Semi/Full-bot)
+
+Azioni via `pyautogui` + `win32api`. Ogni azione:
+- Verifica pre-esecuzione (template matching screenshot region)
+- Esecuzione click/tastiera
 - Verifica post-esecuzione (conferma effetto atteso)
-- Fallback automatico con log dell'errore
+- Fallback con log in caso di mismatch
+
+### 6.6 Rilevamento automatico percorsi
+
+Al primo avvio, l'app cerca automaticamente:
+- Cartella installazione EU4 (Steam: `steamapps/common/Europa Universalis IV`)
+- Cartella documenti Paradox (`Documents/Paradox Interactive/Europa Universalis IV`)
+- Se non trovati, mostra dialog di selezione manuale.
 
 ---
 
-## 3. Architettura v1.0
+## 7. Architettura v1.0
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│                        UI Layer (PyQt6)                         │
-│  ┌─────────────┐  ┌──────────────────┐  ┌───────────────────┐  │
-│  │  Dashboard  │  │  Recommendations │  │  Alert + Log feed │  │
-│  │  (snapshot) │  │  (top-3 + why)   │  │  (risk + events)  │  │
-│  └─────────────┘  └──────────────────┘  └───────────────────┘  │
-│              ↕ QSignals / event bus                             │
-└─────────────────────────────────────────────────────────────────┘
-                              ↕
-┌─────────────────────────────────────────────────────────────────┐
-│                      Core Pipeline                              │
-│                                                                 │
-│  FileWatcher → SaveParser → StateExtractor → GameSnapshot       │
-│                                                    ↕            │
-│                             DecisionEngine → Recommendations    │
-│                                                    ↕            │
-│                             ActionExecutor ← ConfirmDialog      │
-└─────────────────────────────────────────────────────────────────┘
-                              ↕
-┌─────────────────────────────────────────────────────────────────┐
-│                    Data + Config Layer                          │
-│  AppConfig  |  SafetyLimits  |  Telemetry  |  RulesIndex (mod) │
-└─────────────────────────────────────────────────────────────────┘
-                              ↕
-┌─────────────────────────────────────────────────────────────────┐
-│                    EU4 File System                              │
-│  autosave.eu4  |  dlc_load.json  |  mod/*.mod  |  common/...   │
-└─────────────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────┐
+│                   UI Layer (PyQt6) — secondo monitor         │
+│                                                              │
+│  ┌────────────┐  ┌─────────────────────┐  ┌──────────────┐  │
+│  │ Dashboard  │  │ Advisor             │  │ Log feed     │  │
+│  │ stato live │  │ top-3 + [Esegui]    │  │ eventi+alert │  │
+│  └────────────┘  └─────────────────────┘  └──────────────┘  │
+│                                                              │
+│  [ Advisor | Semi-bot | ◉ Full-bot ] ← modalità switch      │
+│  [ F2: mostra/nascondi ]  [ ⏸ pausa auto ]                  │
+└──────────────────────────────────────────────────────────────┘
+                            ↕ QSignals
+┌──────────────────────────────────────────────────────────────┐
+│                     Core Pipeline                            │
+│  FileWatcher → SaveUnzipper → ClausewitzParser               │
+│       → StateExtractor → GameSnapshot                        │
+│              ↓                                               │
+│       DecisionEngine → Recommendations + RiskAlerts          │
+│              ↓                                               │
+│       ActionExecutor ← ConfirmDialog (semi-bot)              │
+│              ↓                                               │
+│       PauseController (F1 automatico)                        │
+└──────────────────────────────────────────────────────────────┘
+                            ↕
+┌──────────────────────────────────────────────────────────────┐
+│              Config + Persistence Layer                      │
+│  AppConfig  |  BotParams  |  Telemetry  |  RulesIndex        │
+│  ~/.eu4-assistant/config.json + bot_params.json              │
+└──────────────────────────────────────────────────────────────┘
+                            ↕
+┌──────────────────────────────────────────────────────────────┐
+│                  EU4 File System                             │
+│  autosave.eu4  |  dlc_load.json  |  mod/*.mod  |  common/   │
+└──────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## 4. Moduli e responsabilità
+## 8. Moduli
 
-### 4.1 `eu4_assistant_bot.watcher` *(nuovo — M5)*
-- `watchdog.observers.Observer` monitora la cartella savegame.
-- Emette evento `SaveChanged` quando `autosave.eu4` viene modificato.
-- Debounce 500ms (il file viene scritto in più chunk).
-- Thread separato, comunica via queue thread-safe con il core.
+### 8.1 `eu4_assistant_bot.watcher` *(M4)*
+- `watchdog` monitora `autosave.eu4`, emette `SaveChanged` con debounce 500ms.
+- Thread separato, comunica via queue thread-safe.
 
-### 4.2 `eu4_assistant_bot.parser` *(esteso — M3)*
-- **M3** — `ClausewitzTextParser`: parser ricorsivo completo per save testuali.
-  - Gestisce: blocchi annidati `key = { ... }`, liste, stringhe quotate, date `YYYY.MM.DD`.
+### 8.2 `eu4_assistant_bot.parser` *(M3)*
+- `ClausewitzTextParser`: parser ricorsivo completo per save testuali.
+  - Gestisce blocchi annidati, liste, stringhe quotate, date `YYYY.MM.DD`.
   - Output: albero dizionario Python nativo.
-- **`SaveUnzipper`**: decompressione ZIP pre-parsing.
+- `SaveUnzipper`: decompressione ZIP pre-parsing.
 
-### 4.3 `eu4_assistant_bot.extractor` *(nuovo — M5)*
-- `StateExtractor`: mappa albero Clausewitz grezzo → `GameSnapshot` tipizzato.
-- Estrae: tech levels, idea groups, province instabili, eserciti, trade nodes.
-- Gestisce assenza di campi (mod che rimuovono sezioni, versioni EU4 diverse).
-- M5: campi base. M7-M8: campi avanzati per military e colonial logic.
+### 8.3 `eu4_assistant_bot.extractor` *(M4)*
+- `StateExtractor`: albero Clausewitz grezzo → `GameSnapshot` tipizzato.
+- Parsing difensivo su ogni campo, default safe se assente.
+- Gestisce sezioni opzionali DLC (estates, parliaments, fervor, ecc.).
 
-### 4.4 `eu4_assistant_bot.models` *(esteso — M5, M7)*
-
-`GameSnapshot` ampliato:
+### 8.4 `eu4_assistant_bot.models` *(esteso M4, M6, M7)*
 ```python
 @dataclass
 class GameSnapshot:
-    # Esistenti
+    # Base
     timestamp: str
+    eu4_date: str           # "1444.11.11"
     country: str
+    stability: int          # -3 → +3
+    prestige: float
+    legitimacy: float
+    # Esistenti
     economy: EconomyState
     military: MilitaryState
     diplomacy: DiplomacyState
     colonial: ColonialState
     risk: RiskState
-    # Nuovi M5
-    eu4_date: str            # "1444.11.11"
-    tech: TechState          # adm/dip/mil levels + costo prossimo
-    ideas: IdeasState        # gruppi completati, in corso, punti liberi
-    stability: int           # -3 → +3
-    prestige: float
-    legitimacy: float
-    # Nuovi M7
+    # M4
+    tech: TechState         # adm/dip/mil + costo prossimo tech
+    ideas: IdeasState       # gruppi completati, in corso, punti liberi
+    # M6
+    armies: list[ArmyState]            # posizione, composizione
     provinces: list[ProvinceState]     # unrest, owner, development
+    # M7
     trade_nodes: list[TradeNodeState]  # power, value, merchants
-    armies: list[ArmyState]            # posizione, composizione, ordini
 ```
 
-### 4.5 `eu4_assistant_bot.decision_engine` *(esteso — M7, M8)*
-Arricchito con logica su dati reali:
+### 8.5 `eu4_assistant_bot.decision_engine` *(esteso M6, M7)*
+- Risk evaluation + top-3 raccomandazioni ordinate per priorità.
+- **M6 — Military:** stack scoring vs combat width, alert eserciti sotto-dimensionati.
+- **M7 — Colonial:** ranking province per valore × sicurezza, reindirizzamento coloni.
+- **M7 — Economy:** steering mercanti, alert tech con MP insufficienti.
+- Ogni raccomandazione include: titolo, categoria, score, testo "perché", flag `executable: bool`.
 
-- **Military (M7):** composizione stack vs combat width, eserciti sotto-dimensionati, assedi con forze insufficienti.
-- **Colonial (M8):** ranking province per valore commerciale × sicurezza, reindirizzamento coloni.
-- **Economy (M8):** steering mercanti per trade node, alert tech con MP insufficienti, alert admin efficiency.
+### 8.6 `eu4_assistant_bot.executor` *(M8)*
+- `ActionExecutor` reale via `pyautogui` + `win32api`.
+- Ogni `ActionHandler`: `pre_check() → execute() → post_check()`.
+- `ConfirmationDialog` (semi-bot): mostra dettaglio azione, attende conferma.
+- `ExecutionSupervisor`: retry, fallback, stop emergenza.
+- Azioni v1.0: reclutamento truppe, invio colono, miglioramento relazioni, riduzione manutenzione, movimento esercito.
 
-### 4.6 `eu4_assistant_bot.executor` *(esteso reale — M9)*
-- Sostituisce il simulatore con esecuzione reale via `pyautogui` + `win32api`.
-- Ogni `ActionHandler` implementa: `pre_check() → execute() → post_check()`.
-- `ExecutionSupervisor`: gestisce retry, fallback, stop di emergenza.
-- Semi-bot: ogni azione passa per `ConfirmationQueue` → popup UI con dettagli.
+### 8.7 `eu4_assistant_bot.pause_controller` *(M5)*
+- Monitora snapshot per condizioni di pausa automatica.
+- Invia keypress `F1` a EU4 quando rileva:
+  - Unrest massimo in almeno una provincia (`rebels_imminent`)
+  - Nuovo stato di guerra attivo dichiarato contro il giocatore (`war_declared`)
+- Log dell'evento nel feed UI.
 
-### 4.7 `eu4_assistant_bot.ui` *(nuovo — M6)*
-Costruito con PyQt6. Tre pannelli:
+### 8.8 `eu4_assistant_bot.ui` *(M5)*
+Costruito con PyQt6. Layout a tre colonne sul secondo monitor.
 
-**Dashboard:** bandiera + tag + data in-game, barre economy, manpower, stability, prestige.
+**Dashboard (sinistra):**
+- Bandiera + tag + data in-game
+- Barre: treasury / income / expenses / debt
+- Manpower, force limit, stability, prestige, legitimacy
 
-**Advisor:** top-3 recommendation cards (titolo, categoria, score, testo "perché"), badge alert visivi.
+**Advisor (centro — principale):**
+- Top-3 recommendation cards: titolo, categoria, score, testo "perché"
+- Pulsante **[Esegui]** su ogni card eseguibile
+- Badge alert visivi (AE, coalition, debt, manpower, rebels, war)
+- Switch modalità: `Advisor | Semi-bot | Full-bot`
+- Pannello parametri full-bot (espandibile sotto lo switch)
 
-**Log:** feed eventi cronologico, filtro per tipo, export CSV fine sessione.
+**Log (destra):**
+- Feed eventi cronologico in tempo reale
+- Filtro: decision / action / alert / error
+- Export CSV a fine sessione
 
-Comportamento finestra: `Qt.WindowStaysOnTopHint | Qt.Tool`, larghezza fissa ~360px, posizione persistente.
+**Comportamento finestra:**
+- Posizione e dimensioni persistenti tra sessioni
+- Hotkey `F2` mostra/nasconde
+- Tema scuro nativo
 
-### 4.8 `eu4_assistant_bot.mod` *(nuovo — M3)*
-Mod minimale che forza autosave mensile senza alterare gameplay né disabilitare achievement.
-
+### 8.9 `eu4_assistant_bot.mod` *(M3)*
+Mod minimale che forza autosave mensile:
 ```
 eu4_assistant_autosave/
-├── eu4_assistant_autosave.mod
+├── eu4_assistant_autosave.mod       # name + supported_version
 └── events/
-    └── monthly_save.txt     ← on_monthly_pulse → save_game = yes
+    └── monthly_save.txt             # on_monthly_pulse → save_game = yes
 ```
+Non altera regole di gioco. Compatibile con achievement.
 
-### 4.9 `eu4_assistant_bot.config` *(esteso — M5)*
-- Configurazione UI (posizione, pannelli visibili, tema chiaro/scuro).
-- Persistenza su `~/.eu4-assistant/config.json`.
-- Setup wizard al primo avvio: rilevamento automatico percorso EU4 e Documents.
+### 8.10 `eu4_assistant_bot.config` *(esteso M4)*
+- Rilevamento automatico percorsi EU4 e Documents al primo avvio.
+- Persistenza su `~/.eu4-assistant/`:
+  - `config.json` — percorsi, preferenze UI, modalità attiva, hotkey
+  - `bot_params.json` — parametri full-bot (budget, limiti, categorie abilitate)
+  - `changelog_seen.txt` — versione ultimo changelog visualizzato
+
+### 8.11 `eu4_assistant_bot.telemetry` *(esteso M5)*
+- Structured logging su `events.jsonl` (rotante).
+- Changelog versione mostrato al primo avvio post-aggiornamento.
+- Report sessione esportabile (JSON + testo leggibile).
 
 ---
 
-## 5. Modello dati snapshot completo
+## 9. Snapshot completo v1.0
 
 ```json
 {
@@ -203,31 +292,20 @@ eu4_assistant_autosave/
   "prestige": 45.2,
   "legitimacy": 82.0,
   "economy": {
-    "treasury": 120.5,
-    "income": 18.3,
-    "expenses": 14.1,
-    "debt": 0,
-    "merchants_deployed": 3
+    "treasury": 120.5, "income": 18.3,
+    "expenses": 14.1, "debt": 0, "merchants_deployed": 3
   },
-  "tech": {
-    "adm": 4, "dip": 4, "mil": 4,
-    "adm_cost": 100, "dip_cost": 100, "mil_cost": 100
-  },
+  "tech": { "adm": 4, "dip": 4, "mil": 4,
+            "adm_cost": 100, "dip_cost": 100, "mil_cost": 100 },
   "ideas": {
     "completed_groups": ["exploration"],
-    "in_progress": "expansion",
-    "free_ideas": 2
+    "in_progress": "expansion", "free_ideas": 2
   },
   "military": {
-    "force_limit": 28,
-    "manpower": 22000,
+    "force_limit": 28, "manpower": 22000,
     "armies": [
-      {
-        "id": "army_1",
-        "location": "Lisboa",
-        "troops": 18000,
-        "composition": {"infantry": 12, "cavalry": 3, "artillery": 3}
-      }
+      { "id": "army_1", "location": "Lisboa", "troops": 18000,
+        "composition": {"infantry": 12, "cavalry": 3, "artillery": 3} }
     ]
   },
   "diplomacy": {
@@ -242,98 +320,108 @@ eu4_assistant_autosave/
   "trade_nodes": [
     {"id": "Sevilla", "our_power": 35.2, "total_value": 12.8, "merchants": 1}
   ],
-  "risk": {
-    "coalition": 0.12,
-    "rebels": 0.05,
-    "ae_max": 12
+  "risk": { "coalition": 0.12, "rebels": 0.05, "ae_max": 12 },
+  "alerts": {
+    "rebels_imminent": false,
+    "war_declared": false
   }
 }
 ```
 
 ---
 
-## 6. Pipeline live update (flusso completo)
+## 10. Pipeline live update
 
 ```
 [EU4 scrive autosave.eu4]
         ↓
-[FileWatcher rileva modifica → attende stabilizzazione ~500ms]
+[FileWatcher rileva modifica → debounce 500ms]
         ↓
-[SaveUnzipper → estrae contenuto ZIP]
+[SaveUnzipper → estrae da ZIP]
         ↓
-[ClausewitzTextParser / BinaryDecoder → albero raw]
+[ClausewitzTextParser → albero raw]
         ↓
 [StateExtractor → GameSnapshot tipizzato]
         ↓
-[DecisionEngine.evaluate_risks() + recommend()]
+[PauseController → pausa EU4 se necessario (F1)]
         ↓
-[UI.update_signal → pannelli aggiornati]
-        ↓ (solo semi/full-bot)
-[ActionExecutor → esecuzione o coda conferma]
+[DecisionEngine → RiskAlerts + top-3 Recommendations]
+        ↓
+[UI.update_signal → Dashboard + Advisor + Log aggiornati]
+        ↓  (solo se full-bot attivo)
+[ActionExecutor → esecuzione autonoma entro guardrail]
 ```
 
 **Latenza attesa:** 1–3 secondi dal file scritto all'UI aggiornata.
 
 ---
 
-## 7. Roadmap milestone v1.0
+## 11. Roadmap milestone v1.0
 
 | Milestone | Contenuto | Dipendenze |
 |---|---|---|
 | **M1** ✅ | Foundation: config, models, telemetry, parser PoC, CLI | — |
 | **M2** ✅ | Decision engine + risk alerts + simulated executor | M1 |
 | **M3** | ClausewitzTextParser completo + SaveUnzipper + mod autosave | M1 |
-| **M4** | FileWatcher + StateExtractor + GameSnapshot v2 + DLC compat | M3 |
-| **M5** | UI PyQt6 (Dashboard + Advisor, dati live) | M4 |
+| **M4** | FileWatcher + StateExtractor + GameSnapshot v2 + DLC compat + path autodetect | M3 |
+| **M5** | UI PyQt6 base (Dashboard + Advisor + Log, dati live) + PauseController + hotkey | M4 |
 | **M6** | Military logic reale (stack scoring, army advisor) | M4, M5 |
 | **M7** | Colonial + Economy logic reale | M4, M5 |
-| **M8** | ActionExecutor reale (pyautogui) + semi-bot confirm | M5, M6 |
-| **M9** | QA: test end-to-end, stabilità, crash hardening | tutti |
-| **M10** | Packaging PyInstaller + setup wizard + docs | M9 |
+| **M8** | ActionExecutor reale (pyautogui) + semi-bot confirm + full-bot params UI | M5, M6, M7 |
+| **M9** | QA: test end-to-end, stabilità, crash hardening, DLC regression | tutti |
+| **M10** | Packaging PyInstaller + changelog system + docs | M9 |
 | **v1.0** | Release stabile | M10 |
 
 ---
 
-## 8. Rischi tecnici e mitigazioni
+## 12. Rischi tecnici e mitigazioni
 
 | Rischio | Probabilità | Mitigazione |
 |---|---|---|
-| Patch EU4 cambia formato save | Alta | Layer adapter versionato, test su sample save reali |
-| Mod non compatibile con patch EU4 | Bassa | `supported_version` aggiornabile, fallback a autosave standard |
+| Patch EU4 cambia struttura save | Alta | Layer adapter versionato, test su sample save aggiornati |
+| Sezione DLC assente in save vecchi/nuovi | Alta | Parsing difensivo con default safe su ogni campo |
 | pyautogui perde posizione UI dopo patch | Alta | Template matching con confidence threshold, fallback + log |
-| Parsing lento su save >30MB | Media | Parsing selettivo per sezioni (lazy extraction) |
-| False positive raccomandazioni | Media | Thresholds configurabili, modalità safe di default |
+| Parsing lento su save grandi (>30MB) | Media | Lazy extraction per sezioni, profiling su campagne avanzate |
+| Mod QoL altera struttura save marginalmente | Bassa | Test con mod popolari (BetterUI, SMAN, ecc.) |
+| Falsa pausa automatica (false positive) | Media | Soglie conservative configurabili, log motivazione pausa |
 
 ---
 
-## 9. Definizione di "Done" per v1.0
+## 13. Definizione di "Done" per v1.0
 
+- [ ] Mod autosave mensile funzionante e documentata
 - [ ] Save file parsato correttamente (campagna normale, tutti i DLC)
-- [ ] Mod autosave mensile inclusa e documentata
-- [ ] File watcher live con aggiornamento ~mensile
-- [ ] UI overlay funzionante con dati reali
+- [ ] File watcher live stabile per tutta la durata di una campagna
+- [ ] Rilevamento automatico percorsi EU4 al primo avvio
+- [ ] UI sul secondo monitor con dati live, tema scuro, in italiano
 - [ ] Top-3 raccomandazioni con spiegazione leggibile
-- [ ] Alert attivi: AE, coalition, debt, manpower, rebels
+- [ ] Pulsante [Esegui] funzionante su ogni raccomandazione eseguibile
+- [ ] Alert attivi: AE, coalition, debt, manpower, rebels, war
+- [ ] Pausa automatica EU4 su ribellione imminente e guerra dichiarata
+- [ ] Hotkey F2 mostra/nasconde finestra
 - [ ] Military advisor: stack scoring + alert eserciti
-- [ ] Colonial advisor: ranking province + coloni
-- [ ] Semi-bot: almeno 3 azioni eseguibili con conferma
-- [ ] Guardrail configurabili e funzionanti
-- [ ] Log sessione esportabile
-- [ ] Eseguibile Windows standalone (no Python richiesto)
+- [ ] Colonial advisor: ranking province + gestione coloni
+- [ ] Economy advisor: steering mercanti, alert tech
+- [ ] Full-bot con parametri configurabili e persistenti
+- [ ] Switch full-bot disattivabile istantaneamente
+- [ ] Log sessione esportabile in CSV
+- [ ] Changelog mostrato a ogni aggiornamento
+- [ ] Nessun crash su campagna completa (1444 → fine partita)
+- [ ] Eseguibile Windows standalone senza dipendenze esterne
 
 ---
 
-## 10. Stato progetto
+## 14. Stato progetto
 
 | Milestone | Stato |
 |---|---|
 | M1 — Foundation | ✅ Completato |
 | M2 — Decision engine + simulated executor | ✅ Completato |
-| M3 — Parser Clausewitz completo + mod autosave | ⏳ Prossimo |
+| M3 — Parser Clausewitz completo + mod | ⏳ Prossimo |
 | M4 — FileWatcher + StateExtractor + DLC compat | 🔜 Pianificato |
-| M5 — UI PyQt6 | 🔜 Pianificato |
+| M5 — UI PyQt6 + PauseController + hotkey | 🔜 Pianificato |
 | M6 — Military logic | 🔜 Pianificato |
 | M7 — Colonial + Economy logic | 🔜 Pianificato |
-| M8 — ActionExecutor reale (semi-bot) | 🔜 Pianificato |
+| M8 — ActionExecutor reale + full-bot UI | 🔜 Pianificato |
 | M9 — QA / stabilità / crash hardening | 🔜 Pianificato |
-| M10 — Packaging | 🔜 Pianificato |
+| M10 — Packaging + changelog | 🔜 Pianificato |
