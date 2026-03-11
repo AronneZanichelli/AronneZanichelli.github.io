@@ -234,6 +234,20 @@ class GameSnapshot:
     trade_nodes: list[TradeNodeState]  # power, value, merchants
 ```
 
+### 8.4b Scope military bot in guerra
+
+Durante una guerra attiva il military bot gestisce:
+- **Movimento** — sposta eserciti verso il fronte / obiettivo
+- **Assedi** — manda stack adeguato sulle province obiettivo
+- **Ritirata** — evita battaglie sfavorevoli (strength check pre-ingaggio)
+- **Ingaggio** — attacca quando il rapporto di forze è favorevole
+
+**Trattative di pace:** sempre escluse dall'automazione. Il bot si ferma, notifica l'utente e aspetta conferma prima di procedere. Rientra nelle "azioni critiche" con possibilità di annulla.
+
+**Comportamento con EU4 in pausa:** il bot rileva lo stato di pausa (nessun aggiornamento autosave) e rimane in attesa senza tentare azioni. Riprende automaticamente al prossimo autosave ricevuto.
+
+**Activity feed:** ogni azione eseguita dal bot appare in tempo reale nel pannello Advisor (banner compatto sopra le recommendation cards) con: tipo azione, target, stato (in corso / completata / fallita).
+
 ### 8.5 `eu4_assistant_bot.decision_engine` *(esteso M6, M7)*
 - Risk evaluation + top-3 raccomandazioni ordinate per priorità.
 - **M6 — Military:** 
@@ -452,6 +466,10 @@ Non altera regole di gioco. Compatibile con achievement.
 - [ ] Gestione errori bot: notifica visiva + suono, distinzione critico/minore
 - [ ] Soglie alert configurabili: coalition e manpower threshold
 - [ ] Template matching basato su UI inglese (immune alla mod traduzione IT)
+- [ ] Military bot: movimento, assedi, ritirata e ingaggio durante guerra
+- [ ] Trattative di pace sempre con conferma utente (azione critica)
+- [ ] Bot in attesa se EU4 è in pausa, resume automatico al prossimo save
+- [ ] Activity feed azioni bot in tempo reale nel pannello Advisor
 - [ ] Nessun crash su campagna completa (1444 → fine partita)
 - [ ] Eseguibile Windows standalone senza dipendenze esterne
 
