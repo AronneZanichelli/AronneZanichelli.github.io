@@ -51,7 +51,7 @@ Il sistema ha **una sola modalità attiva per volta**, selezionabile tramite con
 |---|---|---|
 | 1 | **Advisor** | Raccomandazioni contestuali top-3 con spiegazione, alert rischio in tempo reale |
 | 2 | **Colonial bot** | Ranking province, gestione invio coloni, ottimizzazione budget coloniale |
-| 3 | **Military bot** | Composizione stack, reclutamento, movement eserciti |
+| 3 | **Military bot** | Composizione stack, reclutamento, movement, assedi, ritirata/ingaggio in guerra. Trattative di pace sempre approvate dal giocatore. |
 | 4 | **Economy advisor** | Steering mercanti, ottimizzazione tech timing, gestione budget |
 
 ---
@@ -194,6 +194,7 @@ Al primo avvio, l'app cerca automaticamente:
 ### 8.1 `eu4_assistant_bot.watcher` *(M4)*
 - `watchdog` monitora `autosave.eu4`, emette `SaveChanged` con debounce 500ms.
 - Thread separato, comunica via queue thread-safe.
+- Emette anche `GamePaused` se nessun nuovo autosave arriva entro un timeout configurabile (default: 3 minuti) — segnala al bot di entrare in pausa automatica.
 
 ### 8.2 `eu4_assistant_bot.parser` *(M3)*
 - `ClausewitzTextParser`: parser ricorsivo completo per save testuali.
@@ -235,7 +236,10 @@ class GameSnapshot:
 
 ### 8.5 `eu4_assistant_bot.decision_engine` *(esteso M6, M7)*
 - Risk evaluation + top-3 raccomandazioni ordinate per priorità.
-- **M6 — Military:** stack scoring vs combat width, alert eserciti sotto-dimensionati.
+- **M6 — Military:** 
+  - *Peacetime:* stack scoring vs combat width, alert eserciti sotto-dimensionati, reclutamento
+  - *Wartime:* routing eserciti verso fronte/assedi, valutazione battle odds (ingaggio se favorevole, ritirata se sfavorevole)
+  - *Pace gate:* trattative di pace sempre in coda conferma, mai eseguite in autonomia
 - **M7 — Colonial:** due modalità operative:
   - *Autonomo*: ranking province per valore × sicurezza, sceglie e colonizza in autonomia.
   - *Lista target*: il giocatore spunta province specifiche, il bot le colonizza in ordine.
@@ -248,7 +252,13 @@ class GameSnapshot:
 - Ogni `ActionHandler`: `pre_check() → execute() → post_check()`.
 - `ConfirmationDialog` (semi-bot): mostra dettaglio azione, attende conferma.
 - `ExecutionSupervisor`: retry, fallback, stop emergenza.
-- Azioni v1.0: reclutamento truppe, invio colono, miglioramento relazioni, riduzione manutenzione, movimento esercito.
+- Azioni v1.0:
+  - *Peacetime:* reclutamento truppe, invio colono, miglioramento relazioni, riduzione manutenzione
+  - *Wartime:* movimento eserciti verso fronte, assedio obiettivi, ritirata da battaglie sfavorevoli, ingaggio battaglie favorevoli
+  - *Mai automatiche (richiedono sempre conferma):* trattative di pace, cessione province, pagamento indennità
+- **Live action display:** ogni azione in esecuzione mostra un banner "Sto eseguendo: [azione]" in cima all'Advisor, sostituisce le recommendation cards durante l'esecuzione.
+- **Annulla ultima azione:** disponibile solo per azioni critiche (pace, cessione province, indennità elevate) tramite tasto dedicato nel banner di conferma. Non implementato per azioni reversibili.
+- **Comportamento se EU4 è in pausa:** il bot rileva che il gioco è fermo (nessun nuovo autosave dopo timeout configurabile), entra in stato `pausa automatica` e mostra avviso "EU4 in pausa — bot in attesa". Riprende automaticamente al primo nuovo autosave.
 
 ### 8.7 `eu4_assistant_bot.pause_controller` *(M5)*
 - Monitora snapshot per condizioni di pausa automatica.
@@ -432,6 +442,11 @@ Non altera regole di gioco. Compatibile con achievement.
 - [ ] Switch full-bot disattivabile istantaneamente
 - [ ] Log sessione esportabile in CSV
 - [ ] Changelog mostrato a ogni aggiornamento
+- [ ] Military bot wartime: movimento, assedi, ingaggio e ritirata funzionanti
+- [ ] Pace gate: trattative di pace sempre in coda conferma
+- [ ] Live action display: banner azione in corso sull'Advisor
+- [ ] Annulla azione: disponibile su azioni critiche
+- [ ] Bot entra in pausa automatica se EU4 è fermo
 - [ ] Colonial bot: modalità autonoma e lista target entrambe funzionanti
 - [ ] Full-bot: stati attivo / pausa / errore / off distinti e visibili
 - [ ] Gestione errori bot: notifica visiva + suono, distinzione critico/minore
