@@ -107,7 +107,52 @@ const translations = {
       success: 'Thanks! Your message was sent successfully.',
       error: 'Please complete all fields with a valid email.'
     },
-    footer: { language: 'Language: English' }
+    footer: { language: 'Language: English' },
+    feat: {
+      pageTitle: 'Featured Projects',
+      pageIntro: 'Selected projects — problem, solution, stack, result.',
+      toc: { p1: 'Portfolio Site', p2: 'Labelbike', p3: 'Game Dev' },
+      label: { problem: 'Problem', solution: 'Solution', stack: 'Stack', result: 'Result' },
+      linkSite: '↗ Live site',
+      linkEditing: 'Editing archive →',
+      p1: {
+        title: 'Portfolio Website',
+        status: 'Live',
+        problem: 'Build a bilingual, professional online presence targeting junior dev and creative roles.',
+        solution: 'Designed and built a fully static bilingual site (EN/IT) from scratch — language toggle, dark/light theme, GA4 analytics, Formspree contact form, CV download, and a portfolio section.',
+        result: 'Live personal site with full SEO setup, conversion tracking and modular content sections ready to grow.'
+      },
+      p2: {
+        title: 'Labelbike — Social Media & Content',
+        status: 'In progress',
+        problem: 'A niche handmade motorcycle sticker brand with no structured social presence or content workflow.',
+        solution: 'AI-based social media strategy covering moodboards, short-form video editing, carousel post packaging and caption writing for Instagram and TikTok.',
+        result: 'Ongoing content production as part of an IFTS Project Work. Visual identity defined, first posts published.'
+      },
+      p3: {
+        title: 'Game Dev Project',
+        status: 'Coming soon',
+        problem: 'First personal game development project — stack and scope in definition.',
+        solution: 'Building a small interactive experience to apply programming fundamentals in a creative context.',
+        stack: '(stack in definition — follow GitHub for updates)'
+      }
+    },
+    edit: {
+      pageTitle: 'Editing Works',
+      pageIntro: 'Company-based archive of social editing assets — posts, reels, shorts and carousels.',
+      lb: {
+        status: 'In progress',
+        desc: 'Current collaboration for an artisan 3D resin motorcycle sticker brand based in Italy. AI-based content strategy, short-form video editing and post packaging.',
+        role: 'Role: Social Media Manager & Content Editor (IFTS Project Work)',
+        igTitle: 'Instagram',
+        ig1: 'Carousel — Brand storytelling: origin, craft process, product detail. (in production)',
+        ig2: 'Carousel — Community post: rider lifestyle, user content hooks. (in production)',
+        ig3: 'Reel — Product showcase with short-form edit and CTA. (in production)',
+        ttTitle: 'TikTok',
+        tt1: 'Short — Behind the scenes of the 3D resin production process. (in production)',
+        tt2: 'Short — Product reveal with trending audio hook. (in production)'
+      }
+    }
   },
   it: {
     nav: { home: 'Home', editing: 'Editing', featured: 'Featured Projects' },
@@ -217,7 +262,52 @@ const translations = {
       success: 'Grazie! Il messaggio è stato inviato con successo.',
       error: 'Compila tutti i campi con una email valida.'
     },
-    footer: { language: 'Lingua: Italiano' }
+    footer: { language: 'Lingua: Italiano' },
+    feat: {
+      pageTitle: 'Featured Projects',
+      pageIntro: 'Progetti selezionati — problema, soluzione, stack, risultato.',
+      toc: { p1: 'Sito Portfolio', p2: 'Labelbike', p3: 'Game Dev' },
+      label: { problem: 'Problema', solution: 'Soluzione', stack: 'Stack', result: 'Risultato' },
+      linkSite: '↗ Sito live',
+      linkEditing: 'Archivio editing →',
+      p1: {
+        title: 'Sito Portfolio',
+        status: 'Live',
+        problem: 'Costruire una presenza online bilingue e professionale per posizioni junior dev e creative.',
+        solution: 'Progettato e sviluppato un sito statico bilingue (IT/EN) da zero — toggle lingua, tema dark/light, GA4, form Formspree, download CV e sezione portfolio.',
+        result: 'Sito live con setup SEO completo, tracciamento conversioni e sezioni di contenuto modulari pronte a crescere.'
+      },
+      p2: {
+        title: 'Labelbike — Social Media & Content',
+        status: 'In corso',
+        problem: 'Brand artigianale di adesivi moto di nicchia senza una presenza social strutturata o un workflow di contenuto.',
+        solution: 'Strategia social AI-based: moodboard, editing video short-form, packaging caroselli e scrittura caption per Instagram e TikTok.',
+        result: 'Produzione contenuti in corso come Project Work IFTS. Identità visiva definita, primi post pubblicati.'
+      },
+      p3: {
+        title: 'Progetto Game Dev',
+        status: 'Coming soon',
+        problem: 'Primo progetto personale di game development — stack e scope in definizione.',
+        solution: 'Costruire una piccola esperienza interattiva per applicare i fondamentali di programmazione in un contesto creativo.',
+        stack: '(stack in definizione — segui GitHub per aggiornamenti)'
+      }
+    },
+    edit: {
+      pageTitle: 'Editing Works',
+      pageIntro: 'Archivio asset social per brand — post, reel, short e caroselli.',
+      lb: {
+        status: 'In corso',
+        desc: 'Collaborazione in corso per un brand artigianale italiano di adesivi in resina 3D per moto. Strategia AI-based, editing video short-form e packaging post.',
+        role: 'Ruolo: Social Media Manager & Content Editor (Project Work IFTS)',
+        igTitle: 'Instagram',
+        ig1: 'Carosello — Brand storytelling: origini, processo artigianale, dettaglio prodotto. (in produzione)',
+        ig2: 'Carosello — Post community: lifestyle rider, hook per contenuto user. (in produzione)',
+        ig3: 'Reel — Showcase prodotto con edit short-form e CTA. (in produzione)',
+        ttTitle: 'TikTok',
+        tt1: 'Short — Dietro le quinte del processo produttivo in resina 3D. (in produzione)',
+        tt2: 'Short — Product reveal con hook audio di tendenza. (in produzione)'
+      }
+    }
   }
 };
 
@@ -242,7 +332,7 @@ function applyLanguage(lang) {
   // Sync CV preview image
   const cvImg = document.getElementById('cv-img');
   if (cvImg) {
-    cvImg.src = `assets/cv-${safeLang}.png`;
+    cvImg.src = `assets/cv-${safeLang}.webp`;
     cvImg.alt = safeLang === 'it' ? 'Anteprima CV' : 'CV Preview';
   }
 }

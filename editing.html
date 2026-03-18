@@ -4,8 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Aronne Zanichelli | Editing Works</title>
-    <meta name="description" content="Editing portfolio organized by company, social channel and published asset." />
+    <meta name="description" content="Social media editing portfolio — content production for Labelbike and other brands. Short-form video, carousels, and post packaging." />
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   </head>
   <body>
     <a class="skip-link" href="#mainContent">Skip to main content</a>
@@ -33,54 +36,54 @@
         <h2 data-i18n="toc.title"></h2>
         <ul>
           <li><a href="#labelbike">Labelbike</a></li>
-          <li><a href="#otherBrands">Other Brands</a></li>
         </ul>
       </aside>
 
       <div class="content-column">
-        <section class="card">
-          <h1>Editing Works</h1>
-          <p>Company-based archive of social editing assets (posts, reels, shorts, and videos) with scalable structure.</p>
+
+        <section class="card fade-in">
+          <h1 data-i18n="edit.pageTitle"></h1>
+          <p data-i18n="edit.pageIntro"></p>
         </section>
 
-        <section id="labelbike" class="card">
-          <h2>Labelbike</h2>
-          <p>Current collaboration: social content production, short-form editing, and post packaging.</p>
+        <!-- LABELBIKE -->
+        <section id="labelbike" class="card fade-in">
+          <div class="pf-top">
+            <h2>Labelbike</h2>
+            <span class="badge badge--wip" data-i18n="edit.lb.status"></span>
+          </div>
+          <p data-i18n="edit.lb.desc"></p>
 
-          <h3>Instagram</h3>
-          <ul>
-            <li><strong>Post/Reel 01</strong> — Placeholder (insert URL + objective + result)</li>
-            <li><strong>Post/Reel 02</strong> — Placeholder (insert URL + objective + result)</li>
-            <li><strong>Post/Reel 03</strong> — Placeholder (insert URL + objective + result)</li>
+          <div class="edit-meta">
+            <span data-i18n="edit.lb.role"></span>
+            <span class="stack-line">Instagram · TikTok · Canva · DaVinci Resolve · AI Prompting</span>
+          </div>
+
+          <h3 data-i18n="edit.lb.igTitle"></h3>
+          <ul class="edit-list">
+            <li data-i18n="edit.lb.ig1"></li>
+            <li data-i18n="edit.lb.ig2"></li>
+            <li data-i18n="edit.lb.ig3"></li>
           </ul>
 
-          <h3>TikTok</h3>
-          <ul>
-            <li><strong>Video 01</strong> — Placeholder (hook, edit style, CTA)</li>
-            <li><strong>Video 02</strong> — Placeholder (hook, edit style, CTA)</li>
+          <h3 data-i18n="edit.lb.ttTitle"></h3>
+          <ul class="edit-list">
+            <li data-i18n="edit.lb.tt1"></li>
+            <li data-i18n="edit.lb.tt2"></li>
           </ul>
 
-          <h3>YouTube / Shorts</h3>
-          <ul>
-            <li><strong>Short 01</strong> — Placeholder (topic + duration + outcome)</li>
-          </ul>
+          <div class="pf-links">
+            <a href="https://www.instagram.com/labelbike_official/" target="_blank" rel="noopener">Instagram →</a>
+          </div>
         </section>
 
-        <section id="otherBrands" class="card">
-          <h2>Other Companies (Template)</h2>
-          <ul>
-            <li>Company name</li>
-            <li>Channels handled</li>
-            <li>Top delivered assets</li>
-            <li>Performance snapshot (if available)</li>
-          </ul>
-        </section>
       </div>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-content">
         <p>© <span id="year"></span> Aronne Zanichelli</p>
+        <p data-i18n="footer.language"></p>
       </div>
     </footer>
 
