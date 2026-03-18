@@ -4,232 +4,85 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Aronne Zanichelli | Editing Works</title>
-    <meta name="description" content="Video editing portfolio — post-production, YouTube pipeline, multilingual publishing." />
+    <meta name="description" content="Video editing and social content portfolio — organised by client and project type." />
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <style>
-      /* ── EDITING PAGE ── */
-      .edit-layout {
+      .category-grid {
         display: grid;
-        grid-template-columns: 220px 1fr;
+        grid-template-columns: repeat(3, 1fr);
         gap: 1.25rem;
-        margin-top: 1rem;
-        align-items: start;
-      }
-
-      .filter-panel {
-        position: sticky;
-        top: 84px;
-        background: var(--card);
-        border: 2px solid var(--border);
-        border-radius: 12px;
-        padding: 1rem;
-      }
-
-      .filter-panel h2 {
-        margin: 0 0 0.75rem;
-        font-size: 0.85rem;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: var(--muted);
-      }
-
-      .filter-btn {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        width: 100%;
-        background: transparent;
-        border: 1.5px solid var(--border);
-        color: var(--text);
-        border-radius: 8px;
-        padding: 0.45rem 0.7rem;
-        cursor: pointer;
-        font-size: 0.82rem;
-        font-weight: 600;
-        margin-bottom: 0.45rem;
-        text-align: left;
-        transition: border-color 0.15s, color 0.15s;
-      }
-
-      .filter-btn::before {
-        content: '';
-        display: inline-block;
-        width: 12px;
-        height: 12px;
-        border-radius: 3px;
-        border: 1.5px solid var(--border);
-        flex-shrink: 0;
-        transition: background 0.15s, border-color 0.15s;
-      }
-
-      .filter-btn.active {
-        border-color: var(--accent);
-        color: var(--accent);
-      }
-
-      .filter-btn.active::before {
-        background: var(--accent);
-        border-color: var(--accent);
-      }
-
-      .filter-count {
-        margin-left: auto;
-        font-size: 0.72rem;
-        color: var(--muted);
-        font-weight: 400;
-      }
-
-      .filter-reset {
         margin-top: 0.5rem;
-        font-size: 0.75rem;
-        color: var(--muted);
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 0;
-        text-decoration: underline;
-        display: none;
       }
-
-      .filter-reset.visible { display: block; }
-
-      /* ── VIDEO GRID ── */
-      .edit-column { min-width: 0; }
-
-      .postprod-note {
-        background: var(--card);
-        border: 2px solid var(--border);
-        border-radius: 12px;
-        padding: 1rem 1.2rem;
-        margin-bottom: 1.1rem;
-        font-size: 0.9rem;
-        color: var(--muted);
-        border-left: 4px solid var(--accent);
-      }
-
-      .postprod-note strong { color: var(--text); }
-
-      .video-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-      }
-
-      .video-card {
-        background: var(--card);
-        border: 2px solid var(--border);
-        border-radius: 12px;
-        overflow: hidden;
-        text-decoration: none;
-        color: var(--text);
+      .category-btn {
+        position: relative;
         display: block;
-        transition: border-color 0.18s, transform 0.18s;
+        text-decoration: none;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 2px solid var(--border);
+        background: var(--card);
+        transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+        cursor: pointer;
       }
-
-      .video-card:hover,
-      .video-card:focus-visible {
+      .category-btn:hover, .category-btn:focus-visible {
         border-color: var(--accent);
-        transform: translateY(-2px);
+        transform: translateY(-4px);
+        box-shadow: 0 16px 40px rgba(0,0,0,0.4);
       }
-
-      .video-card[data-hidden="true"] {
-        display: none;
+      .category-btn--disabled { cursor: default; opacity: 0.7; }
+      .category-btn--disabled:hover, .category-btn--disabled:focus-visible {
+        transform: none; box-shadow: none; border-color: var(--border);
       }
-
-      .video-thumb-wrap {
+      .category-img-wrap {
         position: relative;
         aspect-ratio: 16 / 9;
-        background: var(--border);
         overflow: hidden;
+        background: var(--border);
       }
-
-      .video-thumb-wrap img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
+      .category-img-wrap img {
+        width: 100%; height: 100%; object-fit: cover; display: block;
+        transition: transform 0.3s ease;
       }
-
-      .video-play-icon {
+      .category-btn:hover .category-img-wrap img { transform: scale(1.04); }
+      .category-btn--disabled:hover .category-img-wrap img { transform: none; }
+      .category-img-wrap::after {
+        content: '';
         position: absolute;
         inset: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: rgba(0,0,0,0.25);
-        opacity: 0;
-        transition: opacity 0.18s;
+        background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.6) 100%);
+        pointer-events: none;
       }
-
-      .video-card:hover .video-play-icon,
-      .video-card:focus-visible .video-play-icon {
-        opacity: 1;
+      .coming-soon-overlay {
+        position: absolute; inset: 0;
+        display: flex; align-items: center; justify-content: center;
+        background: rgba(11,15,20,0.55); z-index: 2; pointer-events: none;
       }
-
-      .video-play-icon svg {
-        width: 44px;
-        height: 44px;
-        fill: white;
-        filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
-      }
-
-      .video-info {
-        padding: 0.7rem 0.85rem 0.85rem;
-      }
-
-      .video-title {
-        font-size: 0.88rem;
-        font-weight: 700;
-        line-height: 1.4;
-        margin-bottom: 0.45rem;
-      }
-
-      .video-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.35rem;
-      }
-
-      .video-tag {
-        font-size: 0.65rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.04em;
-        padding: 0.12rem 0.45rem;
-        border-radius: 99px;
+      .coming-soon-pill {
+        background: rgba(11,15,20,0.82);
         border: 1.5px solid var(--border);
+        border-radius: 99px;
+        padding: 0.35rem 0.9rem;
+        font-size: 0.72rem; font-weight: 800;
+        text-transform: uppercase; letter-spacing: 0.08em;
         color: var(--muted);
       }
-
-      .video-tag[data-tag="labelbike"]   { border-color: var(--accent); color: var(--accent); }
-      .video-tag[data-tag="freelance"]   { border-color: #ffd166; color: #ffd166; }
-      .video-tag[data-tag="personal"]    { border-color: #9898cc; color: #9898cc; }
-
-      body.light .video-tag[data-tag="freelance"] { color: #7a5500; border-color: #c89000; }
-      body.light .video-tag[data-tag="personal"]  { color: #3a3a80; border-color: #6060aa; }
-
-      .no-results {
-        grid-column: 1 / -1;
-        text-align: center;
-        padding: 2rem;
-        color: var(--muted);
-        font-size: 0.9rem;
-        display: none;
+      .category-info { padding: 0.9rem 1rem 1rem; }
+      .category-info-top {
+        display: flex; align-items: flex-start;
+        justify-content: space-between; gap: 0.5rem; margin-bottom: 0.35rem;
       }
-
-      .no-results.visible { display: block; }
-
-      @media (max-width: 980px) {
-        .edit-layout { grid-template-columns: 1fr; }
-        .filter-panel { position: static; }
+      .category-name { font-size: 1.05rem; font-weight: 800; color: var(--text); margin: 0; }
+      .category-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; margin: 0; }
+      .category-arrow {
+        font-size: 1.2rem; color: var(--accent); flex-shrink: 0;
+        margin-top: 1px; transition: transform 0.2s;
       }
-
-      @media (max-width: 640px) {
-        .video-grid { grid-template-columns: 1fr; }
-      }
+      .category-btn:hover .category-arrow { transform: translateX(3px); }
+      @media (max-width: 900px) { .category-grid { grid-template-columns: 1fr 1fr; } }
+      @media (max-width: 560px) { .category-grid { grid-template-columns: 1fr; } }
     </style>
   </head>
   <body>
@@ -240,195 +93,76 @@
         <a class="brand" href="index.html">Aronne Zanichelli</a>
         <button id="menuToggle" class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
         <ul id="navMenu" class="nav-menu">
-          <li><a href="index.html"     data-i18n="nav.home"></a></li>
-          <li><a href="editing.html"   data-i18n="nav.editing"></a></li>
-          <li><a href="featured.html"  data-i18n="nav.featured"></a></li>
+          <li><a href="index.html" data-i18n="nav.home"></a></li>
+          <li><a href="editing.html" data-i18n="nav.editing"></a></li>
+          <li><a href="featured.html" data-i18n="nav.featured"></a></li>
         </ul>
         <div class="top-controls">
-          <button class="lang-btn" data-lang="en" aria-label="Switch to English">EN</button>
+          <button class="lang-btn" data-lang="en">EN</button>
           <span>|</span>
-          <button class="lang-btn" data-lang="it" aria-label="Cambia in Italiano">IT</button>
+          <button class="lang-btn" data-lang="it">IT</button>
           <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">☾</button>
         </div>
       </nav>
     </header>
 
-    <main id="mainContent" class="container">
+    <main id="mainContent" class="container" style="margin-top:1rem;">
 
-      <!-- page header -->
-      <section class="card fade-in" style="margin-top:1rem;">
+      <section class="card fade-in">
         <h1 data-i18n="edit.pageTitle"></h1>
         <p data-i18n="edit.pageIntro"></p>
       </section>
 
-      <div class="edit-layout">
+      <div class="category-grid">
 
-        <!-- ── FILTER SIDEBAR ── -->
-        <aside class="filter-panel" aria-label="Filters">
-          <h2 data-i18n="edit.filters.title"></h2>
-
-          <button class="filter-btn active" data-filter="labelbike">
-            Labelbike
-            <span class="filter-count">6</span>
-          </button>
-          <button class="filter-btn active" data-filter="freelance">
-            <span data-i18n="edit.filters.freelance"></span>
-            <span class="filter-count">0</span>
-          </button>
-          <button class="filter-btn active" data-filter="personal">
-            <span data-i18n="edit.filters.personal"></span>
-            <span class="filter-count">0</span>
-          </button>
-
-          <button class="filter-reset" id="filterReset" data-i18n="edit.filters.reset"></button>
-        </aside>
-
-        <!-- ── VIDEO COLUMN ── -->
-        <div class="edit-column">
-
-          <!-- Post-production note -->
-          <div class="postprod-note">
-            <strong data-i18n="edit.postprod.label"></strong>
-            <span data-i18n="edit.postprod.text"></span>
+        <a href="labelbike.html" class="category-btn fade-in">
+          <div class="category-img-wrap">
+            <img src="https://img.youtube.com/vi/BirILFe52Ik/hqdefault.jpg"
+                 alt="Labelbike thumbnail" loading="lazy" />
           </div>
+          <div class="category-info">
+            <div class="category-info-top">
+              <h2 class="category-name">Labelbike</h2>
+              <span class="badge badge--wip" data-i18n="edit.lb.status"></span>
+              <span class="category-arrow">→</span>
+            </div>
+            <p class="category-desc" data-i18n="edit.lb.cardDesc"></p>
+          </div>
+        </a>
 
-          <!-- Video grid -->
-          <div class="video-grid" id="videoGrid">
+        <div class="category-btn category-btn--disabled" tabindex="0">
+          <div class="category-img-wrap">
+            <img src="assets/placeholder-freelance.jpg" alt="Freelance placeholder" loading="lazy" />
+            <div class="coming-soon-overlay">
+              <span class="coming-soon-pill" data-i18n="edit.comingSoon"></span>
+            </div>
+          </div>
+          <div class="category-info">
+            <div class="category-info-top">
+              <h2 class="category-name" data-i18n="edit.freelanceTitle"></h2>
+              <span class="badge badge--soon" data-i18n="edit.comingSoon"></span>
+            </div>
+            <p class="category-desc" data-i18n="edit.freelanceDesc"></p>
+          </div>
+        </div>
 
-            <!-- VIDEO 1 -->
-            <a class="video-card"
-               href="https://www.youtube.com/watch?v=BirILFe52Ik"
-               target="_blank" rel="noopener"
-               data-tags="labelbike"
-               aria-label="Watch video on YouTube">
-              <div class="video-thumb-wrap">
-                <img src="https://img.youtube.com/vi/BirILFe52Ik/hqdefault.jpg"
-                     alt="Video thumbnail" loading="lazy" />
-                <div class="video-play-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </div>
-              </div>
-              <div class="video-info">
-                <!-- TODO: replace with actual YouTube title -->
-                <div class="video-title">Foglio Adesivo Gel 3D Esagoni Nido d'Ape: Proteggi e Personalizza Moto/Auto/Bici</div>
-                <div class="video-tags">
-                  <span class="video-tag" data-tag="labelbike">Labelbike</span>
-                </div>
-              </div>
-            </a>
+        <div class="category-btn category-btn--disabled" tabindex="0">
+          <div class="category-img-wrap">
+            <img src="assets/placeholder-personal.jpg" alt="Personal projects placeholder" loading="lazy" />
+            <div class="coming-soon-overlay">
+              <span class="coming-soon-pill" data-i18n="edit.comingSoon"></span>
+            </div>
+          </div>
+          <div class="category-info">
+            <div class="category-info-top">
+              <h2 class="category-name" data-i18n="edit.personalTitle"></h2>
+              <span class="badge badge--soon" data-i18n="edit.comingSoon"></span>
+            </div>
+            <p class="category-desc" data-i18n="edit.personalDesc"></p>
+          </div>
+        </div>
 
-            <!-- VIDEO 2 -->
-            <a class="video-card"
-               href="https://www.youtube.com/watch?v=pWTCa4k7MaM"
-               target="_blank" rel="noopener"
-               data-tags="labelbike"
-               aria-label="Watch video on YouTube">
-              <div class="video-thumb-wrap">
-                <img src="https://img.youtube.com/vi/pWTCa4k7MaM/hqdefault.jpg"
-                     alt="Video thumbnail" loading="lazy" />
-                <div class="video-play-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </div>
-              </div>
-              <div class="video-info">
-                <div class="video-title">Morbidelli T1002VX 2025: battitacco 3D anti-graffio | installazione veloce</div>
-                <div class="video-tags">
-                  <span class="video-tag" data-tag="labelbike">Labelbike</span>
-                </div>
-              </div>
-            </a>
-
-            <!-- VIDEO 3 -->
-            <a class="video-card"
-               href="https://www.youtube.com/watch?v=Ts6uH_FLm-Y"
-               target="_blank" rel="noopener"
-               data-tags="labelbike"
-               aria-label="Watch video on YouTube">
-              <div class="video-thumb-wrap">
-                <img src="https://img.youtube.com/vi/Ts6uH_FLm-Y/hqdefault.jpg"
-                     alt="Video thumbnail" loading="lazy" />
-                <div class="video-play-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </div>
-              </div>
-              <div class="video-info">
-                <div class="video-title">Morbidelli T1002VX 2025: protezioni 3D maniglie bauletto | installazione veloce</div>
-                <div class="video-tags">
-                  <span class="video-tag" data-tag="labelbike">Labelbike</span>
-                </div>
-              </div>
-            </a>
-
-            <!-- VIDEO 4 -->
-            <a class="video-card"
-               href="https://www.youtube.com/watch?v=R3-jY0WiOF0"
-               target="_blank" rel="noopener"
-               data-tags="labelbike"
-               aria-label="Watch video on YouTube">
-              <div class="video-thumb-wrap">
-                <img src="https://img.youtube.com/vi/R3-jY0WiOF0/hqdefault.jpg"
-                     alt="Video thumbnail" loading="lazy" />
-                <div class="video-play-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </div>
-              </div>
-              <div class="video-info">
-                <div class="video-title">Morbidelli T1002VX 2025: protezione parasteli parafango | installazione veloce</div>
-                <div class="video-tags">
-                  <span class="video-tag" data-tag="labelbike">Labelbike</span>
-                </div>
-              </div>
-            </a>
-
-            <!-- VIDEO 5 -->
-            <a class="video-card"
-               href="https://www.youtube.com/watch?v=9UEL-AMOMdI"
-               target="_blank" rel="noopener"
-               data-tags="labelbike"
-               aria-label="Watch video on YouTube">
-              <div class="video-thumb-wrap">
-                <img src="https://img.youtube.com/vi/9UEL-AMOMdI/hqdefault.jpg"
-                     alt="Video thumbnail" loading="lazy" />
-                <div class="video-play-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </div>
-              </div>
-              <div class="video-info">
-                <div class="video-title">Morbidelli T1002VX 2025: paraserbatoio 3D anti-graffio | installazione veloce</div>
-                <div class="video-tags">
-                  <span class="video-tag" data-tag="labelbike">Labelbike</span>
-                </div>
-              </div>
-            </a>
-
-            <!-- VIDEO 6 -->
-            <a class="video-card"
-               href="https://www.youtube.com/watch?v=CU_OsEj4dJA"
-               target="_blank" rel="noopener"
-               data-tags="labelbike"
-               aria-label="Watch video on YouTube">
-              <div class="video-thumb-wrap">
-                <img src="https://img.youtube.com/vi/CU_OsEj4dJA/hqdefault.jpg"
-                     alt="Video thumbnail" loading="lazy" />
-                <div class="video-play-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </div>
-              </div>
-              <div class="video-info">
-                <div class="video-title">Morbidelli T1002VX 2025: protezioni laterali serbatoio 3D | installazione veloce</div>
-                <div class="video-tags">
-                  <span class="video-tag" data-tag="labelbike">Labelbike</span>
-                </div>
-              </div>
-            </a>
-
-            <!-- No results placeholder -->
-            <div class="no-results" id="noResults" data-i18n="edit.noResults"></div>
-
-          </div><!-- /video-grid -->
-        </div><!-- /edit-column -->
-      </div><!-- /edit-layout -->
-
+      </div>
     </main>
 
     <footer class="site-footer">
@@ -439,49 +173,5 @@
     </footer>
 
     <script src="script.js"></script>
-    <script>
-      // ── FILTER LOGIC (self-contained, no dependency on script.js internals) ──
-      (function () {
-        const btns   = document.querySelectorAll('.filter-btn');
-        const cards  = document.querySelectorAll('.video-card');
-        const reset  = document.getElementById('filterReset');
-        const noRes  = document.getElementById('noResults');
-
-        function activeFilters() {
-          return [...btns].filter(b => b.classList.contains('active'))
-                          .map(b => b.dataset.filter);
-        }
-
-        function applyFilters() {
-          const active = activeFilters();
-          const showAll = active.length === 0;
-          let visible = 0;
-
-          cards.forEach(card => {
-            const tags = (card.dataset.tags || '').split(',').map(t => t.trim());
-            const match = showAll || tags.some(t => active.includes(t));
-            card.dataset.hidden = match ? 'false' : 'true';
-            if (match) visible++;
-          });
-
-          noRes.classList.toggle('visible', visible === 0);
-          reset.classList.toggle('visible', active.length < btns.length);
-        }
-
-        btns.forEach(btn => {
-          btn.addEventListener('click', () => {
-            btn.classList.toggle('active');
-            applyFilters();
-          });
-        });
-
-        reset.addEventListener('click', () => {
-          btns.forEach(b => b.classList.add('active'));
-          applyFilters();
-        });
-
-        applyFilters();
-      })();
-    </script>
   </body>
 </html>

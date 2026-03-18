@@ -123,44 +123,46 @@ const translations = {
       p2: {
         title: 'Labelbike — Social Media & Content',
         status: 'In progress',
-        problem: 'A niche handmade motorcycle sticker brand with no structured social presence or content workflow.',
+        problem: 'An artisan 3D resin motorcycle sticker brand looking to establish a consistent digital identity and a structured content strategy across social channels.',
         solution: 'AI-based social media strategy covering moodboards, short-form video editing, carousel post packaging and caption writing for Instagram and TikTok.',
         result: 'Ongoing content production as part of an IFTS Project Work. Visual identity defined, first posts published.'
       },
       p3: {
-        title: 'Game Dev Project',
-        status: 'Coming soon',
-        problem: 'First personal game development project — stack and scope in definition.',
-        solution: 'Building a small interactive experience to apply programming fundamentals in a creative context.',
-        stack: '(stack in definition — follow GitHub for updates)'
+        title: 'EU4 Assistant + Bot',
+        status: 'In progress',
+        problem: 'Europa Universalis IV has no external API — the only data source is the autosave file, stored in a proprietary recursive text format.',
+        solution: 'Python desktop companion (PyQt6) that parses EU4 Clausewitz save files in real time, extracts a typed game-state snapshot, and runs an AI decision engine. Three modes: Advisor (pure recommendations), Semi-bot (single confirmed action), Full-bot (autonomous within configurable guardrails). Packaged as a standalone Windows .exe via PyInstaller.',
+        result: 'M10 complete — live file watcher pipeline, custom Clausewitz parser, military/colonial/economy advisor, full-bot with pause gate for critical actions, Windows .exe shipped via GitHub Actions CI.'
       }
     },
     edit: {
       pageTitle: 'Editing Works',
-      pageIntro: 'Archive of video editing and post-production work, organised by client and project type.',
-      filters: {
-        title: 'Filters',
-        freelance: 'Freelance',
-        personal: 'Personal',
-        reset: 'Reset filters'
-      },
+      pageIntro: 'Content production and post-production portfolio, organised by client and project type.',
+      comingSoon: 'Coming soon',
+      freelanceTitle: 'Freelance',
+      freelanceDesc: 'Client projects — video editing, post-production and content strategy.',
+      personalTitle: 'Personal',
+      personalDesc: 'Personal experiments and independent creative projects.',
+      lb: {
+        status: 'In progress',
+        cardDesc: 'YouTube, Instagram, TikTok, LinkedIn — full post-production pipeline.',
+        desc: 'Ongoing collaboration for an artisan 3D resin motorcycle sticker brand based in Italy. AI-based content strategy, short-form video editing and post packaging.',
+        postprod: {
+          label: 'Post-production scope: ',
+          text: 'Full pipeline handled end-to-end — editing, upload, titles, descriptions, keyword research, custom thumbnails, timestamps, and multilingual translation across 9 languages via a custom AI agent.'
+        },
+        comingSoon: 'Content in production — check back soon.'
+      }
+    },
+    lb: {
+      backToEditing: 'Back to Editing',
+      status: 'In progress',
+      desc: 'Ongoing collaboration for an artisan 3D resin motorcycle sticker brand based in Italy.',
       postprod: {
         label: 'Post-production scope: ',
         text: 'Full pipeline handled end-to-end — editing, upload, titles, descriptions, keyword research, custom thumbnails, timestamps, and multilingual translation across 9 languages via a custom AI agent.'
       },
-      noResults: 'No videos match the selected filters.',
-      lb: {
-        status: 'In progress',
-        desc: 'Ongoing collaboration for an artisan 3D resin motorcycle sticker brand based in Italy. AI-based content strategy, short-form video editing and post packaging.',
-        role: 'Role: Social Media Manager & Content Editor (IFTS Project Work)',
-        igTitle: 'Instagram',
-        ig1: 'Carousel — Brand storytelling: origin, craft process, product detail. (in production)',
-        ig2: 'Carousel — Community post: rider lifestyle, user content hooks. (in production)',
-        ig3: 'Reel — Product showcase with short-form edit and CTA. (in production)',
-        ttTitle: 'TikTok',
-        tt1: 'Short — Behind the scenes of the 3D resin production process. (in production)',
-        tt2: 'Short — Product reveal with trending audio hook. (in production)'
-      }
+      comingSoon: 'Content in production — check back soon.'
     }
   },
   it: {
@@ -230,7 +232,7 @@ const translations = {
       p2Desc: 'Gestione social media AI-based per brand artigianale di adesivi in resina 3D per moto. Strategia, moodboard, editing short-form e post packaging in formato carosello per Instagram e TikTok.',
       p2Stack: 'Social Strategy · AI Content · Canva · DaVinci Resolve',
       p3Title: 'Progetto Game Dev',
-      p3Status: 'Coming soon',
+      p3Status: 'In progress',
       p3Desc: 'Primo progetto personale di game development — stack e scope in definizione. Segui GitHub per gli aggiornamenti.',
       p3Stack: '(stack in definizione)',
       linkLive: '↗ Live',
@@ -286,44 +288,46 @@ const translations = {
       p2: {
         title: 'Labelbike — Social Media & Content',
         status: 'In corso',
-        problem: 'Brand artigianale di adesivi moto di nicchia senza una presenza social strutturata o un workflow di contenuto.',
+        problem: 'Brand artigianale di adesivi in resina 3D per moto, alla ricerca di un\'identità digitale solida e di una strategia contenuti social strutturata e continuativa.',
         solution: 'Strategia social AI-based: moodboard, editing video short-form, packaging caroselli e scrittura caption per Instagram e TikTok.',
         result: 'Produzione contenuti in corso come Project Work IFTS. Identità visiva definita, primi post pubblicati.'
       },
       p3: {
-        title: 'Progetto Game Dev',
-        status: 'Coming soon',
-        problem: 'Primo progetto personale di game development — stack e scope in definizione.',
-        solution: 'Costruire una piccola esperienza interattiva per applicare i fondamentali di programmazione in un contesto creativo.',
-        stack: '(stack in definizione — segui GitHub per aggiornamenti)'
+        title: 'EU4 Assistant + Bot',
+        status: 'In progress',
+        problem: 'Europa Universalis IV non ha API esterne — l\'unica fonte dati è il file di salvataggio automatico, in un formato testuale ricorsivo proprietario.',
+        solution: 'Companion Python desktop (PyQt6) che fa parsing dei save file EU4 in tempo reale, estrae uno snapshot tipizzato dello stato di gioco e applica un decision engine AI. Tre modalità: Advisor (raccomandazioni pure), Semi-bot (singola azione confermata), Full-bot (autonomo entro guardrail configurabili). Distribuito come .exe Windows standalone via PyInstaller.',
+        result: 'M10 completato — pipeline file watcher live, parser Clausewitz custom, advisor militare/coloniale/economia, full-bot con pause gate su azioni critiche, .exe Windows generato via GitHub Actions CI.'
       }
     },
     edit: {
       pageTitle: 'Editing Works',
-      pageIntro: 'Archivio di lavori di editing video e post-produzione, organizzato per cliente e tipo di progetto.',
-      filters: {
-        title: 'Filtri',
-        freelance: 'Freelance',
-        personal: 'Lavori personali',
-        reset: 'Resetta filtri'
-      },
+      pageIntro: 'Portfolio di produzione contenuti e post-produzione, organizzato per cliente e tipo di progetto.',
+      comingSoon: 'Coming soon',
+      freelanceTitle: 'Freelance',
+      freelanceDesc: 'Progetti per clienti — editing video, post-produzione e content strategy.',
+      personalTitle: 'Lavori Personali',
+      personalDesc: 'Esperimenti personali e progetti creativi indipendenti.',
+      lb: {
+        status: 'In corso',
+        cardDesc: 'YouTube, Instagram, TikTok, LinkedIn — pipeline di post-produzione completa.',
+        desc: 'Collaborazione in corso per un brand artigianale italiano di adesivi in resina 3D per moto. Strategia AI-based, editing video short-form e packaging post.',
+        postprod: {
+          label: 'Scope post-produzione: ',
+          text: 'Pipeline gestita interamente — editing, upload, titoli, descrizioni, keyword research, thumbnail personalizzate, timestamp e traduzione in 9 lingue tramite un agente AI custom.'
+        },
+        comingSoon: 'Contenuto in produzione — torna presto.'
+      }
+    },
+    lb: {
+      backToEditing: 'Torna a Editing',
+      status: 'In corso',
+      desc: 'Collaborazione in corso per un brand artigianale italiano di adesivi in resina 3D per moto.',
       postprod: {
         label: 'Scope post-produzione: ',
         text: 'Pipeline gestita interamente — editing, upload, titoli, descrizioni, keyword research, thumbnail personalizzate, timestamp e traduzione in 9 lingue tramite un agente AI custom.'
       },
-      noResults: 'Nessun video corrisponde ai filtri selezionati.',
-      lb: {
-        status: 'In corso',
-        desc: 'Collaborazione in corso per un brand artigianale italiano di adesivi in resina 3D per moto. Strategia AI-based, editing video short-form e packaging post.',
-        role: 'Ruolo: Social Media Manager & Content Editor (Project Work IFTS)',
-        igTitle: 'Instagram',
-        ig1: 'Carosello — Brand storytelling: origini, processo artigianale, dettaglio prodotto. (in produzione)',
-        ig2: 'Carosello — Post community: lifestyle rider, hook per contenuto user. (in produzione)',
-        ig3: 'Reel — Showcase prodotto con edit short-form e CTA. (in produzione)',
-        ttTitle: 'TikTok',
-        tt1: 'Short — Dietro le quinte del processo produttivo in resina 3D. (in produzione)',
-        tt2: 'Short — Product reveal con hook audio di tendenza. (in produzione)'
-      }
+      comingSoon: 'Contenuto in produzione — torna presto.'
     }
   }
 };

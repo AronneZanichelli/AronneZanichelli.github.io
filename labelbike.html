@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aronne Zanichelli | Labelbike</title>
+    <meta name="description" content="Labelbike editing and social content portfolio — YouTube, Instagram, TikTok, LinkedIn." />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      .lb-back {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--muted);
+        text-decoration: none;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+        transition: color 0.15s;
+      }
+      .lb-back:hover { color: var(--accent); }
+
+      .postprod-note {
+        background: var(--card);
+        border: 2px solid var(--border);
+        border-left: 4px solid var(--accent);
+        border-radius: 12px;
+        padding: 1rem 1.2rem;
+        margin-bottom: 1.5rem;
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+      .postprod-note strong { color: var(--text); }
+
+      /* Social section headers */
+      .social-section {
+        margin-bottom: 2rem;
+      }
+      .social-section-header {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--border);
+      }
+      .social-section-header h2 {
+        margin: 0;
+        font-size: 1.1rem;
+      }
+      .social-icon-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 8px;
+        font-size: 0.75rem;
+        font-weight: 800;
+        flex-shrink: 0;
+      }
+      .social-icon-badge--yt  { background: #1a0a0a; color: #ff4444; border: 1.5px solid #ff4444; }
+      .social-icon-badge--ig  { background: #1a0d1a; color: #e040fb; border: 1.5px solid #e040fb; }
+      .social-icon-badge--tt  { background: #0a1a1a; color: #00f2ea; border: 1.5px solid #00f2ea; }
+      .social-icon-badge--li  { background: #0a0f1a; color: #0a84ff; border: 1.5px solid #0a84ff; }
+
+      body.light .social-icon-badge--yt  { background: #fff0f0; color: #cc0000; border-color: #cc0000; }
+      body.light .social-icon-badge--ig  { background: #fdf0ff; color: #9b00c9; border-color: #9b00c9; }
+      body.light .social-icon-badge--tt  { background: #f0ffff; color: #006b66; border-color: #006b66; }
+      body.light .social-icon-badge--li  { background: #f0f5ff; color: #0056b3; border-color: #0056b3; }
+
+      /* Video grid */
+      .video-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+      .video-card {
+        background: var(--card);
+        border: 2px solid var(--border);
+        border-radius: 12px;
+        overflow: hidden;
+        text-decoration: none;
+        color: var(--text);
+        display: block;
+        transition: border-color 0.18s, transform 0.18s;
+      }
+      .video-card:hover, .video-card:focus-visible {
+        border-color: var(--accent);
+        transform: translateY(-2px);
+      }
+      .video-thumb-wrap {
+        position: relative;
+        aspect-ratio: 16 / 9;
+        background: var(--border);
+        overflow: hidden;
+      }
+      .video-thumb-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .video-play-icon {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0,0,0,0.25);
+        opacity: 0;
+        transition: opacity 0.18s;
+      }
+      .video-card:hover .video-play-icon,
+      .video-card:focus-visible .video-play-icon { opacity: 1; }
+      .video-play-icon svg { width: 44px; height: 44px; fill: white; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5)); }
+      .video-info { padding: 0.7rem 0.85rem 0.85rem; }
+      .video-title { font-size: 0.85rem; font-weight: 700; line-height: 1.4; }
+
+      /* Empty section placeholder */
+      .social-empty {
+        background: var(--card);
+        border: 2px dashed var(--border);
+        border-radius: 12px;
+        padding: 2rem;
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+      .social-empty span { display: block; font-size: 1.5rem; margin-bottom: 0.5rem; opacity: 0.4; }
+
+      @media (max-width: 640px) {
+        .video-grid { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#mainContent">Skip to main content</a>
+
+    <header class="site-header">
+      <nav class="nav container" aria-label="Main navigation">
+        <a class="brand" href="index.html">Aronne Zanichelli</a>
+        <button id="menuToggle" class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+        <ul id="navMenu" class="nav-menu">
+          <li><a href="index.html" data-i18n="nav.home"></a></li>
+          <li><a href="editing.html" data-i18n="nav.editing"></a></li>
+          <li><a href="featured.html" data-i18n="nav.featured"></a></li>
+        </ul>
+        <div class="top-controls">
+          <button class="lang-btn" data-lang="en">EN</button>
+          <span>|</span>
+          <button class="lang-btn" data-lang="it">IT</button>
+          <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">☾</button>
+        </div>
+      </nav>
+    </header>
+
+    <main id="mainContent" class="container">
+
+      <a href="editing.html" class="lb-back">← <span data-i18n="lb.backToEditing"></span></a>
+
+      <!-- Header card -->
+      <section class="card fade-in">
+        <div class="pf-top">
+          <h1>Labelbike</h1>
+          <span class="badge badge--wip" data-i18n="lb.status"></span>
+        </div>
+        <p data-i18n="lb.desc"></p>
+        <p class="stack-line">YouTube · Instagram · TikTok · LinkedIn · Canva · DaVinci Resolve · AI Prompting</p>
+      </section>
+
+      <!-- Post-production note -->
+      <div class="postprod-note">
+        <strong data-i18n="lb.postprod.label"></strong>
+        <span data-i18n="lb.postprod.text"></span>
+      </div>
+
+      <!-- YOUTUBE -->
+      <section class="social-section fade-in">
+        <div class="social-section-header">
+          <span class="social-icon-badge social-icon-badge--yt">YT</span>
+          <h2>YouTube</h2>
+        </div>
+        <div class="video-grid">
+
+          <a class="video-card" href="https://www.youtube.com/watch?v=BirILFe52Ik" target="_blank" rel="noopener">
+            <div class="video-thumb-wrap">
+              <img src="https://img.youtube.com/vi/BirILFe52Ik/hqdefault.jpg" alt="Video thumbnail" loading="lazy" />
+              <div class="video-play-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            </div>
+            <div class="video-info">
+              <div class="video-title">Foglio Adesivo Gel 3D Esagoni Nido d'Ape: Proteggi e Personalizza Moto/Auto/Bici</div>
+            </div>
+          </a>
+
+          <a class="video-card" href="https://www.youtube.com/watch?v=pWTCa4k7MaM" target="_blank" rel="noopener">
+            <div class="video-thumb-wrap">
+              <img src="https://img.youtube.com/vi/pWTCa4k7MaM/hqdefault.jpg" alt="Video thumbnail" loading="lazy" />
+              <div class="video-play-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            </div>
+            <div class="video-info">
+              <div class="video-title">Morbidelli T1002VX 2025: battitacco 3D anti-graffio | installazione veloce</div>
+            </div>
+          </a>
+
+          <a class="video-card" href="https://www.youtube.com/watch?v=Ts6uH_FLm-Y" target="_blank" rel="noopener">
+            <div class="video-thumb-wrap">
+              <img src="https://img.youtube.com/vi/Ts6uH_FLm-Y/hqdefault.jpg" alt="Video thumbnail" loading="lazy" />
+              <div class="video-play-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            </div>
+            <div class="video-info">
+              <div class="video-title">Morbidelli T1002VX 2025: protezioni 3D maniglie bauletto | installazione veloce</div>
+            </div>
+          </a>
+
+          <a class="video-card" href="https://www.youtube.com/watch?v=R3-jY0WiOF0" target="_blank" rel="noopener">
+            <div class="video-thumb-wrap">
+              <img src="https://img.youtube.com/vi/R3-jY0WiOF0/hqdefault.jpg" alt="Video thumbnail" loading="lazy" />
+              <div class="video-play-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            </div>
+            <div class="video-info">
+              <div class="video-title">Morbidelli T1002VX 2025: protezione parasteli parafango | installazione veloce</div>
+            </div>
+          </a>
+
+          <a class="video-card" href="https://www.youtube.com/watch?v=9UEL-AMOMdI" target="_blank" rel="noopener">
+            <div class="video-thumb-wrap">
+              <img src="https://img.youtube.com/vi/9UEL-AMOMdI/hqdefault.jpg" alt="Video thumbnail" loading="lazy" />
+              <div class="video-play-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            </div>
+            <div class="video-info">
+              <div class="video-title">Morbidelli T1002VX 2025: paraserbatoio 3D anti-graffio | installazione veloce</div>
+            </div>
+          </a>
+
+          <a class="video-card" href="https://www.youtube.com/watch?v=CU_OsEj4dJA" target="_blank" rel="noopener">
+            <div class="video-thumb-wrap">
+              <img src="https://img.youtube.com/vi/CU_OsEj4dJA/hqdefault.jpg" alt="Video thumbnail" loading="lazy" />
+              <div class="video-play-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            </div>
+            <div class="video-info">
+              <div class="video-title">Morbidelli T1002VX 2025: protezioni laterali serbatoio 3D | installazione veloce</div>
+            </div>
+          </a>
+
+        </div>
+      </section>
+
+      <!-- INSTAGRAM -->
+      <section class="social-section fade-in">
+        <div class="social-section-header">
+          <span class="social-icon-badge social-icon-badge--ig">IG</span>
+          <h2>Instagram</h2>
+        </div>
+        <div class="social-empty">
+          <span>📸</span>
+          <span data-i18n="lb.comingSoon"></span>
+        </div>
+      </section>
+
+      <!-- TIKTOK -->
+      <section class="social-section fade-in">
+        <div class="social-section-header">
+          <span class="social-icon-badge social-icon-badge--tt">TT</span>
+          <h2>TikTok</h2>
+        </div>
+        <div class="social-empty">
+          <span>🎵</span>
+          <span data-i18n="lb.comingSoon"></span>
+        </div>
+      </section>
+
+      <!-- LINKEDIN -->
+      <section class="social-section fade-in">
+        <div class="social-section-header">
+          <span class="social-icon-badge social-icon-badge--li">in</span>
+          <h2>LinkedIn</h2>
+        </div>
+        <div class="social-empty">
+          <span>💼</span>
+          <span data-i18n="lb.comingSoon"></span>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-content">
+        <p>© <span id="year"></span> Aronne Zanichelli</p>
+        <p data-i18n="footer.language"></p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

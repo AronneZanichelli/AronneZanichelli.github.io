@@ -667,3 +667,7 @@ body.light .tag {
 .portfolio-card--upcoming p {
   color: var(--muted);
 }
+
+/* ===== SECTION SPACING FIXES ===== */
+/* timeline and portfolio are not .card so need explicit bottom margin */
+#timeline, #skills { margin-bottom: 1.25rem; }
