@@ -7,25 +7,23 @@ const translations = {
       about: 'About',
       availability: 'Availability',
       skills: 'Skills',
+      portfolio: 'Portfolio',
       timeline: 'Timeline',
       cv: 'CV',
       contact: 'Contact'
     },
     hero: {
       positioning: 'Junior Developer with creative and AI-oriented skills.',
-      subtitle:
-        'I build practical digital experiences by combining development fundamentals, visual communication, and strategic content thinking.',
+      subtitle: 'I build practical digital experiences by combining development fundamentals, visual communication, and strategic content thinking.',
       ctaProjects: 'View Featured Projects',
       ctaCv: 'Download CV',
       ctaContact: 'Contact'
     },
     about: {
       title: 'About Me',
-      bio:
-        'I am Aronne Zanichelli, an IT graduate in Computer Science and Telecommunications. I grew up with technology and I enjoy turning digital passion into real, useful work. My profile blends development fundamentals with visual communication and social content execution.',
+      bio: 'I am Aronne Zanichelli, an IT graduate in Computer Science and Telecommunications. I grew up with technology and I enjoy turning digital passion into real, useful work. My profile blends development fundamentals with visual communication and social content execution.',
       goalTitle: 'Professional Goal',
-      goalText:
-        'I want to enter the world of video games and interactive technologies, including VR-oriented experiences. I am looking for junior opportunities in web/game development where I can combine programming, creativity, and fast learning.',
+      goalText: 'I want to enter the world of video games and interactive technologies, including VR-oriented experiences. I am looking for junior opportunities in web/game development where I can combine programming, creativity, and fast learning.',
       valueTitle: 'What I bring to a team',
       valueOne: 'Technical + creative mindset: code with attention to communication and UX.',
       valueTwo: 'Operational autonomy in execution and delivery.',
@@ -57,10 +55,28 @@ const translations = {
       en: 'English — Intermediate (B2)',
       es: 'Spanish — Basic (A1)'
     },
+    portfolio: {
+      title: 'Portfolio',
+      intro: 'Selected projects — from code to creative production.',
+      badge: { live: '● Live', progress: '◐ In Progress', soon: '○ Coming Soon' },
+      p1: {
+        title: 'Bilingual Portfolio Website',
+        desc: 'Static bilingual site (EN/IT) built from scratch. Includes theme toggle, contact form, CV download, and GA4 analytics tracking.'
+      },
+      p2: {
+        title: 'Labelbike — Social Media Project',
+        desc: 'End-to-end social content production for an Italian motorcycle sticker brand: visual strategy, AI-assisted moodboards, carousel formats, and caption writing.'
+      },
+      p3: {
+        title: 'Game Dev — First Project',
+        desc: 'Personal game development project currently in early planning. Combining C++ fundamentals with interactive design thinking.'
+      },
+      link: { live: 'View Live ↗', repo: 'GitHub Repo ↗', details: 'View Editing Work ↗', wip: 'Work in Progress…' }
+    },
     timeline: {
       title: 'Education & Experience',
       educationDate: '2019-2025',
-      educationTitle: 'IT Diploma - Istituto Superiore Statale S. D\'Arzo',
+      educationTitle: "IT Diploma - Istituto Superiore Statale S. D'Arzo",
       educationDesc: 'Technical diploma in computer science and telecommunications.',
       conadDate: 'May 2021 - Sep 2021',
       conadTitle: 'Cashier / Warehouse Assistant - Conad',
@@ -76,8 +92,8 @@ const translations = {
       currentDesc: 'Training path combining visual design, media strategy, and AI-oriented digital workflows.'
     },
     cv: {
-      title: 'Download CV',
-      description: 'Download English or Italian CV in PDF, or use print mode to generate a tailored version directly from this site.',
+      title: 'Curriculum Vitae',
+      description: 'Preview and download my CV in English or Italian.',
       downloadEn: 'Download CV (EN)',
       downloadIt: 'Download CV (IT)',
       print: 'Print / Save as PDF'
@@ -101,28 +117,26 @@ const translations = {
       about: 'Chi sono',
       availability: 'Disponibilità',
       skills: 'Competenze',
+      portfolio: 'Portfolio',
       timeline: 'Timeline',
       cv: 'CV',
       contact: 'Contatti'
     },
     hero: {
       positioning: 'Junior Developer con competenze creative e AI-oriented.',
-      subtitle:
-        'Realizzo esperienze digitali pratiche unendo basi di sviluppo, comunicazione visiva e pensiero strategico sui contenuti.',
+      subtitle: 'Realizzo esperienze digitali pratiche unendo basi di sviluppo, comunicazione visiva e pensiero strategico sui contenuti.',
       ctaProjects: 'Vedi Featured Projects',
       ctaCv: 'Scarica CV',
       ctaContact: 'Contattami'
     },
     about: {
       title: 'Chi sono',
-      bio:
-        'Sono Aronne Zanichelli, diplomato in Informatica e Telecomunicazioni. Sono cresciuto con la tecnologia e mi piace trasformare la passione digitale in lavoro reale e utile. Il mio profilo unisce basi di sviluppo, comunicazione visiva e produzione contenuti social.',
+      bio: 'Sono Aronne Zanichelli, diplomato in Informatica e Telecomunicazioni. Sono cresciuto con la tecnologia e mi piace trasformare la passione digitale in lavoro reale e utile. Il mio profilo unisce basi di sviluppo, comunicazione visiva e produzione contenuti social.',
       goalTitle: 'Obiettivo professionale',
-      goalText:
-        'Voglio entrare nel mondo dei videogiochi e delle tecnologie interattive, con una visione che include anche la realtà virtuale. Cerco opportunità junior in web/game development dove unire programmazione, creatività e crescita rapida.',
+      goalText: "Voglio entrare nel mondo dei videogiochi e delle tecnologie interattive, con una visione che include anche la realtà virtuale. Cerco opportunità junior in web/game development dove unire programmazione, creatività e crescita rapida.",
       valueTitle: 'Cosa porto in un team',
-      valueOne: 'Mentalità tecnica + creativa: codice con attenzione a comunicazione e UX.',
-      valueTwo: 'Autonomia operativa nell\'esecuzione e nella consegna.',
+      valueOne: "Mentalità tecnica + creativa: codice con attenzione a comunicazione e UX.",
+      valueTwo: "Autonomia operativa nell'esecuzione e nella consegna.",
       valueThree: 'Approccio al problem solving e forte motivazione in percorsi junior.'
     },
     availability: {
@@ -151,10 +165,28 @@ const translations = {
       en: 'Inglese — Intermedio (B2)',
       es: 'Spagnolo — Base (A1)'
     },
+    portfolio: {
+      title: 'Portfolio',
+      intro: 'Progetti selezionati — dal codice alla produzione creativa.',
+      badge: { live: '● Live', progress: '◐ In Corso', soon: '○ In Arrivo' },
+      p1: {
+        title: 'Portfolio Bilingue',
+        desc: 'Sito statico bilingue (EN/IT) costruito da zero. Include toggle tema, form di contatto, download CV e tracciamento GA4.'
+      },
+      p2: {
+        title: 'Labelbike — Progetto Social Media',
+        desc: "Produzione contenuti social end-to-end per un brand italiano di adesivi moto: strategia visiva, moodboard AI-assisted, formati carosello e copywriting caption."
+      },
+      p3: {
+        title: 'Game Dev — Primo Progetto',
+        desc: 'Progetto personale di sviluppo videogiochi, attualmente in fase di pianificazione. Combina i fondamentali del C++ con il design interattivo.'
+      },
+      link: { live: 'Vedi Live ↗', repo: 'GitHub Repo ↗', details: 'Vedi Editing Work ↗', wip: 'Work in Progress…' }
+    },
     timeline: {
       title: 'Formazione ed esperienza',
       educationDate: '2019-2025',
-      educationTitle: 'Diploma IT - Istituto Superiore Statale S. D\'Arzo',
+      educationTitle: "Diploma IT - Istituto Superiore Statale S. D'Arzo",
       educationDesc: 'Diploma tecnico in Informatica e Telecomunicazioni.',
       conadDate: 'Mag 2021 - Set 2021',
       conadTitle: 'Cassiere / Magazziniere - Conad',
@@ -167,11 +199,11 @@ const translations = {
       optimaDesc: 'Consulenza su servizi di telecomunicazione rivolta ad aziende e privati.',
       currentDate: 'Attuale',
       currentTitle: 'IFTS Tecnico Grafico & Social Media Manager AI-based',
-      currentDesc: 'Percorso che integra design visivo, strategia media e workflow digitali orientati all\'AI.'
+      currentDesc: "Percorso che integra design visivo, strategia media e workflow digitali orientati all'AI."
     },
     cv: {
-      title: 'Download CV',
-      description: 'Scarica il CV in PDF in inglese o italiano, oppure usa la stampa per generare una versione personalizzata direttamente dal sito.',
+      title: 'Curriculum Vitae',
+      description: "Visualizza un'anteprima del mio curriculum e scaricalo nella lingua che preferisci.",
       downloadEn: 'Scarica CV (EN)',
       downloadIt: 'Scarica CV (IT)',
       print: 'Stampa / Salva PDF'
@@ -195,26 +227,23 @@ function applyLanguage(lang) {
   const safeLang = translations[lang] ? lang : 'en';
   document.documentElement.lang = safeLang;
   localStorage.setItem('lang', safeLang);
-
   document.querySelectorAll('[data-i18n]').forEach((el) => {
     const key = el.getAttribute('data-i18n');
     const value = getValueByPath(translations[safeLang], key);
     if (value) el.textContent = value;
   });
-
   document.querySelectorAll('.lang-btn').forEach((btn) => {
     btn.classList.toggle('active', btn.dataset.lang === safeLang);
   });
+  updateCvSection(safeLang);
 }
 
 function setupTheme() {
   const toggle = document.getElementById('themeToggle');
   if (!toggle) return;
-
   const savedTheme = localStorage.getItem('theme') || 'dark';
   document.body.classList.toggle('light', savedTheme === 'light');
   toggle.textContent = savedTheme === 'light' ? '☀︎' : '☾';
-
   toggle.addEventListener('click', () => {
     const isLight = document.body.classList.toggle('light');
     localStorage.setItem('theme', isLight ? 'light' : 'dark');
@@ -226,7 +255,6 @@ function setupMenu() {
   const toggle = document.getElementById('menuToggle');
   const menu = document.getElementById('navMenu');
   if (!toggle || !menu) return;
-
   toggle.addEventListener('click', () => {
     const open = menu.classList.toggle('open');
     toggle.setAttribute('aria-expanded', String(open));
@@ -237,28 +265,23 @@ function setupContactForm() {
   const form = document.getElementById('contactForm');
   const feedback = document.getElementById('formFeedback');
   if (!form || !feedback) return;
-
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
     const lang = localStorage.getItem('lang') || 'en';
-
     const name = form.name.value.trim();
     const email = form.email.value.trim();
     const message = form.message.value.trim();
     const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
     if (!name || !emailValid || !message) {
       feedback.textContent = translations[lang].contact.error;
       return;
     }
-
     try {
       const response = await fetch(form.action, {
         method: 'POST',
         headers: { Accept: 'application/json' },
         body: new FormData(form)
       });
-
       if (response.ok) {
         if (typeof window.gtag === 'function') window.gtag('event', 'submit_contact_form_success');
         feedback.textContent = translations[lang].contact.success;
@@ -275,23 +298,17 @@ function setupContactForm() {
 
 function setupAnalyticsEvents() {
   const track = (eventName, params = {}) => {
-    if (typeof window.gtag === 'function') {
-      window.gtag('event', eventName, params);
-    }
+    if (typeof window.gtag === 'function') window.gtag('event', eventName, params);
   };
-
-  document.getElementById('viewFeaturedCta')?.addEventListener('click', () => {
-    track('click_cta', { cta: 'view_featured_projects' });
+  document.getElementById('viewFeaturedCta')?.addEventListener('click', () => track('click_cta', { cta: 'view_featured_projects' }));
+  document.getElementById('cvDownloadBtn')?.addEventListener('click', () => {
+    const lang = localStorage.getItem('lang') || 'it';
+    track('download_cv', { language: lang });
   });
-
-  document.getElementById('downloadCvEn')?.addEventListener('click', () => track('download_cv', { language: 'en' }));
-  document.getElementById('downloadCvIt')?.addEventListener('click', () => track('download_cv', { language: 'it' }));
-  document.getElementById('printCv')?.addEventListener('click', () => track('print_cv'));
   document.getElementById('linkedinLink')?.addEventListener('click', () => track('click_social', { platform: 'linkedin' }));
   document.getElementById('githubLink')?.addEventListener('click', () => track('click_social', { platform: 'github' }));
   document.getElementById('instagramLink')?.addEventListener('click', () => track('click_social', { platform: 'instagram' }));
   document.getElementById('emailLink')?.addEventListener('click', () => track('click_email'));
-
   document.querySelectorAll('.lang-btn').forEach((btn) => {
     btn.addEventListener('click', () => {
       track('switch_language', { language: btn.dataset.lang });
@@ -300,47 +317,30 @@ function setupAnalyticsEvents() {
   });
 }
 
+function updateCvSection(lang) {
+  const img = document.getElementById('cv-img');
+  const dlBtn = document.getElementById('cvDownloadBtn');
+  if (!img || !dlBtn) return;
+  img.src = `assets/cv-${lang}.png`;
+  img.alt = lang === 'it' ? 'Anteprima CV' : 'CV Preview';
+  dlBtn.href = `assets/cv-${lang}.pdf`;
+  const label = translations[lang]?.cv?.[lang === 'it' ? 'downloadIt' : 'downloadEn'];
+  if (label) dlBtn.textContent = label;
+}
+
 function init() {
   const preferredLang = localStorage.getItem('lang') || 'en';
   applyLanguage(preferredLang);
-
   setupTheme();
   setupMenu();
   setupContactForm();
   setupAnalyticsEvents();
-
   document.getElementById('printCv')?.addEventListener('click', () => window.print());
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+  document.querySelectorAll('.cv-lang').forEach((btn) => {
+    btn.addEventListener('click', () => updateCvSection(btn.dataset.lang));
+  });
 }
 
 document.addEventListener('DOMContentLoaded', init);
-
-
-// ===== CV LANGUAGE SYNC =====
-function updateCvHeader(lang) {
-  const headerLink = document.getElementById("headerDownloadCv");
-  if (!headerLink) return;
-  headerLink.href = `assets/cv-${lang}.pdf`;
-  headerLink.textContent = lang === "it" ? "Scarica CV" : "Download CV";
-}
-
-function updateCvSection(lang) {
-  const img = document.getElementById("cv-img");
-  const bottomDownload = document.getElementById("cvDownloadBottom");
-  if (!img || !bottomDownload) return;
-  img.src = `assets/cv-${lang}.png`;
-  bottomDownload.href = `assets/cv-${lang}.pdf`;
-  bottomDownload.textContent = lang === "it" ? "Scarica CV" : "Download CV";
-}
-
-// Language buttons in CV section
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".cv-lang").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const lang = btn.dataset.lang;
-      updateCvHeader(lang);
-      updateCvSection(lang);
-    });
-  });
-});

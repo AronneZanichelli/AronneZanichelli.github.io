@@ -9,9 +9,9 @@
     <meta property="og:description" content="Junior Developer profile with technical skills, timeline, and downloadable CV." />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="assets/profile.jpg" />
-    <meta property="og:url" content="https://aronnezanicelli.github.io/AronneZanichelli.github.io/" />
+    <meta property="og:url" content="https://aronnezanichelli.github.io/AronneZanichelli.github.io/" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="canonical" href="https://aronnezanicelli.github.io/AronneZanichelli.github.io/" />
+    <link rel="canonical" href="https://aronnezanichelli.github.io/AronneZanichelli.github.io/" />
     <link rel="icon" href="assets/profile.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -54,6 +54,7 @@
           <li><a href="#about" data-i18n="toc.about"></a></li>
           <li><a href="#availability" data-i18n="toc.availability"></a></li>
           <li><a href="#skills" data-i18n="toc.skills"></a></li>
+          <li><a href="#portfolio" data-i18n="toc.portfolio"></a></li>
           <li><a href="#timeline" data-i18n="toc.timeline"></a></li>
           <li><a href="#cv" data-i18n="toc.cv"></a></li>
           <li><a href="#contact" data-i18n="toc.contact"></a></li>
@@ -61,6 +62,7 @@
       </aside>
 
       <div class="content-column">
+
         <section id="home" class="hero fade-in">
           <div class="hero-copy">
             <p class="eyebrow" data-i18n="hero.positioning"></p>
@@ -152,6 +154,49 @@
           </ul>
         </section>
 
+        <!-- ===== PORTFOLIO SECTION ===== -->
+        <section id="portfolio" class="fade-in">
+          <h2 data-i18n="portfolio.title"></h2>
+          <div class="portfolio-grid">
+
+            <article class="portfolio-card">
+              <div class="pf-top">
+                <h3 data-i18n="portfolio.p1Title"></h3>
+                <span class="badge badge--live" data-i18n="portfolio.p1Status"></span>
+              </div>
+              <p data-i18n="portfolio.p1Desc"></p>
+              <p class="stack-line" data-i18n="portfolio.p1Stack"></p>
+              <div class="pf-links">
+                <a href="https://aronnezanichelli.github.io" target="_blank" rel="noopener" data-i18n="portfolio.linkLive"></a>
+                <a href="https://github.com/AronneZanicelli" target="_blank" rel="noopener" data-i18n="portfolio.linkRepo"></a>
+                <a href="featured.html" data-i18n="portfolio.linkDetail"></a>
+              </div>
+            </article>
+
+            <article class="portfolio-card">
+              <div class="pf-top">
+                <h3 data-i18n="portfolio.p2Title"></h3>
+                <span class="badge badge--wip" data-i18n="portfolio.p2Status"></span>
+              </div>
+              <p data-i18n="portfolio.p2Desc"></p>
+              <p class="stack-line" data-i18n="portfolio.p2Stack"></p>
+              <div class="pf-links">
+                <a href="editing.html" data-i18n="portfolio.linkDetail"></a>
+              </div>
+            </article>
+
+            <article class="portfolio-card portfolio-card--upcoming">
+              <div class="pf-top">
+                <h3 data-i18n="portfolio.p3Title"></h3>
+                <span class="badge badge--soon" data-i18n="portfolio.p3Status"></span>
+              </div>
+              <p data-i18n="portfolio.p3Desc"></p>
+              <p class="stack-line" data-i18n="portfolio.p3Stack"></p>
+            </article>
+
+          </div>
+        </section>
+
         <section id="timeline" class="fade-in">
           <h2 data-i18n="timeline.title"></h2>
           <div class="timeline-visual">
@@ -183,7 +228,20 @@
           </div>
         </section>
 
-        
+        <section id="cv" class="card fade-in">
+          <h2 data-i18n="cv.title"></h2>
+          <p data-i18n="cv.description"></p>
+          <div class="cv-preview-wrapper">
+            <img id="cv-img" src="assets/cv-it.png" alt="CV preview" />
+          </div>
+          <div class="cv-actions">
+            <button class="cv-lang" data-lang="it">IT</button>
+            <button class="cv-lang" data-lang="en">EN</button>
+          </div>
+          <a id="cvDownloadBottom" href="assets/cv-it.pdf" download class="btn btn-secondary">
+            Scarica CV
+          </a>
+        </section>
 
         <section id="contact" class="card fade-in">
           <h2 data-i18n="contact.title"></h2>
@@ -223,27 +281,9 @@
             <p id="formFeedback" class="form-feedback" aria-live="polite"></p>
           </form>
         </section>
+
       </div>
-    
-<section id="cv">
-  <h2>Curriculum Vitae</h2>
-  <p>Visualizza un'anteprima del mio curriculum e scaricalo nella lingua che preferisci.</p>
-
-  <div class="cv-preview-wrapper">
-    <img id="cv-img" src="assets/cv-it.png" alt="Anteprima CV">
-  </div>
-
-  <div class="cv-actions">
-    <button class="cv-lang" data-lang="it">IT</button>
-    <button class="cv-lang" data-lang="en">EN</button>
-  </div>
-
-  <a id="cvDownloadBottom" id="headerDownloadCv" href="assets/cv-it.pdf" download class="btn btn-secondary">
-    Scarica CV
-  </a>
-</section>
-
-</main>
+    </main>
 
     <footer class="site-footer">
       <div class="container footer-content">

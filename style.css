@@ -399,3 +399,231 @@ a:focus-visible {
   margin-left: 6px;
   font-weight: 500;
 }
+
+
+/* ===== PORTFOLIO SECTION ===== */
+
+.pf-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-bottom: 0.55rem;
+}
+
+.pf-top h3 {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.badge {
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 0.18rem 0.52rem;
+  border-radius: 99px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.badge--live  { background: #0b2921; color: #3fe0bf; border: 1.5px solid #3fe0bf; }
+.badge--wip   { background: #2a1f00; color: #ffd166; border: 1.5px solid #ffd166; }
+.badge--soon  { background: #1a1a2e; color: #9898cc; border: 1.5px solid #6060aa; }
+
+body.light .badge--live  { background: #d5f5ee; color: #005245; border-color: #006d5b; }
+body.light .badge--wip   { background: #fff8e0; color: #7a5500; border-color: #c89000; }
+body.light .badge--soon  { background: #ededfa; color: #3a3a80; border-color: #6060aa; }
+
+.stack-line {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-family: 'Courier New', monospace;
+  margin-top: 0.45rem;
+  margin-bottom: 0;
+  letter-spacing: 0.02em;
+}
+
+.pf-links {
+  display: flex;
+  gap: 0.55rem;
+  margin-top: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.pf-links a {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: none;
+  border: 1.5px solid var(--accent);
+  padding: 0.18rem 0.6rem;
+  border-radius: 6px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.pf-links a:hover,
+.pf-links a:focus-visible {
+  background: var(--accent);
+  color: #07231d;
+}
+
+.portfolio-card--upcoming {
+  opacity: 0.6;
+  border-style: dashed;
+}
+
+@media (min-width: 1100px) {
+  .portfolio-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+
+/* ===== PORTFOLIO SECTION ===== */
+.section-intro {
+  color: var(--muted);
+  margin-top: -0.25rem;
+  margin-bottom: 1rem;
+  font-size: 0.97rem;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+@media (max-width: 840px) {
+  .portfolio-grid { grid-template-columns: 1fr; }
+}
+
+.portfolio-card {
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  padding: 1.1rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  transition: border-color 0.2s;
+}
+
+.portfolio-card:hover {
+  border-color: var(--accent);
+}
+
+.portfolio-card-soon {
+  opacity: 0.72;
+}
+
+.portfolio-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.portfolio-card h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.portfolio-card p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--muted);
+  flex: 1;
+}
+
+/* Status badges */
+.badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  border-radius: 99px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.badge-live {
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
+  color: var(--accent);
+  border: 1.5px solid var(--accent);
+}
+
+.badge-progress {
+  background: rgba(255, 209, 102, 0.12);
+  color: #ffd166;
+  border: 1.5px solid #ffd166;
+}
+
+.badge-soon {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--muted);
+  border: 1.5px solid var(--border);
+}
+
+/* Stack tags */
+.stack-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.tag {
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.15rem 0.45rem;
+  color: var(--muted);
+}
+
+body.light .tag {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+/* Project links */
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 0.4rem;
+}
+
+.proj-link {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 0.3rem 0.7rem;
+  border-radius: 8px;
+  border: 1.5px solid var(--border);
+  color: var(--text);
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.proj-link:hover,
+.proj-link:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.proj-link-primary {
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.proj-link-disabled {
+  opacity: 0.45;
+  cursor: default;
+  pointer-events: none;
+}
