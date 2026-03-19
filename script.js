@@ -57,21 +57,21 @@ const translations = {
     },
     portfolio: {
       title: 'Portfolio',
-      intro: 'Selected projects — from code to creative production.',
-      badge: { live: '● Live', progress: '◐ In Progress', soon: '○ Coming Soon' },
-      p1: {
-        title: 'Bilingual Portfolio Website',
-        desc: 'Static bilingual site (EN/IT) built from scratch. Includes theme toggle, contact form, CV download, and GA4 analytics tracking.'
-      },
-      p2: {
-        title: 'Labelbike — Social Media Project',
-        desc: 'End-to-end social content production for an Italian motorcycle sticker brand: visual strategy, AI-assisted moodboards, carousel formats, and caption writing.'
-      },
-      p3: {
-        title: 'Game Dev — First Project',
-        desc: 'Personal game development project currently in early planning. Combining C++ fundamentals with interactive design thinking.'
-      },
-      link: { live: 'View Live ↗', repo: 'GitHub Repo ↗', details: 'View Editing Work ↗', wip: 'Work in Progress…' }
+      p1Title: 'Portfolio Website',
+      p1Status: 'Live',
+      p1Desc: 'Bilingual static site (EN/IT) with CV download, contact form, GA4 analytics, dark/light mode and this portfolio section.',
+      p1Stack: 'HTML · CSS · JS · GitHub Pages · Formspree · GA4',
+      p2Title: 'Labelbike — Social Media & Content',
+      p2Status: 'In progress',
+      p2Desc: 'AI-based social media management for an artisan 3D resin motorcycle sticker brand. Strategy, moodboards, short-form editing and carousel posts for Instagram and TikTok.',
+      p2Stack: 'Social Strategy · AI Content · Canva · DaVinci Resolve',
+      p3Title: 'EU4 Assistant + Bot',
+      p3Status: 'In progress',
+      p3Desc: 'Python desktop companion for Europa Universalis IV — real-time save parsing, AI decision engine, three bot modes. M10 complete, standalone .exe.',
+      p3Stack: 'Python · PyQt6 · watchdog · pyautogui · PyInstaller',
+      linkLive: '↗ Live',
+      linkRepo: 'GitHub',
+      linkDetail: 'Details →'
     },
     timeline: {
       title: 'Education & Experience',
@@ -231,10 +231,10 @@ const translations = {
       p2Status: 'In corso',
       p2Desc: 'Gestione social media AI-based per brand artigianale di adesivi in resina 3D per moto. Strategia, moodboard, editing short-form e post packaging in formato carosello per Instagram e TikTok.',
       p2Stack: 'Social Strategy · AI Content · Canva · DaVinci Resolve',
-      p3Title: 'Progetto Game Dev',
-      p3Status: 'In progress',
-      p3Desc: 'Primo progetto personale di game development — stack e scope in definizione. Segui GitHub per gli aggiornamenti.',
-      p3Stack: '(stack in definizione)',
+      p3Title: 'EU4 Assistant + Bot',
+      p3Status: 'In corso',
+      p3Desc: 'Companion Python desktop per Europa Universalis IV — parsing save in tempo reale, decision engine AI, tre modalità bot. M10 completo, .exe standalone.',
+      p3Stack: 'Python · PyQt6 · watchdog · pyautogui · PyInstaller',
       linkLive: '↗ Live',
       linkRepo: 'GitHub',
       linkDetail: 'Dettagli →'
