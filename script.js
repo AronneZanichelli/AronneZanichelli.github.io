@@ -69,6 +69,10 @@ const translations = {
       p3Status: 'In progress',
       p3Desc: 'Python desktop companion for Europa Universalis IV — real-time save parsing, AI decision engine, three bot modes. M10 complete, standalone .exe.',
       p3Stack: 'Python · PyQt6 · watchdog · pyautogui · PyInstaller',
+      p4Title: 'UNDERGENESIS',
+      p4Status: 'In progress',
+      p4Desc: 'Procedural evolutionary sandbox in Godot 4. Guide a species from pre-civilization to building and managing a complex fantasy civilization. Emergent evolution, 13 biomes, isometric rendering with LOD.',
+      p4Stack: 'Godot 4.6 · GDScript · Procedural Generation · Isometric 2D',
       linkLive: '↗ Live',
       linkRepo: 'GitHub',
       linkDetail: 'Details →'
@@ -94,7 +98,6 @@ const translations = {
     cv: {
       title: 'Curriculum Vitae',
       description: 'Preview and download my CV in English or Italian.',
-
     },
     contact: {
       title: 'Contact',
@@ -109,7 +112,7 @@ const translations = {
     feat: {
       pageTitle: 'Featured Projects',
       pageIntro: 'Selected projects — problem, solution, stack, result.',
-      toc: { p1: 'Portfolio Site', p2: 'Labelbike', p3: 'Game Dev' },
+      toc: { p1: 'Portfolio Site', p2: 'Labelbike', p3: 'EU4 Assistant', p4: 'Game Dev' },
       label: { problem: 'Problem', solution: 'Solution', stack: 'Stack', result: 'Result' },
       linkSite: '↗ Live site',
       linkEditing: 'Editing archive →',
@@ -133,6 +136,13 @@ const translations = {
         problem: 'Europa Universalis IV has no external API — the only data source is the autosave file, stored in a proprietary recursive text format.',
         solution: 'Python desktop companion (PyQt6) that parses EU4 Clausewitz save files in real time, extracts a typed game-state snapshot, and runs an AI decision engine. Three modes: Advisor (pure recommendations), Semi-bot (single confirmed action), Full-bot (autonomous within configurable guardrails). Packaged as a standalone Windows .exe via PyInstaller.',
         result: 'M10 complete — live file watcher pipeline, custom Clausewitz parser, military/colonial/economy advisor, full-bot with pause gate for critical actions, Windows .exe shipped via GitHub Actions CI.'
+      },
+      p4: {
+        title: 'UNDERGENESIS',
+        status: 'In progress',
+        problem: 'Design a game that makes biological evolution feel real and impactful — where species identity shapes every economic, military, and architectural decision a civilization makes.',
+        solution: 'Procedural evolutionary sandbox in Godot 4.6 Mono. The player guides a proto-human species from solo survival to building a full civilization. Evolution is emergent: mutations are driven by biome, activity, climate, and population biology — not by a skill tree. A "Three Keys" system ties construction to stolen knowledge (schemas), geology (materials), and dominant mutation (efficiency). World generated with 6-layer fBm noise across 13 biomes, isometric rendering v5 with 3-level LOD, 10 evolution traits, deterministic resource spawning, and slot-based save system.',
+        result: 'Core systems complete: procedural world (13 biomes), isometric renderer v5 (LOD + edge blending + animated water), day/night cycle, sky and particle layers, player action/survival, 10 emergent mutations, 6-recipe crafting system, creature AI (4 archetypes), save/load, full HUD suite, civilization population system. In active development.'
       }
     },
     edit: {
@@ -235,6 +245,10 @@ const translations = {
       p3Status: 'In corso',
       p3Desc: 'Companion Python desktop per Europa Universalis IV — parsing save in tempo reale, decision engine AI, tre modalità bot. M10 completo, .exe standalone.',
       p3Stack: 'Python · PyQt6 · watchdog · pyautogui · PyInstaller',
+      p4Title: 'UNDERGENESIS',
+      p4Status: 'In corso',
+      p4Desc: 'Sandbox evolutivo procedurale in Godot 4. Guidi una specie dalla pre-civiltà fino alla costruzione di una civiltà fantasy complessa. Evoluzione emergente, 13 biomi, rendering isometrico con LOD.',
+      p4Stack: 'Godot 4.6 · GDScript · Generazione Procedurale · Isometrico 2D',
       linkLive: '↗ Live',
       linkRepo: 'GitHub',
       linkDetail: 'Dettagli →'
@@ -274,7 +288,7 @@ const translations = {
     feat: {
       pageTitle: 'Featured Projects',
       pageIntro: 'Progetti selezionati — problema, soluzione, stack, risultato.',
-      toc: { p1: 'Sito Portfolio', p2: 'Labelbike', p3: 'Game Dev' },
+      toc: { p1: 'Sito Portfolio', p2: 'Labelbike', p3: 'EU4 Assistant', p4: 'Game Dev' },
       label: { problem: 'Problema', solution: 'Soluzione', stack: 'Stack', result: 'Risultato' },
       linkSite: '↗ Sito live',
       linkEditing: 'Archivio editing →',
@@ -298,6 +312,13 @@ const translations = {
         problem: 'Europa Universalis IV non ha API esterne — l\'unica fonte dati è il file di salvataggio automatico, in un formato testuale ricorsivo proprietario.',
         solution: 'Companion Python desktop (PyQt6) che fa parsing dei save file EU4 in tempo reale, estrae uno snapshot tipizzato dello stato di gioco e applica un decision engine AI. Tre modalità: Advisor (raccomandazioni pure), Semi-bot (singola azione confermata), Full-bot (autonomo entro guardrail configurabili). Distribuito come .exe Windows standalone via PyInstaller.',
         result: 'M10 completato — pipeline file watcher live, parser Clausewitz custom, advisor militare/coloniale/economia, full-bot con pause gate su azioni critiche, .exe Windows generato via GitHub Actions CI.'
+      },
+      p4: {
+        title: 'UNDERGENESIS',
+        status: 'In corso',
+        problem: 'Progettare un gioco dove l\'evoluzione biologica sia reale e impattante — in cui l\'identità della specie determini ogni scelta economica, militare e architettonica della civiltà.',
+        solution: 'Sandbox evolutivo procedurale in Godot 4.6 Mono. Il giocatore guida una specie proto-umana dalla sopravvivenza solitaria alla costruzione di una civiltà complessa. L\'evoluzione è emergente: le mutazioni dipendono da bioma, attività, clima e biologia della popolazione — non da un albero delle abilità. Il sistema "Tre Chiavi" lega la costruzione a schemi rubati (conoscenza), geologia (materiale) e mutazione dominante (efficienza). Mondo generato con noise fBm a 6 layer su 13 biomi, rendering isometrico v5 con LOD a 3 livelli, 10 trait evolutivi, spawn deterministico delle risorse e sistema di salvataggio slot-based.',
+        result: 'Sistemi core completati: mondo procedurale (13 biomi), renderer isometrico v5 (LOD + edge blending + acqua animata), ciclo giorno/notte, layer cielo e particelle, player action/survival, 10 mutazioni emergenti, crafting 6 ricette, creature AI (4 archetipi), save/load, HUD completo, sistema popolazione civiltà. In sviluppo attivo.'
       }
     },
     edit: {
@@ -346,11 +367,9 @@ function applyLanguage(lang) {
   document.querySelectorAll('.lang-btn').forEach((btn) => {
     btn.classList.toggle('active', btn.dataset.lang === safeLang);
   });
-  // Sync hero CV download button with active language
   const heroCvBtn = document.getElementById('heroCvDownload');
   if (heroCvBtn) heroCvBtn.href = `assets/cv-${safeLang}.pdf`;
 
-  // Sync CV preview image
   const cvImg = document.getElementById('cv-img');
   if (cvImg) {
     cvImg.src = `assets/cv-${safeLang}.webp`;
