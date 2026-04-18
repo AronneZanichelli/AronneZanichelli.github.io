@@ -8,6 +8,11 @@
   --border: #3a4957;
   --focus: #ffd166;
   --shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+  --accent-text: #07231d;
+  --skill-bar-bg: #2a3642;
+  --timeline-date-bg: #0c2c24;
+  --timeline-date-color: #d8fff3;
+  --timeline-node-ring: #062922;
 }
 
 body.light {
@@ -19,6 +24,11 @@ body.light {
   --accent-strong: #005245;
   --border: #8ea1b3;
   --focus: #7a2b00;
+  --accent-text: #ffffff;
+  --skill-bar-bg: #c8d8e4;
+  --timeline-date-bg: #d5ede7;
+  --timeline-date-color: #004035;
+  --timeline-node-ring: #ffffff;
 }
 
 * { box-sizing: border-box; }
@@ -173,7 +183,7 @@ body {
   cursor: pointer;
   font-weight: 700;
 }
-.btn-primary { background: var(--accent); color: #07231d; }
+.btn-primary { background: var(--accent); color: var(--accent-text); }
 .btn-primary:hover,
 .btn-primary:focus-visible { background: var(--accent-strong); }
 .btn-secondary { border-color: var(--border); color: var(--text); background: transparent; }
@@ -194,7 +204,7 @@ body {
 .skill-bar {
   margin-top: 0.4rem;
   height: 10px;
-  background: #2a3642;
+  background: var(--skill-bar-bg);
   border-radius: 99px;
   overflow: hidden;
 }
@@ -226,13 +236,13 @@ body {
   height: 14px;
   border-radius: 50%;
   background: var(--accent);
-  border: 2px solid #062922;
+  border: 2px solid var(--timeline-node-ring);
 }
 
 .timeline-date {
   display: inline-block;
-  background: #0c2c24;
-  color: #d8fff3;
+  background: var(--timeline-date-bg);
+  color: var(--timeline-date-color);
   padding: 0.2rem 0.5rem;
   border-radius: 8px;
   font-size: 0.85rem;
@@ -368,7 +378,7 @@ a:focus-visible {
 /* ===== SEPARATORS ===== */
 .sep {
   height: 1px;
-  background: #e6e6e6;
+  background: var(--border);
   margin: 32px 0;
   border-radius: 2px;
 }
@@ -458,7 +468,7 @@ body.light .badge--soon  { background: #ededfa; color: #3a3a80; border-color: #6
 .pf-links a:hover,
 .pf-links a:focus-visible {
   background: var(--accent);
-  color: #07231d;
+  color: var(--accent-text);
 }
 
 .portfolio-card--upcoming {
@@ -580,6 +590,18 @@ body.light .badge--soon  { background: #ededfa; color: #3a3a80; border-color: #6
 body.light .tag {
   background: rgba(0, 0, 0, 0.04);
 }
+
+body.light .badge-progress {
+  background: rgba(180, 130, 0, 0.12);
+  color: #7a5500;
+  border-color: #c89000;
+}
+
+body.light .badge-soon {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+[data-i18n]:empty { visibility: hidden; }
 
 /* Project links */
 .project-links {
