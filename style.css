@@ -30,6 +30,7 @@ body {
   color: var(--text);
   line-height: 1.75;
   font-size: 1rem;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 .skip-link {
@@ -173,7 +174,7 @@ body {
   cursor: pointer;
   font-weight: 700;
 }
-.btn-primary { background: var(--accent); color: #07231d; }
+.btn-primary { background: var(--accent); color: var(--bg); }
 .btn-primary:hover,
 .btn-primary:focus-visible { background: var(--accent-strong); }
 .btn-secondary { border-color: var(--border); color: var(--text); background: transparent; }
@@ -194,7 +195,7 @@ body {
 .skill-bar {
   margin-top: 0.4rem;
   height: 10px;
-  background: #2a3642;
+  background: var(--border);
   border-radius: 99px;
   overflow: hidden;
 }
@@ -226,7 +227,7 @@ body {
   height: 14px;
   border-radius: 50%;
   background: var(--accent);
-  border: 2px solid #062922;
+  border: 2px solid var(--bg);
 }
 
 .timeline-date {
@@ -239,6 +240,7 @@ body {
   font-weight: 700;
   margin-bottom: 0.45rem;
 }
+body.light .timeline-date { background: #d0f5ec; color: #003d30; }
 
 form { display: grid; gap: 0.6rem; }
 input, textarea {
@@ -458,7 +460,7 @@ body.light .badge--soon  { background: #ededfa; color: #3a3a80; border-color: #6
 .pf-links a:hover,
 .pf-links a:focus-visible {
   background: var(--accent);
-  color: #07231d;
+  color: var(--bg);
 }
 
 .portfolio-card--upcoming {
