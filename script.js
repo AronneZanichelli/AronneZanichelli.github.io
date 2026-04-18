@@ -106,7 +106,9 @@ const translations = {
       formMessage: 'Message',
       send: 'Send message',
       success: 'Thanks! Your message was sent successfully.',
-      error: 'Please complete all fields with a valid email.'
+      error: 'Please complete all fields with a valid email.',
+      sending: 'Sending…',
+      networkError: 'Network error — check your connection and try again.'
     },
     footer: { language: 'Language: English' },
     feat: {
@@ -282,7 +284,9 @@ const translations = {
       formMessage: 'Messaggio',
       send: 'Invia messaggio',
       success: 'Grazie! Il messaggio è stato inviato con successo.',
-      error: 'Compila tutti i campi con una email valida.'
+      error: 'Compila tutti i campi con una email valida.',
+      sending: 'Invio in corso…',
+      networkError: 'Errore di rete — controlla la connessione e riprova.'
     },
     footer: { language: 'Lingua: Italiano' },
     feat: {
@@ -419,6 +423,9 @@ function setupContactForm() {
       feedback.textContent = translations[lang].contact.error;
       return;
     }
+    const submitBtn = form.querySelector('button[type="submit"]');
+    if (submitBtn) submitBtn.disabled = true;
+    feedback.textContent = translations[lang].contact.sending;
     try {
       const response = await fetch(form.action, {
         method: 'POST',
@@ -434,7 +441,9 @@ function setupContactForm() {
         feedback.textContent = translations[lang].contact.error;
       }
     } catch {
-      feedback.textContent = translations[lang].contact.error;
+      feedback.textContent = translations[lang].contact.networkError;
+    } finally {
+      if (submitBtn) submitBtn.disabled = false;
     }
   });
 }
