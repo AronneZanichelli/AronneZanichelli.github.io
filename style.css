@@ -13,6 +13,23 @@
   --timeline-date-bg: #0c2c24;
   --timeline-date-color: #d8fff3;
   --timeline-node-ring: #062922;
+
+  /* Typography scale */
+  --font-2xs:  0.72rem;
+  --font-xs:   0.8rem;
+  --font-sm:   0.85rem;
+  --font-sm2:  0.92rem;
+  --font-base: 1rem;
+  --font-lg:   1.1rem;
+
+  /* Spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
 }
 
 body.light {
@@ -39,7 +56,7 @@ body {
   background: var(--bg);
   color: var(--text);
   line-height: 1.75;
-  font-size: 1rem;
+  font-size: var(--font-base);
 }
 
 .skip-link {
@@ -133,7 +150,7 @@ body {
 }
 .section-index h2 {
   margin-top: 0;
-  font-size: 1rem;
+  font-size: var(--font-base);
 }
 .section-index ul {
   margin: 0;
@@ -258,7 +275,7 @@ body {
   color: var(--timeline-date-color);
   padding: 0.2rem 0.5rem;
   border-radius: 8px;
-  font-size: 0.85rem;
+  font-size: var(--font-sm);
   font-weight: 700;
   margin-bottom: 0.45rem;
 }
@@ -308,7 +325,7 @@ body.light .email-link { color: #004f9e; }
   height: 1.7rem;
   border-radius: 999px;
   border: 2px solid var(--border);
-  font-size: 0.7rem;
+  font-size: var(--font-2xs);
   font-weight: 800;
 }
 
@@ -427,13 +444,13 @@ a:focus-visible {
 
 .pf-top h3 {
   margin: 0;
-  font-size: 1rem;
+  font-size: var(--font-base);
   line-height: 1.35;
 }
 
 .badge {
   display: inline-block;
-  font-size: 0.75rem;
+  font-size: var(--font-2xs);
   font-weight: 700;
   padding: 0.2rem 0.55rem;
   border-radius: 99px;
@@ -453,7 +470,7 @@ body.light .badge--wip   { background: #fff8e0; color: #7a5500; border-color: #c
 body.light .badge--soon  { background: #ededfa; color: #3a3a80; border-color: #6060aa; }
 
 .stack-line {
-  font-size: 0.78rem;
+  font-size: var(--font-xs);
   color: var(--muted);
   font-family: 'Courier New', monospace;
   margin-top: 0.45rem;
@@ -469,7 +486,7 @@ body.light .badge--soon  { background: #ededfa; color: #3a3a80; border-color: #6
 }
 
 .pf-links a {
-  font-size: 0.8rem;
+  font-size: var(--font-xs);
   font-weight: 700;
   color: var(--accent);
   text-decoration: none;
@@ -500,7 +517,7 @@ body.light .badge--soon  { background: #ededfa; color: #3a3a80; border-color: #6
   color: var(--muted);
   margin-top: -0.25rem;
   margin-bottom: 1rem;
-  font-size: 0.97rem;
+  font-size: var(--font-base);
 }
 
 .portfolio-grid {
@@ -543,14 +560,14 @@ body.light .badge--soon  { background: #ededfa; color: #3a3a80; border-color: #6
 
 .portfolio-card h3 {
   margin: 0;
-  font-size: 1rem;
+  font-size: var(--font-base);
   font-weight: 700;
   line-height: 1.35;
 }
 
 .portfolio-card p {
   margin: 0;
-  font-size: 0.92rem;
+  font-size: var(--font-sm2);
   color: var(--muted);
   flex: 1;
 }
@@ -582,7 +599,7 @@ body.light .badge--soon  { background: #ededfa; color: #3a3a80; border-color: #6
 }
 
 .tag {
-  font-size: 0.7rem;
+  font-size: var(--font-2xs);
   font-weight: 600;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--border);
@@ -617,7 +634,7 @@ body.light .badge-soon {
 }
 
 .proj-link {
-  font-size: 0.82rem;
+  font-size: var(--font-xs);
   font-weight: 700;
   text-decoration: none;
   padding: 0.3rem 0.7rem;
@@ -657,7 +674,7 @@ body.light .badge-soon {
 
 .project-meta dt {
   font-weight: 700;
-  font-size: 0.82rem;
+  font-size: var(--font-xs);
   color: var(--accent);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -666,7 +683,7 @@ body.light .badge-soon {
 
 .project-meta dd {
   margin: 0;
-  font-size: 0.95rem;
+  font-size: var(--font-sm2);
   color: var(--text);
 }
 
@@ -675,7 +692,7 @@ body.light .badge-soon {
   flex-direction: column;
   gap: 0.25rem;
   margin: 0.5rem 0 1rem;
-  font-size: 0.85rem;
+  font-size: var(--font-sm);
   color: var(--muted);
 }
 
@@ -686,7 +703,7 @@ body.light .badge-soon {
 
 .edit-list li {
   margin-bottom: 0.4rem;
-  font-size: 0.95rem;
+  font-size: var(--font-sm2);
 }
 
 .portfolio-card--upcoming .project-meta dd,
@@ -754,7 +771,7 @@ body.light .badge-soon {
   border: 1.5px solid var(--border);
   border-radius: 99px;
   padding: 0.35rem 0.9rem;
-  font-size: 0.72rem; font-weight: 800;
+  font-size: var(--font-2xs); font-weight: 800;
   text-transform: uppercase; letter-spacing: 0.08em;
   color: var(--muted);
 }
@@ -763,8 +780,8 @@ body.light .badge-soon {
   display: flex; align-items: flex-start;
   justify-content: space-between; gap: 0.5rem; margin-bottom: 0.35rem;
 }
-.category-name { font-size: 1.05rem; font-weight: 800; color: var(--text); margin: 0; }
-.category-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; margin: 0; }
+.category-name { font-size: var(--font-base); font-weight: 800; color: var(--text); margin: 0; }
+.category-desc { font-size: var(--font-xs); color: var(--muted); line-height: 1.5; margin: 0; }
 .category-arrow {
   font-size: 1.2rem; color: var(--accent); flex-shrink: 0;
   margin-top: 1px; transition: transform 0.2s;
@@ -778,7 +795,7 @@ body.light .badge-soon {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  font-size: 0.85rem;
+  font-size: var(--font-sm);
   font-weight: 700;
   color: var(--muted);
   text-decoration: none;
@@ -795,7 +812,7 @@ body.light .badge-soon {
   border-radius: 12px;
   padding: 1rem 1.2rem;
   margin-bottom: 1.5rem;
-  font-size: 0.9rem;
+  font-size: var(--font-sm);
   color: var(--muted);
 }
 .postprod-note strong { color: var(--text); }
@@ -809,7 +826,7 @@ body.light .badge-soon {
   padding-bottom: 0.5rem;
   border-bottom: 2px solid var(--border);
 }
-.social-section-header h2 { margin: 0; font-size: 1.1rem; }
+.social-section-header h2 { margin: 0; font-size: var(--font-lg); }
 .social-icon-badge {
   display: inline-flex;
   align-items: center;
@@ -817,7 +834,7 @@ body.light .badge-soon {
   width: 2rem;
   height: 2rem;
   border-radius: 8px;
-  font-size: 0.75rem;
+  font-size: var(--font-2xs);
   font-weight: 800;
   flex-shrink: 0;
 }
@@ -876,7 +893,7 @@ body.light .social-icon-badge--li  { background: #f0f5ff; color: #0056b3; border
 .video-card:focus-visible .video-play-icon { opacity: 1; }
 .video-play-icon svg { width: 44px; height: 44px; fill: white; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5)); }
 .video-info { padding: 0.7rem 0.85rem 0.85rem; }
-.video-title { font-size: 0.85rem; font-weight: 700; line-height: 1.4; }
+.video-title { font-size: var(--font-sm); font-weight: 700; line-height: 1.4; }
 
 .social-empty {
   background: var(--card);
@@ -885,7 +902,7 @@ body.light .social-icon-badge--li  { background: #f0f5ff; color: #0056b3; border
   padding: 2rem;
   text-align: center;
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: var(--font-sm);
 }
 .social-empty span { display: block; font-size: 1.5rem; margin-bottom: 0.5rem; opacity: 0.4; }
 
