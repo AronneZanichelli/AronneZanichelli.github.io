@@ -4,13 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Aronne Zanichelli | Featured Projects</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
     <meta name="description" content="Featured projects by Aronne Zanichelli — portfolio website, social media content production, EU4 assistant bot, and UNDERGENESIS game development." />
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800&display=swap" rel="stylesheet" />
   </head>
   <body>
+    <script>(function(){if(localStorage.getItem('theme')==='light')document.body.classList.add('light');})();</script>
     <a class="skip-link" href="#mainContent">Skip to main content</a>
 
     <header class="site-header">
@@ -23,10 +25,10 @@
           <li><a href="featured.html" data-i18n="nav.featured"></a></li>
         </ul>
         <div class="top-controls">
-          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="en" aria-label="Switch language to English" aria-pressed="false">EN</button>
           <span>|</span>
-          <button class="lang-btn" data-lang="it">IT</button>
-          <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">☾</button>
+          <button class="lang-btn" data-lang="it" aria-label="Cambia lingua in Italiano" aria-pressed="false">IT</button>
+          <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme" aria-pressed="false">☾</button>
         </div>
       </nav>
     </header>
@@ -67,7 +69,7 @@
           </dl>
           <div class="pf-links">
             <a href="index.html" data-i18n="feat.linkSite"></a>
-            <a href="https://github.com/AronneZanicelli/AronneZanichelli.github.io" target="_blank" rel="noopener">GitHub →</a>
+            <a href="https://github.com/AronneZanichelli/AronneZanichelli.github.io" target="_blank" rel="noopener">GitHub →</a>
           </div>
         </section>
 
@@ -141,6 +143,6 @@
       </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
   </body>
 </html>
