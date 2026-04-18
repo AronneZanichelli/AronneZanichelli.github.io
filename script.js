@@ -308,7 +308,7 @@ const translations = {
       },
       p3: {
         title: 'EU4 Assistant + Bot',
-        status: 'In progress',
+        status: 'In corso',
         problem: 'Europa Universalis IV non ha API esterne — l\'unica fonte dati è il file di salvataggio automatico, in un formato testuale ricorsivo proprietario.',
         solution: 'Companion Python desktop (PyQt6) che fa parsing dei save file EU4 in tempo reale, estrae uno snapshot tipizzato dello stato di gioco e applica un decision engine AI. Tre modalità: Advisor (raccomandazioni pure), Semi-bot (singola azione confermata), Full-bot (autonomo entro guardrail configurabili). Distribuito come .exe Windows standalone via PyInstaller.',
         result: 'M10 completato — pipeline file watcher live, parser Clausewitz custom, advisor militare/coloniale/economia, full-bot con pause gate su azioni critiche, .exe Windows generato via GitHub Actions CI.'
@@ -365,7 +365,9 @@ function applyLanguage(lang) {
     if (value) el.textContent = value;
   });
   document.querySelectorAll('.lang-btn').forEach((btn) => {
-    btn.classList.toggle('active', btn.dataset.lang === safeLang);
+    const isActive = btn.dataset.lang === safeLang;
+    btn.classList.toggle('active', isActive);
+    btn.setAttribute('aria-pressed', String(isActive));
   });
   const heroCvBtn = document.getElementById('heroCvDownload');
   if (heroCvBtn) heroCvBtn.href = `assets/cv-${safeLang}.pdf`;
@@ -383,10 +385,12 @@ function setupTheme() {
   const savedTheme = localStorage.getItem('theme') || 'dark';
   document.body.classList.toggle('light', savedTheme === 'light');
   toggle.textContent = savedTheme === 'light' ? '☀︎' : '☾';
+  toggle.setAttribute('aria-pressed', String(savedTheme === 'light'));
   toggle.addEventListener('click', () => {
     const isLight = document.body.classList.toggle('light');
     localStorage.setItem('theme', isLight ? 'light' : 'dark');
     toggle.textContent = isLight ? '☀︎' : '☾';
+    toggle.setAttribute('aria-pressed', String(isLight));
   });
 }
 
