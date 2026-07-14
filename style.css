@@ -583,6 +583,7 @@ blockquote {
 .dossier { padding-block: var(--sp-8); border-top: 1px solid var(--hairline); }
 .dossier:first-of-type { border-top: 0; }
 .dossier .next-link { margin-top: var(--sp-6); }
+.dossier h2 .num { color: var(--accent); margin-right: var(--sp-2); font-size: var(--fs-sm); }
 
 /* ============ Reveal allo scroll ============ */
 /* Le classi iniziali sono applicate DAL JS a runtime: senza JS tutto è visibile. */

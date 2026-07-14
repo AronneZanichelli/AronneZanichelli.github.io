@@ -87,6 +87,14 @@ const translations = {
     'p6.problem': 'Labelbike needed video content that could reach non-Italian audiences without hiring a translator and a second production team for every language.',
     'p6.approach': 'Built and ran an end-to-end video pipeline: scripting, editing, and an AI-agent-driven localization step that adapts each video — not just subtitles, full re-adaptation — into multiple languages, plus social cuts from the same source footage.',
     'p6.result': '6 videos published on YouTube, localized into 9 languages via agents. Completed with the Labelbike role (Oct 2025 – Jun 2026).',
+    /* metriche dossier */
+    'm.tests': 'Test lines', 'm.ciMulti': 'green across Python versions', 'm.packaging': 'Packaging',
+    'm.streaming': 'Log streaming', 'm.audit': 'Self-audit',
+    'm.lines': 'Lines', 'm.lines2': 'Lines', 'm.arch': 'Architecture',
+    'm.regen': 'Regen time', 'm.meshing': 'Meshing',
+    'm.testfw': 'Test framework', 'm.saves': 'Save system', 'm.savesV': 'versioned, explicit migrations',
+    'm.videos': 'Published videos', 'm.langs': 'Languages', 'm.langsWord': 'languages',
+    'm.viaAgents': 'via AI-agent localization', 'm.dist': 'Distribution',
     /* method.html */
     'mpage.title': 'Method',
     'mpage.p1': "Every project on this site follows the same loop: spec, plan, test, audit. I write the spec before I write code — what the thing needs to do, and what it explicitly doesn't. Then a plan, broken into steps small enough to review before they're built. AI agents write a meaningful share of the resulting code, but they work from my spec and my plan, not the other way around: the architectural decisions are mine — in BleaBox they're recorded as nine ADRs, so the reasoning survives past the commit that implemented it.",
@@ -181,6 +189,14 @@ const translations = {
     'p6.problem': 'Labelbike aveva bisogno di contenuti video capaci di raggiungere pubblico non italiano, senza assumere un traduttore e un secondo team di produzione per ogni lingua.',
     'p6.approach': 'Ho costruito e gestito una pipeline video end-to-end: scripting, editing e una fase di localizzazione guidata da agenti AI che adatta ogni video — non solo i sottotitoli, l\'intero adattamento — in più lingue, più tagli social dagli stessi girati.',
     'p6.result': '6 video pubblicati su YouTube, localizzati in 9 lingue tramite agenti. Concluso con il ruolo in Labelbike (Ott 2025 – Giu 2026).',
+    /* metriche dossier */
+    'm.tests': 'Righe di test', 'm.ciMulti': 'verde su più versioni Python', 'm.packaging': 'Packaging',
+    'm.streaming': 'Streaming log', 'm.audit': 'Self-audit',
+    'm.lines': 'Righe', 'm.lines2': 'Righe', 'm.arch': 'Architettura',
+    'm.regen': 'Tempo di rigenerazione', 'm.meshing': 'Meshing',
+    'm.testfw': 'Framework di test', 'm.saves': 'Salvataggi', 'm.savesV': 'versionati, migrazioni esplicite',
+    'm.videos': 'Video pubblicati', 'm.langs': 'Lingue', 'm.langsWord': 'lingue',
+    'm.viaAgents': 'con localizzazione via agenti AI', 'm.dist': 'Distribuzione',
     /* method.html */
     'mpage.title': 'Metodo',
     'mpage.p1': 'Ogni progetto di questo sito segue lo stesso ciclo: spec, plan, test, audit. Scrivo la spec prima del codice — cosa deve fare la cosa, e cosa esplicitamente non deve fare. Poi un piano, diviso in passi abbastanza piccoli da poter essere rivisti prima di essere costruiti. Gli agenti AI scrivono una parte consistente del codice risultante, ma lavorano sulla mia spec e sul mio piano, non il contrario: le decisioni architetturali sono mie — in BleaBox sono registrate come nove ADR, perché il ragionamento sopravviva al commit che lo ha implementato.',
