@@ -3,20 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aronne Zanichelli | Junior Developer · Game Dev · Graphics Technician</title>
-    <meta name="description" content="Portfolio of Aronne Zanichelli — Junior Developer with a background in IT, visual communication and AI-based content. Looking for junior roles in web and game development." />
-    <meta property="og:title" content="Aronne Zanichelli | Junior Developer · Game Dev" />
-    <meta property="og:description" content="Junior Developer profile with technical skills, timeline, and downloadable CV." />
+    <title>Aronne Zanichelli — Junior Software Developer (AI-augmented)</title>
+    <meta name="description" content="Junior Software Developer (AI-augmented). Six open-source projects, evidence-based skills, no framework, no hype — every claim links to a repository." />
+    <meta property="og:site_name" content="Aronne Zanichelli — Junior Software Developer (AI-augmented)" />
+    <meta property="og:title" content="Aronne Zanichelli — Junior Software Developer (AI-augmented)" />
+    <meta property="og:description" content="Junior Software Developer (AI-augmented). Six open-source projects, evidence-based skills, no framework, no hype — every claim links to a repository." />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="assets/profile.jpg" />
+    <meta property="og:image" content="https://aronnezanichelli.github.io/assets/og-card.png" />
+    <meta property="og:image:alt" content="Junior Software Developer (AI-augmented)" />
     <meta property="og:url" content="https://aronnezanichelli.github.io/" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Aronne Zanichelli — Junior Software Developer (AI-augmented)" />
+    <meta name="twitter:description" content="Junior Software Developer (AI-augmented). Six open-source projects, evidence-based skills, no framework, no hype — every claim links to a repository." />
+    <meta name="twitter:image" content="https://aronnezanichelli.github.io/assets/og-card.png" />
     <link rel="canonical" href="https://aronnezanichelli.github.io/" />
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
+    <script>
+      (function () {
+        var t = localStorage.getItem('theme');
+        if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        if (localStorage.getItem('lang') === 'it') document.documentElement.lang = 'it';
+      })();
+    </script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8TT2P1VDT3"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -24,288 +37,283 @@
       gtag('js', new Date());
       gtag('config', 'G-8TT2P1VDT3');
     </script>
+    <script src="script.js" defer></script>
   </head>
   <body>
-    <script>(function(){if(localStorage.getItem('theme')==='light')document.body.classList.add('light');})();</script>
-    <a class="skip-link" href="#mainContent">Skip to main content</a>
+    <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
 
-    <header class="site-header">
-      <nav class="nav container" aria-label="Main navigation">
-        <a class="brand" href="index.html">Aronne Zanichelli</a>
-        <button id="menuToggle" class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
-        <ul id="navMenu" class="nav-menu">
-          <li><a href="index.html" data-i18n="nav.home"></a></li>
-          <li><a href="editing.html" data-i18n="nav.editing"></a></li>
-          <li><a href="featured.html" data-i18n="nav.featured"></a></li>
-        </ul>
-        <div class="top-controls">
-          <button class="lang-btn" data-lang="en" aria-label="Switch language to English" aria-pressed="false">EN</button>
-          <span>|</span>
-          <button class="lang-btn" data-lang="it" aria-label="Cambia lingua in Italiano" aria-pressed="false">IT</button>
-          <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme" aria-pressed="false">☾</button>
-        </div>
-      </nav>
-    </header>
-
-    <main id="mainContent" class="page-layout container">
-      <aside class="section-index" aria-label="Section index">
-        <h2 data-i18n="toc.title"></h2>
-        <ul>
-          <li><a href="#home" data-i18n="toc.home"></a></li>
-          <li><a href="#about" data-i18n="toc.about"></a></li>
-          <li><a href="#availability" data-i18n="toc.availability"></a></li>
-          <li><a href="#skills" data-i18n="toc.skills"></a></li>
-          <li><a href="#portfolio" data-i18n="toc.portfolio"></a></li>
-          <li><a href="#timeline" data-i18n="toc.timeline"></a></li>
-          <li><a href="#cv" data-i18n="toc.cv"></a></li>
-          <li><a href="#contact" data-i18n="toc.contact"></a></li>
-        </ul>
-      </aside>
-
-      <div class="content-column">
-
-        <section id="home" class="hero fade-in">
-          <div class="hero-copy">
-            <p class="eyebrow" data-i18n="hero.positioning"></p>
-            <h1>Aronne Zanichelli</h1>
-            <p class="title">Perito informatico • IFTS tecnico grafico • Social Media Manager AI-based</p>
-            <p data-i18n="hero.subtitle"></p>
-            <div class="hero-actions">
-              <a id="viewFeaturedCta" class="btn btn-primary" href="featured.html" data-i18n="hero.ctaProjects"></a>
-              <a id="heroCvDownload" class="btn btn-secondary" href="assets/cv-it.pdf" download data-i18n="hero.ctaCv"></a>
-              <a class="btn btn-secondary" href="#contact" data-i18n="hero.ctaContact"></a>
-            </div>
-          </div>
-          <picture>
-            <source srcset="assets/profile.webp" type="image/webp" />
-            <img src="assets/profile.jpg" alt="Portrait of Aronne Zanichelli" class="profile-image" width="935" height="1247" fetchpriority="high" />
-          </picture>
-        </section>
-
-        <section id="about" class="card fade-in">
-          <h2 data-i18n="about.title"></h2>
-          <p data-i18n="about.bio"></p>
-          <article class="goal-block">
-            <h3 data-i18n="about.goalTitle"></h3>
-            <p data-i18n="about.goalText"></p>
-          </article>
-          <article class="goal-block">
-            <h3 data-i18n="about.valueTitle"></h3>
-            <ul>
-              <li data-i18n="about.valueOne"></li>
-              <li data-i18n="about.valueTwo"></li>
-              <li data-i18n="about.valueThree"></li>
-            </ul>
-          </article>
-        </section>
-
-        <section id="availability" class="card fade-in">
-          <h2 data-i18n="availability.title"></h2>
-          <p data-i18n="availability.text"></p>
-        </section>
-
-        <section id="skills" class="fade-in">
-          <h2 data-i18n="skills.title"></h2>
-          <div class="skills-grid">
-            <article class="skill-card">
-              <h3>HTML/CSS</h3>
-              <p data-i18n="skills.html"></p>
-              <div class="skill-bar"><span style="width: 75%"></span></div>
-            </article>
-            <article class="skill-card">
-              <h3>Java</h3>
-              <p data-i18n="skills.java"></p>
-              <div class="skill-bar"><span style="width: 75%"></span></div>
-            </article>
-            <article class="skill-card">
-              <h3>C++</h3>
-              <p data-i18n="skills.cpp"></p>
-              <div class="skill-bar"><span style="width: 70%"></span></div>
-            </article>
-            <article class="skill-card">
-              <h3>Python</h3>
-              <p data-i18n="skills.python"></p>
-              <div class="skill-bar"><span style="width: 20%"></span></div>
-            </article>
-            <article class="skill-card">
-              <h3>SQL</h3>
-              <p data-i18n="skills.sql"></p>
-              <div class="skill-bar"><span style="width: 65%"></span></div>
-            </article>
-            <article class="skill-card">
-              <h3>Creative Tools</h3>
-              <p data-i18n="skills.creative"></p>
-              <div class="skill-bar"><span style="width: 50%"></span></div>
-            </article>
-          </div>
-          <article class="card soft-skills">
-            <h3 data-i18n="softSkills.title"></h3>
-            <ul>
-              <li data-i18n="softSkills.one"></li>
-              <li data-i18n="softSkills.two"></li>
-              <li data-i18n="softSkills.three"></li>
-              <li data-i18n="softSkills.four"></li>
-            </ul>
-          </article>
-        </section>
-
-        <section id="languages" class="card fade-in">
-          <h2 data-i18n="languages.title"></h2>
-          <ul>
-            <li data-i18n="languages.it"></li>
-            <li data-i18n="languages.en"></li>
-            <li data-i18n="languages.es"></li>
-          </ul>
-        </section>
-
-        <!-- ===== PORTFOLIO SECTION ===== -->
-        <section id="portfolio" class="fade-in">
-          <h2 data-i18n="portfolio.title"></h2>
-          <div class="portfolio-grid">
-
-            <article class="portfolio-card">
-              <div class="pf-top">
-                <h3 data-i18n="portfolio.p1Title"></h3>
-                <span class="badge badge--live" data-i18n="portfolio.p1Status"></span>
-              </div>
-              <p data-i18n="portfolio.p1Desc"></p>
-              <p class="stack-line" data-i18n="portfolio.p1Stack"></p>
-              <div class="pf-links">
-                <a href="https://aronnezanichelli.github.io" target="_blank" rel="noopener" data-i18n="portfolio.linkLive"></a>
-                <a href="https://github.com/AronneZanichelli" target="_blank" rel="noopener" data-i18n="portfolio.linkRepo"></a>
-                <a href="featured.html" data-i18n="portfolio.linkDetail"></a>
-              </div>
-            </article>
-
-            <article class="portfolio-card">
-              <div class="pf-top">
-                <h3 data-i18n="portfolio.p2Title"></h3>
-                <span class="badge badge--wip" data-i18n="portfolio.p2Status"></span>
-              </div>
-              <p data-i18n="portfolio.p2Desc"></p>
-              <p class="stack-line" data-i18n="portfolio.p2Stack"></p>
-              <div class="pf-links">
-                <a href="editing.html" data-i18n="portfolio.linkDetail"></a>
-              </div>
-            </article>
-
-            <article class="portfolio-card">
-              <div class="pf-top">
-                <h3 data-i18n="portfolio.p3Title"></h3>
-                <span class="badge badge--wip" data-i18n="portfolio.p3Status"></span>
-              </div>
-              <p data-i18n="portfolio.p3Desc"></p>
-              <p class="stack-line" data-i18n="portfolio.p3Stack"></p>
-              <div class="pf-links">
-                <a href="https://github.com/AronneZanichelli/eu4-assistant" target="_blank" rel="noopener">GitHub →</a>
-                <a href="featured.html" data-i18n="portfolio.linkDetail"></a>
-              </div>
-            </article>
-
-            <!-- UNDERGENESIS — card 4 -->
-            <article class="portfolio-card">
-              <div class="pf-top">
-                <h3 data-i18n="portfolio.p4Title"></h3>
-                <span class="badge badge--wip" data-i18n="portfolio.p4Status"></span>
-              </div>
-              <p data-i18n="portfolio.p4Desc"></p>
-              <p class="stack-line" data-i18n="portfolio.p4Stack"></p>
-              <div class="pf-links">
-                <a href="featured.html#project04" data-i18n="portfolio.linkDetail"></a>
-              </div>
-            </article>
-
-          </div>
-        </section>
-
-        <section id="timeline" class="fade-in">
-          <h2 data-i18n="timeline.title"></h2>
-          <div class="timeline-visual">
-            <article class="timeline-node">
-              <span class="timeline-date" data-i18n="timeline.educationDate"></span>
-              <h3 data-i18n="timeline.educationTitle"></h3>
-              <p data-i18n="timeline.educationDesc"></p>
-            </article>
-            <article class="timeline-node">
-              <span class="timeline-date" data-i18n="timeline.conadDate"></span>
-              <h3 data-i18n="timeline.conadTitle"></h3>
-              <p data-i18n="timeline.conadDesc"></p>
-            </article>
-            <article class="timeline-node">
-              <span class="timeline-date" data-i18n="timeline.sinegoDate"></span>
-              <h3 data-i18n="timeline.sinegoTitle"></h3>
-              <p data-i18n="timeline.sinegoDesc"></p>
-            </article>
-            <article class="timeline-node">
-              <span class="timeline-date" data-i18n="timeline.optimaDate"></span>
-              <h3 data-i18n="timeline.optimaTitle"></h3>
-              <p data-i18n="timeline.optimaDesc"></p>
-            </article>
-            <article class="timeline-node">
-              <span class="timeline-date" data-i18n="timeline.currentDate"></span>
-              <h3 data-i18n="timeline.currentTitle"></h3>
-              <p data-i18n="timeline.currentDesc"></p>
-            </article>
-          </div>
-        </section>
-
-        <section id="cv" class="card fade-in">
-          <h2 data-i18n="cv.title"></h2>
-          <p data-i18n="cv.description"></p>
-          <div class="cv-preview-wrapper">
-            <img id="cv-img" src="assets/cv-it.webp" alt="Anteprima CV" loading="lazy" width="1241" height="1754" />
-          </div>
-        </section>
-
-        <section id="contact" class="card fade-in">
-          <h2 data-i18n="contact.title"></h2>
-          <p>
-            <strong>Email:</strong>
-            <a id="emailLink" class="email-link" href="mailto:aronnezanichelli@gmail.com">aronnezanichelli@gmail.com</a>
-          </p>
-          <form id="contactForm" action="https://formspree.io/f/mrealagr" method="POST" novalidate>
-            <input type="hidden" name="_subject" value="[SITO CV] Nuovo messaggio dal portfolio" />
-
-            <label for="name" data-i18n="contact.formName"></label>
-            <input id="name" name="name" type="text" required />
-
-            <label for="email" data-i18n="contact.formEmail"></label>
-            <input id="email" name="email" type="email" required />
-
-            <label for="message" data-i18n="contact.formMessage"></label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-
-            <button type="submit" class="btn btn-primary" data-i18n="contact.send"></button>
-
-            <div class="social-contact-links" aria-label="Social links">
-              <a id="linkedinLink" href="https://www.linkedin.com/in/aronne-zanichelli-62668b241/" target="_blank" rel="noopener" aria-label="LinkedIn">
-                <span class="social-icon" aria-hidden="true">in</span>
-                LinkedIn
-              </a>
-              <a id="githubLink" href="https://github.com/AronneZanichelli" target="_blank" rel="noopener" aria-label="GitHub">
-                <span class="social-icon" aria-hidden="true">GH</span>
-                GitHub
-              </a>
-              <a id="instagramLink" href="https://www.instagram.com/aronnezanichelli_/" target="_blank" rel="noopener" aria-label="Instagram">
-                <span class="social-icon" aria-hidden="true">IG</span>
-                Instagram @aronnezanichelli_
-              </a>
-            </div>
-
-            <p id="formFeedback" class="form-feedback" aria-live="polite"></p>
-          </form>
-        </section>
-
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="index.html">Aronne Zanichelli</a>
+      <div class="nav-links">
+        <a href="projects.html" data-i18n="nav.projects">Projects</a>
+        <a href="method.html" data-i18n="nav.method">Method</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+        <button class="lang-btn" data-lang="en" aria-label="Switch to English" aria-pressed="true">EN</button>
+        <button class="lang-btn" data-lang="it" aria-label="Passa all'italiano" aria-pressed="false">IT</button>
+        <button id="themeToggle" aria-label="Switch to dark theme" aria-pressed="false">☾</button>
       </div>
+    </nav>
+
+    <main id="main" class="container">
+
+      <!-- 00 — Hero -->
+      <section class="hero">
+        <div class="hero-grid">
+          <div>
+            <p class="eyebrow" data-i18n="hero.eyebrow">Junior Software Developer (AI-augmented)</p>
+            <h1>Aronne Zanichelli</h1>
+            <p class="tagline" data-i18n="hero.tagline">Code, method, evidence.</p>
+            <p data-i18n="hero.subline">Junior software developer working AI-augmented — every claim on this site links to a repository.</p>
+            <ul class="fact-row">
+              <li data-i18n="hero.fact1">ITIS diploma 2025</li>
+              <li data-i18n="hero.fact2">IFTS Creative &amp; AI 2026</li>
+              <li data-i18n="hero.fact3">6 repos</li>
+              <li>IT/EN</li>
+            </ul>
+            <a class="btn-primary" href="#work" data-i18n="hero.cta">View projects</a>
+          </div>
+          <img class="portrait" src="assets/profile.webp" alt="Aronne Zanichelli" width="140" height="187" fetchpriority="high" />
+        </div>
+      </section>
+      <script>
+        (function () {
+          if (document.documentElement.lang !== 'it') return;
+          var h = {
+            'hero.eyebrow': 'Sviluppatore Software Junior (AI-augmented)',
+            'hero.tagline': 'Codice, metodo, evidenza.',
+            'hero.subline': 'Sviluppatore software junior con metodo AI-augmented — ogni affermazione di questo sito punta a un repository.',
+            'hero.fact1': 'Diploma ITIS 2025',
+            'hero.fact2': 'IFTS Creative & AI 2026',
+            'hero.fact3': '6 repository',
+            'hero.cta': 'Vedi i progetti'
+          };
+          for (var k in h) {
+            var el = document.querySelector('[data-i18n="' + k + '"]');
+            if (el) el.textContent = h[k];
+          }
+        })();
+      </script>
+
+      <!-- Proof strip -->
+      <div class="proof-strip" role="group" aria-label="Key numbers">
+        <span class="mono-label" data-i18n="proof.label">In numbers</span>
+        <span class="item"><strong>6</strong> <span data-i18n="proof.p1">open-source projects</span></span>
+        <span class="item"><strong>~30k</strong> LOC</span>
+        <span class="item"><strong>2.6k</strong> <span data-i18n="proof.p2">lines of tests</span></span>
+        <span class="item"><strong>9</strong> ADR</span>
+      </div>
+
+      <!-- 01 — Work -->
+      <section id="work" class="section">
+        <div class="section-head">
+          <span class="num">01</span>
+          <h2 data-i18n="work.title">Work</h2>
+        </div>
+
+        <a class="project-row" href="projects.html#eu4-assistant">
+          <span class="num">01</span>
+          <h3>eu4-assistant</h3>
+          <span class="badge badge--alpha" data-i18n="status.alpha">Alpha</span>
+          <span class="stack">Python · PyQt6 · computer vision</span>
+          <p class="desc" data-i18n="work.p1">A desktop companion for Europa Universalis IV that reads the game's proprietary save format and its screen, not just its API.</p>
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="project-row" href="projects.html#claude-dashboard">
+          <span class="num">02</span>
+          <h3>claude-dashboard</h3>
+          <span class="badge badge--paused" data-i18n="status.paused">Paused</span>
+          <span class="stack">Electron · React · TypeScript</span>
+          <p class="desc" data-i18n="work.p2">A desktop cockpit for running Claude Code across Windows and WSL2 from one window, with a self-critical account of its own tech debt.</p>
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="project-row" href="projects.html#bleabox">
+          <span class="num">03</span>
+          <h3>BleaBox</h3>
+          <span class="badge badge--active" data-i18n="status.active">Active</span>
+          <span class="stack">Luau (strict) · Roblox</span>
+          <p class="desc" data-i18n="work.p3">A multiplayer action-RPG on Roblox where the server, not the client, decides what actually happened.</p>
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="project-row" href="projects.html#voxelgen">
+          <span class="num">04</span>
+          <h3>VOXELGEN</h3>
+          <span class="badge badge--paused" data-i18n="status.paused2">Paused</span>
+          <span class="stack">Godot 4 · C#</span>
+          <p class="desc" data-i18n="work.p4">A realtime deformable voxel engine that regenerates terrain 65% faster than its first working version.</p>
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="project-row" href="projects.html#undergenesis">
+          <span class="num">05</span>
+          <h3>UNDERGENESIS</h3>
+          <span class="badge badge--paused" data-i18n="status.paused3">Paused</span>
+          <span class="stack">Godot 4 · GDScript</span>
+          <p class="desc" data-i18n="work.p5">A procedural evolutionary sandbox built test-first, with save files that survive their own migrations.</p>
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="project-row" href="projects.html#labelbike">
+          <span class="num">06</span>
+          <h3>Labelbike</h3>
+          <span class="badge badge--done" data-i18n="status.done">Completed</span>
+          <span class="stack">Video · AI pipeline</span>
+          <p class="desc" data-i18n="work.p6">A video pipeline that turns one script into six published videos and nine language versions.</p>
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </section>
+
+      <!-- 02 — Method -->
+      <section id="method" class="section">
+        <div class="section-head">
+          <span class="num">02</span>
+          <h2 data-i18n="method.title">Method</h2>
+        </div>
+        <p class="mono-label">spec → plan → test → audit</p>
+        <p data-i18n="method.l1">Spec → plan → test → audit — every project, every time.</p>
+        <p data-i18n="method.l2">Agents execute. I decide the architecture and write it down as ADRs.</p>
+        <p data-i18n="method.l3">claude-dashboard ships its own self-critical audit, in the same tone as its README.</p>
+        <a class="link-arrow" href="method.html" data-i18n="method.link">Read the full method</a>
+      </section>
+
+      <!-- 03 — Timeline -->
+      <section id="timeline" class="section">
+        <div class="section-head">
+          <span class="num">03</span>
+          <h2 data-i18n="timeline.title">Timeline</h2>
+        </div>
+        <p data-i18n="timeline.bio">I'm Aronne Zanichelli, a junior software developer working AI-augmented. I write code, but I also write the spec, the plan, and the audit around it — the discipline is the point, not just the output. My path here wasn't linear: a technical diploma, a year selling utility contracts, then a creative-and-AI program that put me inside a real production pipeline. Along the way I built six projects I still maintain — none of them portfolio filler; all of them on GitHub, with commits, tests, and the occasional documented mistake. I'm looking for a first developer role, in Italy or abroad, where "I can prove it" counts for more than "I'm passionate about it."</p>
+
+        <div class="timeline-row">
+          <span class="date">2019 – 2025</span>
+          <div class="desc"><p data-i18n="timeline.t1">ITIS technical diploma (Perito Informatico) — completed July 2025.</p></div>
+        </div>
+        <div class="timeline-row">
+          <span class="date" data-i18n="timeline.d2">May 2024 – Jul 2025</span>
+          <div class="desc">
+            <p data-i18n="timeline.t2">Optima — business sales consultant, freelance. Commercial soft skills: client relationships, negotiation, autonomy.</p>
+            <p class="note" data-i18n="timeline.n2">Not a technical role.</p>
+          </div>
+        </div>
+        <div class="timeline-row">
+          <span class="date" data-i18n="timeline.d3">Oct 2025 – Jun 2026</span>
+          <div class="desc"><p data-i18n="timeline.t3">IFTS Creative &amp; AI — vocational program, concluded. Half coursework, half on-the-job at Labelbike.</p></div>
+        </div>
+        <div class="timeline-row">
+          <span class="date" data-i18n="timeline.d4">Oct 2025 – Jun 2026</span>
+          <div class="desc">
+            <p data-i18n="timeline.t4">Labelbike — formally an internship, in practice an operational role with real delegation: creative/social/AI content pipeline plus development support (Java, C++, SQL).</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 04 — Skills -->
+      <section id="skills" class="section">
+        <div class="section-head">
+          <span class="num">04</span>
+          <h2 data-i18n="skills.title">Skills, with evidence</h2>
+        </div>
+        <p data-i18n="skills.intro">No bars, no percentages — every skill below links to the project that proves it.</p>
+        <div class="table-scroll">
+          <table class="skills-table">
+            <thead>
+              <tr>
+                <th scope="col" data-i18n="skills.h1">Skill</th>
+                <th scope="col" data-i18n="skills.h2">Proven in</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Python</td>
+                <td><a href="projects.html#eu4-assistant">eu4-assistant</a>: <span data-i18n="skills.s1">recursive-descent parser, computer vision, 0.62 test ratio</span></td>
+              </tr>
+              <tr>
+                <td>TypeScript / Electron / React</td>
+                <td><a href="projects.html#claude-dashboard">claude-dashboard</a>: <span data-i18n="skills.s2">10.4k-LOC desktop cockpit, 15MB JSONL streaming</span></td>
+              </tr>
+              <tr>
+                <td>C#</td>
+                <td><a href="projects.html#voxelgen">VOXELGEN</a>: <span data-i18n="skills.s3">Marching Cubes/Transvoxel, threading, -65% regen time</span></td>
+              </tr>
+              <tr>
+                <td>GDScript</td>
+                <td><a href="projects.html#undergenesis">UNDERGENESIS</a>: <span data-i18n="skills.s4">7.4k lines, test-first with GUT, versioned saves</span></td>
+              </tr>
+              <tr>
+                <td>Luau (strict)</td>
+                <td><a href="projects.html#bleabox">BleaBox</a>: <span data-i18n="skills.s5">server-authoritative architecture, 9 ADRs</span></td>
+              </tr>
+              <tr>
+                <td>Git / PR workflow</td>
+                <td><span data-i18n="skills.s6">all six repos: branch-per-feature, documented decisions</span></td>
+              </tr>
+              <tr>
+                <td>Testing</td>
+                <td><a href="projects.html#eu4-assistant">eu4-assistant</a> <span data-i18n="skills.s7">(2.6k lines, 0.62 ratio) and</span> <a href="projects.html#undergenesis">UNDERGENESIS</a> <span data-i18n="skills.s7b">(test-first, GUT)</span></td>
+              </tr>
+              <tr>
+                <td>Java, C++, SQL</td>
+                <td><a href="projects.html#labelbike">Labelbike</a>: <span data-i18n="skills.s8">dev support in a production context — not yet at project-ownership depth</span></td>
+              </tr>
+              <tr>
+                <td data-i18n="skills.s9k">Video editing, AI content</td>
+                <td><a href="projects.html#labelbike">Labelbike</a>: <span data-i18n="skills.s9">6 published videos, 9-language localization via agents</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 05 — Contact -->
+      <section id="contact" class="section">
+        <div class="section-head">
+          <span class="num">05</span>
+          <h2 data-i18n="contact.title">Get in touch</h2>
+        </div>
+        <p data-i18n="contact.sub">Have a role, a project, or a question? Write me directly, or use the form below.</p>
+
+        <form id="contactForm" action="https://formspree.io/f/mrealagr" method="POST" novalidate>
+          <div class="field">
+            <label for="cf-name" data-i18n="form.name">Name</label>
+            <input id="cf-name" name="name" type="text" autocomplete="name" required data-i18n-ph="form.namePh" placeholder="Your name" />
+            <p class="error-msg" hidden></p>
+          </div>
+          <div class="field">
+            <label for="cf-email" data-i18n="form.email">Email</label>
+            <input id="cf-email" name="email" type="email" autocomplete="email" required data-i18n-ph="form.emailPh" placeholder="you@email.com" />
+            <p class="error-msg" hidden></p>
+          </div>
+          <div class="field">
+            <label for="cf-msg" data-i18n="form.message">Message</label>
+            <textarea id="cf-msg" name="message" rows="5" required data-i18n-ph="form.messagePh" placeholder="What would you like to talk about?"></textarea>
+            <p class="error-msg" hidden></p>
+          </div>
+          <p class="form-banner-error" role="alert" hidden></p>
+          <button class="btn-primary" type="submit" data-i18n="form.send">Send message</button>
+          <p class="form-success" aria-live="polite" hidden></p>
+        </form>
+
+        <p class="mono" style="margin-top: var(--sp-6);">
+          <span data-i18n="contact.direct">Prefer email?</span>
+          <a href="mailto:aronnezanichelli@gmail.com">aronnezanichelli@gmail.com</a>
+          · <a href="https://github.com/AronneZanichelli" rel="me">GitHub</a>
+          · <a href="https://www.linkedin.com/in/aronne-zanichelli-62668b241" rel="me">LinkedIn</a>
+          · <a href="assets/cv-en.pdf" id="cvLink" download data-i18n="contact.cv">Download CV (PDF)</a>
+        </p>
+      </section>
     </main>
 
-    <footer class="site-footer">
-      <div class="container footer-content">
-        <p>© <span id="year"></span> Aronne Zanichelli</p>
-        <p data-i18n="footer.language"></p>
+    <footer class="footer container">
+      <div>
+        <span class="mono-label" data-i18n="footer.contactLabel">Contact</span><br />
+        <a href="mailto:aronnezanichelli@gmail.com">aronnezanichelli@gmail.com</a><br />
+        <a href="https://github.com/AronneZanichelli" data-i18n="footer.github">View on GitHub</a><br />
+        <a href="https://www.linkedin.com/in/aronne-zanichelli-62668b241" data-i18n="footer.linkedin">Connect on LinkedIn</a>
       </div>
+      <div data-i18n="footer.colophon">Set in Newsreader &amp; JetBrains Mono. Static HTML, no build step, no framework.</div>
+      <div class="copyright">© 2026 Aronne Zanichelli.</div>
     </footer>
-
-    <script src="script.js" defer></script>
   </body>
 </html>

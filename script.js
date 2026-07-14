@@ -1,483 +1,296 @@
+/* Engineering Notebook — logica sito (~60 righe) + dati traduzione.
+   L'HTML contiene sempre l'EN completo: il JS sostituisce solo se lang=it. */
+
 const translations = {
   en: {
-    nav: { home: 'Home', editing: 'Editing', featured: 'Featured Projects' },
-    toc: {
-      title: 'On this page',
-      home: 'Intro',
-      about: 'About',
-      availability: 'Availability',
-      skills: 'Skills',
-      portfolio: 'Portfolio',
-      timeline: 'Timeline',
-      cv: 'CV',
-      contact: 'Contact'
-    },
-    hero: {
-      positioning: 'Junior Developer with creative and AI-oriented skills.',
-      subtitle: 'I build practical digital experiences by combining development fundamentals, visual communication, and strategic content thinking.',
-      ctaProjects: 'View Featured Projects',
-      ctaCv: 'Download CV',
-      ctaContact: 'Contact'
-    },
-    about: {
-      title: 'About Me',
-      bio: 'I am Aronne Zanichelli, an IT graduate in Computer Science and Telecommunications. I grew up with technology and I enjoy turning digital passion into real, useful work. My profile blends development fundamentals with visual communication and social content execution.',
-      goalTitle: 'Professional Goal',
-      goalText: 'I want to enter the world of video games and interactive technologies, including VR-oriented experiences. I am looking for junior opportunities in web/game development where I can combine programming, creativity, and fast learning.',
-      valueTitle: 'What I bring to a team',
-      valueOne: 'Technical + creative mindset: code with attention to communication and UX.',
-      valueTwo: 'Operational autonomy in execution and delivery.',
-      valueThree: 'Problem-solving attitude and strong motivation for junior growth paths.'
-    },
-    availability: {
-      title: 'Availability',
-      text: 'Based in Italy (Europe/Rome timezone). Open to junior opportunities, internships, and collaborative projects in web development or game development, with remote or hybrid setup. Driving license B and own vehicle.'
-    },
-    skills: {
-      title: 'Technical Skills',
-      html: 'HTML and CSS for responsive interfaces (solid foundations)',
-      java: 'Java for object-oriented projects',
-      cpp: 'C++ foundations for logic and performance',
-      python: 'Python (beginner level, currently building fundamentals)',
-      sql: 'SQL and relational database fundamentals',
-      creative: 'DaVinci Resolve, Office Suite, Adobe Suite (basic/intermediate)'
-    },
-    softSkills: {
-      title: 'Soft Skills',
-      one: 'Problem solving',
-      two: 'Fast learning mindset',
-      three: 'Teamwork and communication',
-      four: 'Creative discipline and reliability'
-    },
-    languages: {
-      title: 'Languages',
-      it: 'Italian — Native',
-      en: 'English — Intermediate (B2)',
-      es: 'Spanish — Basic (A1)'
-    },
-    portfolio: {
-      title: 'Portfolio',
-      p1Title: 'Portfolio Website',
-      p1Status: 'Live',
-      p1Desc: 'Bilingual static site (EN/IT) with CV download, contact form, GA4 analytics, dark/light mode and this portfolio section.',
-      p1Stack: 'HTML · CSS · JS · GitHub Pages · Formspree · GA4',
-      p2Title: 'Labelbike — Social Media & Content',
-      p2Status: 'In progress',
-      p2Desc: 'AI-based social media management for an artisan 3D resin motorcycle sticker brand. Strategy, moodboards, short-form editing and carousel posts for Instagram and TikTok.',
-      p2Stack: 'Social Strategy · AI Content · Canva · DaVinci Resolve',
-      p3Title: 'EU4 Assistant + Bot',
-      p3Status: 'In progress',
-      p3Desc: 'Python desktop companion for Europa Universalis IV — real-time save parsing, AI decision engine, three bot modes. M10 complete, standalone .exe.',
-      p3Stack: 'Python · PyQt6 · watchdog · pyautogui · PyInstaller',
-      p4Title: 'UNDERGENESIS',
-      p4Status: 'In progress',
-      p4Desc: 'Procedural evolutionary sandbox in Godot 4. Guide a species from pre-civilization to building and managing a complex fantasy civilization. Emergent evolution, 13 biomes, isometric rendering with LOD.',
-      p4Stack: 'Godot 4.6 · GDScript · Procedural Generation · Isometric 2D',
-      linkLive: '↗ Live',
-      linkRepo: 'GitHub',
-      linkDetail: 'Details →'
-    },
-    timeline: {
-      title: 'Education & Experience',
-      educationDate: '2019-2025',
-      educationTitle: "IT Diploma - Istituto Superiore Statale S. D'Arzo",
-      educationDesc: 'Technical diploma in computer science and telecommunications.',
-      conadDate: 'May 2021 - Sep 2021',
-      conadTitle: 'Cashier / Warehouse Assistant - Conad',
-      conadDesc: 'Managed cashier operations, shelf restocking, and warehouse organization with operational autonomy.',
-      sinegoDate: 'Sep 2021 - Aug 2022',
-      sinegoTitle: 'Public Relations Assistant - Sinego Srl',
-      sinegoDesc: 'Front-facing communication support and relationship management in customer-facing activities.',
-      optimaDate: 'May 2024 - Jul 2025',
-      optimaTitle: 'Commercial Consultant - Optima Spa',
-      optimaDesc: 'Consulting for telecom services targeted to both private clients and businesses.',
-      currentDate: 'Current',
-      currentTitle: 'IFTS Graphic Technician & AI-based Social Media Manager',
-      currentDesc: 'Training path combining visual design, media strategy, and AI-oriented digital workflows.'
-    },
-    cv: {
-      title: 'Curriculum Vitae',
-      description: 'Preview and download my CV in English or Italian.',
-    },
-    contact: {
-      title: 'Contact',
-      formName: 'Name',
-      formEmail: 'Email',
-      formMessage: 'Message',
-      send: 'Send message',
-      success: 'Thanks! Your message was sent successfully.',
-      error: 'Please complete all fields with a valid email.',
-      sending: 'Sending…',
-      networkError: 'Network error — check your connection and try again.'
-    },
-    footer: { language: 'Language: English' },
-    feat: {
-      pageTitle: 'Featured Projects',
-      pageIntro: 'Selected projects — problem, solution, stack, result.',
-      toc: { p1: 'Portfolio Site', p2: 'Labelbike', p3: 'EU4 Assistant', p4: 'Game Dev' },
-      label: { problem: 'Problem', solution: 'Solution', stack: 'Stack', result: 'Result' },
-      linkSite: '↗ Live site',
-      linkEditing: 'Editing archive →',
-      p1: {
-        title: 'Portfolio Website',
-        status: 'Live',
-        problem: 'Build a bilingual, professional online presence targeting junior dev and creative roles.',
-        solution: 'Designed and built a fully static bilingual site (EN/IT) from scratch — language toggle, dark/light theme, GA4 analytics, Formspree contact form, CV download, and a portfolio section.',
-        result: 'Live personal site with full SEO setup, conversion tracking and modular content sections ready to grow.'
-      },
-      p2: {
-        title: 'Labelbike — Social Media & Content',
-        status: 'In progress',
-        problem: 'An artisan 3D resin motorcycle sticker brand looking to establish a consistent digital identity and a structured content strategy across social channels.',
-        solution: 'AI-based social media strategy covering moodboards, short-form video editing, carousel post packaging and caption writing for Instagram and TikTok.',
-        result: 'Ongoing content production as part of an IFTS Project Work. Visual identity defined, first posts published.'
-      },
-      p3: {
-        title: 'EU4 Assistant + Bot',
-        status: 'In progress',
-        problem: 'Europa Universalis IV has no external API — the only data source is the autosave file, stored in a proprietary recursive text format.',
-        solution: 'Python desktop companion (PyQt6) that parses EU4 Clausewitz save files in real time, extracts a typed game-state snapshot, and runs an AI decision engine. Three modes: Advisor (pure recommendations), Semi-bot (single confirmed action), Full-bot (autonomous within configurable guardrails). Packaged as a standalone Windows .exe via PyInstaller.',
-        result: 'M10 complete — live file watcher pipeline, custom Clausewitz parser, military/colonial/economy advisor, full-bot with pause gate for critical actions, Windows .exe shipped via GitHub Actions CI.'
-      },
-      p4: {
-        title: 'UNDERGENESIS',
-        status: 'In progress',
-        problem: 'Design a game that makes biological evolution feel real and impactful — where species identity shapes every economic, military, and architectural decision a civilization makes.',
-        solution: 'Procedural evolutionary sandbox in Godot 4.6 Mono. The player guides a proto-human species from solo survival to building a full civilization. Evolution is emergent: mutations are driven by biome, activity, climate, and population biology — not by a skill tree. A "Three Keys" system ties construction to stolen knowledge (schemas), geology (materials), and dominant mutation (efficiency). World generated with 6-layer fBm noise across 13 biomes, isometric rendering v5 with 3-level LOD, 10 evolution traits, deterministic resource spawning, and slot-based save system.',
-        result: 'Core systems complete: procedural world (13 biomes), isometric renderer v5 (LOD + edge blending + animated water), day/night cycle, sky and particle layers, player action/survival, 10 emergent mutations, 6-recipe crafting system, creature AI (4 archetypes), save/load, full HUD suite, civilization population system. In active development.'
-      }
-    },
-    edit: {
-      pageTitle: 'Editing Works',
-      pageIntro: 'Content production and post-production portfolio, organised by client and project type.',
-      comingSoon: 'Coming soon',
-      freelanceTitle: 'Freelance',
-      freelanceDesc: 'Client projects — video editing, post-production and content strategy.',
-      personalTitle: 'Personal',
-      personalDesc: 'Personal experiments and independent creative projects.',
-      lb: {
-        status: 'In progress',
-        cardDesc: 'YouTube, Instagram, TikTok, LinkedIn — full post-production pipeline.',
-        desc: 'Ongoing collaboration for an artisan 3D resin motorcycle sticker brand based in Italy. AI-based content strategy, short-form video editing and post packaging.',
-        postprod: {
-          label: 'Post-production scope: ',
-          text: 'Full pipeline handled end-to-end — editing, upload, titles, descriptions, keyword research, custom thumbnails, timestamps, and multilingual translation across 9 languages via a custom AI agent.'
-        },
-        comingSoon: 'Content in production — check back soon.'
-      }
-    },
-    lb: {
-      backToEditing: 'Back to Editing',
-      status: 'In progress',
-      desc: 'Ongoing collaboration for an artisan 3D resin motorcycle sticker brand based in Italy.',
-      postprod: {
-        label: 'Post-production scope: ',
-        text: 'Full pipeline handled end-to-end — editing, upload, titles, descriptions, keyword research, custom thumbnails, timestamps, and multilingual translation across 9 languages via a custom AI agent.'
-      },
-      comingSoon: 'Content in production — check back soon.'
-    }
+    'a11y.skip': 'Skip to content',
+    'nav.projects': 'Projects', 'nav.method': 'Method', 'nav.contact': 'Contact',
+    'hero.eyebrow': 'Junior Software Developer (AI-augmented)',
+    'hero.tagline': 'Code, method, evidence.',
+    'hero.subline': 'Junior software developer working AI-augmented — every claim on this site links to a repository.',
+    'hero.fact1': 'ITIS diploma 2025', 'hero.fact2': 'IFTS Creative & AI 2026', 'hero.fact3': '6 repos',
+    'hero.cta': 'View projects',
+    'proof.label': 'In numbers', 'proof.p1': 'open-source projects', 'proof.p2': 'lines of tests',
+    'work.title': 'Work',
+    'status.active': 'Active', 'status.alpha': 'Alpha', 'status.done': 'Completed',
+    'status.paused': 'Paused', 'status.paused2': 'Paused', 'status.paused3': 'Paused',
+    'work.p1': "A desktop companion for Europa Universalis IV that reads the game's proprietary save format and its screen, not just its API.",
+    'work.p2': 'A desktop cockpit for running Claude Code across Windows and WSL2 from one window, with a self-critical account of its own tech debt.',
+    'work.p3': 'A multiplayer action-RPG on Roblox where the server, not the client, decides what actually happened.',
+    'work.p4': 'A realtime deformable voxel engine that regenerates terrain 65% faster than its first working version.',
+    'work.p5': 'A procedural evolutionary sandbox built test-first, with save files that survive their own migrations.',
+    'work.p6': 'A video pipeline that turns one script into six published videos and nine language versions.',
+    'method.title': 'Method',
+    'method.l1': 'Spec → plan → test → audit — every project, every time.',
+    'method.l2': 'Agents execute. I decide the architecture and write it down as ADRs.',
+    'method.l3': 'claude-dashboard ships its own self-critical audit, in the same tone as its README.',
+    'method.link': 'Read the full method',
+    'timeline.title': 'Timeline',
+    'timeline.bio': 'I\'m Aronne Zanichelli, a junior software developer working AI-augmented. I write code, but I also write the spec, the plan, and the audit around it — the discipline is the point, not just the output. My path here wasn\'t linear: a technical diploma, a year selling utility contracts, then a creative-and-AI program that put me inside a real production pipeline. Along the way I built six projects I still maintain — none of them portfolio filler; all of them on GitHub, with commits, tests, and the occasional documented mistake. I\'m looking for a first developer role, in Italy or abroad, where "I can prove it" counts for more than "I\'m passionate about it."',
+    'timeline.t1': 'ITIS technical diploma (Perito Informatico) — completed July 2025.',
+    'timeline.d2': 'May 2024 – Jul 2025',
+    'timeline.t2': 'Optima — business sales consultant, freelance. Commercial soft skills: client relationships, negotiation, autonomy.',
+    'timeline.n2': 'Not a technical role.',
+    'timeline.d3': 'Oct 2025 – Jun 2026',
+    'timeline.t3': 'IFTS Creative & AI — vocational program, concluded. Half coursework, half on-the-job at Labelbike.',
+    'timeline.d4': 'Oct 2025 – Jun 2026',
+    'timeline.t4': 'Labelbike — formally an internship, in practice an operational role with real delegation: creative/social/AI content pipeline plus development support (Java, C++, SQL).',
+    'skills.title': 'Skills, with evidence',
+    'skills.intro': 'No bars, no percentages — every skill below links to the project that proves it.',
+    'skills.h1': 'Skill', 'skills.h2': 'Proven in',
+    'skills.s1': 'recursive-descent parser, computer vision, 0.62 test ratio',
+    'skills.s2': '10.4k-LOC desktop cockpit, 15MB JSONL streaming',
+    'skills.s3': 'Marching Cubes/Transvoxel, threading, -65% regen time',
+    'skills.s4': '7.4k lines, test-first with GUT, versioned saves',
+    'skills.s5': 'server-authoritative architecture, 9 ADRs',
+    'skills.s6': 'all six repos: branch-per-feature, documented decisions',
+    'skills.s7': '(2.6k lines, 0.62 ratio) and', 'skills.s7b': '(test-first, GUT)',
+    'skills.s8': 'dev support in a production context — not yet at project-ownership depth',
+    'skills.s9k': 'Video editing, AI content',
+    'skills.s9': '6 published videos, 9-language localization via agents',
+    'contact.title': 'Get in touch',
+    'contact.sub': 'Have a role, a project, or a question? Write me directly, or use the form below.',
+    'contact.direct': 'Prefer email?', 'contact.cv': 'Download CV (PDF)',
+    'form.name': 'Name', 'form.namePh': 'Your name',
+    'form.email': 'Email', 'form.emailPh': 'you@email.com',
+    'form.message': 'Message', 'form.messagePh': 'What would you like to talk about?',
+    'form.send': 'Send message',
+    'form.sending': 'Sending', 'form.required': 'This field is required.',
+    'form.invalidEmail': 'Enter a valid email.',
+    'form.success': "Message sent — thank you. I'll get back to you soon.",
+    'form.network': 'Message not sent — check your connection and try again.',
+    'footer.contactLabel': 'Contact', 'footer.github': 'View on GitHub', 'footer.linkedin': 'Connect on LinkedIn',
+    'footer.colophon': 'Set in Newsreader & JetBrains Mono. Static HTML, no build step, no framework.',
+    /* projects.html */
+    'projects.title': 'Projects',
+    'projects.intro': "Six repositories, in the order I'd want a reviewer to open them.",
+    'repo.stack': 'Stack', 'repo.metric': 'Key metric', 'repo.status': 'Status', 'repo.link': 'Link',
+    'repo.github': 'View on GitHub', 'repo.youtube': 'Watch on YouTube',
+    'dossier.problem': 'Problem', 'dossier.approach': 'Approach', 'dossier.result': 'Result',
+    'dossier.next': 'Next project',
+    'p1.problem': 'EU4 exposes no API for reading a running game or hooking into external overlays: anyone building a companion tool has to reverse-engineer the save format and the screen itself.',
+    'p1.approach': 'I wrote a recursive-descent parser for the proprietary Clausewitz format and a computer-vision module that reads UI elements outside the game, inside a PyQt6 desktop app.',
+    'p1.result': '~4.2k LOC, 2.6k lines of tests (0.62 ratio), CI green across Python versions, PyInstaller installer. Status: alpha, active development.',
+    'p2.problem': 'Running Claude Code on Windows means bouncing through WSL2 across scattered terminals, with no unified view of sessions and logs on either side.',
+    'p2.approach': 'I built an Electron cockpit using node-pty for a real pty bridge between Windows and WSL2, streaming and parsing JSONL logs up to 15MB with list virtualization to stay smooth, plus a STRATEGIC_REVIEW that documents the tech debt honestly.',
+    'p2.result': '~10.4k LOC, public self-audit (STRATEGIC_REVIEW). Status: short pause, known bug in progress.',
+    'p3.problem': "A multiplayer action-RPG on Roblox is exposed by nature to compromised clients: if the client decides what's true, someone will exploit it.",
+    'p3.approach': 'Server-authoritative architecture in Luau strict mode: the server validates every state-changing action, a data-driven registry manages items and abilities without touching code, 9 ADRs document the decisions made.',
+    'p3.result': '~8.7k lines, 9 ADRs, anti-exploit architecture. Status: active.',
+    'p4.problem': 'Realtime deformable voxel terrain that regenerates its mesh on the main thread stalls the frame rate on every edit.',
+    'p4.approach': 'Marching Cubes and Transvoxel to generate mesh across LOD transitions, a producer/consumer threading model to move regeneration off the main thread, optimizations profiled and measured, not eyeballed.',
+    'p4.result': '-65% regeneration time, measured with a profiler. Status: paused, resume planned.',
+    'p5.problem': 'A procedural evolutionary sandbox lives or dies on world variety and on save files surviving across versions.',
+    'p5.approach': 'Test-first development with GUT from the first commit, multi-layered noise generation for terrain, biome, and ecosystem, a versioned save system with explicit migrations between versions.',
+    'p5.result': '~7.4k lines of GDScript, test-first from day one, versioned saves with migrations. Status: paused, resume planned.',
+    'p6.intro': "Development is the core of what I do; creative and AI-content work is the differentiator that came with it. At Labelbike I ran a video pipeline that went from script to published upload, using AI tooling to localize every video into nine languages instead of one. It's not a hobby bolted onto a dev portfolio — it's a second skill set, proven the same way as the code: with published output, not a claim.",
+    'p6.problem': 'Labelbike needed video content that could reach non-Italian audiences without hiring a translator and a second production team for every language.',
+    'p6.approach': 'Built and ran an end-to-end video pipeline: scripting, editing, and an AI-agent-driven localization step that adapts each video — not just subtitles, full re-adaptation — into multiple languages, plus social cuts from the same source footage.',
+    'p6.result': '6 videos published on YouTube, localized into 9 languages via agents. Completed with the Labelbike role (Oct 2025 – Jun 2026).',
+    /* method.html */
+    'mpage.title': 'Method',
+    'mpage.p1': "Every project on this site follows the same loop: spec, plan, test, audit. I write the spec before I write code — what the thing needs to do, and what it explicitly doesn't. Then a plan, broken into steps small enough to review before they're built. AI agents write a meaningful share of the resulting code, but they work from my spec and my plan, not the other way around: the architectural decisions are mine — in BleaBox they're recorded as nine ADRs, so the reasoning survives past the commit that implemented it.",
+    'mpage.p2': "Testing isn't a separate phase bolted on at the end; it's written alongside the feature, which is why eu4-assistant carries 2.6k lines of tests against 4.2k of implementation. And the loop doesn't end at green tests. claude-dashboard ships with a STRATEGIC_REVIEW — a self-audit that names its own tech debt and half-finished corners in the same tone as its README, because a build that only shows its wins isn't a status report, it's a highlight reel.",
+    'mpage.p3': 'AI-augmented doesn\'t mean AI-decided; it means I orchestrate agents the way a lead orchestrates a team — clear brief, checked output, documented reasoning.',
+    'mpage.adrLink': 'View the ADRs on GitHub', 'mpage.testLink': 'See the test suite', 'mpage.auditLink': 'Read the STRATEGIC_REVIEW',
+    'mpage.closing': 'The decisions are mine; the AI multiplies execution.',
+    'mpage.exit': 'Back to the projects'
   },
   it: {
-    nav: { home: 'Home', editing: 'Editing', featured: 'Featured Projects' },
-    toc: {
-      title: 'In questa pagina',
-      home: 'Intro',
-      about: 'Chi sono',
-      availability: 'Disponibilità',
-      skills: 'Competenze',
-      portfolio: 'Portfolio',
-      timeline: 'Timeline',
-      cv: 'CV',
-      contact: 'Contatti'
-    },
-    hero: {
-      positioning: 'Junior Developer con competenze creative e AI-oriented.',
-      subtitle: 'Realizzo esperienze digitali pratiche unendo basi di sviluppo, comunicazione visiva e pensiero strategico sui contenuti.',
-      ctaProjects: 'Vedi Featured Projects',
-      ctaCv: 'Scarica CV',
-      ctaContact: 'Contattami'
-    },
-    about: {
-      title: 'Chi sono',
-      bio: 'Sono Aronne Zanichelli, diplomato in Informatica e Telecomunicazioni. Sono cresciuto con la tecnologia e mi piace trasformare la passione digitale in lavoro reale e utile. Il mio profilo unisce basi di sviluppo, comunicazione visiva e produzione contenuti social.',
-      goalTitle: 'Obiettivo professionale',
-      goalText: 'Voglio entrare nel mondo dei videogiochi e delle tecnologie interattive, con una visione che include anche la realtà virtuale. Cerco opportunità junior in web/game development dove unire programmazione, creatività e crescita rapida.',
-      valueTitle: 'Cosa porto in un team',
-      valueOne: 'Mentalità tecnica + creativa: codice con attenzione a comunicazione e UX.',
-      valueTwo: "Autonomia operativa nell'esecuzione e nella consegna.",
-      valueThree: 'Approccio al problem solving e forte motivazione in percorsi junior.'
-    },
-    availability: {
-      title: 'Disponibilità',
-      text: 'Base in Italia (fuso Europe/Rome). Disponibile per opportunità junior, stage e collaborazioni in web development o game development, in remoto o ibrido. Patente B e automunito.'
-    },
-    skills: {
-      title: 'Competenze tecniche',
-      html: 'HTML e CSS per interfacce responsive (basi solide)',
-      java: 'Java per progetti orientati agli oggetti',
-      cpp: 'Basi di C++ per logica e performance',
-      python: 'Python (livello iniziale, sto consolidando i fondamentali)',
-      sql: 'SQL e fondamenti di database relazionali',
-      creative: 'DaVinci Resolve, Pacchetto Office, Pacchetto Adobe (base/intermedio)'
-    },
-    softSkills: {
-      title: 'Soft Skills',
-      one: 'Problem solving',
-      two: 'Apprendimento rapido',
-      three: 'Teamwork e comunicazione',
-      four: 'Disciplina creativa e affidabilità'
-    },
-    languages: {
-      title: 'Lingue',
-      it: 'Italiano — Madrelingua',
-      en: 'Inglese — Intermedio (B2)',
-      es: 'Spagnolo — Base (A1)'
-    },
-    portfolio: {
-      title: 'Portfolio',
-      p1Title: 'Sito Portfolio',
-      p1Status: 'Live',
-      p1Desc: 'Sito statico bilingue (IT/EN) con download CV, form contatti, analytics GA4, modalità dark/light e questa stessa sezione portfolio.',
-      p1Stack: 'HTML · CSS · JS · GitHub Pages · Formspree · GA4',
-      p2Title: 'Labelbike — Social Media & Content',
-      p2Status: 'In corso',
-      p2Desc: 'Gestione social media AI-based per brand artigianale di adesivi in resina 3D per moto. Strategia, moodboard, editing short-form e post packaging in formato carosello per Instagram e TikTok.',
-      p2Stack: 'Social Strategy · AI Content · Canva · DaVinci Resolve',
-      p3Title: 'EU4 Assistant + Bot',
-      p3Status: 'In corso',
-      p3Desc: 'Companion Python desktop per Europa Universalis IV — parsing save in tempo reale, decision engine AI, tre modalità bot. M10 completo, .exe standalone.',
-      p3Stack: 'Python · PyQt6 · watchdog · pyautogui · PyInstaller',
-      p4Title: 'UNDERGENESIS',
-      p4Status: 'In corso',
-      p4Desc: 'Sandbox evolutivo procedurale in Godot 4. Guidi una specie dalla pre-civiltà fino alla costruzione di una civiltà fantasy complessa. Evoluzione emergente, 13 biomi, rendering isometrico con LOD.',
-      p4Stack: 'Godot 4.6 · GDScript · Generazione Procedurale · Isometrico 2D',
-      linkLive: '↗ Live',
-      linkRepo: 'GitHub',
-      linkDetail: 'Dettagli →'
-    },
-    timeline: {
-      title: 'Formazione ed esperienza',
-      educationDate: '2019-2025',
-      educationTitle: "Diploma IT - Istituto Superiore Statale S. D'Arzo",
-      educationDesc: 'Diploma tecnico in Informatica e Telecomunicazioni.',
-      conadDate: 'Mag 2021 - Set 2021',
-      conadTitle: 'Cassiere / Magazziniere - Conad',
-      conadDesc: 'Gestione cassa, rifornimento scaffali e organizzazione magazzino in autonomia.',
-      sinegoDate: 'Set 2021 - Ago 2022',
-      sinegoTitle: 'Addetto alle Pubbliche Relazioni - Sinego Srl',
-      sinegoDesc: 'Supporto nella comunicazione front-facing e gestione relazionale con il pubblico.',
-      optimaDate: 'Mag 2024 - Lug 2025',
-      optimaTitle: 'Consulente Commerciale - Optima Spa',
-      optimaDesc: 'Consulenza su servizi di telecomunicazione rivolta ad aziende e privati.',
-      currentDate: 'Attuale',
-      currentTitle: 'IFTS Tecnico Grafico & Social Media Manager AI-based',
-      currentDesc: "Percorso che integra design visivo, strategia media e workflow digitali orientati all'AI."
-    },
-    cv: {
-      title: 'Download CV',
-      description: "Anteprima del CV qui sotto. Usa il bottone Scarica CV in alto per salvarne una copia."
-    },
-    contact: {
-      title: 'Contatti',
-      formName: 'Nome',
-      formEmail: 'Email',
-      formMessage: 'Messaggio',
-      send: 'Invia messaggio',
-      success: 'Grazie! Il messaggio è stato inviato con successo.',
-      error: 'Compila tutti i campi con una email valida.',
-      sending: 'Invio in corso…',
-      networkError: 'Errore di rete — controlla la connessione e riprova.'
-    },
-    footer: { language: 'Lingua: Italiano' },
-    feat: {
-      pageTitle: 'Featured Projects',
-      pageIntro: 'Progetti selezionati — problema, soluzione, stack, risultato.',
-      toc: { p1: 'Sito Portfolio', p2: 'Labelbike', p3: 'EU4 Assistant', p4: 'Game Dev' },
-      label: { problem: 'Problema', solution: 'Soluzione', stack: 'Stack', result: 'Risultato' },
-      linkSite: '↗ Sito live',
-      linkEditing: 'Archivio editing →',
-      p1: {
-        title: 'Sito Portfolio',
-        status: 'Live',
-        problem: 'Costruire una presenza online bilingue e professionale per posizioni junior dev e creative.',
-        solution: 'Progettato e sviluppato un sito statico bilingue (IT/EN) da zero — toggle lingua, tema dark/light, GA4, form Formspree, download CV e sezione portfolio.',
-        result: 'Sito live con setup SEO completo, tracciamento conversioni e sezioni di contenuto modulari pronte a crescere.'
-      },
-      p2: {
-        title: 'Labelbike — Social Media & Content',
-        status: 'In corso',
-        problem: 'Brand artigianale di adesivi in resina 3D per moto, alla ricerca di un\'identità digitale solida e di una strategia contenuti social strutturata e continuativa.',
-        solution: 'Strategia social AI-based: moodboard, editing video short-form, packaging caroselli e scrittura caption per Instagram e TikTok.',
-        result: 'Produzione contenuti in corso come Project Work IFTS. Identità visiva definita, primi post pubblicati.'
-      },
-      p3: {
-        title: 'EU4 Assistant + Bot',
-        status: 'In corso',
-        problem: 'Europa Universalis IV non ha API esterne — l\'unica fonte dati è il file di salvataggio automatico, in un formato testuale ricorsivo proprietario.',
-        solution: 'Companion Python desktop (PyQt6) che fa parsing dei save file EU4 in tempo reale, estrae uno snapshot tipizzato dello stato di gioco e applica un decision engine AI. Tre modalità: Advisor (raccomandazioni pure), Semi-bot (singola azione confermata), Full-bot (autonomo entro guardrail configurabili). Distribuito come .exe Windows standalone via PyInstaller.',
-        result: 'M10 completato — pipeline file watcher live, parser Clausewitz custom, advisor militare/coloniale/economia, full-bot con pause gate su azioni critiche, .exe Windows generato via GitHub Actions CI.'
-      },
-      p4: {
-        title: 'UNDERGENESIS',
-        status: 'In corso',
-        problem: 'Progettare un gioco dove l\'evoluzione biologica sia reale e impattante — in cui l\'identità della specie determini ogni scelta economica, militare e architettonica della civiltà.',
-        solution: 'Sandbox evolutivo procedurale in Godot 4.6 Mono. Il giocatore guida una specie proto-umana dalla sopravvivenza solitaria alla costruzione di una civiltà complessa. L\'evoluzione è emergente: le mutazioni dipendono da bioma, attività, clima e biologia della popolazione — non da un albero delle abilità. Il sistema "Tre Chiavi" lega la costruzione a schemi rubati (conoscenza), geologia (materiale) e mutazione dominante (efficienza). Mondo generato con noise fBm a 6 layer su 13 biomi, rendering isometrico v5 con LOD a 3 livelli, 10 trait evolutivi, spawn deterministico delle risorse e sistema di salvataggio slot-based.',
-        result: 'Sistemi core completati: mondo procedurale (13 biomi), renderer isometrico v5 (LOD + edge blending + acqua animata), ciclo giorno/notte, layer cielo e particelle, player action/survival, 10 mutazioni emergenti, crafting 6 ricette, creature AI (4 archetipi), save/load, HUD completo, sistema popolazione civiltà. In sviluppo attivo.'
-      }
-    },
-    edit: {
-      pageTitle: 'Editing Works',
-      pageIntro: 'Portfolio di produzione contenuti e post-produzione, organizzato per cliente e tipo di progetto.',
-      comingSoon: 'Coming soon',
-      freelanceTitle: 'Freelance',
-      freelanceDesc: 'Progetti per clienti — editing video, post-produzione e content strategy.',
-      personalTitle: 'Lavori Personali',
-      personalDesc: 'Esperimenti personali e progetti creativi indipendenti.',
-      lb: {
-        status: 'In corso',
-        cardDesc: 'YouTube, Instagram, TikTok, LinkedIn — pipeline di post-produzione completa.',
-        desc: 'Collaborazione in corso per un brand artigianale italiano di adesivi in resina 3D per moto. Strategia AI-based, editing video short-form e packaging post.',
-        postprod: {
-          label: 'Scope post-produzione: ',
-          text: 'Pipeline gestita interamente — editing, upload, titoli, descrizioni, keyword research, thumbnail personalizzate, timestamp e traduzione in 9 lingue tramite un agente AI custom.'
-        },
-        comingSoon: 'Contenuto in produzione — torna presto.'
-      }
-    },
-    lb: {
-      backToEditing: 'Torna a Editing',
-      status: 'In corso',
-      desc: 'Collaborazione in corso per un brand artigianale italiano di adesivi in resina 3D per moto.',
-      postprod: {
-        label: 'Scope post-produzione: ',
-        text: 'Pipeline gestita interamente — editing, upload, titoli, descrizioni, keyword research, thumbnail personalizzate, timestamp e traduzione in 9 lingue tramite un agente AI custom.'
-      },
-      comingSoon: 'Contenuto in produzione — torna presto.'
-    }
+    'a11y.skip': 'Vai al contenuto',
+    'nav.projects': 'Progetti', 'nav.method': 'Metodo', 'nav.contact': 'Contatti',
+    'hero.eyebrow': 'Sviluppatore Software Junior (AI-augmented)',
+    'hero.tagline': 'Codice, metodo, evidenza.',
+    'hero.subline': 'Sviluppatore software junior con metodo AI-augmented — ogni affermazione di questo sito punta a un repository.',
+    'hero.fact1': 'Diploma ITIS 2025', 'hero.fact2': 'IFTS Creative & AI 2026', 'hero.fact3': '6 repository',
+    'hero.cta': 'Vedi i progetti',
+    'proof.label': 'In numeri', 'proof.p1': 'progetti open source', 'proof.p2': 'righe di test',
+    'work.title': 'Progetti',
+    'status.active': 'Attivo', 'status.alpha': 'Alpha', 'status.done': 'Concluso',
+    'status.paused': 'In pausa', 'status.paused2': 'In pausa', 'status.paused3': 'In pausa',
+    'work.p1': 'Un companion desktop per Europa Universalis IV che legge il formato di salvataggio proprietario del gioco e lo schermo, non solo la sua API.',
+    'work.p2': 'Una cockpit desktop per usare Claude Code tra Windows e WSL2 da un\'unica finestra, con un resoconto autocritico del proprio debito tecnico.',
+    'work.p3': 'Un action-RPG multiplayer su Roblox dove è il server, non il client, a decidere cosa è realmente accaduto.',
+    'work.p4': 'Un motore voxel deformabile in tempo reale che rigenera il terreno il 65% più veloce della sua prima versione funzionante.',
+    'work.p5': 'Un sandbox evolutivo procedurale costruito test-first, con salvataggi che sopravvivono alle proprie migrazioni.',
+    'work.p6': 'Una pipeline video che trasforma uno script in sei video pubblicati e nove versioni linguistiche.',
+    'method.title': 'Metodo',
+    'method.l1': 'Spec → plan → test → audit — per ogni progetto, sempre.',
+    'method.l2': 'Gli agenti eseguono. Le decisioni architetturali e gli ADR sono miei.',
+    'method.l3': 'claude-dashboard include un self-audit critico, con lo stesso tono del suo README.',
+    'method.link': 'Leggi il metodo completo',
+    'timeline.title': 'Timeline',
+    'timeline.bio': 'Sono Aronne Zanichelli, sviluppatore junior con metodo AI-augmented. Scrivo codice, ma scrivo anche la spec, il piano e l\'audit che lo circondano — la disciplina è il punto, non solo il risultato. Il percorso non è stato lineare: un diploma tecnico, un anno a vendere contratti utility, poi un percorso creative & AI che mi ha messo dentro una pipeline di produzione reale. Nel frattempo ho costruito sei progetti che mantengo tuttora — nessuno è riempitivo da portfolio: sono tutti su GitHub, con commit, test e qualche errore documentato. Cerco un primo ruolo da sviluppatore, in Italia o all\'estero, dove "posso dimostrarlo" conti più di "ci metto passione".',
+    'timeline.t1': 'Diploma ITIS, Perito Informatico — conseguito a luglio 2025.',
+    'timeline.d2': 'Mag 2024 – Lug 2025',
+    'timeline.t2': 'Optima — consulente commerciale, libero professionista. Soft skill commerciali: relazione con il cliente, negoziazione, autonomia.',
+    'timeline.n2': 'Non è un ruolo tecnico.',
+    'timeline.d3': 'Ott 2025 – Giu 2026',
+    'timeline.t3': 'IFTS Creative & AI — percorso formativo, concluso. Metà lezione, metà lavoro operativo in Labelbike.',
+    'timeline.d4': 'Ott 2025 – Giu 2026',
+    'timeline.t4': 'Labelbike — formalmente uno stage, di fatto un ruolo operativo con deleghe reali: pipeline creative/social/AI content più supporto allo sviluppo (Java, C++, SQL).',
+    'skills.title': 'Competenze, con le prove',
+    'skills.intro': 'Niente barre, niente percentuali — ogni competenza qui sotto rimanda al progetto che la dimostra.',
+    'skills.h1': 'Competenza', 'skills.h2': 'Provata in',
+    'skills.s1': 'parser ricorsivo, computer vision, ratio test 0.62',
+    'skills.s2': 'cockpit desktop da 10.4k LOC, streaming JSONL da 15MB',
+    'skills.s3': 'Marching Cubes/Transvoxel, threading, -65% sul tempo di rigenerazione',
+    'skills.s4': '7.4k righe, test-first con GUT, salvataggi versionati',
+    'skills.s5': 'architettura server-authoritative, 9 ADR',
+    'skills.s6': 'tutti i sei repository: branch per feature, decisioni documentate',
+    'skills.s7': '(2.6k righe, ratio 0.62) e', 'skills.s7b': '(test-first, GUT)',
+    'skills.s8': 'supporto allo sviluppo in produzione — non ancora a livello di ownership di progetto',
+    'skills.s9k': 'Video editing, AI content',
+    'skills.s9': '6 video pubblicati, localizzazione in 9 lingue tramite agenti',
+    'contact.title': 'Contatti',
+    'contact.sub': 'Hai un ruolo, un progetto o una domanda? Scrivimi direttamente, oppure usa il modulo qui sotto.',
+    'contact.direct': 'Preferisci l\'email?', 'contact.cv': 'Scarica il CV (PDF)',
+    'form.name': 'Nome', 'form.namePh': 'Il tuo nome',
+    'form.email': 'Email', 'form.emailPh': 'tu@email.com',
+    'form.message': 'Messaggio', 'form.messagePh': 'Di cosa vorresti parlare?',
+    'form.send': 'Invia messaggio',
+    'form.sending': 'Invio', 'form.required': 'Campo obbligatorio.',
+    'form.invalidEmail': 'Inserisci un\'email valida.',
+    'form.success': 'Messaggio inviato — grazie. Ti risponderò a breve.',
+    'form.network': 'Messaggio non inviato — controlla la connessione e riprova.',
+    'footer.contactLabel': 'Contatti', 'footer.github': 'Vedi su GitHub', 'footer.linkedin': 'Collegati su LinkedIn',
+    'footer.colophon': 'Composto in Newsreader e JetBrains Mono. HTML statico, zero build step, zero framework.',
+    /* projects.html */
+    'projects.title': 'Progetti',
+    'projects.intro': 'Sei repository, nell\'ordine in cui vorrei che un revisore le aprisse.',
+    'repo.stack': 'Stack', 'repo.metric': 'Metrica chiave', 'repo.status': 'Stato', 'repo.link': 'Link',
+    'repo.github': 'Vedi su GitHub', 'repo.youtube': 'Guarda su YouTube',
+    'dossier.problem': 'Problema', 'dossier.approach': 'Approccio', 'dossier.result': 'Risultato',
+    'dossier.next': 'Progetto successivo',
+    'p1.problem': 'EU4 non espone un\'API per leggere partite in corso o interagire con overlay esterni: chi vuole un companion tool deve capirsi da solo il formato di salvataggio e lo schermo di gioco.',
+    'p1.approach': 'Ho scritto un parser ricorsivo per il formato proprietario Clausewitz e un modulo di computer vision che legge elementi UI esterni al gioco, dentro un\'app desktop PyQt6.',
+    'p1.result': '~4.2k righe di codice, 2.6k di test (ratio 0.62), CI verde su più versioni Python, installer PyInstaller. Stato: alpha, sviluppo attivo.',
+    'p2.problem': 'Chi usa Claude Code su Windows passa da WSL2 con terminali sparsi, nessuna vista unificata di sessioni e log tra i due mondi.',
+    'p2.approach': 'Ho costruito una cockpit Electron con node-pty per un pty reale tra Windows e WSL2, streaming e parsing di log JSONL fino a 15MB con liste virtualizzate per restare fluido, e uno STRATEGIC_REVIEW che documenta onestamente il debito tecnico.',
+    'p2.result': '~10.4k righe di codice, self-audit pubblico (STRATEGIC_REVIEW). Stato: pausa breve, bug noto in lavorazione.',
+    'p3.problem': 'Un action-RPG multiplayer su Roblox è esposto per natura a client compromessi: se il client decide cosa è vero, qualcuno lo sfrutterà.',
+    'p3.approach': 'Architettura server-authoritative in Luau strict mode: il server valida ogni azione che cambia stato, un registry data-driven gestisce oggetti e abilità senza toccare il codice, 9 ADR documentano le decisioni prese.',
+    'p3.result': '~8.7k righe, 9 ADR, architettura anti-exploit. Stato: attivo.',
+    'p4.problem': 'Un terreno voxel deformabile in tempo reale che rigenera la mesh sul thread principale blocca il frame rate a ogni modifica.',
+    'p4.approach': 'Marching Cubes e Transvoxel per generare la mesh tra livelli di dettaglio, threading producer/consumer per spostare la rigenerazione fuori dal thread principale, ottimizzazioni profilate e misurate, non stimate a occhio.',
+    'p4.result': '-65% sul tempo di rigenerazione, misurato col profiler. Stato: in pausa, ripresa prevista.',
+    'p5.problem': 'Un sandbox evolutivo procedurale vive o muore sulla varietà dei mondi generati e sulla tenuta dei salvataggi tra versioni successive.',
+    'p5.approach': 'Sviluppo test-first con GUT fin dal primo commit, generazione multi-noise per terreno/bioma/ecosistema, sistema di salvataggio versionato con migrazioni esplicite tra versioni.',
+    'p5.result': '~7.4k righe GDScript, test-first dal giorno uno, salvataggi versionati con migrazioni. Stato: in pausa, ripresa prevista.',
+    'p6.intro': 'Lo sviluppo è il centro di quello che faccio; il lato creative & AI content è il differenziatore che ci si è aggiunto. In Labelbike ho gestito una pipeline video che andava dallo script alla pubblicazione, usando strumenti AI per localizzare ogni video in nove lingue invece che una sola. Non è un hobby appiccicato a un portfolio da developer: è una seconda competenza, provata allo stesso modo del codice — con output pubblicato, non con un\'affermazione.',
+    'p6.problem': 'Labelbike aveva bisogno di contenuti video capaci di raggiungere pubblico non italiano, senza assumere un traduttore e un secondo team di produzione per ogni lingua.',
+    'p6.approach': 'Ho costruito e gestito una pipeline video end-to-end: scripting, editing e una fase di localizzazione guidata da agenti AI che adatta ogni video — non solo i sottotitoli, l\'intero adattamento — in più lingue, più tagli social dagli stessi girati.',
+    'p6.result': '6 video pubblicati su YouTube, localizzati in 9 lingue tramite agenti. Concluso con il ruolo in Labelbike (Ott 2025 – Giu 2026).',
+    /* method.html */
+    'mpage.title': 'Metodo',
+    'mpage.p1': 'Ogni progetto di questo sito segue lo stesso ciclo: spec, plan, test, audit. Scrivo la spec prima del codice — cosa deve fare la cosa, e cosa esplicitamente non deve fare. Poi un piano, diviso in passi abbastanza piccoli da poter essere rivisti prima di essere costruiti. Gli agenti AI scrivono una parte consistente del codice risultante, ma lavorano sulla mia spec e sul mio piano, non il contrario: le decisioni architetturali sono mie — in BleaBox sono registrate come nove ADR, perché il ragionamento sopravviva al commit che lo ha implementato.',
+    'mpage.p2': 'Il testing non è una fase separata aggiunta alla fine: si scrive insieme alla feature, ed è per questo che eu4-assistant porta 2.6k righe di test contro 4.2k di implementazione. E il ciclo non finisce quando i test sono verdi. claude-dashboard include uno STRATEGIC_REVIEW — un self-audit che nomina il proprio debito tecnico e gli angoli lasciati a metà con lo stesso tono del README, perché un progetto che mostra solo le vittorie non è un report di stato: è un trailer.',
+    'mpage.p3': 'AI-augmented non vuol dire deciso dall\'AI; vuol dire orchestrare gli agenti come un lead orchestra un team — brief chiaro, output verificato, ragionamento documentato.',
+    'mpage.adrLink': 'Vedi gli ADR su GitHub', 'mpage.testLink': 'Vedi la suite di test', 'mpage.auditLink': 'Leggi lo STRATEGIC_REVIEW',
+    'mpage.closing': 'Le decisioni le prendo io; l\'AI moltiplica l\'esecuzione.',
+    'mpage.exit': 'Torna ai progetti'
   }
 };
 
-const getValueByPath = (obj, path) => path.split('.').reduce((acc, key) => acc?.[key], obj);
-
-function applyLanguage(lang) {
-  const safeLang = translations[lang] ? lang : 'en';
-  document.documentElement.lang = safeLang;
-  localStorage.setItem('lang', safeLang);
-  document.querySelectorAll('[data-i18n]').forEach((el) => {
-    const key = el.getAttribute('data-i18n');
-    const value = getValueByPath(translations[safeLang], key);
-    if (value) el.textContent = value;
+/* ---------- i18n ---------- */
+function applyLang(lang) {
+  const dict = translations[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    if (dict[el.dataset.i18n] !== undefined) el.textContent = dict[el.dataset.i18n];
   });
-  document.querySelectorAll('.lang-btn').forEach((btn) => {
-    const isActive = btn.dataset.lang === safeLang;
-    btn.classList.toggle('active', isActive);
-    btn.setAttribute('aria-pressed', String(isActive));
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    if (dict[el.dataset.i18nPh] !== undefined) el.placeholder = dict[el.dataset.i18nPh];
   });
-  const heroCvBtn = document.getElementById('heroCvDownload');
-  if (heroCvBtn) heroCvBtn.href = `assets/cv-${safeLang}.pdf`;
-
-  const cvImg = document.getElementById('cv-img');
-  if (cvImg) {
-    cvImg.src = `assets/cv-${safeLang}.webp`;
-    cvImg.alt = safeLang === 'it' ? 'Anteprima CV' : 'CV Preview';
-  }
+  document.documentElement.lang = lang;
+  localStorage.setItem('lang', lang);
+  document.querySelectorAll('.lang-btn').forEach(b =>
+    b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
+  const cv = document.getElementById('cvLink');
+  if (cv) cv.href = 'assets/cv-' + lang + '.pdf';
 }
 
-function setupTheme() {
+/* ---------- init ---------- */
+document.addEventListener('DOMContentLoaded', () => {
+  const lang = localStorage.getItem('lang') === 'it' ? 'it' : 'en';
+  if (lang === 'it') applyLang('it');
+  else document.querySelectorAll('.lang-btn').forEach(b =>
+    b.setAttribute('aria-pressed', String(b.dataset.lang === 'en')));
+  document.querySelectorAll('.lang-btn').forEach(b =>
+    b.addEventListener('click', () => applyLang(b.dataset.lang)));
+
+  /* Toggle tema */
   const toggle = document.getElementById('themeToggle');
-  if (!toggle) return;
-  const savedTheme = localStorage.getItem('theme') || 'dark';
-  document.body.classList.toggle('light', savedTheme === 'light');
-  toggle.textContent = savedTheme === 'light' ? '☀︎' : '☾';
-  toggle.setAttribute('aria-pressed', String(savedTheme === 'light'));
-  toggle.addEventListener('click', () => {
-    const isLight = document.body.classList.toggle('light');
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
-    toggle.textContent = isLight ? '☀︎' : '☾';
-    toggle.setAttribute('aria-pressed', String(isLight));
-  });
-}
-
-function setupMenu() {
-  const toggle = document.getElementById('menuToggle');
-  const menu = document.getElementById('navMenu');
-  if (!toggle || !menu) return;
-  toggle.addEventListener('click', () => {
-    const open = menu.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', String(open));
-  });
-}
-
-function setupContactForm() {
-  const form = document.getElementById('contactForm');
-  const feedback = document.getElementById('formFeedback');
-  if (!form || !feedback) return;
-  form.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    const lang = localStorage.getItem('lang') || 'en';
-    const name = form.name.value.trim();
-    const email = form.email.value.trim();
-    const message = form.message.value.trim();
-    const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    if (!name || !emailValid || !message) {
-      feedback.textContent = translations[lang].contact.error;
-      return;
-    }
-    const submitBtn = form.querySelector('button[type="submit"]');
-    if (submitBtn) submitBtn.disabled = true;
-    feedback.textContent = translations[lang].contact.sending;
-    try {
-      const response = await fetch(form.action, {
-        method: 'POST',
-        headers: { Accept: 'application/json' },
-        body: new FormData(form)
-      });
-      if (response.ok) {
-        if (typeof window.gtag === 'function') window.gtag('event', 'submit_contact_form_success');
-        feedback.textContent = translations[lang].contact.success;
-        form.reset();
-      } else {
-        if (typeof window.gtag === 'function') window.gtag('event', 'submit_contact_form_error');
-        feedback.textContent = translations[lang].contact.error;
-      }
-    } catch {
-      feedback.textContent = translations[lang].contact.networkError;
-    } finally {
-      if (submitBtn) submitBtn.disabled = false;
-    }
-  });
-}
-
-function setupAnalyticsEvents() {
-  const track = (eventName, params = {}) => {
-    if (typeof window.gtag === 'function') window.gtag('event', eventName, params);
+  const setTheme = dark => {
+    if (dark) document.documentElement.setAttribute('data-theme', 'dark');
+    else document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem('theme', dark ? 'dark' : 'light');
+    toggle.textContent = dark ? '☀' : '☾';
+    toggle.setAttribute('aria-pressed', String(dark));
   };
-  document.getElementById('viewFeaturedCta')?.addEventListener('click', () => track('click_cta', { cta: 'view_featured_projects' }));
-  document.getElementById('heroCvDownload')?.addEventListener('click', () => {
-    const lang = localStorage.getItem('lang') || 'en';
-    track('download_cv', { language: lang });
-  });
-  document.getElementById('linkedinLink')?.addEventListener('click', () => track('click_social', { platform: 'linkedin' }));
-  document.getElementById('githubLink')?.addEventListener('click', () => track('click_social', { platform: 'github' }));
-  document.getElementById('instagramLink')?.addEventListener('click', () => track('click_social', { platform: 'instagram' }));
-  document.getElementById('emailLink')?.addEventListener('click', () => track('click_email'));
-  document.querySelectorAll('.lang-btn').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      track('switch_language', { language: btn.dataset.lang });
-      applyLanguage(btn.dataset.lang);
+  toggle.textContent = document.documentElement.hasAttribute('data-theme') ? '☀' : '☾';
+  toggle.setAttribute('aria-pressed', String(document.documentElement.hasAttribute('data-theme')));
+  toggle.addEventListener('click', () =>
+    setTheme(!document.documentElement.hasAttribute('data-theme')));
+
+  /* Reveal allo scroll — classi applicate a runtime: senza JS tutto è visibile */
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const targets = document.querySelectorAll('.section, .project-row, .dossier');
+    targets.forEach(el => el.classList.add('reveal-init'));
+    const io = new IntersectionObserver(entries => entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const row = el.matches('.project-row');
+      const delay = row ? [...el.parentElement.querySelectorAll('.project-row')].indexOf(el) * 60 : 0;
+      setTimeout(() => el.classList.add('reveal-in'), delay);
+      io.unobserve(el);
+    }), { rootMargin: '0px 0px -10% 0px' });
+    targets.forEach(el => io.observe(el));
+  }
+
+  /* Form Formspree — validazione inline vs errore rete */
+  const form = document.getElementById('contactForm');
+  if (!form) return;
+  const banner = form.querySelector('.form-banner-error');
+  const success = form.querySelector('.form-success');
+  const btn = form.querySelector('button[type=submit]');
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const lang2 = localStorage.getItem('lang') === 'it' ? 'it' : 'en';
+    const t = translations[lang2];
+    banner.hidden = true;
+    let valid = true;
+    form.querySelectorAll('.field').forEach(f => {
+      const input = f.querySelector('input, textarea');
+      const msg = f.querySelector('.error-msg');
+      let err = '';
+      if (!input.value.trim()) err = t['form.required'];
+      else if (input.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)) err = t['form.invalidEmail'];
+      f.classList.toggle('is-error', !!err);
+      msg.textContent = err;
+      msg.hidden = !err;
+      if (err) valid = false;
     });
+    if (!valid) return;
+    btn.disabled = true;
+    let i = 0;
+    const tick = setInterval(() => { btn.textContent = t['form.sending'] + '.'.repeat(i++ % 3 + 1); }, 400);
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' }
+      });
+      clearInterval(tick);
+      if (!res.ok) throw new Error(res.status);
+      form.querySelectorAll('.field, button').forEach(el => el.hidden = true);
+      success.textContent = t['form.success'];
+      success.hidden = false;
+    } catch {
+      clearInterval(tick);
+      btn.disabled = false;
+      btn.textContent = t['form.send'];
+      banner.textContent = t['form.network'];
+      banner.hidden = false;
+    }
   });
-}
-
-function init() {
-  const preferredLang = localStorage.getItem('lang') || 'en';
-  applyLanguage(preferredLang);
-  setupTheme();
-  setupMenu();
-  setupContactForm();
-  setupAnalyticsEvents();
-  const yearEl = document.getElementById('year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-}
-
-document.addEventListener('DOMContentLoaded', init);
+});
