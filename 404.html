@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page not found — Aronne Zanichelli</title>
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      (function () {
+        var t = localStorage.getItem('theme');
+        if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        if (localStorage.getItem('lang') === 'it') document.documentElement.lang = 'it';
+      })();
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8TT2P1VDT3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-8TT2P1VDT3');
+    </script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="index.html">Aronne Zanichelli</a>
+      <div class="nav-links">
+        <a href="projects.html" data-i18n="nav.projects">Projects</a>
+        <a href="method.html" data-i18n="nav.method">Method</a>
+        <a href="index.html#contact" data-i18n="nav.contact">Contact</a>
+        <button class="lang-btn" data-lang="en" aria-label="Switch to English" aria-pressed="true">EN</button>
+        <button class="lang-btn" data-lang="it" aria-label="Passa all'italiano" aria-pressed="false">IT</button>
+        <button id="themeToggle" aria-label="Switch to dark theme" aria-pressed="false">☾</button>
+      </div>
+    </nav>
+    <main id="main" class="container">
+      <section class="hero">
+        <p class="mono-label">404</p>
+        <h1 data-i18n="nf.title">Page not found</h1>
+        <p data-i18n="nf.msg">This page doesn't exist — or moved. The old Labelbike and editing pages now live inside Projects.</p>
+        <p><a class="link-arrow" href="index.html" data-i18n="nf.cta">Back to home</a></p>
+      </section>
+    </main>
+  </body>
+</html>

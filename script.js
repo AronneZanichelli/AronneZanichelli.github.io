@@ -102,7 +102,11 @@ const translations = {
     'mpage.p3': 'AI-augmented doesn\'t mean AI-decided; it means I orchestrate agents the way a lead orchestrates a team — clear brief, checked output, documented reasoning.',
     'mpage.adrLink': 'View the ADRs on GitHub', 'mpage.testLink': 'See the test suite', 'mpage.auditLink': 'Read the STRATEGIC_REVIEW',
     'mpage.closing': 'The decisions are mine; the AI multiplies execution.',
-    'mpage.exit': 'Back to the projects'
+    'mpage.exit': 'Back to the projects',
+    /* 404 */
+    'nf.title': 'Page not found',
+    'nf.msg': "This page doesn't exist — or moved. The old Labelbike and editing pages now live inside Projects.",
+    'nf.cta': 'Back to home'
   },
   it: {
     'a11y.skip': 'Vai al contenuto',
@@ -204,7 +208,11 @@ const translations = {
     'mpage.p3': 'AI-augmented non vuol dire deciso dall\'AI; vuol dire orchestrare gli agenti come un lead orchestra un team — brief chiaro, output verificato, ragionamento documentato.',
     'mpage.adrLink': 'Vedi gli ADR su GitHub', 'mpage.testLink': 'Vedi la suite di test', 'mpage.auditLink': 'Leggi lo STRATEGIC_REVIEW',
     'mpage.closing': 'Le decisioni le prendo io; l\'AI moltiplica l\'esecuzione.',
-    'mpage.exit': 'Torna ai progetti'
+    'mpage.exit': 'Torna ai progetti',
+    /* 404 */
+    'nf.title': 'Pagina non trovata',
+    'nf.msg': 'Questa pagina non esiste — o si è spostata. Le vecchie pagine Labelbike ed editing ora vivono dentro Progetti.',
+    'nf.cta': 'Torna alla home'
   }
 };
 

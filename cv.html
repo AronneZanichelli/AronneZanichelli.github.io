@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aronne Zanichelli — Junior Software Developer (AI-augmented)</title>
+    <meta name="description" content="CV of Aronne Zanichelli — Junior Software Developer (AI-augmented). Single HTML source for both the web page and the PDF." />
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8TT2P1VDT3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-8TT2P1VDT3');
+    </script>
+    <style>
+      /* CV — tema light di Engineering Notebook, unico supporto di stampa */
+      :root {
+        --bg: #FBFAF6; --ink: #1C1B17; --ink-2: #57534A;
+        --hairline: #E5E1D5; --accent: #A33D22;
+        --serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+        --mono: 'JetBrains Mono', Consolas, 'SF Mono', monospace;
+      }
+      * { margin: 0; box-sizing: border-box; }
+      html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      body {
+        background: var(--bg); color: var(--ink);
+        font: 400 10pt/1.28 var(--serif);
+        max-width: 178mm; margin: 0 auto; padding: 24px;
+      }
+      h1 { font: 600 20pt/1.1 var(--serif); }
+      h2 {
+        font: 500 8pt/1 var(--mono); text-transform: uppercase; letter-spacing: 0.14em;
+        color: var(--accent); border-top: 1px solid var(--hairline);
+        padding-top: 4px; margin: 8px 0 4px;
+      }
+      h3 { font: 500 10.5pt/1.25 var(--serif); display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+      h3 .dates { font: 400 8pt/1.6 var(--mono); color: var(--ink-2); white-space: nowrap; }
+      p { max-width: none; }
+      a { color: var(--ink); text-decoration: none; }
+      ul { margin: 3px 0 6px; padding-left: 15px; }
+      li { margin-bottom: 0; }
+      .role { font: 500 9.5pt/1.3 var(--mono); color: var(--accent); margin: 3px 0; }
+      .contacts, .meta { font: 400 7.5pt/1.6 var(--mono); color: var(--ink-2); }
+      .contacts a { color: var(--ink-2); }
+      .note { font-style: italic; color: var(--ink-2); font-size: 9pt; }
+      .proof {
+        font: 400 8pt/1.4 var(--mono); color: var(--ink-2);
+        border-block: 1px solid var(--hairline); padding: 4px 0; margin: 6px 0;
+        white-space: nowrap; overflow: hidden;
+      }
+      .proof strong { color: var(--ink); font-weight: 500; }
+      table { width: 100%; border-collapse: collapse; }
+      th, td { text-align: left; vertical-align: top; padding: 2px 8px 2px 0; border-bottom: 1px solid var(--hairline); }
+      th { font: 500 7pt/1.4 var(--mono); text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-2); }
+      td { font-family: var(--serif); font-size: 8.5pt; }
+      td.mono, .mono { font: 400 7.5pt/1.45 var(--mono); }
+      .colophon {
+        font: 400 7pt/1.5 var(--mono); color: var(--ink-2);
+        border-top: 1px solid var(--hairline); padding-top: 5px; margin-top: 6px;
+      }
+      .toolbar {
+        display: flex; gap: 8px; justify-content: flex-end;
+        max-width: 174mm; margin: 0 auto; padding: 12px 24px 0;
+        font: 500 10pt/1 var(--mono);
+      }
+      .toolbar button {
+        background: none; border: 1px solid var(--hairline); border-radius: 2px;
+        padding: 6px 12px; cursor: pointer; color: var(--ink-2); font: inherit;
+      }
+      .toolbar button[aria-pressed="true"] { color: var(--ink); border-color: var(--accent); }
+      @page { size: A4; margin: 8mm 14mm; }
+      @media print {
+        body { padding: 0; max-width: none; }
+        .toolbar { display: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="toolbar">
+      <button class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
+      <button class="lang-btn" data-lang="it" aria-pressed="false">IT</button>
+      <button onclick="print()" data-cv="toolbar.print">Print / PDF</button>
+    </div>
+
+    <main>
+      <header>
+        <h1>Aronne Zanichelli</h1>
+        <p class="role" data-cv="role">Junior Software Developer (AI-augmented)</p>
+        <p class="contacts">
+          <a href="mailto:aronnezanichelli@gmail.com">aronnezanichelli@gmail.com</a> ·
+          GitHub: <a href="https://github.com/AronneZanichelli">github.com/AronneZanichelli</a> ·
+          LinkedIn: <a href="https://www.linkedin.com/in/aronne-zanichelli-62668b241">linkedin.com/in/aronne-zanichelli-62668b241</a><br />
+          <span data-cv="site">Site</span>: <a href="https://aronnezanichelli.github.io">aronnezanichelli.github.io</a> ·
+          <span data-cv="location">Reggio Emilia area, Italy — available in Italy and abroad, remote OK</span>
+        </p>
+      </header>
+
+      <h2 data-cv="h.summary">Summary</h2>
+      <p data-cv="summary">Junior software developer with an AI-augmented workflow: spec, generate, test, audit — the architecture decisions are mine. Six public repositories back every line of this CV, from a custom binary-format parser to a server-authoritative multiplayer game. Recently completed a Creative &amp; AI vocational program, running production video and localization pipelines at Labelbike.</p>
+
+      <p class="proof"><strong>6</strong> <span data-cv="proof.repos">public repositories</span> · <strong>~30k</strong> LOC · <strong>2.6k</strong> <span data-cv="proof.tests">test lines</span> · <strong>9</strong> ADR</p>
+
+      <h2 data-cv="h.experience">Experience</h2>
+      <h3>Labelbike — Creative &amp; AI Content <span class="dates" data-cv="lb.dates">Oct 2025 – Jun 2026</span></h3>
+      <p class="note" data-cv="lb.note">Formally a curricular internship (IFTS program); operationally I ran the pipeline with real delegation.</p>
+      <ul>
+        <li data-cv="lb.b1">Ran the creative/social content pipeline with real delegation, not shadowing.</li>
+        <li data-cv="lb.b2">Produced and published 6 YouTube videos end-to-end (script, edit, AI-assisted production).</li>
+        <li data-cv="lb.b3">Localized content into 9 languages via an AI-agent pipeline.</li>
+        <li data-cv="lb.b4">Supported internal development work in Java, C++, SQL.</li>
+      </ul>
+
+      <h3>Optima — Business Sales Consultant <span class="dates" data-cv="op.dates">May 2024 – Jul 2025</span></h3>
+      <p class="note" data-cv="op.note">Commercial role — sales and client relations, not software development.</p>
+      <ul>
+        <li data-cv="op.b1">Sold telecom/utility services to business and private clients (freelance).</li>
+        <li data-cv="op.b2">Managed a client portfolio autonomously — prospecting, negotiation, retention.</li>
+      </ul>
+
+      <h2 data-cv="h.education">Education</h2>
+      <h3 data-cv="ed.t1">Technical diploma, Computer Science (Perito Informatico) <span class="dates" data-cv="ed.d1">Jul 2025</span></h3>
+      <p class="meta" data-cv="ed.s1">Istituto Superiore Statale S. D'Arzo</p>
+      <h3 data-cv="ed.t2">IFTS Creative &amp; AI — vocational program, concluded <span class="dates" data-cv="ed.d2">Oct 2025 – Jun 2026</span></h3>
+      <p class="meta" data-cv="ed.s2">50% coursework + 50% on-the-job at Labelbike</p>
+
+      <h2 data-cv="h.projects">Selected projects</h2>
+      <table>
+        <thead>
+          <tr>
+            <th data-cv="pt.h1">Project</th><th>Stack</th><th data-cv="pt.h3">Evidence</th><th data-cv="pt.h4">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>eu4-assistant</strong><br /><span class="mono">github.com/AronneZanichelli/eu4-assistant</span></td>
+            <td class="mono">Python, PyQt6, CV</td>
+            <td data-cv="pt.p1">Custom recursive-descent parser for a proprietary binary format · ~4.2k LOC · 2.6k test lines (0.62 ratio) · multi-version CI · PyInstaller packaging</td>
+            <td data-cv="pt.s1">Alpha, active</td>
+          </tr>
+          <tr>
+            <td><strong>BleaBox</strong><br /><span class="mono">github.com/AronneZanichelli/BleaBox</span></td>
+            <td class="mono">Luau --!strict, Roblox</td>
+            <td data-cv="pt.p2">Server-authoritative anti-exploit architecture · data-driven registry · 9 ADRs · ~8.7k lines</td>
+            <td data-cv="pt.s2">Active</td>
+          </tr>
+          <tr>
+            <td><strong>claude-dashboard</strong><br /><span class="mono">github.com/AronneZanichelli/claude-dashboard</span></td>
+            <td class="mono">Electron 33, React 19, TS 5.7</td>
+            <td data-cv="pt.p3">Desktop cockpit for Claude Code (Windows+WSL2) · 15MB JSONL streaming with virtualization · ~10.4k LOC · self-critical STRATEGIC_REVIEW included</td>
+            <td data-cv="pt.s3">Paused, known bug in progress</td>
+          </tr>
+          <tr>
+            <td><strong>VOXELGEN</strong><br /><span class="mono">github.com/AronneZanichelli/VOXELGEN</span></td>
+            <td class="mono">Godot 4, C#</td>
+            <td data-cv="pt.p4">Realtime deformable voxel engine · Marching Cubes/Transvoxel · producer/consumer threading · -65% regen time (measured)</td>
+            <td data-cv="pt.s4">Paused, resume planned</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="meta" data-cv="pt.more">+2 more repositories (procedural evolutionary sandbox, creative pipeline) → aronnezanichelli.github.io/projects.html</p>
+
+      <h2 data-cv="h.skills">Skills (evidence-based)</h2>
+      <table>
+        <tbody>
+          <tr>
+            <th data-cv="sk.a1">Languages &amp; runtimes</th>
+            <td class="mono">Python · TypeScript/React/Electron · C# · GDScript · Luau · Java · C++ · SQL</td>
+          </tr>
+          <tr>
+            <th data-cv="sk.a2">Engineering practices</th>
+            <td class="mono" data-cv="sk.v2">Git &amp; PR workflow · automated tests (pytest, GUT) · CI/CD (GitHub Actions) · ADR · AI-augmented method (spec → plan → test → audit)</td>
+          </tr>
+          <tr>
+            <th data-cv="sk.a3">Creative &amp; content</th>
+            <td class="mono" data-cv="sk.v3">Video editing (DaVinci Resolve) · AI content &amp; prompting · multilingual localization · social publishing</td>
+          </tr>
+          <tr>
+            <th data-cv="h.langs">Languages</th>
+            <td data-cv="langs">Italian — native · English — professional working proficiency (this CV and the site are self-written, bilingual)</td>
+          </tr>
+          <tr>
+            <th data-cv="h.avail">Availability</th>
+            <td data-cv="avail">Immediate · Italy and abroad · full-time · on-site / hybrid / remote</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="colophon" data-cv="colophon">This CV is generated from a single HTML/CSS source — no divergence between web and print. Source: github.com/AronneZanichelli/AronneZanichelli.github.io</p>
+    </main>
+
+    <script>
+      /* CV autonomo: EN statico nel markup, IT applicato via dizionario locale.
+         Lingua da ?lang= (per la stampa headless) o localStorage. */
+      (function () {
+        var IT = {
+          'role': 'Sviluppatore Software Junior (AI-augmented)',
+          'site': 'Sito',
+          'location': 'Provincia di Reggio Emilia, Italia — disponibile in Italia e all’estero, anche remoto',
+          'toolbar.print': 'Stampa / PDF',
+          'h.summary': 'Profilo',
+          'summary': 'Sviluppatore software junior con metodo AI-augmented: specifico, genero, testo, verifico — le decisioni architetturali sono mie. Sei repository pubblici sostengono ogni riga di questo CV, da un parser custom per un formato binario proprietario a un gioco multiplayer server-authoritative. Ho da poco concluso un percorso IFTS Creative & AI, gestendo pipeline video e localizzazione in Labelbike.',
+          'proof.repos': 'repository pubblici', 'proof.tests': 'righe di test',
+          'h.experience': 'Esperienza',
+          'lb.dates': 'Ott 2025 – Giu 2026',
+          'op.dates': 'Mag 2024 – Lug 2025',
+          'ed.d1': 'Lug 2025',
+          'ed.d2': 'Ott 2025 – Giu 2026',
+          'lb.note': 'Formalmente uno stage curricolare (percorso IFTS); operativamente ho gestito la pipeline con deleghe reali.',
+          'lb.b1': 'Gestita la pipeline creative/social con deleghe reali, non da semplice tirocinante.',
+          'lb.b2': 'Prodotti e pubblicati 6 video YouTube end-to-end (script, editing, produzione AI-assisted).',
+          'lb.b3': 'Localizzati contenuti in 9 lingue tramite pipeline di agenti AI.',
+          'lb.b4': 'Supporto allo sviluppo interno in Java, C++, SQL.',
+          'op.note': 'Ruolo commerciale — vendita e relazione clienti, non sviluppo software.',
+          'op.b1': 'Vendita di servizi telecom/utility a clienti business e privati (libero professionista).',
+          'op.b2': 'Gestione autonoma del portafoglio clienti — ricerca, negoziazione, fidelizzazione.',
+          'h.education': 'Formazione',
+          'ed.t1': 'Diploma di Perito Informatico (Informatica e Telecomunicazioni)',
+          'ed.s1': 'Istituto Superiore Statale S. D’Arzo',
+          'ed.t2': 'IFTS Creative & AI — percorso di formazione tecnica superiore, concluso',
+          'ed.s2': '50% aula + 50% lavoro operativo presso Labelbike',
+          'h.projects': 'Progetti selezionati',
+          'pt.h1': 'Progetto', 'pt.h3': 'Prova', 'pt.h4': 'Stato',
+          'pt.p1': 'Parser ricorsivo custom per formato binario proprietario · ~4.2k LOC · 2.6k righe di test (ratio 0.62) · CI multi-versione · packaging PyInstaller',
+          'pt.s1': 'Alpha, attivo',
+          'pt.p2': 'Architettura server-authoritative anti-exploit · registry data-driven · 9 ADR · ~8.7k righe',
+          'pt.s2': 'Attivo',
+          'pt.p3': 'Cockpit desktop per Claude Code (Windows+WSL2) · streaming JSONL 15MB con virtualizzazione · ~10.4k LOC · STRATEGIC_REVIEW autocritico incluso',
+          'pt.s3': 'In pausa, bug noto in lavorazione',
+          'pt.p4': 'Motore voxel deformabile realtime · Marching Cubes/Transvoxel · threading producer/consumer · -65% tempi di rigenerazione (misurato)',
+          'pt.s4': 'In pausa, ripresa prevista',
+          'pt.more': '+2 altri repository (sandbox procedurale evolutiva, pipeline creativa) → aronnezanichelli.github.io/projects.html',
+          'h.skills': 'Competenze (evidence-based)',
+          'sk.a1': 'Linguaggi e runtime', 'sk.a2': 'Pratiche ingegneristiche', 'sk.a3': 'Creative & content',
+          'sk.v2': 'Git e workflow a PR · test automatici (pytest, GUT) · CI/CD (GitHub Actions) · ADR · metodo AI-augmented (spec → plan → test → audit)',
+          'sk.v3': 'Video editing (DaVinci Resolve) · AI content & prompting · localizzazione multilingua · pubblicazione social',
+          'h.langs': 'Lingue',
+          'langs': 'Italiano — madrelingua · Inglese — professional working proficiency (CV e sito sono auto-scritti, bilingue)',
+          'h.avail': 'Disponibilità',
+          'avail': 'Immediata · Italia ed estero · full-time · on-site / ibrido / remoto',
+          'colophon': 'Questo CV è generato da un’unica sorgente HTML/CSS — nessuna divergenza tra web e stampa. Sorgente: github.com/AronneZanichelli/AronneZanichelli.github.io'
+        };
+        var EN = {};
+        document.querySelectorAll('[data-cv]').forEach(function (el) { EN[el.dataset.cv] = el.textContent; });
+        function apply(lang) {
+          var dict = lang === 'it' ? IT : EN;
+          document.querySelectorAll('[data-cv]').forEach(function (el) {
+            if (dict[el.dataset.cv] !== undefined) {
+              if (el.tagName === 'H3' && el.querySelector('.dates')) {
+                el.childNodes[0].textContent = dict[el.dataset.cv] + ' ';
+              } else el.textContent = dict[el.dataset.cv];
+            }
+          });
+          document.documentElement.lang = lang;
+          document.title = lang === 'it'
+            ? 'Aronne Zanichelli — Sviluppatore Software Junior (AI-augmented)'
+            : 'Aronne Zanichelli — Junior Software Developer (AI-augmented)';
+          document.querySelectorAll('.lang-btn').forEach(function (b) {
+            b.setAttribute('aria-pressed', String(b.dataset.lang === lang));
+          });
+        }
+        /* le date restano fuori dal nodo testo tradotto */
+        document.querySelectorAll('h3[data-cv]').forEach(function (el) {
+          var d = el.querySelector('.dates');
+          if (d) EN[el.dataset.cv] = el.childNodes[0].textContent.trim();
+        });
+        var lang = new URLSearchParams(location.search).get('lang') || localStorage.getItem('lang') || 'en';
+        if (lang === 'it') apply('it');
+        document.querySelectorAll('.lang-btn').forEach(function (b) {
+          b.addEventListener('click', function () {
+            localStorage.setItem('lang', b.dataset.lang);
+            apply(b.dataset.lang);
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

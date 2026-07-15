@@ -1,80 +1,57 @@
-# Aronne Zanichelli - Static Bilingual Portfolio (EN/IT)
+# Aronne Zanichelli — Portfolio "Engineering Notebook" (EN/IT)
 
-Professional static portfolio/CV site, optimized for technical applications (junior developer, game dev, digital creative), with English default and Italian toggle.
+Static bilingual portfolio + CV. English is the default, Italian is applied client-side.
+No build step, no framework — HTML, CSS, and ~60 lines of vanilla JS logic.
 
-## Project structure
+## Structure
 
 ```text
 .
-├── index.html
-├── style.css
-├── script.js
-├── README.md
-└── assets/
-    ├── profile.jpg
-    ├── cv_en.pdf
-    └── cv_it.pdf
+├── index.html        # cover: hero, proof strip, project index, method teaser, timeline, skills, contact
+├── projects.html     # six long-form dossiers (anchors: #eu4-assistant … #labelbike)
+├── method.html       # the AI-augmented workflow: spec → plan → test → audit, with links to real artifacts
+├── cv.html           # single source for the CV — the PDF is printed from this page
+├── 404.html
+├── featured.html     # redirect stub → projects.html
+├── editing.html      # redirect stub → projects.html#labelbike
+├── labelbike.html    # redirect stub → projects.html#labelbike
+├── style.css         # design tokens (light primary / dark negative) + components
+├── script.js         # translations object + i18n / theme / reveal / form logic
+└── assets/           # profile.webp, favicon.svg, og-card.png, cv-en.pdf, cv-it.pdf, previews
 ```
 
-## Local test (2-3 steps)
+## Local test
 
-1. Run a local static server:
-   ```bash
-   python3 -m http.server 8080
-   ```
-2. Open `http://localhost:8080`.
-3. Verify language toggle (EN|IT), theme toggle, form validation, and CV download buttons.
-
-## Publish
-
-### GitHub Pages
-1. Push repo to GitHub.
-2. Go to **Settings → Pages** and set source to your branch root.
-3. Save and open generated URL.
-
-### Netlify
-1. Connect the repository in Netlify.
-2. Build command: none. Publish directory: `/`.
-3. Deploy site and optionally enable Netlify Forms.
-
-## Where to edit content
-
-- Bio and all text translations: `script.js` inside `translations.en.about.bio` and `translations.it.about.bio`.
-- Education timeline entries: `index.html` timeline section + labels in `script.js` under `timeline`.
-- Portfolio cards and in-progress project description: `script.js` under `portfolio`.
-
-## Contact form integration snippets
-
-### Formspree
-```html
-<form action="https://formspree.io/f/your-form-id" method="POST">
-  <input type="text" name="name" required />
-  <input type="email" name="email" required />
-  <textarea name="message" required></textarea>
-  <button type="submit">Send</button>
-</form>
+```bash
+python3 -m http.server 8080
 ```
 
-### Netlify Forms
-```html
-<form name="contact" method="POST" data-netlify="true">
-  <input type="hidden" name="form-name" value="contact" />
-  <input type="text" name="name" required />
-  <input type="email" name="email" required />
-  <textarea name="message" required></textarea>
-  <button type="submit">Send</button>
-</form>
+Open `http://localhost:8080` and check: EN/IT toggle, light/dark theme, contact form states, project anchors.
+
+## Editing content
+
+- All site text lives twice: static English in the HTML, and both languages in the
+  `translations` object in `script.js`. **Both must be updated together.**
+- The professional role string — `Junior Software Developer (AI-augmented)` — is an
+  identity token: it must match verbatim in `<title>`, hero eyebrow, OG meta, and `cv.html`.
+- Design tokens (colors, type scale, spacing) live only in the two `:root` blocks of
+  `style.css`. No hex values anywhere else.
+
+## CV regeneration
+
+`cv.html` is the single source for both languages (it embeds its own translations).
+
+1. Open `cv.html` (or `cv.html?lang=it`) in Chrome.
+2. Print → Save as PDF, A4, margins "None", background graphics ON, headers/footers OFF.
+3. Save as `assets/cv-en.pdf` / `assets/cv-it.pdf` (names are wired into the site).
+
+Headless equivalent:
+
+```bash
+chrome --headless --print-to-pdf=assets/cv-en.pdf --no-pdf-header-footer cv.html
 ```
 
-## CV PDF generation
+## Deploy
 
-Two methods are already supported:
-
-1. Direct files in `assets/cv_en.pdf` and `assets/cv_it.pdf` (download buttons are linked).
-2. In-browser print mode via `Print / Save as PDF` button (`window.print()` + print CSS in `style.css`).
-
-## Performance notes
-
-- Replace `assets/profile.jpg` with optimized image (`.webp` recommended under 250 KB).
-- Keep PDFs lightweight (< 1 MB each).
-- Use compressed media for portfolio screenshots/videos.
+Push to `main` → GitHub Pages redeploys automatically (~1 minute). Never push to `main`
+directly: branch + PR.
