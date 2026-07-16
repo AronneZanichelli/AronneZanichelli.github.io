@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects — Aronne Zanichelli</title>
+    <meta name="description" content="Six software projects with real metrics: architecture decisions, test coverage, ADRs, results — code first, adjectives never." />
+    <meta property="og:site_name" content="Aronne Zanichelli — Junior Software Developer (AI-augmented)" />
+    <meta property="og:title" content="Projects — Aronne Zanichelli" />
+    <meta property="og:description" content="Six software projects with real metrics: architecture decisions, test coverage, ADRs, results — code first, adjectives never." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://aronnezanichelli.github.io/assets/og-card.png" />
+    <meta property="og:image:alt" content="Junior Software Developer (AI-augmented)" />
+    <meta property="og:url" content="https://aronnezanichelli.github.io/projects.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Projects — Aronne Zanichelli" />
+    <meta name="twitter:description" content="Six software projects with real metrics: architecture decisions, test coverage, ADRs, results — code first, adjectives never." />
+    <meta name="twitter:image" content="https://aronnezanichelli.github.io/assets/og-card.png" />
+    <link rel="canonical" href="https://aronnezanichelli.github.io/projects.html" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      (function () {
+        var t = localStorage.getItem('theme');
+        if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        if (localStorage.getItem('lang') === 'it') document.documentElement.lang = 'it';
+      })();
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8TT2P1VDT3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-8TT2P1VDT3');
+    </script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
+
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="index.html">Aronne Zanichelli</a>
+      <div class="nav-links">
+        <a href="projects.html" aria-current="page" data-i18n="nav.projects">Projects</a>
+        <a href="method.html" data-i18n="nav.method">Method</a>
+        <a href="index.html#contact" data-i18n="nav.contact">Contact</a>
+        <button class="lang-btn" data-lang="en" aria-label="Switch to English" aria-pressed="true">EN</button>
+        <button class="lang-btn" data-lang="it" aria-label="Passa all'italiano" aria-pressed="false">IT</button>
+        <button id="themeToggle" aria-label="Switch to dark theme" aria-pressed="false">☾</button>
+      </div>
+    </nav>
+
+    <main id="main" class="container">
+      <header class="hero">
+        <h1 data-i18n="projects.title">Projects</h1>
+        <p data-i18n="projects.intro">Six repositories, in the order I'd want a reviewer to open them.</p>
+      </header>
+
+      <!-- 01 — eu4-assistant -->
+      <article class="dossier" id="eu4-assistant">
+        <h2><span class="num mono">01</span> eu4-assistant</h2>
+        <div class="repo-card">
+          <div class="cell"><span class="label" data-i18n="repo.stack">Stack</span><span class="value">Python · PyQt6 · CV</span></div>
+          <div class="cell"><span class="label" data-i18n="repo.metric">Key metric</span><span class="value">4.2k LOC / 0.62 test ratio</span></div>
+          <div class="cell"><span class="label" data-i18n="repo.status">Status</span><span class="value"><span class="badge badge--alpha" data-i18n="status.alpha">Alpha</span></span></div>
+          <div class="cell"><span class="label" data-i18n="repo.link">Link</span><span class="value"><a href="https://github.com/AronneZanichelli/eu4-assistant" data-i18n="repo.github">View on GitHub</a></span></div>
+        </div>
+        <h3 data-i18n="dossier.problem">Problem</h3>
+        <p data-i18n="p1.problem">EU4 exposes no API for reading a running game or hooking into external overlays: anyone building a companion tool has to reverse-engineer the save format and the screen itself.</p>
+        <h3 data-i18n="dossier.approach">Approach</h3>
+        <p data-i18n="p1.approach">I wrote a recursive-descent parser for the proprietary Clausewitz format and a computer-vision module that reads UI elements outside the game, inside a PyQt6 desktop app.</p>
+        <div class="table-scroll">
+          <table class="metrics">
+            <tbody>
+              <tr><th scope="row">LOC</th><td>~4 200</td></tr>
+              <tr><th scope="row" data-i18n="m.tests">Test lines</th><td>2 600 (ratio 0.62)</td></tr>
+              <tr><th scope="row">CI</th><td data-i18n="m.ciMulti">green across Python versions</td></tr>
+              <tr><th scope="row" data-i18n="m.packaging">Packaging</th><td>PyInstaller</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p data-i18n="p1.result">~4.2k LOC, 2.6k lines of tests (0.62 ratio), CI green across Python versions, PyInstaller installer. Status: alpha, active development.</p>
+        <p><a class="link-arrow" href="https://github.com/AronneZanichelli/eu4-assistant" data-i18n="repo.github">View on GitHub</a></p>
+        <p class="next-link"><a class="link-arrow" href="#claude-dashboard" data-i18n="dossier.next">Next project</a></p>
+      </article>
+
+      <!-- 02 — claude-dashboard -->
+      <article class="dossier" id="claude-dashboard">
+        <h2><span class="num mono">02</span> claude-dashboard</h2>
+        <div class="repo-card">
+          <div class="cell"><span class="label" data-i18n="repo.stack">Stack</span><span class="value">Electron 33 · React 19 · TS 5.7</span></div>
+          <div class="cell"><span class="label" data-i18n="repo.metric">Key metric</span><span class="value">10.4k LOC</span></div>
+          <div class="cell"><span class="label" data-i18n="repo.status">Status</span><span class="value"><span class="badge badge--paused" data-i18n="status.paused">Paused</span></span></div>
+          <div class="cell"><span class="label" data-i18n="repo.link">Link</span><span class="value"><a href="https://github.com/AronneZanichelli/claude-dashboard" data-i18n="repo.github">View on GitHub</a></span></div>
+        </div>
+        <h3 data-i18n="dossier.problem">Problem</h3>
+        <p data-i18n="p2.problem">Running Claude Code on Windows means bouncing through WSL2 across scattered terminals, with no unified view of sessions and logs on either side.</p>
+        <h3 data-i18n="dossier.approach">Approach</h3>
+        <p data-i18n="p2.approach">I built an Electron cockpit using node-pty for a real pty bridge between Windows and WSL2, streaming and parsing JSONL logs up to 15MB with list virtualization to stay smooth, plus a STRATEGIC_REVIEW that documents the tech debt honestly.</p>
+        <div class="table-scroll">
+          <table class="metrics">
+            <tbody>
+              <tr><th scope="row">LOC</th><td>~10 400</td></tr>
+              <tr><th scope="row" data-i18n="m.streaming">Log streaming</th><td>JSONL 15MB, list virtualization</td></tr>
+              <tr><th scope="row" data-i18n="m.audit">Self-audit</th><td>STRATEGIC_REVIEW</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p data-i18n="p2.result">~10.4k LOC, public self-audit (STRATEGIC_REVIEW). Status: short pause, known bug in progress.</p>
+        <p><a class="link-arrow" href="https://github.com/AronneZanichelli/claude-dashboard" data-i18n="repo.github">View on GitHub</a></p>
+        <p class="next-link"><a class="link-arrow" href="#bleabox" data-i18n="dossier.next">Next project</a></p>
+      </article>
+
+      <!-- 03 — BleaBox -->
+      <article class="dossier" id="bleabox">
+        <h2><span class="num mono">03</span> BleaBox</h2>
+        <div class="repo-card">
+          <div class="cell"><span class="label" data-i18n="repo.stack">Stack</span><span class="value">Luau (--!strict) · Roblox</span></div>
+          <div class="cell"><span class="label" data-i18n="repo.metric">Key metric</span><span class="value">8.7k lines / 9 ADR</span></div>
+          <div class="cell"><span class="label" data-i18n="repo.status">Status</span><span class="value"><span class="badge badge--active" data-i18n="status.active">Active</span></span></div>
+          <div class="cell"><span class="label" data-i18n="repo.link">Link</span><span class="value"><a href="https://github.com/AronneZanichelli/BleaBox" data-i18n="repo.github">View on GitHub</a></span></div>
+        </div>
+        <h3 data-i18n="dossier.problem">Problem</h3>
+        <p data-i18n="p3.problem">A multiplayer action-RPG on Roblox is exposed by nature to compromised clients: if the client decides what's true, someone will exploit it.</p>
+        <h3 data-i18n="dossier.approach">Approach</h3>
+        <p data-i18n="p3.approach">Server-authoritative architecture in Luau strict mode: the server validates every state-changing action, a data-driven registry manages items and abilities without touching code, 9 ADRs document the decisions made.</p>
+        <div class="table-scroll">
+          <table class="metrics">
+            <tbody>
+              <tr><th scope="row" data-i18n="m.lines">Lines</th><td>~8 700</td></tr>
+              <tr><th scope="row">ADR</th><td>9</td></tr>
+              <tr><th scope="row" data-i18n="m.arch">Architecture</th><td>server-authoritative, data-driven registry</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p data-i18n="p3.result">~8.7k lines, 9 ADRs, anti-exploit architecture. Status: active.</p>
+        <p><a class="link-arrow" href="https://github.com/AronneZanichelli/BleaBox" data-i18n="repo.github">View on GitHub</a></p>
+        <p class="next-link"><a class="link-arrow" href="#voxelgen" data-i18n="dossier.next">Next project</a></p>
+      </article>
+
+      <!-- 04 — VOXELGEN -->
+      <article class="dossier" id="voxelgen">
+        <h2><span class="num mono">04</span> VOXELGEN</h2>
+        <div class="repo-card">
+          <div class="cell"><span class="label" data-i18n="repo.stack">Stack</span><span class="value">Godot 4 · C#</span></div>
+          <div class="cell"><span class="label" data-i18n="repo.metric">Key metric</span><span class="value">-65% regen time</span></div>
+          <div class="cell"><span class="label" data-i18n="repo.status">Status</span><span class="value"><span class="badge badge--paused" data-i18n="status.paused2">Paused</span></span></div>
+          <div class="cell"><span class="label" data-i18n="repo.link">Link</span><span class="value"><a href="https://github.com/AronneZanichelli/VOXELGEN" data-i18n="repo.github">View on GitHub</a></span></div>
+        </div>
+        <h3 data-i18n="dossier.problem">Problem</h3>
+        <p data-i18n="p4.problem">Realtime deformable voxel terrain that regenerates its mesh on the main thread stalls the frame rate on every edit.</p>
+        <h3 data-i18n="dossier.approach">Approach</h3>
+        <p data-i18n="p4.approach">Marching Cubes and Transvoxel to generate mesh across LOD transitions, a producer/consumer threading model to move regeneration off the main thread, optimizations profiled and measured, not eyeballed.</p>
+        <div class="table-scroll">
+          <table class="metrics">
+            <tbody>
+              <tr><th scope="row" data-i18n="m.regen">Regen time</th><td>-65% (profiler-measured)</td></tr>
+              <tr><th scope="row" data-i18n="m.meshing">Meshing</th><td>Marching Cubes / Transvoxel</td></tr>
+              <tr><th scope="row">Threading</th><td>producer / consumer</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p data-i18n="p4.result">-65% regeneration time, measured with a profiler. Status: paused, resume planned.</p>
+        <p><a class="link-arrow" href="https://github.com/AronneZanichelli/VOXELGEN" data-i18n="repo.github">View on GitHub</a></p>
+        <p class="next-link"><a class="link-arrow" href="#undergenesis" data-i18n="dossier.next">Next project</a></p>
+      </article>
+
+      <!-- 05 — UNDERGENESIS -->
+      <article class="dossier" id="undergenesis">
+        <h2><span class="num mono">05</span> UNDERGENESIS</h2>
+        <div class="repo-card">
+          <div class="cell"><span class="label" data-i18n="repo.stack">Stack</span><span class="value">Godot 4 · GDScript</span></div>
+          <div class="cell"><span class="label" data-i18n="repo.metric">Key metric</span><span class="value">7.4k lines, test-first</span></div>
+          <div class="cell"><span class="label" data-i18n="repo.status">Status</span><span class="value"><span class="badge badge--paused" data-i18n="status.paused3">Paused</span></span></div>
+          <div class="cell"><span class="label" data-i18n="repo.link">Link</span><span class="value"><a href="https://github.com/AronneZanichelli/UNDERGENESIS" data-i18n="repo.github">View on GitHub</a></span></div>
+        </div>
+        <h3 data-i18n="dossier.problem">Problem</h3>
+        <p data-i18n="p5.problem">A procedural evolutionary sandbox lives or dies on world variety and on save files surviving across versions.</p>
+        <h3 data-i18n="dossier.approach">Approach</h3>
+        <p data-i18n="p5.approach">Test-first development with GUT from the first commit, multi-layered noise generation for terrain, biome, and ecosystem, a versioned save system with explicit migrations between versions.</p>
+        <div class="table-scroll">
+          <table class="metrics">
+            <tbody>
+              <tr><th scope="row" data-i18n="m.lines2">Lines</th><td>~7 400</td></tr>
+              <tr><th scope="row" data-i18n="m.testfw">Test framework</th><td>GUT, test-first</td></tr>
+              <tr><th scope="row" data-i18n="m.saves">Save system</th><td data-i18n="m.savesV">versioned, explicit migrations</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p data-i18n="p5.result">~7.4k lines of GDScript, test-first from day one, versioned saves with migrations. Status: paused, resume planned.</p>
+        <p><a class="link-arrow" href="https://github.com/AronneZanichelli/UNDERGENESIS" data-i18n="repo.github">View on GitHub</a></p>
+        <p class="next-link"><a class="link-arrow" href="#labelbike" data-i18n="dossier.next">Next project</a></p>
+      </article>
+
+      <!-- 06 — Labelbike -->
+      <article class="dossier" id="labelbike">
+        <h2><span class="num mono">06</span> Labelbike</h2>
+        <p data-i18n="p6.intro">Development is the core of what I do; creative and AI-content work is the differentiator that came with it. At Labelbike I ran a video pipeline that went from script to published upload, using AI tooling to localize every video into nine languages instead of one. It's not a hobby bolted onto a dev portfolio — it's a second skill set, proven the same way as the code: with published output, not a claim.</p>
+        <div class="repo-card">
+          <div class="cell"><span class="label" data-i18n="repo.stack">Stack</span><span class="value">Video · AI pipeline</span></div>
+          <div class="cell"><span class="label" data-i18n="repo.metric">Key metric</span><span class="value">6 video / 9 <span data-i18n="m.langsWord">languages</span></span></div>
+          <div class="cell"><span class="label" data-i18n="repo.status">Status</span><span class="value"><span class="badge badge--done" data-i18n="status.done">Completed</span></span></div>
+          <div class="cell"><span class="label" data-i18n="repo.link">Link</span><span class="value"><a href="https://www.youtube.com/@Labelbike_prezzopazzo" data-i18n="repo.youtube">Watch on YouTube</a></span></div>
+        </div>
+        <h3 data-i18n="dossier.problem">Problem</h3>
+        <p data-i18n="p6.problem">Labelbike needed video content that could reach non-Italian audiences without hiring a translator and a second production team for every language.</p>
+        <h3 data-i18n="dossier.approach">Approach</h3>
+        <p data-i18n="p6.approach">Built and ran an end-to-end video pipeline: scripting, editing, and an AI-agent-driven localization step that adapts each video — not just subtitles, full re-adaptation — into multiple languages, plus social cuts from the same source footage.</p>
+        <div class="table-scroll">
+          <table class="metrics">
+            <tbody>
+              <tr><th scope="row" data-i18n="m.videos">Published videos</th><td>6 (YouTube)</td></tr>
+              <tr><th scope="row" data-i18n="m.langs">Languages</th><td>9 <span data-i18n="m.viaAgents">via AI-agent localization</span></td></tr>
+              <tr><th scope="row" data-i18n="m.dist">Distribution</th><td>YouTube · social</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p data-i18n="p6.result">6 videos published on YouTube, localized into 9 languages via agents. Completed with the Labelbike role (Oct 2025 – Jun 2026).</p>
+        <p><a class="link-arrow" href="https://www.youtube.com/@Labelbike_prezzopazzo" data-i18n="repo.youtube">Watch on YouTube</a></p>
+        <p class="next-link"><a class="link-arrow" href="#eu4-assistant" data-i18n="dossier.next">Next project</a></p>
+      </article>
+    </main>
+
+    <footer class="footer container">
+      <div>
+        <span class="mono-label" data-i18n="footer.contactLabel">Contact</span><br />
+        <a href="mailto:aronnezanichelli@gmail.com">aronnezanichelli@gmail.com</a><br />
+        <a href="https://github.com/AronneZanichelli" data-i18n="footer.github">View on GitHub</a><br />
+        <a href="https://www.linkedin.com/in/aronne-zanichelli-62668b241" data-i18n="footer.linkedin">Connect on LinkedIn</a>
+      </div>
+      <div data-i18n="footer.colophon">Set in Newsreader &amp; JetBrains Mono. Static HTML, no build step, no framework.</div>
+      <div class="copyright">© 2026 Aronne Zanichelli.</div>
+    </footer>
+  </body>
+</html>
