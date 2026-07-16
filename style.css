@@ -243,6 +243,7 @@ blockquote {
   pointer-events: none;
   opacity: 0.5;
 }
+.hero > :not(.rain-canvas) { position: relative; } /* contenuto sopra il canvas */
 .hero-grid {
   position: relative; /* sopra il canvas */
   display: grid;
