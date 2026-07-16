@@ -40,16 +40,23 @@ Open `http://localhost:8080` and check: EN/IT toggle, light/dark theme, contact 
 ## CV regeneration
 
 `cv.html` is the single source for both languages (it embeds its own translations).
-
-1. Open `cv.html` (or `cv.html?lang=it`) in Chrome.
-2. Print → Save as PDF, A4, margins "None", background graphics ON, headers/footers OFF.
-3. Save as `assets/cv-en.pdf` / `assets/cv-it.pdf` (names are wired into the site).
-
-Headless equivalent:
+After editing it, regenerate the two PDFs and the two preview thumbnails
+(from WSL, with the repo under `C:\Dev`; Pillow: `pip install --user Pillow`):
 
 ```bash
-chrome --headless --print-to-pdf=assets/cv-en.pdf --no-pdf-header-footer cv.html
+CHROME="/mnt/c/Program Files/Google/Chrome/Application/chrome.exe"
+"$CHROME" --headless --no-pdf-header-footer --virtual-time-budget=5000 \
+  --print-to-pdf='C:\Dev\AronneZanichelli.github.io\assets\cv-en.pdf' \
+  'file:///C:/Dev/AronneZanichelli.github.io/cv.html'          # + ?lang=it → cv-it.pdf
+"$CHROME" --headless --hide-scrollbars --window-size=794,1123 --virtual-time-budget=5000 \
+  --screenshot='C:\Dev\AronneZanichelli.github.io\assets\cv-en.png' \
+  'file:///C:/Dev/AronneZanichelli.github.io/cv.html?preview=1' # + &lang=it → cv-it.png
+python3 -c "from PIL import Image; [Image.open(f'assets/cv-{l}.png').save(f'assets/cv-{l}.webp',quality=80) for l in ('en','it')]"
+rm assets/cv-en.png assets/cv-it.png   # only the .webp thumbnails are committed
 ```
+
+Check before committing: each PDF is exactly **one A4 page** (with the photo),
+and `assets/cv-{en,it}.{pdf,webp}` are all regenerated together.
 
 ## Deploy
 

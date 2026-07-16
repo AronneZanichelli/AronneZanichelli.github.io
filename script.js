@@ -51,6 +51,7 @@ const translations = {
     'contact.title': 'Get in touch',
     'contact.sub': 'Have a role, a project, or a question? Write me directly, or use the form below.',
     'contact.direct': 'Prefer email?', 'contact.cv': 'Download CV (PDF)',
+    'contact.cvCaption': 'Click to open the PDF', 'contact.cvAlt': 'CV preview — first page',
     'form.name': 'Name', 'form.namePh': 'Your name',
     'form.email': 'Email', 'form.emailPh': 'you@email.com',
     'form.message': 'Message', 'form.messagePh': 'What would you like to talk about?',
@@ -165,6 +166,7 @@ const translations = {
     'contact.title': 'Contatti',
     'contact.sub': 'Hai un ruolo, un progetto o una domanda? Scrivimi direttamente, oppure usa il modulo qui sotto.',
     'contact.direct': 'Preferisci l\'email?', 'contact.cv': 'Scarica il CV (PDF)',
+    'contact.cvCaption': 'Clicca per aprire il PDF', 'contact.cvAlt': 'Anteprima del CV — prima pagina',
     'form.name': 'Nome', 'form.namePh': 'Il tuo nome',
     'form.email': 'Email', 'form.emailPh': 'tu@email.com',
     'form.message': 'Messaggio', 'form.messagePh': 'Di cosa vorresti parlare?',
@@ -247,6 +249,10 @@ function applyLang(lang) {
     b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
   const cv = document.getElementById('cvLink');
   if (cv) cv.href = 'assets/cv-' + lang + '.pdf';
+  const pvLink = document.getElementById('cvPreviewLink');
+  if (pvLink) pvLink.href = 'assets/cv-' + lang + '.pdf';
+  const pvImg = document.getElementById('cvPreviewImg');
+  if (pvImg) { pvImg.src = 'assets/cv-' + lang + '.webp'; pvImg.alt = dict['contact.cvAlt']; }
 }
 
 /* ---------- Digital rain (hero + 404) ---------- */
