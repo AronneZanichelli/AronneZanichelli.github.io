@@ -20,6 +20,7 @@
   --focus-ring:  var(--accent);
   --glow:        0 0 20px rgba(0, 255, 65, 0.14);
   --scanline:    rgba(0, 0, 0, 0.22);
+  --duotone:     grayscale(1) sepia(1) hue-rotate(65deg) saturate(1.6) brightness(0.85) contrast(1.05);
 
   /* Tipografia */
   --font-display: 'Syne', 'Arial Black', sans-serif;
@@ -56,6 +57,7 @@
   --glyph:       #0B7A3E;   /* rain in light = codice stampato, tenue */
   --glow:        none;      /* la carta non emette luce */
   --scanline:    rgba(16, 20, 15, 0.05);
+  --duotone:     grayscale(1) sepia(1) hue-rotate(65deg) saturate(0.8) brightness(1.02);
 }
 
 /* ============ Base ============ */
@@ -293,18 +295,8 @@ blockquote {
 }
 .crt img {
   display: block;
-  filter: grayscale(1) contrast(1.08);
+  filter: var(--duotone);
   transition: filter 250ms var(--ease-out-quart);
-}
-.crt::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--accent);
-  mix-blend-mode: multiply;
-  opacity: 0.85;
-  pointer-events: none;
-  transition: opacity 250ms var(--ease-out-quart);
 }
 .crt::after {
   content: "";
@@ -316,7 +308,6 @@ blockquote {
 /* niente grading dove non c'è hover (touch) */
 @media (hover: none) {
   .video-card .crt img { filter: none; }
-  .video-card .crt::before { opacity: 0; }
 }
 
 /* ============ Proof strip ============ */
@@ -636,7 +627,6 @@ blockquote {
 }
 /* color grade reveal: a riposo duotone, su hover il girato torna a colori */
 .video-card:hover .crt img, .video-card:focus-visible .crt img { filter: none; }
-.video-card:hover .crt::before, .video-card:focus-visible .crt::before { opacity: 0; }
 .video-card .video-title {
   display: block;
   padding: var(--sp-3) var(--sp-4);
@@ -816,5 +806,4 @@ body, .nav, .footer, .field input, .field textarea, .btn-primary, .btn-secondary
   .project-row .arrow { opacity: 1; transform: none; }
   .reveal-init { opacity: 1; transform: none; }
   .video-card .crt img { filter: none; }
-  .video-card .crt::before { opacity: 0; }
 }

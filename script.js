@@ -233,6 +233,73 @@ function applyLang(lang) {
   if (cv) cv.href = 'assets/cv-' + lang + '.pdf';
 }
 
+/* ---------- Digital rain (hero + 404) ---------- */
+function initRain() {
+  const canvas = document.getElementById('rain');
+  if (!canvas || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const ctx = canvas.getContext('2d');
+  const GLYPHS = 'アィウェオカキクケコサシスセソタチツテト0123456789{}[]<>/=;';
+  const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  let w, h, fontSize, drops, colors, visible = true, last = 0;
+  const fps = () => innerWidth < 768 ? 18 : 24;
+
+  const recolor = () => {
+    colors = { bg: css('--bg'), glyph: css('--glyph'), accent: css('--accent') };
+    ctx.fillStyle = colors.bg;
+    ctx.fillRect(0, 0, w, h); /* reset scia al cambio tema */
+  };
+  window.rainRecolor = recolor;
+
+  const size = () => {
+    const dpr = Math.min(devicePixelRatio || 1, 1.5);
+    const r = canvas.parentElement.getBoundingClientRect();
+    w = canvas.width = Math.floor(r.width * dpr);
+    h = canvas.height = Math.floor(r.height * dpr);
+    fontSize = (innerWidth < 768 ? 20 : 16) * dpr;
+    ctx.font = fontSize + "px 'JetBrains Mono', monospace";
+    drops = Array.from({ length: Math.ceil(w / fontSize) }, () => Math.random() * -40);
+    recolor();
+  };
+
+  const frame = now => {
+    requestAnimationFrame(frame);
+    if (!visible || document.hidden || now - last < 1000 / fps()) return;
+    last = now;
+    ctx.fillStyle = colors.bg + '22'; /* velo translucido = scia che sbiadisce */
+    ctx.fillRect(0, 0, w, h);
+    for (let i = 0; i < drops.length; i++) {
+      const x = i * fontSize, y = drops[i] * fontSize;
+      ctx.fillStyle = colors.accent; /* la vecchia testa diventa coda */
+      ctx.fillText(GLYPHS[Math.random() * GLYPHS.length | 0], x, y - fontSize);
+      ctx.fillStyle = colors.glyph;
+      ctx.fillText(GLYPHS[Math.random() * GLYPHS.length | 0], x, y);
+      drops[i] = y > h && Math.random() > 0.975 ? 0 : drops[i] + 1;
+    }
+  };
+
+  new IntersectionObserver(e => { visible = e[0].isIntersecting; }).observe(canvas);
+  let rt;
+  addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(size, 200); });
+  size();
+  requestAnimationFrame(frame);
+}
+
+/* ---------- Decode effect (tagline hero, una volta al load) ---------- */
+function decodeOnce() {
+  const el = document.querySelector('[data-decode]');
+  if (!el || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const target = el.textContent;
+  const GLYPHS = 'アウカサタナ0123456789<>/{};=';
+  const t0 = performance.now(), DUR = 900;
+  (function tick(now) {
+    const p = Math.min((now - t0) / DUR, 1);
+    const lock = Math.floor(target.length * p);
+    el.textContent = target.slice(0, lock) + [...target.slice(lock)]
+      .map(c => c === ' ' ? ' ' : GLYPHS[Math.random() * GLYPHS.length | 0]).join('');
+    if (p < 1) requestAnimationFrame(tick);
+  })(t0);
+}
+
 /* ---------- init ---------- */
 document.addEventListener('DOMContentLoaded', () => {
   const lang = localStorage.getItem('lang') === 'it' ? 'it' : 'en';
@@ -241,6 +308,9 @@ document.addEventListener('DOMContentLoaded', () => {
     b.setAttribute('aria-pressed', String(b.dataset.lang === 'en')));
   document.querySelectorAll('.lang-btn').forEach(b =>
     b.addEventListener('click', () => applyLang(b.dataset.lang)));
+
+  initRain();
+  decodeOnce(); /* dopo il ramo applyLang: anima il testo nella lingua giusta */
 
   /* Toggle tema — dark è il default, l'attributo marca il light ("pressed" = light) */
   const toggle = document.getElementById('themeToggle');

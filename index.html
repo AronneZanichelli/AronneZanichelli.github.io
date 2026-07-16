@@ -71,11 +71,12 @@
 
       <!-- 00 — Hero -->
       <section class="hero">
+        <canvas id="rain" class="rain-canvas" aria-hidden="true"></canvas>
         <div class="hero-grid">
           <div>
             <p class="eyebrow" data-i18n="hero.eyebrow">Junior Software Developer (AI-augmented)</p>
             <h1>Aronne Zanichelli</h1>
-            <p class="tagline" data-i18n="hero.tagline">Code, method, evidence.</p>
+            <p class="tagline" data-i18n="hero.tagline" data-decode>Code, method, evidence.</p>
             <p data-i18n="hero.subline">Junior software developer working AI-augmented — every claim on this site links to a repository.</p>
             <ul class="fact-row">
               <li data-i18n="hero.fact1">ITIS diploma 2025</li>
@@ -85,7 +86,7 @@
             </ul>
             <a class="btn-primary" href="#work" data-i18n="hero.cta">View projects</a>
           </div>
-          <img class="portrait" src="assets/profile.webp" alt="Aronne Zanichelli" width="140" height="187" fetchpriority="high" />
+          <span class="crt"><img class="portrait" src="assets/profile.webp" alt="Aronne Zanichelli" width="140" height="187" fetchpriority="high" /></span>
         </div>
       </section>
       <script>
