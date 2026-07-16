@@ -242,16 +242,17 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.lang-btn').forEach(b =>
     b.addEventListener('click', () => applyLang(b.dataset.lang)));
 
-  /* Toggle tema */
+  /* Toggle tema — dark è il default, l'attributo marca il light ("pressed" = light) */
   const toggle = document.getElementById('themeToggle');
-  const setTheme = dark => {
-    if (dark) document.documentElement.setAttribute('data-theme', 'dark');
+  const setTheme = light => {
+    if (light) document.documentElement.setAttribute('data-theme', 'light');
     else document.documentElement.removeAttribute('data-theme');
-    localStorage.setItem('theme', dark ? 'dark' : 'light');
-    toggle.textContent = dark ? '☀' : '☾';
-    toggle.setAttribute('aria-pressed', String(dark));
+    localStorage.setItem('theme', light ? 'light' : 'dark');
+    toggle.textContent = light ? '☾' : '☀';
+    toggle.setAttribute('aria-pressed', String(light));
+    if (window.rainRecolor) window.rainRecolor();
   };
-  toggle.textContent = document.documentElement.hasAttribute('data-theme') ? '☀' : '☾';
+  toggle.textContent = document.documentElement.hasAttribute('data-theme') ? '☾' : '☀';
   toggle.setAttribute('aria-pressed', String(document.documentElement.hasAttribute('data-theme')));
   toggle.addEventListener('click', () =>
     setTheme(!document.documentElement.hasAttribute('data-theme')));

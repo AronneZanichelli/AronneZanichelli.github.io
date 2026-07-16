@@ -20,13 +20,13 @@
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Grotesk:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
     <script>
       (function () {
         var t = localStorage.getItem('theme');
-        if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        if (!t) t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
         if (localStorage.getItem('lang') === 'it') document.documentElement.lang = 'it';
       })();
     </script>
@@ -43,14 +43,14 @@
     <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
 
     <nav class="nav" aria-label="Main navigation">
-      <a class="brand" href="index.html">Aronne Zanichelli</a>
+      <a class="brand" href="index.html" aria-label="Aronne Zanichelli — home">aronne-zanichelli</a>
       <div class="nav-links">
         <a href="projects.html" data-i18n="nav.projects">Projects</a>
         <a href="method.html" aria-current="page" data-i18n="nav.method">Method</a>
         <a href="index.html#contact" data-i18n="nav.contact">Contact</a>
         <button class="lang-btn" data-lang="en" aria-label="Switch to English" aria-pressed="true">EN</button>
         <button class="lang-btn" data-lang="it" aria-label="Passa all'italiano" aria-pressed="false">IT</button>
-        <button id="themeToggle" aria-label="Switch to dark theme" aria-pressed="false">☾</button>
+        <button id="themeToggle" aria-label="Toggle light theme" aria-pressed="false">☀</button>
       </div>
     </nav>
 
