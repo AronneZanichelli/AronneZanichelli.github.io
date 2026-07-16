@@ -193,6 +193,8 @@ blockquote {
   color: var(--ink-2);
   font: 400 var(--fs-sm)/1 var(--font-mono);
   padding: var(--sp-1) var(--sp-2);
+  min-height: 44px;
+  min-width: 32px;
   white-space: nowrap;
 }
 .nav button:hover { color: var(--ink); }
