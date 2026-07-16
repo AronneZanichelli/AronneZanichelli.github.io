@@ -290,6 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!input.value.trim()) err = t['form.required'];
       else if (input.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)) err = t['form.invalidEmail'];
       f.classList.toggle('is-error', !!err);
+      input.setAttribute('aria-invalid', String(!!err));
       msg.textContent = err;
       msg.hidden = !err;
       if (err) valid = false;
