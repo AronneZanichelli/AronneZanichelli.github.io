@@ -606,6 +606,7 @@ blockquote {
   color: var(--ink);
   transition: border-color 200ms var(--ease-out-quart), box-shadow 200ms var(--ease-out-quart);
 }
+.video-card[hidden] { display: none; } /* vince su display:block quando il filtro nasconde */
 .video-card .crt { display: block; border: 0; border-radius: 0; }
 .video-card .crt img {
   width: 100%;

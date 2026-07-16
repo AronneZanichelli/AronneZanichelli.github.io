@@ -4,7 +4,7 @@
 const translations = {
   en: {
     'a11y.skip': 'Skip to content',
-    'nav.projects': 'Projects', 'nav.method': 'Method', 'nav.contact': 'Contact',
+    'nav.projects': 'Projects', 'nav.editing': 'Editing', 'nav.method': 'Method', 'nav.contact': 'Contact',
     'hero.eyebrow': 'Junior Software Developer (AI-augmented)',
     'hero.tagline': 'Code, method, evidence.',
     'hero.subline': 'Junior software developer working AI-augmented — every claim on this site links to a repository.',
@@ -60,7 +60,7 @@ const translations = {
     'form.success': "Message sent — thank you. I'll get back to you soon.",
     'form.network': 'Message not sent — check your connection and try again.',
     'footer.contactLabel': 'Contact', 'footer.github': 'View on GitHub', 'footer.linkedin': 'Connect on LinkedIn',
-    'footer.colophon': 'Set in Newsreader & JetBrains Mono. Static HTML, no build step, no framework.',
+    'footer.colophon': 'Set in Syne, Space Grotesk & JetBrains Mono. Static HTML, no build step, no framework.',
     /* projects.html */
     'projects.title': 'Projects',
     'projects.intro': "Six repositories, in the order I'd want a reviewer to open them.",
@@ -87,6 +87,7 @@ const translations = {
     'p6.problem': 'Labelbike needed video content that could reach non-Italian audiences without hiring a translator and a second production team for every language.',
     'p6.approach': 'Built and ran an end-to-end video pipeline: scripting, editing, and an AI-agent-driven localization step that adapts each video — not just subtitles, full re-adaptation — into multiple languages, plus social cuts from the same source footage.',
     'p6.result': '6 videos published on YouTube, localized into 9 languages via agents. Completed with the Labelbike role (Oct 2025 – Jun 2026).',
+    'p6.gallery': 'See the video gallery',
     /* metriche dossier */
     'm.tests': 'Test lines', 'm.ciMulti': 'green across Python versions', 'm.packaging': 'Packaging',
     'm.streaming': 'Log streaming', 'm.audit': 'Self-audit',
@@ -103,14 +104,21 @@ const translations = {
     'mpage.adrLink': 'View the ADRs on GitHub', 'mpage.testLink': 'See the test suite', 'mpage.auditLink': 'Read the STRATEGIC_REVIEW',
     'mpage.closing': 'The decisions are mine; the AI multiplies execution.',
     'mpage.exit': 'Back to the projects',
+    /* editing.html */
+    'edit.title': 'Editing',
+    'edit.intro': 'Post-production work, organised by client. Every video below is published output — not a showreel.',
+    'edit.postprodLabel': 'Post-production scope: ',
+    'edit.postprodText': 'Full pipeline handled end-to-end — editing, upload, titles, descriptions, keyword research, custom thumbnails, timestamps, and multilingual translation across 9 languages via a custom AI agent.',
+    'edit.soon': 'soon', 'edit.soon2': 'soon',
+    'edit.noResults': 'No videos match the selected filters.',
     /* 404 */
     'nf.title': 'Page not found',
-    'nf.msg': "This page doesn't exist — or moved. The old Labelbike and editing pages now live inside Projects.",
+    'nf.msg': "This page doesn't exist — or moved. The old Labelbike page now lives inside Projects; video work is under Editing.",
     'nf.cta': 'Back to home'
   },
   it: {
     'a11y.skip': 'Vai al contenuto',
-    'nav.projects': 'Progetti', 'nav.method': 'Metodo', 'nav.contact': 'Contatti',
+    'nav.projects': 'Progetti', 'nav.editing': 'Editing', 'nav.method': 'Metodo', 'nav.contact': 'Contatti',
     'hero.eyebrow': 'Sviluppatore Software Junior (AI-augmented)',
     'hero.tagline': 'Codice, metodo, evidenza.',
     'hero.subline': 'Sviluppatore software junior con metodo AI-augmented — ogni affermazione di questo sito punta a un repository.',
@@ -166,7 +174,7 @@ const translations = {
     'form.success': 'Messaggio inviato — grazie. Ti risponderò a breve.',
     'form.network': 'Messaggio non inviato — controlla la connessione e riprova.',
     'footer.contactLabel': 'Contatti', 'footer.github': 'Vedi su GitHub', 'footer.linkedin': 'Collegati su LinkedIn',
-    'footer.colophon': 'Composto in Newsreader e JetBrains Mono. HTML statico, zero build step, zero framework.',
+    'footer.colophon': 'Composto in Syne, Space Grotesk e JetBrains Mono. HTML statico, zero build step, zero framework.',
     /* projects.html */
     'projects.title': 'Progetti',
     'projects.intro': 'Sei repository, nell\'ordine in cui vorrei che un revisore le aprisse.',
@@ -193,6 +201,7 @@ const translations = {
     'p6.problem': 'Labelbike aveva bisogno di contenuti video capaci di raggiungere pubblico non italiano, senza assumere un traduttore e un secondo team di produzione per ogni lingua.',
     'p6.approach': 'Ho costruito e gestito una pipeline video end-to-end: scripting, editing e una fase di localizzazione guidata da agenti AI che adatta ogni video — non solo i sottotitoli, l\'intero adattamento — in più lingue, più tagli social dagli stessi girati.',
     'p6.result': '6 video pubblicati su YouTube, localizzati in 9 lingue tramite agenti. Concluso con il ruolo in Labelbike (Ott 2025 – Giu 2026).',
+    'p6.gallery': 'Guarda la galleria video',
     /* metriche dossier */
     'm.tests': 'Righe di test', 'm.ciMulti': 'verde su più versioni Python', 'm.packaging': 'Packaging',
     'm.streaming': 'Streaming log', 'm.audit': 'Self-audit',
@@ -209,9 +218,16 @@ const translations = {
     'mpage.adrLink': 'Vedi gli ADR su GitHub', 'mpage.testLink': 'Vedi la suite di test', 'mpage.auditLink': 'Leggi lo STRATEGIC_REVIEW',
     'mpage.closing': 'Le decisioni le prendo io; l\'AI moltiplica l\'esecuzione.',
     'mpage.exit': 'Torna ai progetti',
+    /* editing.html */
+    'edit.title': 'Editing',
+    'edit.intro': 'Lavori di post-produzione, organizzati per cliente. Ogni video qui sotto è output pubblicato — non uno showreel.',
+    'edit.postprodLabel': 'Scope post-produzione: ',
+    'edit.postprodText': 'Pipeline gestita interamente — editing, upload, titoli, descrizioni, keyword research, thumbnail personalizzate, timestamp e traduzione in 9 lingue tramite un agente AI custom.',
+    'edit.soon': 'presto', 'edit.soon2': 'presto',
+    'edit.noResults': 'Nessun video corrisponde ai filtri selezionati.',
     /* 404 */
     'nf.title': 'Pagina non trovata',
-    'nf.msg': 'Questa pagina non esiste — o si è spostata. Le vecchie pagine Labelbike ed editing ora vivono dentro Progetti.',
+    'nf.msg': 'Questa pagina non esiste — o si è spostata. La vecchia pagina Labelbike ora vive dentro Progetti; i lavori video sono in Editing.',
     'nf.cta': 'Torna alla home'
   }
 };
@@ -300,6 +316,29 @@ function decodeOnce() {
   })(t0);
 }
 
+/* ---------- Filtri video (editing.html) ---------- */
+function initVideoFilters() {
+  const chips = [...document.querySelectorAll('.filter-chip:not([disabled])')];
+  if (!chips.length) return;
+  const cards = [...document.querySelectorAll('.video-card')];
+  const empty = document.getElementById('noResults');
+  const apply = () => {
+    const active = chips.filter(c => c.getAttribute('aria-pressed') === 'true')
+      .map(c => c.dataset.filter);
+    let shown = 0;
+    cards.forEach(card => {
+      const on = !active.length || active.some(t => card.dataset.tags.split(' ').includes(t));
+      card.hidden = !on; /* set vuoto = nessun filtro = tutte visibili */
+      if (on) shown++;
+    });
+    empty.hidden = shown > 0;
+  };
+  chips.forEach(c => c.addEventListener('click', () => {
+    c.setAttribute('aria-pressed', String(c.getAttribute('aria-pressed') !== 'true'));
+    apply();
+  }));
+}
+
 /* ---------- init ---------- */
 document.addEventListener('DOMContentLoaded', () => {
   const lang = localStorage.getItem('lang') === 'it' ? 'it' : 'en';
@@ -311,6 +350,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initRain();
   decodeOnce(); /* dopo il ramo applyLang: anima il testo nella lingua giusta */
+  initVideoFilters();
 
   /* Toggle tema — dark è il default, l'attributo marca il light ("pressed" = light) */
   const toggle = document.getElementById('themeToggle');
