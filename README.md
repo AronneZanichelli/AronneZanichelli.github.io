@@ -1,7 +1,7 @@
-# Aronne Zanichelli — Portfolio "Matrix × Editor" (EN/IT)
+# Aronne Zanichelli — Portfolio "Creator" (EN/IT)
 
 Static bilingual portfolio + CV. English is the default, Italian is applied client-side.
-No build step, no framework — HTML, CSS, and vanilla JS (i18n, theme, digital rain, video filters).
+No build step, no framework — HTML, CSS, and vanilla JS (i18n, theme, scrollspy, video filters).
 
 ## Structure
 
@@ -15,8 +15,8 @@ No build step, no framework — HTML, CSS, and vanilla JS (i18n, theme, digital 
 ├── editing.html      # video editing archive: filterable YouTube gallery (Labelbike)
 ├── featured.html     # redirect stub → projects.html
 ├── labelbike.html    # redirect stub → editing.html
-├── style.css         # design tokens (dark primary / light "print") + components
-├── script.js         # translations object + i18n / theme / rain / decode / filters / form logic
+├── style.css         # design tokens (dark primary / light warm paper) + components
+├── script.js         # translations object + i18n / theme / scrollspy / filters / form logic
 ├── tools/og-card.html# source for assets/og-card.png (see OG card below)
 └── assets/           # profile.webp, favicon.svg, og-card.png, cv-en.pdf, cv-it.pdf, previews
 ```
@@ -34,7 +34,7 @@ Open `http://localhost:8080` and check: EN/IT toggle, light/dark theme, contact 
 - All site text lives twice: static English in the HTML, and both languages in the
   `translations` object in `script.js`. **Both must be updated together.**
 - The professional role string — `Junior Software Developer (AI-augmented)` — is an
-  identity token: it must match verbatim in `<title>`, hero eyebrow, OG meta, and `cv.html`.
+  identity token: it must match verbatim in `<title>`, hero lead, OG meta, and `cv.html`.
 - Design tokens (colors, type scale, spacing) live only in the two `:root` blocks of
   `style.css`. No hex values anywhere else.
 
