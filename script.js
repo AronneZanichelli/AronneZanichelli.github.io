@@ -412,7 +412,7 @@ document.addEventListener('DOMContentLoaded', () => {
       msg.hidden = !err;
       if (err) valid = false;
     });
-    if (!valid) return;
+    if (!valid) { form.querySelector('[aria-invalid="true"]').focus(); return; }
     btn.disabled = true;
     let i = 0;
     const tick = setInterval(() => { btn.textContent = t['form.sending'] + '.'.repeat(i++ % 3 + 1); }, 400);
@@ -427,6 +427,8 @@ document.addEventListener('DOMContentLoaded', () => {
       form.querySelectorAll('.field, button').forEach(el => el.hidden = true);
       success.textContent = t['form.success'];
       success.hidden = false;
+      success.tabIndex = -1;
+      success.focus(); /* il submit nascosto perderebbe il focus; così lo SR annuncia l'esito */
     } catch {
       clearInterval(tick);
       btn.disabled = false;

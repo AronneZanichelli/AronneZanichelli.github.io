@@ -1,7 +1,7 @@
-# Aronne Zanichelli — Portfolio "Engineering Notebook" (EN/IT)
+# Aronne Zanichelli — Portfolio "Matrix × Editor" (EN/IT)
 
 Static bilingual portfolio + CV. English is the default, Italian is applied client-side.
-No build step, no framework — HTML, CSS, and ~60 lines of vanilla JS logic.
+No build step, no framework — HTML, CSS, and vanilla JS (i18n, theme, digital rain, video filters).
 
 ## Structure
 
@@ -12,11 +12,12 @@ No build step, no framework — HTML, CSS, and ~60 lines of vanilla JS logic.
 ├── method.html       # the AI-augmented workflow: spec → plan → test → audit, with links to real artifacts
 ├── cv.html           # single source for the CV — the PDF is printed from this page
 ├── 404.html
+├── editing.html      # video editing archive: filterable YouTube gallery (Labelbike)
 ├── featured.html     # redirect stub → projects.html
-├── editing.html      # redirect stub → projects.html#labelbike
-├── labelbike.html    # redirect stub → projects.html#labelbike
-├── style.css         # design tokens (light primary / dark negative) + components
-├── script.js         # translations object + i18n / theme / reveal / form logic
+├── labelbike.html    # redirect stub → editing.html
+├── style.css         # design tokens (dark primary / light "print") + components
+├── script.js         # translations object + i18n / theme / rain / decode / filters / form logic
+├── tools/og-card.html# source for assets/og-card.png (see OG card below)
 └── assets/           # profile.webp, favicon.svg, og-card.png, cv-en.pdf, cv-it.pdf, previews
 ```
 
@@ -57,6 +58,19 @@ rm assets/cv-en.png assets/cv-it.png   # only the .webp thumbnails are committed
 
 Check before committing: each PDF is exactly **one A4 page** (with the photo),
 and `assets/cv-{en,it}.{pdf,webp}` are all regenerated together.
+
+## OG card regeneration
+
+`assets/og-card.png` (1200×630) is a screenshot of `tools/og-card.html`.
+After editing the source, regenerate with:
+
+```bash
+CHROME="/mnt/c/Program Files/Google/Chrome/Application/chrome.exe"
+"$CHROME" --headless=new --disable-gpu --hide-scrollbars --window-size=1200,630 \
+  --virtual-time-budget=5000 \
+  --screenshot='C:\Dev\AronneZanichelli.github.io\assets\og-card.png' \
+  'file:///C:/Dev/AronneZanichelli.github.io/tools/og-card.html'
+```
 
 ## Deploy
 
