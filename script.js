@@ -4,7 +4,7 @@
 const translations = {
   en: {
     'a11y.skip': 'Skip to content',
-    'nav.projects': 'Projects', 'nav.method': 'Method', 'nav.contact': 'Contact',
+    'nav.projects': 'Projects', 'nav.editing': 'Editing', 'nav.method': 'Method', 'nav.contact': 'Contact',
     'hero.eyebrow': 'Junior Software Developer (AI-augmented)',
     'hero.tagline': 'Code, method, evidence.',
     'hero.subline': 'Junior software developer working AI-augmented — every claim on this site links to a repository.',
@@ -51,6 +51,7 @@ const translations = {
     'contact.title': 'Get in touch',
     'contact.sub': 'Have a role, a project, or a question? Write me directly, or use the form below.',
     'contact.direct': 'Prefer email?', 'contact.cv': 'Download CV (PDF)',
+    'contact.cvCaption': 'Click to open the PDF', 'contact.cvAlt': 'CV preview — first page',
     'form.name': 'Name', 'form.namePh': 'Your name',
     'form.email': 'Email', 'form.emailPh': 'you@email.com',
     'form.message': 'Message', 'form.messagePh': 'What would you like to talk about?',
@@ -60,7 +61,7 @@ const translations = {
     'form.success': "Message sent — thank you. I'll get back to you soon.",
     'form.network': 'Message not sent — check your connection and try again.',
     'footer.contactLabel': 'Contact', 'footer.github': 'View on GitHub', 'footer.linkedin': 'Connect on LinkedIn',
-    'footer.colophon': 'Set in Newsreader & JetBrains Mono. Static HTML, no build step, no framework.',
+    'footer.colophon': 'Set in Syne, Space Grotesk & JetBrains Mono. Static HTML, no build step, no framework.',
     /* projects.html */
     'projects.title': 'Projects',
     'projects.intro': "Six repositories, in the order I'd want a reviewer to open them.",
@@ -87,6 +88,7 @@ const translations = {
     'p6.problem': 'Labelbike needed video content that could reach non-Italian audiences without hiring a translator and a second production team for every language.',
     'p6.approach': 'Built and ran an end-to-end video pipeline: scripting, editing, and an AI-agent-driven localization step that adapts each video — not just subtitles, full re-adaptation — into multiple languages, plus social cuts from the same source footage.',
     'p6.result': '6 videos published on YouTube, localized into 9 languages via agents. Completed with the Labelbike role (Oct 2025 – Jun 2026).',
+    'p6.gallery': 'See the video gallery',
     /* metriche dossier */
     'm.tests': 'Test lines', 'm.ciMulti': 'green across Python versions', 'm.packaging': 'Packaging',
     'm.streaming': 'Log streaming', 'm.audit': 'Self-audit',
@@ -103,14 +105,21 @@ const translations = {
     'mpage.adrLink': 'View the ADRs on GitHub', 'mpage.testLink': 'See the test suite', 'mpage.auditLink': 'Read the STRATEGIC_REVIEW',
     'mpage.closing': 'The decisions are mine; the AI multiplies execution.',
     'mpage.exit': 'Back to the projects',
+    /* editing.html */
+    'edit.title': 'Editing',
+    'edit.intro': 'Post-production work, organised by client. Every video below is published output — not a showreel.',
+    'edit.postprodLabel': 'Post-production scope: ',
+    'edit.postprodText': 'Full pipeline handled end-to-end — editing, upload, titles, descriptions, keyword research, custom thumbnails, timestamps, and multilingual translation across 9 languages via a custom AI agent.',
+    'edit.soon': 'soon', 'edit.soon2': 'soon',
+    'edit.noResults': 'No videos match the selected filters.',
     /* 404 */
     'nf.title': 'Page not found',
-    'nf.msg': "This page doesn't exist — or moved. The old Labelbike and editing pages now live inside Projects.",
+    'nf.msg': "This page doesn't exist — or moved. The old Labelbike page now lives inside Projects; video work is under Editing.",
     'nf.cta': 'Back to home'
   },
   it: {
     'a11y.skip': 'Vai al contenuto',
-    'nav.projects': 'Progetti', 'nav.method': 'Metodo', 'nav.contact': 'Contatti',
+    'nav.projects': 'Progetti', 'nav.editing': 'Editing', 'nav.method': 'Metodo', 'nav.contact': 'Contatti',
     'hero.eyebrow': 'Sviluppatore Software Junior (AI-augmented)',
     'hero.tagline': 'Codice, metodo, evidenza.',
     'hero.subline': 'Sviluppatore software junior con metodo AI-augmented — ogni affermazione di questo sito punta a un repository.',
@@ -157,6 +166,7 @@ const translations = {
     'contact.title': 'Contatti',
     'contact.sub': 'Hai un ruolo, un progetto o una domanda? Scrivimi direttamente, oppure usa il modulo qui sotto.',
     'contact.direct': 'Preferisci l\'email?', 'contact.cv': 'Scarica il CV (PDF)',
+    'contact.cvCaption': 'Clicca per aprire il PDF', 'contact.cvAlt': 'Anteprima del CV — prima pagina',
     'form.name': 'Nome', 'form.namePh': 'Il tuo nome',
     'form.email': 'Email', 'form.emailPh': 'tu@email.com',
     'form.message': 'Messaggio', 'form.messagePh': 'Di cosa vorresti parlare?',
@@ -166,7 +176,7 @@ const translations = {
     'form.success': 'Messaggio inviato — grazie. Ti risponderò a breve.',
     'form.network': 'Messaggio non inviato — controlla la connessione e riprova.',
     'footer.contactLabel': 'Contatti', 'footer.github': 'Vedi su GitHub', 'footer.linkedin': 'Collegati su LinkedIn',
-    'footer.colophon': 'Composto in Newsreader e JetBrains Mono. HTML statico, zero build step, zero framework.',
+    'footer.colophon': 'Composto in Syne, Space Grotesk e JetBrains Mono. HTML statico, zero build step, zero framework.',
     /* projects.html */
     'projects.title': 'Progetti',
     'projects.intro': 'Sei repository, nell\'ordine in cui vorrei che un revisore le aprisse.',
@@ -193,6 +203,7 @@ const translations = {
     'p6.problem': 'Labelbike aveva bisogno di contenuti video capaci di raggiungere pubblico non italiano, senza assumere un traduttore e un secondo team di produzione per ogni lingua.',
     'p6.approach': 'Ho costruito e gestito una pipeline video end-to-end: scripting, editing e una fase di localizzazione guidata da agenti AI che adatta ogni video — non solo i sottotitoli, l\'intero adattamento — in più lingue, più tagli social dagli stessi girati.',
     'p6.result': '6 video pubblicati su YouTube, localizzati in 9 lingue tramite agenti. Concluso con il ruolo in Labelbike (Ott 2025 – Giu 2026).',
+    'p6.gallery': 'Guarda la galleria video',
     /* metriche dossier */
     'm.tests': 'Righe di test', 'm.ciMulti': 'verde su più versioni Python', 'm.packaging': 'Packaging',
     'm.streaming': 'Streaming log', 'm.audit': 'Self-audit',
@@ -209,9 +220,16 @@ const translations = {
     'mpage.adrLink': 'Vedi gli ADR su GitHub', 'mpage.testLink': 'Vedi la suite di test', 'mpage.auditLink': 'Leggi lo STRATEGIC_REVIEW',
     'mpage.closing': 'Le decisioni le prendo io; l\'AI moltiplica l\'esecuzione.',
     'mpage.exit': 'Torna ai progetti',
+    /* editing.html */
+    'edit.title': 'Editing',
+    'edit.intro': 'Lavori di post-produzione, organizzati per cliente. Ogni video qui sotto è output pubblicato — non uno showreel.',
+    'edit.postprodLabel': 'Scope post-produzione: ',
+    'edit.postprodText': 'Pipeline gestita interamente — editing, upload, titoli, descrizioni, keyword research, thumbnail personalizzate, timestamp e traduzione in 9 lingue tramite un agente AI custom.',
+    'edit.soon': 'presto', 'edit.soon2': 'presto',
+    'edit.noResults': 'Nessun video corrisponde ai filtri selezionati.',
     /* 404 */
     'nf.title': 'Pagina non trovata',
-    'nf.msg': 'Questa pagina non esiste — o si è spostata. Le vecchie pagine Labelbike ed editing ora vivono dentro Progetti.',
+    'nf.msg': 'Questa pagina non esiste — o si è spostata. La vecchia pagina Labelbike ora vive dentro Progetti; i lavori video sono in Editing.',
     'nf.cta': 'Torna alla home'
   }
 };
@@ -231,6 +249,100 @@ function applyLang(lang) {
     b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
   const cv = document.getElementById('cvLink');
   if (cv) cv.href = 'assets/cv-' + lang + '.pdf';
+  const pvLink = document.getElementById('cvPreviewLink');
+  if (pvLink) pvLink.href = 'assets/cv-' + lang + '.pdf';
+  const pvImg = document.getElementById('cvPreviewImg');
+  if (pvImg) { pvImg.src = 'assets/cv-' + lang + '.webp'; pvImg.alt = dict['contact.cvAlt']; }
+}
+
+/* ---------- Digital rain (hero + 404) ---------- */
+function initRain() {
+  const canvas = document.getElementById('rain');
+  if (!canvas || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const ctx = canvas.getContext('2d');
+  const GLYPHS = 'アィウェオカキクケコサシスセソタチツテト0123456789{}[]<>/=;';
+  const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  let w, h, fontSize, drops, colors, visible = true, last = 0;
+  const fps = () => innerWidth < 768 ? 18 : 24;
+
+  const recolor = () => {
+    colors = { bg: css('--bg'), glyph: css('--glyph'), accent: css('--accent') };
+    ctx.fillStyle = colors.bg;
+    ctx.fillRect(0, 0, w, h); /* reset scia al cambio tema */
+  };
+  window.rainRecolor = recolor;
+
+  const size = () => {
+    const dpr = Math.min(devicePixelRatio || 1, 1.5);
+    const r = canvas.parentElement.getBoundingClientRect();
+    w = canvas.width = Math.floor(r.width * dpr);
+    h = canvas.height = Math.floor(r.height * dpr);
+    fontSize = (innerWidth < 768 ? 20 : 16) * dpr;
+    ctx.font = fontSize + "px 'JetBrains Mono', monospace";
+    drops = Array.from({ length: Math.ceil(w / fontSize) }, () => Math.random() * -40);
+    recolor();
+  };
+
+  const frame = now => {
+    requestAnimationFrame(frame);
+    if (!visible || document.hidden || now - last < 1000 / fps()) return;
+    last = now;
+    ctx.fillStyle = colors.bg + '22'; /* velo translucido = scia che sbiadisce */
+    ctx.fillRect(0, 0, w, h);
+    for (let i = 0; i < drops.length; i++) {
+      const x = i * fontSize, y = drops[i] * fontSize;
+      ctx.fillStyle = colors.accent; /* la vecchia testa diventa coda */
+      ctx.fillText(GLYPHS[Math.random() * GLYPHS.length | 0], x, y - fontSize);
+      ctx.fillStyle = colors.glyph;
+      ctx.fillText(GLYPHS[Math.random() * GLYPHS.length | 0], x, y);
+      drops[i] = y > h && Math.random() > 0.975 ? 0 : drops[i] + 1;
+    }
+  };
+
+  new IntersectionObserver(e => { visible = e[0].isIntersecting; }).observe(canvas);
+  let rt;
+  addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(size, 200); });
+  size();
+  requestAnimationFrame(frame);
+}
+
+/* ---------- Decode effect (tagline hero, una volta al load) ---------- */
+function decodeOnce() {
+  const el = document.querySelector('[data-decode]');
+  if (!el || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const target = el.textContent;
+  const GLYPHS = 'アウカサタナ0123456789<>/{};=';
+  const t0 = performance.now(), DUR = 900;
+  (function tick(now) {
+    const p = Math.min((now - t0) / DUR, 1);
+    const lock = Math.floor(target.length * p);
+    el.textContent = target.slice(0, lock) + [...target.slice(lock)]
+      .map(c => c === ' ' ? ' ' : GLYPHS[Math.random() * GLYPHS.length | 0]).join('');
+    if (p < 1) requestAnimationFrame(tick);
+  })(t0);
+}
+
+/* ---------- Filtri video (editing.html) ---------- */
+function initVideoFilters() {
+  const chips = [...document.querySelectorAll('.filter-chip:not([disabled])')];
+  if (!chips.length) return;
+  const cards = [...document.querySelectorAll('.video-card')];
+  const empty = document.getElementById('noResults');
+  const apply = () => {
+    const active = chips.filter(c => c.getAttribute('aria-pressed') === 'true')
+      .map(c => c.dataset.filter);
+    let shown = 0;
+    cards.forEach(card => {
+      const on = !active.length || active.some(t => card.dataset.tags.split(' ').includes(t));
+      card.hidden = !on; /* set vuoto = nessun filtro = tutte visibili */
+      if (on) shown++;
+    });
+    empty.hidden = shown > 0;
+  };
+  chips.forEach(c => c.addEventListener('click', () => {
+    c.setAttribute('aria-pressed', String(c.getAttribute('aria-pressed') !== 'true'));
+    apply();
+  }));
 }
 
 /* ---------- init ---------- */
@@ -242,16 +354,21 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.lang-btn').forEach(b =>
     b.addEventListener('click', () => applyLang(b.dataset.lang)));
 
-  /* Toggle tema */
+  initRain();
+  decodeOnce(); /* dopo il ramo applyLang: anima il testo nella lingua giusta */
+  initVideoFilters();
+
+  /* Toggle tema — dark è il default, l'attributo marca il light ("pressed" = light) */
   const toggle = document.getElementById('themeToggle');
-  const setTheme = dark => {
-    if (dark) document.documentElement.setAttribute('data-theme', 'dark');
+  const setTheme = light => {
+    if (light) document.documentElement.setAttribute('data-theme', 'light');
     else document.documentElement.removeAttribute('data-theme');
-    localStorage.setItem('theme', dark ? 'dark' : 'light');
-    toggle.textContent = dark ? '☀' : '☾';
-    toggle.setAttribute('aria-pressed', String(dark));
+    localStorage.setItem('theme', light ? 'light' : 'dark');
+    toggle.textContent = light ? '☾' : '☀';
+    toggle.setAttribute('aria-pressed', String(light));
+    if (window.rainRecolor) window.rainRecolor();
   };
-  toggle.textContent = document.documentElement.hasAttribute('data-theme') ? '☀' : '☾';
+  toggle.textContent = document.documentElement.hasAttribute('data-theme') ? '☾' : '☀';
   toggle.setAttribute('aria-pressed', String(document.documentElement.hasAttribute('data-theme')));
   toggle.addEventListener('click', () =>
     setTheme(!document.documentElement.hasAttribute('data-theme')));
@@ -295,7 +412,7 @@ document.addEventListener('DOMContentLoaded', () => {
       msg.hidden = !err;
       if (err) valid = false;
     });
-    if (!valid) return;
+    if (!valid) { form.querySelector('[aria-invalid="true"]').focus(); return; }
     btn.disabled = true;
     let i = 0;
     const tick = setInterval(() => { btn.textContent = t['form.sending'] + '.'.repeat(i++ % 3 + 1); }, 400);
@@ -310,6 +427,8 @@ document.addEventListener('DOMContentLoaded', () => {
       form.querySelectorAll('.field, button').forEach(el => el.hidden = true);
       success.textContent = t['form.success'];
       success.hidden = false;
+      success.tabIndex = -1;
+      success.focus(); /* il submit nascosto perderebbe il focus; così lo SR annuncia l'esito */
     } catch {
       clearInterval(tick);
       btn.disabled = false;

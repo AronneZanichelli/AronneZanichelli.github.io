@@ -2,12 +2,130 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="refresh" content="0;url=projects.html#labelbike" />
-    <meta name="robots" content="noindex" />
-    <title>Projects — Aronne Zanichelli</title>
-    <link rel="canonical" href="https://aronnezanichelli.github.io/projects.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Editing — Aronne Zanichelli</title>
+    <meta name="description" content="Video post-production for Labelbike: 6 published videos localized into 9 languages via an AI-agent pipeline — editing, thumbnails, metadata, distribution." />
+    <meta property="og:site_name" content="Aronne Zanichelli — Junior Software Developer (AI-augmented)" />
+    <meta property="og:title" content="Editing — Aronne Zanichelli" />
+    <meta property="og:description" content="Video post-production for Labelbike: 6 published videos localized into 9 languages via an AI-agent pipeline — editing, thumbnails, metadata, distribution." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://aronnezanichelli.github.io/assets/og-card.png" />
+    <meta property="og:image:alt" content="Junior Software Developer (AI-augmented)" />
+    <meta property="og:url" content="https://aronnezanichelli.github.io/editing.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Editing — Aronne Zanichelli" />
+    <meta name="twitter:description" content="Video post-production for Labelbike: 6 published videos localized into 9 languages via an AI-agent pipeline — editing, thumbnails, metadata, distribution." />
+    <meta name="twitter:image" content="https://aronnezanichelli.github.io/assets/og-card.png" />
+    <link rel="canonical" href="https://aronnezanichelli.github.io/editing.html" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://i.ytimg.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Grotesk:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      (function () {
+        var t = localStorage.getItem('theme');
+        if (!t) t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+        if (localStorage.getItem('lang') === 'it') document.documentElement.lang = 'it';
+      })();
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8TT2P1VDT3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-8TT2P1VDT3');
+    </script>
+    <script src="script.js" defer></script>
   </head>
   <body>
-    <p><a href="projects.html#labelbike">This page has moved into Projects →</a></p>
+    <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
+
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="index.html" aria-label="Aronne Zanichelli — home">aronne-zanichelli</a>
+      <div class="nav-links">
+        <a href="projects.html" data-i18n="nav.projects">Projects</a>
+        <a href="editing.html" aria-current="page" data-i18n="nav.editing">Editing</a>
+        <a href="method.html" data-i18n="nav.method">Method</a>
+        <a href="index.html#contact" data-i18n="nav.contact">Contact</a>
+        <button class="lang-btn" data-lang="en" aria-label="Switch to English" aria-pressed="true">EN</button>
+        <button class="lang-btn" data-lang="it" aria-label="Passa all'italiano" aria-pressed="false">IT</button>
+        <button id="themeToggle" aria-label="Toggle light theme" aria-pressed="false">☀</button>
+      </div>
+    </nav>
+
+    <main id="main" class="container">
+      <header class="hero">
+        <h1 data-i18n="edit.title">Editing</h1>
+        <p data-i18n="edit.intro">Post-production work, organised by client. Every video below is published output — not a showreel.</p>
+        <div class="comment-block">
+          <strong data-i18n="edit.postprodLabel">Post-production scope: </strong><span data-i18n="edit.postprodText">Full pipeline handled end-to-end — editing, upload, titles, descriptions, keyword research, custom thumbnails, timestamps, and multilingual translation across 9 languages via a custom AI agent.</span>
+        </div>
+        <div class="filter-row" role="group" aria-label="Filter videos by client">
+          <button class="filter-chip" data-filter="labelbike" aria-pressed="true">Labelbike <span class="count">6</span></button>
+          <button class="filter-chip" data-filter="freelance" disabled aria-pressed="false">Freelance <span class="count" data-i18n="edit.soon">soon</span></button>
+          <button class="filter-chip" data-filter="personal" disabled aria-pressed="false">Personal <span class="count" data-i18n="edit.soon2">soon</span></button>
+        </div>
+      </header>
+
+      <section class="video-grid" id="videoGrid" aria-label="Video gallery">
+        <a class="video-card" data-tags="labelbike" href="https://www.youtube.com/watch?v=BirILFe52Ik" target="_blank" rel="noopener">
+          <span class="crt">
+            <img src="https://i.ytimg.com/vi/BirILFe52Ik/hqdefault.jpg" alt="Foglio Adesivo Gel 3D Esagoni Nido d'Ape: Proteggi e Personalizza Moto/Auto/Bici" width="480" height="360" fetchpriority="high" />
+            <span class="play" aria-hidden="true">▶</span>
+          </span>
+          <span class="video-title">Foglio Adesivo Gel 3D Esagoni Nido d'Ape: Proteggi e Personalizza Moto/Auto/Bici</span>
+        </a>
+        <a class="video-card" data-tags="labelbike" href="https://www.youtube.com/watch?v=pWTCa4k7MaM" target="_blank" rel="noopener">
+          <span class="crt">
+            <img src="https://i.ytimg.com/vi/pWTCa4k7MaM/hqdefault.jpg" alt="Morbidelli T1002VX 2025: battitacco 3D anti-graffio | installazione veloce" width="480" height="360" />
+            <span class="play" aria-hidden="true">▶</span>
+          </span>
+          <span class="video-title">Morbidelli T1002VX 2025: battitacco 3D anti-graffio | installazione veloce</span>
+        </a>
+        <a class="video-card" data-tags="labelbike" href="https://www.youtube.com/watch?v=Ts6uH_FLm-Y" target="_blank" rel="noopener">
+          <span class="crt">
+            <img src="https://i.ytimg.com/vi/Ts6uH_FLm-Y/hqdefault.jpg" alt="Morbidelli T1002VX 2025: protezioni 3D maniglie bauletto | installazione veloce" width="480" height="360" />
+            <span class="play" aria-hidden="true">▶</span>
+          </span>
+          <span class="video-title">Morbidelli T1002VX 2025: protezioni 3D maniglie bauletto | installazione veloce</span>
+        </a>
+        <a class="video-card" data-tags="labelbike" href="https://www.youtube.com/watch?v=R3-jY0WiOF0" target="_blank" rel="noopener">
+          <span class="crt">
+            <img src="https://i.ytimg.com/vi/R3-jY0WiOF0/hqdefault.jpg" alt="Morbidelli T1002VX 2025: protezione parasteli parafango | installazione veloce" width="480" height="360" loading="lazy" />
+            <span class="play" aria-hidden="true">▶</span>
+          </span>
+          <span class="video-title">Morbidelli T1002VX 2025: protezione parasteli parafango | installazione veloce</span>
+        </a>
+        <a class="video-card" data-tags="labelbike" href="https://www.youtube.com/watch?v=9UEL-AMOMdI" target="_blank" rel="noopener">
+          <span class="crt">
+            <img src="https://i.ytimg.com/vi/9UEL-AMOMdI/hqdefault.jpg" alt="Morbidelli T1002VX 2025: paraserbatoio 3D anti-graffio | installazione veloce" width="480" height="360" loading="lazy" />
+            <span class="play" aria-hidden="true">▶</span>
+          </span>
+          <span class="video-title">Morbidelli T1002VX 2025: paraserbatoio 3D anti-graffio | installazione veloce</span>
+        </a>
+        <a class="video-card" data-tags="labelbike" href="https://www.youtube.com/watch?v=CU_OsEj4dJA" target="_blank" rel="noopener">
+          <span class="crt">
+            <img src="https://i.ytimg.com/vi/CU_OsEj4dJA/hqdefault.jpg" alt="Morbidelli T1002VX 2025: protezioni laterali serbatoio 3D | installazione veloce" width="480" height="360" loading="lazy" />
+            <span class="play" aria-hidden="true">▶</span>
+          </span>
+          <span class="video-title">Morbidelli T1002VX 2025: protezioni laterali serbatoio 3D | installazione veloce</span>
+        </a>
+      </section>
+      <p class="no-results" id="noResults" hidden data-i18n="edit.noResults">No videos match the selected filters.</p>
+    </main>
+
+    <footer class="footer container">
+      <div>
+        <span class="mono-label" data-i18n="footer.contactLabel">Contact</span><br />
+        <a href="mailto:aronnezanichelli@gmail.com">aronnezanichelli@gmail.com</a><br />
+        <a href="https://github.com/AronneZanichelli" data-i18n="footer.github">View on GitHub</a><br />
+        <a href="https://www.linkedin.com/in/aronne-zanichelli-62668b241" data-i18n="footer.linkedin">Connect on LinkedIn</a>
+      </div>
+      <div data-i18n="footer.colophon">Set in Syne, Space Grotesk &amp; JetBrains Mono. Static HTML, no build step, no framework.</div>
+      <div class="copyright">© 2026 Aronne Zanichelli.</div>
+    </footer>
   </body>
 </html>

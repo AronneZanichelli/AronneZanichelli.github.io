@@ -20,7 +20,7 @@
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Grotesk:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
     <script type="application/ld+json">
     {
@@ -38,8 +38,8 @@
     <script>
       (function () {
         var t = localStorage.getItem('theme');
-        if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        if (!t) t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
         if (localStorage.getItem('lang') === 'it') document.documentElement.lang = 'it';
       })();
     </script>
@@ -56,14 +56,15 @@
     <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
 
     <nav class="nav" aria-label="Main navigation">
-      <a class="brand" href="index.html">Aronne Zanichelli</a>
+      <a class="brand" href="index.html" aria-label="Aronne Zanichelli — home">aronne-zanichelli</a>
       <div class="nav-links">
         <a href="projects.html" data-i18n="nav.projects">Projects</a>
+        <a href="editing.html" data-i18n="nav.editing">Editing</a>
         <a href="method.html" data-i18n="nav.method">Method</a>
         <a href="#contact" data-i18n="nav.contact">Contact</a>
         <button class="lang-btn" data-lang="en" aria-label="Switch to English" aria-pressed="true">EN</button>
         <button class="lang-btn" data-lang="it" aria-label="Passa all'italiano" aria-pressed="false">IT</button>
-        <button id="themeToggle" aria-label="Switch to dark theme" aria-pressed="false">☾</button>
+        <button id="themeToggle" aria-label="Toggle light theme" aria-pressed="false">☀</button>
       </div>
     </nav>
 
@@ -71,11 +72,12 @@
 
       <!-- 00 — Hero -->
       <section class="hero">
+        <canvas id="rain" class="rain-canvas" aria-hidden="true"></canvas>
         <div class="hero-grid">
           <div>
             <p class="eyebrow" data-i18n="hero.eyebrow">Junior Software Developer (AI-augmented)</p>
             <h1>Aronne Zanichelli</h1>
-            <p class="tagline" data-i18n="hero.tagline">Code, method, evidence.</p>
+            <p class="tagline" data-i18n="hero.tagline" data-decode>Code, method, evidence.</p>
             <p data-i18n="hero.subline">Junior software developer working AI-augmented — every claim on this site links to a repository.</p>
             <ul class="fact-row">
               <li data-i18n="hero.fact1">ITIS diploma 2025</li>
@@ -85,7 +87,7 @@
             </ul>
             <a class="btn-primary" href="#work" data-i18n="hero.cta">View projects</a>
           </div>
-          <img class="portrait" src="assets/profile.webp" alt="Aronne Zanichelli" width="140" height="187" fetchpriority="high" />
+          <span class="crt"><img class="portrait" src="assets/profile.webp" alt="Aronne Zanichelli" width="140" height="187" fetchpriority="high" /></span>
         </div>
       </section>
       <script>
@@ -184,7 +186,6 @@
           <span class="num">02</span>
           <h2 data-i18n="method.title">Method</h2>
         </div>
-        <p class="mono-label">spec → plan → test → audit</p>
         <p data-i18n="method.l1">Spec → plan → test → audit — every project, every time.</p>
         <p data-i18n="method.l2">Agents execute. I decide the architecture and write it down as ADRs.</p>
         <p data-i18n="method.l3">claude-dashboard ships its own self-critical audit, in the same tone as its README.</p>
@@ -315,6 +316,12 @@
           · <a href="https://www.linkedin.com/in/aronne-zanichelli-62668b241" rel="me">LinkedIn</a>
           · <a href="assets/cv-en.pdf" id="cvLink" download data-i18n="contact.cv">Download CV (PDF)</a>
         </p>
+
+        <figure class="cv-preview">
+          <a id="cvPreviewLink" href="assets/cv-en.pdf">
+            <img id="cvPreviewImg" src="assets/cv-en.webp" alt="CV preview" width="180" height="255" loading="lazy" /></a>
+          <figcaption class="mono" data-i18n="contact.cvCaption">Click to open the PDF</figcaption>
+        </figure>
       </section>
     </main>
 
@@ -325,7 +332,7 @@
         <a href="https://github.com/AronneZanichelli" data-i18n="footer.github">View on GitHub</a><br />
         <a href="https://www.linkedin.com/in/aronne-zanichelli-62668b241" data-i18n="footer.linkedin">Connect on LinkedIn</a>
       </div>
-      <div data-i18n="footer.colophon">Set in Newsreader &amp; JetBrains Mono. Static HTML, no build step, no framework.</div>
+      <div data-i18n="footer.colophon">Set in Syne, Space Grotesk &amp; JetBrains Mono. Static HTML, no build step, no framework.</div>
       <div class="copyright">© 2026 Aronne Zanichelli.</div>
     </footer>
   </body>

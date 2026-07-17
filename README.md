@@ -1,7 +1,7 @@
-# Aronne Zanichelli — Portfolio "Engineering Notebook" (EN/IT)
+# Aronne Zanichelli — Portfolio "Matrix × Editor" (EN/IT)
 
 Static bilingual portfolio + CV. English is the default, Italian is applied client-side.
-No build step, no framework — HTML, CSS, and ~60 lines of vanilla JS logic.
+No build step, no framework — HTML, CSS, and vanilla JS (i18n, theme, digital rain, video filters).
 
 ## Structure
 
@@ -12,11 +12,12 @@ No build step, no framework — HTML, CSS, and ~60 lines of vanilla JS logic.
 ├── method.html       # the AI-augmented workflow: spec → plan → test → audit, with links to real artifacts
 ├── cv.html           # single source for the CV — the PDF is printed from this page
 ├── 404.html
+├── editing.html      # video editing archive: filterable YouTube gallery (Labelbike)
 ├── featured.html     # redirect stub → projects.html
-├── editing.html      # redirect stub → projects.html#labelbike
-├── labelbike.html    # redirect stub → projects.html#labelbike
-├── style.css         # design tokens (light primary / dark negative) + components
-├── script.js         # translations object + i18n / theme / reveal / form logic
+├── labelbike.html    # redirect stub → editing.html
+├── style.css         # design tokens (dark primary / light "print") + components
+├── script.js         # translations object + i18n / theme / rain / decode / filters / form logic
+├── tools/og-card.html# source for assets/og-card.png (see OG card below)
 └── assets/           # profile.webp, favicon.svg, og-card.png, cv-en.pdf, cv-it.pdf, previews
 ```
 
@@ -40,15 +41,35 @@ Open `http://localhost:8080` and check: EN/IT toggle, light/dark theme, contact 
 ## CV regeneration
 
 `cv.html` is the single source for both languages (it embeds its own translations).
-
-1. Open `cv.html` (or `cv.html?lang=it`) in Chrome.
-2. Print → Save as PDF, A4, margins "None", background graphics ON, headers/footers OFF.
-3. Save as `assets/cv-en.pdf` / `assets/cv-it.pdf` (names are wired into the site).
-
-Headless equivalent:
+After editing it, regenerate the two PDFs and the two preview thumbnails
+(from WSL, with the repo under `C:\Dev`; Pillow: `pip install --user Pillow`):
 
 ```bash
-chrome --headless --print-to-pdf=assets/cv-en.pdf --no-pdf-header-footer cv.html
+CHROME="/mnt/c/Program Files/Google/Chrome/Application/chrome.exe"
+"$CHROME" --headless --no-pdf-header-footer --virtual-time-budget=5000 \
+  --print-to-pdf='C:\Dev\AronneZanichelli.github.io\assets\cv-en.pdf' \
+  'file:///C:/Dev/AronneZanichelli.github.io/cv.html'          # + ?lang=it → cv-it.pdf
+"$CHROME" --headless --hide-scrollbars --window-size=794,1123 --virtual-time-budget=5000 \
+  --screenshot='C:\Dev\AronneZanichelli.github.io\assets\cv-en.png' \
+  'file:///C:/Dev/AronneZanichelli.github.io/cv.html?preview=1' # + &lang=it → cv-it.png
+python3 -c "from PIL import Image; [Image.open(f'assets/cv-{l}.png').save(f'assets/cv-{l}.webp',quality=80) for l in ('en','it')]"
+rm assets/cv-en.png assets/cv-it.png   # only the .webp thumbnails are committed
+```
+
+Check before committing: each PDF is exactly **one A4 page** (with the photo),
+and `assets/cv-{en,it}.{pdf,webp}` are all regenerated together.
+
+## OG card regeneration
+
+`assets/og-card.png` (1200×630) is a screenshot of `tools/og-card.html`.
+After editing the source, regenerate with:
+
+```bash
+CHROME="/mnt/c/Program Files/Google/Chrome/Application/chrome.exe"
+"$CHROME" --headless=new --disable-gpu --hide-scrollbars --window-size=1200,630 \
+  --virtual-time-budget=5000 \
+  --screenshot='C:\Dev\AronneZanichelli.github.io\assets\og-card.png' \
+  'file:///C:/Dev/AronneZanichelli.github.io/tools/og-card.html'
 ```
 
 ## Deploy
