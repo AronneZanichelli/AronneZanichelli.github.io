@@ -54,6 +54,10 @@
   </head>
   <body>
     <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
+    <div class="cmdbar">
+      <span><span class="dot" aria-hidden="true"></span><span data-i18n="cmdbar.status">Available for junior roles</span> · <span data-i18n="cmdbar.loc">Reggio Emilia, Italy</span></span>
+      <span class="cmdbar-right">CET · UTC+1 · <a href="mailto:aronnezanichelli@gmail.com">aronnezanichelli@gmail.com</a></span>
+    </div>
 
     <nav class="nav" aria-label="Main navigation">
       <a class="brand" href="index.html" aria-label="Aronne Zanichelli — home">aronne-zanichelli</a>
@@ -117,10 +121,24 @@
         <span class="item"><strong>9</strong> ADR</span>
       </div>
 
+      <div class="layout">
+        <aside class="toc" aria-label="Section index">
+          <p class="toc-title" data-i18n="toc.title">Index</p>
+          <ul>
+            <li><a href="#work" data-i18n="work.title">Work</a></li>
+            <li><a href="#method" data-i18n="method.title">Method</a></li>
+            <li><a href="#timeline" data-i18n="timeline.title">Timeline</a></li>
+            <li><a href="#skills" data-i18n="skills.title">Skills, with evidence</a></li>
+            <li><a href="#contact" data-i18n="contact.title">Get in touch</a></li>
+          </ul>
+          <p class="toc-stamp">v.2026 · WCAG AAA</p>
+        </aside>
+        <div class="flow">
+
       <!-- 01 — Work -->
+      <div class="rail" aria-hidden="true"><span>§ 01</span><span data-i18n="work.title">Work</span></div>
       <section id="work" class="section">
         <div class="section-head">
-          <span class="num">01</span>
           <h2 data-i18n="work.title">Work</h2>
         </div>
 
@@ -180,9 +198,9 @@
       </section>
 
       <!-- 02 — Method -->
+      <div class="rail" aria-hidden="true"><span>§ 02</span><span data-i18n="method.title">Method</span></div>
       <section id="method" class="section">
         <div class="section-head">
-          <span class="num">02</span>
           <h2 data-i18n="method.title">Method</h2>
         </div>
         <p data-i18n="method.l1">Spec → plan → test → audit — every project, every time.</p>
@@ -192,9 +210,9 @@
       </section>
 
       <!-- 03 — Timeline -->
+      <div class="rail" aria-hidden="true"><span>§ 03</span><span data-i18n="timeline.title">Timeline</span></div>
       <section id="timeline" class="section">
         <div class="section-head">
-          <span class="num">03</span>
           <h2 data-i18n="timeline.title">Timeline</h2>
         </div>
         <p data-i18n="timeline.bio">I'm Aronne Zanichelli, a junior software developer working AI-augmented. I write code, but I also write the spec, the plan, and the audit around it — the discipline is the point, not just the output. My path here wasn't linear: a technical diploma, a year selling utility contracts, then a creative-and-AI program that put me inside a real production pipeline. Along the way I built six projects I still maintain — none of them portfolio filler; all of them on GitHub, with commits, tests, and the occasional documented mistake. I'm looking for a first developer role, in Italy or abroad, where "I can prove it" counts for more than "I'm passionate about it."</p>
@@ -223,9 +241,9 @@
       </section>
 
       <!-- 04 — Skills -->
+      <div class="rail" aria-hidden="true"><span>§ 04</span><span data-i18n="skills.title">Skills, with evidence</span></div>
       <section id="skills" class="section">
         <div class="section-head">
-          <span class="num">04</span>
           <h2 data-i18n="skills.title">Skills, with evidence</h2>
         </div>
         <p data-i18n="skills.intro">No bars, no percentages — every skill below links to the project that proves it.</p>
@@ -280,9 +298,9 @@
       </section>
 
       <!-- 05 — Contact -->
+      <div class="rail" aria-hidden="true"><span>§ 05</span><span data-i18n="contact.title">Get in touch</span></div>
       <section id="contact" class="section">
         <div class="section-head">
-          <span class="num">05</span>
           <h2 data-i18n="contact.title">Get in touch</h2>
         </div>
         <p data-i18n="contact.sub">Have a role, a project, or a question? Write me directly, or use the form below.</p>
@@ -322,6 +340,9 @@
           <figcaption class="mono" data-i18n="contact.cvCaption">Click to open the PDF</figcaption>
         </figure>
       </section>
+
+        </div><!-- /.flow -->
+      </div><!-- /.layout -->
     </main>
 
     <footer class="footer container">

@@ -5,6 +5,8 @@ const translations = {
   en: {
     'a11y.skip': 'Skip to content',
     'nav.projects': 'Projects', 'nav.editing': 'Editing', 'nav.method': 'Method', 'nav.contact': 'Contact',
+    'cmdbar.status': 'Available for junior roles', 'cmdbar.loc': 'Reggio Emilia, Italy',
+    'toc.title': 'Index',
     'hero.eyebrow': 'Junior Software Developer (AI-augmented)',
     'hero.tagline': 'Code, method, evidence.',
     'hero.subline': 'Junior software developer working AI-augmented — every claim on this site links to a repository.',
@@ -120,6 +122,8 @@ const translations = {
   it: {
     'a11y.skip': 'Vai al contenuto',
     'nav.projects': 'Progetti', 'nav.editing': 'Editing', 'nav.method': 'Metodo', 'nav.contact': 'Contatti',
+    'cmdbar.status': 'Disponibile per ruoli junior', 'cmdbar.loc': 'Reggio Emilia, Italia',
+    'toc.title': 'Indice',
     'hero.eyebrow': 'Sviluppatore Software Junior (AI-augmented)',
     'hero.tagline': 'Codice, metodo, evidenza.',
     'hero.subline': 'Sviluppatore software junior con metodo AI-augmented — ogni affermazione di questo sito punta a un repository.',
@@ -255,6 +259,22 @@ function applyLang(lang) {
   if (pvImg) { pvImg.src = 'assets/cv-' + lang + '.webp'; pvImg.alt = dict['contact.cvAlt']; }
 }
 
+/* ---------- Scrollspy TOC (index.html) ---------- */
+function initScrollspy() {
+  const toc = document.querySelector('.toc');
+  if (!toc) return;
+  const links = new Map([...toc.querySelectorAll('a[href^="#"]')].map(a => [a.hash.slice(1), a]));
+  const io = new IntersectionObserver(entries => entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    links.forEach(l => l.classList.remove('is-active'));
+    links.get(e.target.id).classList.add('is-active');
+  }), { rootMargin: '-40% 0px -55% 0px' });
+  links.forEach((_, id) => {
+    const s = document.getElementById(id);
+    if (s) io.observe(s);
+  });
+}
+
 /* ---------- Filtri video (editing.html) ---------- */
 function initVideoFilters() {
   const chips = [...document.querySelectorAll('.filter-chip:not([disabled])')];
@@ -287,6 +307,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.lang-btn').forEach(b =>
     b.addEventListener('click', () => applyLang(b.dataset.lang)));
 
+  initScrollspy();
   initVideoFilters();
 
   /* Toggle tema — dark è il default, l'attributo marca il light ("pressed" = light) */
