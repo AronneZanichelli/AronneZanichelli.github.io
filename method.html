@@ -2,103 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Method — Aronne Zanichelli</title>
-    <meta name="description" content="How I work AI-augmented: spec, plan, test, audit. Agent orchestration, ADRs, and a self-critical review — documented, not claimed." />
-    <meta property="og:site_name" content="Aronne Zanichelli — Junior Software Developer (AI-augmented)" />
-    <meta property="og:title" content="Method — Aronne Zanichelli" />
-    <meta property="og:description" content="How I work AI-augmented: spec, plan, test, audit. Agent orchestration, ADRs, and a self-critical review — documented, not claimed." />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://aronnezanichelli.github.io/assets/og-card.png" />
-    <meta property="og:image:alt" content="Junior Software Developer (AI-augmented)" />
-    <meta property="og:url" content="https://aronnezanichelli.github.io/method.html" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Method — Aronne Zanichelli" />
-    <meta name="twitter:description" content="How I work AI-augmented: spec, plan, test, audit. Agent orchestration, ADRs, and a self-critical review — documented, not claimed." />
-    <meta name="twitter:image" content="https://aronnezanichelli.github.io/assets/og-card.png" />
-    <link rel="canonical" href="https://aronnezanichelli.github.io/method.html" />
-    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700;800&family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
-    <script>
-      (function () {
-        var t = localStorage.getItem('theme');
-        if (!t) t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-        if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
-        if (localStorage.getItem('lang') === 'it') document.documentElement.lang = 'it';
-      })();
-    </script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8TT2P1VDT3"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
-      gtag('js', new Date());
-      gtag('config', 'G-8TT2P1VDT3');
-    </script>
-    <script src="script.js" defer></script>
+    <meta name="color-scheme" content="dark light" />
+    <meta http-equiv="refresh" content="0;url=index.html" />
+    <meta name="robots" content="noindex" />
+    <title>Aronne Zanichelli — Junior Software Developer</title>
+    <link rel="canonical" href="https://aronnezanichelli.github.io/" />
   </head>
   <body>
-    <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
-    <div class="cmdbar">
-      <span><span class="dot" aria-hidden="true"></span><span data-i18n="cmdbar.status">Available for junior roles</span> · <span data-i18n="cmdbar.loc">Reggio Emilia, Italy</span></span>
-      <span class="cmdbar-right">CET · UTC+1 · <a href="mailto:aronnezanichelli@gmail.com">aronnezanichelli@gmail.com</a></span>
-    </div>
-
-    <nav class="nav" aria-label="Main navigation">
-      <a class="brand" href="index.html" aria-label="Aronne Zanichelli — home">aronne-zanichelli</a>
-      <div class="nav-links">
-        <a href="projects.html" data-i18n="nav.projects">Projects</a>
-        <a href="editing.html" data-i18n="nav.editing">Editing</a>
-        <a href="method.html" aria-current="page" data-i18n="nav.method">Method</a>
-        <a href="index.html#contact" data-i18n="nav.contact">Contact</a>
-        <button class="lang-btn" data-lang="en" aria-label="Switch to English" aria-pressed="true">EN</button>
-        <button class="lang-btn" data-lang="it" aria-label="Passa all'italiano" aria-pressed="false">IT</button>
-        <button id="themeToggle" aria-label="Toggle light theme" aria-pressed="false">☀</button>
-      </div>
-    </nav>
-
-    <main id="main" class="container">
-      <header class="hero">
-        <h1 data-i18n="mpage.title">Method</h1>
-        <p class="mono-label">spec → plan → test → audit</p>
-      </header>
-
-      <section class="section">
-        <ul class="method-steps">
-          <li><span class="method-step">01 spec</span></li>
-          <li><a class="method-step" href="https://github.com/AronneZanichelli/BleaBox/blob/master/DECISIONS.md">02 plan — <span data-i18n="mpage.adrLink">View the ADRs on GitHub</span> <span class="ext" aria-hidden="true">↗</span></a></li>
-          <li><a class="method-step" href="https://github.com/AronneZanichelli/eu4-assistant/tree/main/tests">03 test — <span data-i18n="mpage.testLink">See the test suite</span> <span class="ext" aria-hidden="true">↗</span></a></li>
-          <li><a class="method-step" href="https://github.com/AronneZanichelli/claude-dashboard/blob/master/STRATEGIC_REVIEW_2026-06.md">04 audit — <span data-i18n="mpage.auditLink">Read the STRATEGIC_REVIEW</span> <span class="ext" aria-hidden="true">↗</span></a></li>
-        </ul>
-
-        <p data-i18n="mpage.p1">Every project on this site follows the same loop: spec, plan, test, audit. I write the spec before I write code — what the thing needs to do, and what it explicitly doesn't. Then a plan, broken into steps small enough to review before they're built. AI agents write a meaningful share of the resulting code, but they work from my spec and my plan, not the other way around: the architectural decisions are mine — in BleaBox they're recorded as nine ADRs, so the reasoning survives past the commit that implemented it.</p>
-
-        <blockquote lang="it">
-          <p>ADR-003 — Combat server-authoritative. Decisione: danni, stat, posizione, cooldown validati solo lato server. Perché: anti-exploit. Client = input + visual feedback, non fonte di verità.</p>
-          <footer class="mono">— <cite><a href="https://github.com/AronneZanichelli/BleaBox/blob/master/DECISIONS.md">BleaBox, DECISIONS.md</a></cite></footer>
-        </blockquote>
-
-        <p data-i18n="mpage.p2">Testing isn't a separate phase bolted on at the end; it's written alongside the feature, which is why eu4-assistant carries 2.6k lines of tests against 4.2k of implementation. And the loop doesn't end at green tests. claude-dashboard ships with a STRATEGIC_REVIEW — a self-audit that names its own tech debt and half-finished corners in the same tone as its README, because a build that only shows its wins isn't a status report, it's a highlight reel.</p>
-
-        <p data-i18n="mpage.p3">AI-augmented doesn't mean AI-decided; it means I orchestrate agents the way a lead orchestrates a team — clear brief, checked output, documented reasoning.</p>
-
-        <p class="method-closing" data-i18n="mpage.closing">The decisions are mine; the AI multiplies execution.</p>
-
-        <p class="next-link"><a class="link-arrow" href="projects.html" data-i18n="mpage.exit">Back to the projects</a></p>
-      </section>
-    </main>
-
-    <footer class="footer container">
-      <div>
-        <span class="mono-label" data-i18n="footer.contactLabel">Contact</span><br />
-        <a href="mailto:aronnezanichelli@gmail.com">aronnezanichelli@gmail.com</a><br />
-        <a href="https://github.com/AronneZanichelli" data-i18n="footer.github">View on GitHub</a><br />
-        <a href="https://www.linkedin.com/in/aronne-zanichelli-62668b241" data-i18n="footer.linkedin">Connect on LinkedIn</a>
-      </div>
-      <div data-i18n="footer.colophon">Set in Space Grotesk, Inter &amp; JetBrains Mono. Static HTML, no build step, no framework.</div>
-      <div class="copyright">© 2026 Aronne Zanichelli.</div>
-    </footer>
+    <p><a href="index.html">This page has moved to the homepage →</a></p>
   </body>
 </html>

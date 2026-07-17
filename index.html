@@ -64,7 +64,6 @@
       <div class="nav-links">
         <a href="projects.html" data-i18n="nav.projects">Projects</a>
         <a href="editing.html" data-i18n="nav.editing">Editing</a>
-        <a href="method.html" data-i18n="nav.method">Method</a>
         <a href="#contact" data-i18n="nav.contact">Contact</a>
         <button class="lang-btn" data-lang="en" aria-label="Switch to English" aria-pressed="true">EN</button>
         <button class="lang-btn" data-lang="it" aria-label="Passa all'italiano" aria-pressed="false">IT</button>
@@ -135,7 +134,13 @@
             'hero.ctaContact': 'Oppure scrivimi',
             'hero.scroll': 'scorri',
             'chip.now': '/now — in sviluppo',
-            'chip.nowMeta': 'Action-RPG server-authoritative · 9 ADR'
+            'chip.nowMeta': 'Action-RPG server-authoritative · 9 ADR',
+            'toc.title': 'Indice',
+            'work.title': 'Progetti di sviluppo',
+            'graphics.title': 'Grafica e video',
+            'timeline.title': 'Timeline',
+            'skills.title': 'Competenze, con le prove',
+            'contact.title': 'Contatti'
           };
           for (var k in h) {
             var el = document.querySelector('[data-i18n="' + k + '"]');
@@ -146,7 +151,7 @@
 
       <!-- Meta numbers -->
       <div class="meta-numbers" role="group" aria-label="Key numbers">
-        <div class="cell"><span class="k" data-i18n="proof.p1">open-source projects</span><strong>6</strong></div>
+        <div class="cell"><span class="k" data-i18n="proof.p1">open-source projects</span><strong>5</strong></div>
         <div class="cell"><span class="k">LOC</span><strong>~30k</strong></div>
         <div class="cell"><span class="k" data-i18n="proof.p2">lines of tests</span><strong>2.6k</strong></div>
         <div class="cell"><span class="k">ADR</span><strong>9</strong></div>
@@ -156,8 +161,8 @@
         <aside class="toc" aria-label="Section index">
           <p class="toc-title" data-i18n="toc.title">Index</p>
           <ul>
-            <li><a href="#work" data-i18n="work.title">Work</a></li>
-            <li><a href="#method" data-i18n="method.title">Method</a></li>
+            <li><a href="#work" data-i18n="work.title">Development projects</a></li>
+            <li><a href="#graphics" data-i18n="graphics.title">Graphics &amp; video</a></li>
             <li><a href="#timeline" data-i18n="timeline.title">Timeline</a></li>
             <li><a href="#skills" data-i18n="skills.title">Skills, with evidence</a></li>
             <li><a href="#contact" data-i18n="contact.title">Get in touch</a></li>
@@ -166,11 +171,11 @@
         </aside>
         <div class="flow">
 
-      <!-- 01 — Work -->
-      <div class="rail" aria-hidden="true"><span>§ 01</span><span data-i18n="work.title">Work</span></div>
+      <!-- 01 — Development projects -->
+      <div class="rail" aria-hidden="true"><span>§ 01</span><span data-i18n="work.title">Development projects</span></div>
       <section id="work" class="section">
         <div class="section-head">
-          <h2 data-i18n="work.title">Work</h2>
+          <h2 data-i18n="work.title">Development projects</h2>
         </div>
 
         <a class="project-row" href="projects.html#eu4-assistant">
@@ -217,27 +222,23 @@
           <p class="desc" data-i18n="work.p5">A procedural evolutionary sandbox built test-first, with save files that survive their own migrations.</p>
           <span class="arrow" aria-hidden="true">→</span>
         </a>
-
-        <a class="project-row" href="projects.html#labelbike">
-          <span class="num">06</span>
-          <h3>Labelbike</h3>
-          <span class="badge badge--done" data-i18n="status.done">Completed</span>
-          <span class="stack">Video · AI pipeline</span>
-          <p class="desc" data-i18n="work.p6">A video pipeline that turns one script into six published videos and nine language versions.</p>
-          <span class="arrow" aria-hidden="true">→</span>
-        </a>
       </section>
 
-      <!-- 02 — Method -->
-      <div class="rail" aria-hidden="true"><span>§ 02</span><span data-i18n="method.title">Method</span></div>
-      <section id="method" class="section">
+      <!-- 02 — Graphics & video -->
+      <div class="rail" aria-hidden="true"><span>§ 02</span><span data-i18n="graphics.title">Graphics &amp; video</span></div>
+      <section id="graphics" class="section">
         <div class="section-head">
-          <h2 data-i18n="method.title">Method</h2>
+          <h2 data-i18n="graphics.title">Graphics &amp; video</h2>
         </div>
-        <p data-i18n="method.l1">Spec → plan → test → audit — every project, every time.</p>
-        <p data-i18n="method.l2">Agents execute. I decide the architecture and write it down as ADRs.</p>
-        <p data-i18n="method.l3">claude-dashboard ships its own self-critical audit, in the same tone as its README.</p>
-        <a class="link-arrow" href="method.html" data-i18n="method.link">Read the full method</a>
+        <p data-i18n="graphics.desc">A video pipeline that turns one script into six published videos and nine language versions.</p>
+        <a class="video-card" href="editing.html#labelbike">
+          <span class="frame">
+            <img src="https://i.ytimg.com/vi/BirILFe52Ik/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" />
+            <span class="play" aria-hidden="true">▶</span>
+          </span>
+          <span class="video-title">Labelbike — 6 video · 9 <span data-i18n="m.langsWord">languages</span> <span class="badge badge--done" data-i18n="status.done">Completed</span></span>
+        </a>
+        <p><a class="link-arrow" href="editing.html" data-i18n="graphics.link">See all the video work</a></p>
       </section>
 
       <!-- 03 — Timeline -->
@@ -246,7 +247,7 @@
         <div class="section-head">
           <h2 data-i18n="timeline.title">Timeline</h2>
         </div>
-        <p data-i18n="timeline.bio">I'm Aronne Zanichelli, a junior software developer working AI-augmented. I write code, but I also write the spec, the plan, and the audit around it — the discipline is the point, not just the output. My path here wasn't linear: a technical diploma, a year selling utility contracts, then a creative-and-AI program that put me inside a real production pipeline. Along the way I built six projects I still maintain — none of them portfolio filler; all of them on GitHub, with commits, tests, and the occasional documented mistake. I'm looking for a first developer role, in Italy or abroad, where "I can prove it" counts for more than "I'm passionate about it."</p>
+        <p data-i18n="timeline.bio">I'm Aronne Zanichelli, a junior software developer working AI-augmented. I write code, but I also write the spec, the plan, and the audit around it — the discipline is the point, not just the output. My path here wasn't linear: a technical diploma, a year selling utility contracts, then a creative-and-AI program that put me inside a real production pipeline. Along the way I built five open-source projects I still maintain — none of them portfolio filler; all of them on GitHub, with commits, tests, and the occasional documented mistake — plus a published video pipeline for a real client. I'm looking for a first developer role, in Italy or abroad, where "I can prove it" counts for more than "I'm passionate about it."</p>
 
         <div class="timeline-row">
           <span class="date">2019 – 2025</span>
@@ -309,7 +310,7 @@
               </tr>
               <tr>
                 <td>Git / PR workflow</td>
-                <td><span data-i18n="skills.s6">all six repos: branch-per-feature, documented decisions</span></td>
+                <td><span data-i18n="skills.s6">all five repos: branch-per-feature, documented decisions</span></td>
               </tr>
               <tr>
                 <td>Testing</td>
@@ -317,11 +318,11 @@
               </tr>
               <tr>
                 <td>Java, C++, SQL</td>
-                <td><a href="projects.html#labelbike">Labelbike</a>: <span data-i18n="skills.s8">dev support in a production context — not yet at project-ownership depth</span></td>
+                <td><a href="editing.html#labelbike">Labelbike</a>: <span data-i18n="skills.s8">dev support in a production context — not yet at project-ownership depth</span></td>
               </tr>
               <tr>
                 <td data-i18n="skills.s9k">Video editing, AI content</td>
-                <td><a href="projects.html#labelbike">Labelbike</a>: <span data-i18n="skills.s9">6 published videos, 9-language localization via agents</span></td>
+                <td><a href="editing.html#labelbike">Labelbike</a>: <span data-i18n="skills.s9">6 published videos, 9-language localization via agents</span></td>
               </tr>
             </tbody>
           </table>

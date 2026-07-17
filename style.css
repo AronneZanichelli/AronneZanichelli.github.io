@@ -821,31 +821,6 @@ blockquote {
   }
 }
 
-/* ============ Method ============ */
-
-.method-steps {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--sp-3) var(--sp-5);
-  margin: var(--sp-5) 0;
-  padding: 0;
-  list-style: none;
-}
-.method-step {
-  font: 500 var(--fs-sm)/1 var(--font-mono);
-  color: var(--ink);
-  white-space: nowrap;
-}
-.method-step:hover { color: var(--accent-text); }
-.method-step .ext { margin-left: 2px; }
-
-.method-closing {
-  border-top: 1px solid var(--hairline);
-  margin-top: var(--sp-7);
-  padding-top: var(--sp-5);
-  font: 400 italic var(--fs-lg)/1.5 var(--font-sans);
-}
-
 /* ============ Blocco commento (nota post-produzione) ============ */
 
 .comment-block {
@@ -934,6 +909,8 @@ blockquote {
   font: 400 var(--fs-xs)/1.5 var(--font-mono);
   color: var(--ink-2);
 }
+/* Teaser singolo in home (#graphics): card non a piena larghezza */
+#graphics .video-card { max-width: 480px; margin-block: var(--sp-5); }
 .no-results {
   font: 400 var(--fs-sm)/1.5 var(--font-mono);
   color: var(--ink-2);
