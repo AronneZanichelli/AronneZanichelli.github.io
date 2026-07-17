@@ -33,7 +33,7 @@
   --fx-alpha:    1;         /* intensità layer decorativi (dot-field, orbs) */
   --dot-field:   rgba(245, 242, 237, 0.05);
   --grid-line:   rgba(232, 57, 14, 0.05);
-  --vignette:    rgba(0, 0, 0, 0.55);
+  --vignette:    rgba(0, 0, 0, 0.28); /* tenue: l'hero è largo quanto il container, una vignette piena stacca a rettangolo */
   --scanline-fx: rgba(245, 242, 237, 0.018);
   --chip-bg:     rgba(44, 44, 44, 0.7);
   --glitch-glow: 0 0 40px rgba(232, 57, 14, 0.18);
@@ -85,8 +85,8 @@
   --accent-fill: #9E2408;
   --accent-fill-hover: #8A1F07;
   --on-fill:     #FFFFFF;
-  --live:        #4CAF6E;
-  --live-text:   #1D5931;   /* 7.4:1 */
+  --live:        #2E7C4A;   /* dot su carta: scurito per il 3:1 */
+  --live-text:   #143D22;
   --focus-ring:  #8E6B16;   /* oro scurito: sul chiaro l'anello deve scurire, non brillare */
   --scrim:       0 0 12px rgba(0, 0, 0, 0.6); /* i glifi poggiano su thumbnail, resta scuro anche in light */
   --shadow-1:    0 12px 28px rgba(26, 26, 26, 0.12);
@@ -301,7 +301,10 @@ blockquote {
 @keyframes cmd-pulse { 50% { opacity: 0.45; } }
 .cmdbar a { color: var(--ink-2); text-decoration: none; }
 .cmdbar a:hover { color: var(--accent-text); }
-@media (max-width: 700px) { .cmdbar-right { display: none; } }
+@media (max-width: 700px) {
+  .cmdbar { white-space: normal; } /* nowrap allargherebbe il body: overflow globale */
+  .cmdbar-right { display: none; }
+}
 
 /* ============ Nav ============ */
 
@@ -694,6 +697,7 @@ blockquote {
   border: 1.5px solid currentColor;
   flex-shrink: 0;
 }
+[data-theme="light"] .badge { background: transparent; } /* su carta il fill 12% scende sotto 7:1 */
 .badge--active { color: var(--live-text); }
 .badge--active::before { background: currentColor; }
 .badge--alpha { color: var(--gold-text); }
@@ -1017,7 +1021,7 @@ blockquote {
   width: 100%;
   background: transparent;
   border: none;
-  box-shadow: inset 0 -1px 0 var(--hairline);
+  box-shadow: inset 0 -1px 0 var(--fog); /* boundary input: ≥3:1 su --bg */
   padding: var(--sp-2) 0;
   font: 400 var(--fs-sm)/1.4 var(--font-mono);
   color: var(--ink);
