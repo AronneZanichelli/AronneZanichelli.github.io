@@ -5,12 +5,16 @@ const translations = {
   en: {
     'a11y.skip': 'Skip to content',
     'nav.projects': 'Projects', 'nav.editing': 'Editing', 'nav.method': 'Method', 'nav.contact': 'Contact',
-    'hero.eyebrow': 'Junior Software Developer (AI-augmented)',
-    'hero.tagline': 'Code, method, evidence.',
-    'hero.subline': 'Junior software developer working AI-augmented — every claim on this site links to a repository.',
-    'hero.fact1': 'ITIS diploma 2025', 'hero.fact2': 'IFTS Creative & AI 2026', 'hero.fact3': '6 repos',
-    'hero.cta': 'View projects',
-    'proof.label': 'In numbers', 'proof.p1': 'open-source projects', 'proof.p2': 'lines of tests',
+    'cmdbar.status': 'Available for junior roles', 'cmdbar.loc': 'Reggio Emilia, Italy',
+    'toc.title': 'Index',
+    'hero.status': 'Available for junior roles · Italy / Remote',
+    'hero.subA': 'Merging ', 'hero.subAi': 'AI', 'hero.subB': ', ', 'hero.subDesign': 'Design',
+    'hero.subC': ' & ', 'hero.subCode': 'Code', 'hero.subD': '.',
+    'hero.lead': 'Junior Software Developer (AI-augmented) — every claim on this site links to a repository.',
+    'hero.ctaPrimary': 'View my projects', 'hero.ctaCv': 'Download CV', 'hero.ctaContact': 'Or get in touch',
+    'hero.scroll': 'scroll',
+    'chip.now': '/now — building', 'chip.nowMeta': 'Server-authoritative action-RPG · 9 ADRs',
+    'proof.p1': 'open-source projects', 'proof.p2': 'lines of tests',
     'work.title': 'Work',
     'status.active': 'Active', 'status.alpha': 'Alpha', 'status.done': 'Completed',
     'status.paused': 'Paused', 'status.paused2': 'Paused', 'status.paused3': 'Paused',
@@ -61,7 +65,7 @@ const translations = {
     'form.success': "Message sent — thank you. I'll get back to you soon.",
     'form.network': 'Message not sent — check your connection and try again.',
     'footer.contactLabel': 'Contact', 'footer.github': 'View on GitHub', 'footer.linkedin': 'Connect on LinkedIn',
-    'footer.colophon': 'Set in Syne, Space Grotesk & JetBrains Mono. Static HTML, no build step, no framework.',
+    'footer.colophon': 'Set in Space Grotesk, Inter & JetBrains Mono. Static HTML, no build step, no framework.',
     /* projects.html */
     'projects.title': 'Projects',
     'projects.intro': "Six repositories, in the order I'd want a reviewer to open them.",
@@ -120,12 +124,16 @@ const translations = {
   it: {
     'a11y.skip': 'Vai al contenuto',
     'nav.projects': 'Progetti', 'nav.editing': 'Editing', 'nav.method': 'Metodo', 'nav.contact': 'Contatti',
-    'hero.eyebrow': 'Sviluppatore Software Junior (AI-augmented)',
-    'hero.tagline': 'Codice, metodo, evidenza.',
-    'hero.subline': 'Sviluppatore software junior con metodo AI-augmented — ogni affermazione di questo sito punta a un repository.',
-    'hero.fact1': 'Diploma ITIS 2025', 'hero.fact2': 'IFTS Creative & AI 2026', 'hero.fact3': '6 repository',
-    'hero.cta': 'Vedi i progetti',
-    'proof.label': 'In numeri', 'proof.p1': 'progetti open source', 'proof.p2': 'righe di test',
+    'cmdbar.status': 'Disponibile per ruoli junior', 'cmdbar.loc': 'Reggio Emilia, Italia',
+    'toc.title': 'Indice',
+    'hero.status': 'Disponibile per ruoli junior · Italia / Remoto',
+    'hero.subA': 'Unisco ', 'hero.subAi': 'AI', 'hero.subB': ', ', 'hero.subDesign': 'Design',
+    'hero.subC': ' e ', 'hero.subCode': 'Codice', 'hero.subD': '.',
+    'hero.lead': 'Sviluppatore Software Junior (AI-augmented) — ogni affermazione di questo sito punta a un repository.',
+    'hero.ctaPrimary': 'Vedi i miei progetti', 'hero.ctaCv': 'Scarica il CV', 'hero.ctaContact': 'Oppure scrivimi',
+    'hero.scroll': 'scorri',
+    'chip.now': '/now — in sviluppo', 'chip.nowMeta': 'Action-RPG server-authoritative · 9 ADR',
+    'proof.p1': 'progetti open source', 'proof.p2': 'righe di test',
     'work.title': 'Progetti',
     'status.active': 'Attivo', 'status.alpha': 'Alpha', 'status.done': 'Concluso',
     'status.paused': 'In pausa', 'status.paused2': 'In pausa', 'status.paused3': 'In pausa',
@@ -176,7 +184,7 @@ const translations = {
     'form.success': 'Messaggio inviato — grazie. Ti risponderò a breve.',
     'form.network': 'Messaggio non inviato — controlla la connessione e riprova.',
     'footer.contactLabel': 'Contatti', 'footer.github': 'Vedi su GitHub', 'footer.linkedin': 'Collegati su LinkedIn',
-    'footer.colophon': 'Composto in Syne, Space Grotesk e JetBrains Mono. HTML statico, zero build step, zero framework.',
+    'footer.colophon': 'Composto in Space Grotesk, Inter e JetBrains Mono. HTML statico, zero build step, zero framework.',
     /* projects.html */
     'projects.title': 'Progetti',
     'projects.intro': 'Sei repository, nell\'ordine in cui vorrei che un revisore le aprisse.',
@@ -249,77 +257,28 @@ function applyLang(lang) {
     b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
   const cv = document.getElementById('cvLink');
   if (cv) cv.href = 'assets/cv-' + lang + '.pdf';
+  const heroCv = document.getElementById('cvHero');
+  if (heroCv) heroCv.href = 'assets/cv-' + lang + '.pdf';
   const pvLink = document.getElementById('cvPreviewLink');
   if (pvLink) pvLink.href = 'assets/cv-' + lang + '.pdf';
   const pvImg = document.getElementById('cvPreviewImg');
   if (pvImg) { pvImg.src = 'assets/cv-' + lang + '.webp'; pvImg.alt = dict['contact.cvAlt']; }
 }
 
-/* ---------- Digital rain (hero + 404) ---------- */
-function initRain() {
-  const canvas = document.getElementById('rain');
-  if (!canvas || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const ctx = canvas.getContext('2d');
-  const GLYPHS = 'アィウェオカキクケコサシスセソタチツテト0123456789{}[]<>/=;';
-  const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
-  let w, h, fontSize, drops, colors, visible = true, last = 0;
-  const fps = () => innerWidth < 768 ? 18 : 24;
-
-  const recolor = () => {
-    colors = { bg: css('--bg'), glyph: css('--glyph'), accent: css('--accent') };
-    ctx.fillStyle = colors.bg;
-    ctx.fillRect(0, 0, w, h); /* reset scia al cambio tema */
-  };
-  window.rainRecolor = recolor;
-
-  const size = () => {
-    const dpr = Math.min(devicePixelRatio || 1, 1.5);
-    const r = canvas.parentElement.getBoundingClientRect();
-    w = canvas.width = Math.floor(r.width * dpr);
-    h = canvas.height = Math.floor(r.height * dpr);
-    fontSize = (innerWidth < 768 ? 20 : 16) * dpr;
-    ctx.font = fontSize + "px 'JetBrains Mono', monospace";
-    drops = Array.from({ length: Math.ceil(w / fontSize) }, () => Math.random() * -40);
-    recolor();
-  };
-
-  const frame = now => {
-    requestAnimationFrame(frame);
-    if (!visible || document.hidden || now - last < 1000 / fps()) return;
-    last = now;
-    ctx.fillStyle = colors.bg + '22'; /* velo translucido = scia che sbiadisce */
-    ctx.fillRect(0, 0, w, h);
-    for (let i = 0; i < drops.length; i++) {
-      const x = i * fontSize, y = drops[i] * fontSize;
-      ctx.fillStyle = colors.accent; /* la vecchia testa diventa coda */
-      ctx.fillText(GLYPHS[Math.random() * GLYPHS.length | 0], x, y - fontSize);
-      ctx.fillStyle = colors.glyph;
-      ctx.fillText(GLYPHS[Math.random() * GLYPHS.length | 0], x, y);
-      drops[i] = y > h && Math.random() > 0.975 ? 0 : drops[i] + 1;
-    }
-  };
-
-  new IntersectionObserver(e => { visible = e[0].isIntersecting; }).observe(canvas);
-  let rt;
-  addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(size, 200); });
-  size();
-  requestAnimationFrame(frame);
-}
-
-/* ---------- Decode effect (tagline hero, una volta al load) ---------- */
-function decodeOnce() {
-  const el = document.querySelector('[data-decode]');
-  if (!el || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const target = el.textContent;
-  const GLYPHS = 'アウカサタナ0123456789<>/{};=';
-  const t0 = performance.now(), DUR = 900;
-  (function tick(now) {
-    const p = Math.min((now - t0) / DUR, 1);
-    const lock = Math.floor(target.length * p);
-    el.textContent = target.slice(0, lock) + [...target.slice(lock)]
-      .map(c => c === ' ' ? ' ' : GLYPHS[Math.random() * GLYPHS.length | 0]).join('');
-    if (p < 1) requestAnimationFrame(tick);
-  })(t0);
+/* ---------- Scrollspy TOC (index.html) ---------- */
+function initScrollspy() {
+  const toc = document.querySelector('.toc');
+  if (!toc) return;
+  const links = new Map([...toc.querySelectorAll('a[href^="#"]')].map(a => [a.hash.slice(1), a]));
+  const io = new IntersectionObserver(entries => entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    links.forEach(l => l.classList.remove('is-active'));
+    links.get(e.target.id).classList.add('is-active');
+  }), { rootMargin: '-40% 0px -55% 0px' });
+  links.forEach((_, id) => {
+    const s = document.getElementById(id);
+    if (s) io.observe(s);
+  });
 }
 
 /* ---------- Filtri video (editing.html) ---------- */
@@ -354,8 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.lang-btn').forEach(b =>
     b.addEventListener('click', () => applyLang(b.dataset.lang)));
 
-  initRain();
-  decodeOnce(); /* dopo il ramo applyLang: anima il testo nella lingua giusta */
+  initScrollspy();
   initVideoFilters();
 
   /* Toggle tema — dark è il default, l'attributo marca il light ("pressed" = light) */
@@ -366,7 +324,6 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('theme', light ? 'light' : 'dark');
     toggle.textContent = light ? '☾' : '☀';
     toggle.setAttribute('aria-pressed', String(light));
-    if (window.rainRecolor) window.rainRecolor();
   };
   toggle.textContent = document.documentElement.hasAttribute('data-theme') ? '☾' : '☀';
   toggle.setAttribute('aria-pressed', String(document.documentElement.hasAttribute('data-theme')));

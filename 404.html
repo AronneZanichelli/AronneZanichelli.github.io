@@ -8,7 +8,7 @@
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Grotesk:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700;800&family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/style.css" />
     <script>
       (function () {
@@ -29,6 +29,10 @@
   </head>
   <body>
     <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
+    <div class="cmdbar">
+      <span><span class="dot" aria-hidden="true"></span><span data-i18n="cmdbar.status">Available for junior roles</span> · <span data-i18n="cmdbar.loc">Reggio Emilia, Italy</span></span>
+      <span class="cmdbar-right">CET · UTC+1 · <a href="mailto:aronnezanichelli@gmail.com">aronnezanichelli@gmail.com</a></span>
+    </div>
     <nav class="nav" aria-label="Main navigation">
       <a class="brand" href="/index.html" aria-label="Aronne Zanichelli — home">aronne-zanichelli</a>
       <div class="nav-links">
@@ -43,9 +47,13 @@
     </nav>
     <main id="main" class="container">
       <section class="hero">
-        <canvas id="rain" class="rain-canvas" aria-hidden="true"></canvas>
-        <p class="mono-label">404</p>
-        <h1 data-i18n="nf.title">Page not found</h1>
+        <div class="hero-fx" aria-hidden="true">
+          <div class="orb orb--a"></div>
+          <div class="orb orb--b"></div>
+          <div class="scanlines"></div>
+        </div>
+        <h1 class="glitch" data-text="404">404</h1>
+        <p class="hero-sub" data-i18n="nf.title">Page not found</p>
         <p data-i18n="nf.msg">This page doesn't exist — or moved. The old Labelbike page now lives inside Projects; video work is under Editing.</p>
         <p><a class="link-arrow" href="/index.html" data-i18n="nf.cta">Back to home</a></p>
       </section>

@@ -20,7 +20,7 @@
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Grotesk:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700;800&family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
     <script type="application/ld+json">
     {
@@ -54,6 +54,10 @@
   </head>
   <body>
     <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
+    <div class="cmdbar">
+      <span><span class="dot" aria-hidden="true"></span><span data-i18n="cmdbar.status">Available for junior roles</span> · <span data-i18n="cmdbar.loc">Reggio Emilia, Italy</span></span>
+      <span class="cmdbar-right">CET · UTC+1 · <a href="mailto:aronnezanichelli@gmail.com">aronnezanichelli@gmail.com</a></span>
+    </div>
 
     <nav class="nav" aria-label="Main navigation">
       <a class="brand" href="index.html" aria-label="Aronne Zanichelli — home">aronne-zanichelli</a>
@@ -70,37 +74,68 @@
 
     <main id="main" class="container">
 
-      <!-- 00 — Hero -->
+      <!-- 00 — Hero (glitch) -->
       <section class="hero">
-        <canvas id="rain" class="rain-canvas" aria-hidden="true"></canvas>
-        <div class="hero-grid">
-          <div>
-            <p class="eyebrow" data-i18n="hero.eyebrow">Junior Software Developer (AI-augmented)</p>
-            <h1>Aronne Zanichelli</h1>
-            <p class="tagline" data-i18n="hero.tagline" data-decode>Code, method, evidence.</p>
-            <p data-i18n="hero.subline">Junior software developer working AI-augmented — every claim on this site links to a repository.</p>
-            <ul class="fact-row">
-              <li data-i18n="hero.fact1">ITIS diploma 2025</li>
-              <li data-i18n="hero.fact2">IFTS Creative &amp; AI 2026</li>
-              <li data-i18n="hero.fact3">6 repos</li>
-              <li>IT/EN</li>
-            </ul>
-            <a class="btn-primary" href="#work" data-i18n="hero.cta">View projects</a>
-          </div>
-          <span class="crt"><img class="portrait" src="assets/profile.webp" alt="Aronne Zanichelli" width="140" height="187" fetchpriority="high" /></span>
+        <div class="hero-fx" aria-hidden="true">
+          <div class="orb orb--a"></div>
+          <div class="orb orb--b"></div>
+          <div class="scanlines"></div>
         </div>
+        <p class="hero-status"><span class="dot" aria-hidden="true"></span><span data-i18n="hero.status">Available for junior roles · Italy / Remote</span> · <span class="v">v.2026</span></p>
+        <p class="eyebrow">&lt;creative-tech/&gt; portfolio</p>
+        <div class="hero-main">
+          <div>
+            <h1 class="glitch" data-text="Aronne Zanichelli">Aronne Zanichelli</h1>
+            <p class="hero-sub"><span data-i18n="hero.subA">Merging </span><span class="w-accent" data-i18n="hero.subAi">AI</span><span data-i18n="hero.subB">, </span><span class="w-gold" data-i18n="hero.subDesign">Design</span><span data-i18n="hero.subC"> &amp; </span><span class="w-code" data-i18n="hero.subCode">Code</span><span data-i18n="hero.subD">.</span></p>
+            <p class="hero-lead" data-i18n="hero.lead">Junior Software Developer (AI-augmented) — every claim on this site links to a repository.</p>
+            <div class="cta-row">
+              <a class="btn-primary" href="#work" data-i18n="hero.ctaPrimary">View my projects</a>
+              <a class="btn-secondary" id="cvHero" href="assets/cv-en.pdf" download><span data-i18n="hero.ctaCv">Download CV</span> <span aria-hidden="true">↗</span></a>
+              <a class="link-arrow" href="#contact" data-i18n="hero.ctaContact">Or get in touch</a>
+            </div>
+            <p class="stack-line mono"><span class="k">stack</span> · Python · TypeScript · C# · GDScript · Luau · Java/C++/SQL</p>
+          </div>
+          <aside class="chip-stack">
+            <div class="chip">
+              <p class="chip-k" data-i18n="chip.now">/now — building</p>
+              <span class="chip-title">BleaBox</span>
+              <span class="chip-meta" data-i18n="chip.nowMeta">Server-authoritative action-RPG · 9 ADRs</span>
+            </div>
+            <div class="chip" aria-hidden="true">
+              <p class="chip-k">// philosophy</p>
+              <pre class="chip-code"><code><span class="c-mute">const</span> <span class="c-gold">aronne</span> = {
+  ship: <span class="c-accent">true</span>,
+  craft: <span class="c-accent">'always'</span>
+};</code></pre>
+            </div>
+            <div class="chip chip--id">
+              <span class="frame chip-avatar"><img src="assets/profile.webp" alt="" width="48" height="64" /></span>
+              <span>
+                <span class="chip-title">Aronne Zanichelli</span>
+                <span class="chip-meta mono">Reggio Emilia, IT · CET</span>
+              </span>
+            </div>
+          </aside>
+        </div>
+        <div class="scroll-hint" aria-hidden="true"><span data-i18n="hero.scroll">scroll</span></div>
       </section>
       <script>
         (function () {
           if (document.documentElement.lang !== 'it') return;
           var h = {
-            'hero.eyebrow': 'Sviluppatore Software Junior (AI-augmented)',
-            'hero.tagline': 'Codice, metodo, evidenza.',
-            'hero.subline': 'Sviluppatore software junior con metodo AI-augmented — ogni affermazione di questo sito punta a un repository.',
-            'hero.fact1': 'Diploma ITIS 2025',
-            'hero.fact2': 'IFTS Creative & AI 2026',
-            'hero.fact3': '6 repository',
-            'hero.cta': 'Vedi i progetti'
+            'hero.status': 'Disponibile per ruoli junior · Italia / Remoto',
+            'hero.subA': 'Unisco ',
+            'hero.subB': ', ',
+            'hero.subDesign': 'Design',
+            'hero.subC': ' e ',
+            'hero.subCode': 'Codice',
+            'hero.lead': 'Sviluppatore Software Junior (AI-augmented) — ogni affermazione di questo sito punta a un repository.',
+            'hero.ctaPrimary': 'Vedi i miei progetti',
+            'hero.ctaCv': 'Scarica il CV',
+            'hero.ctaContact': 'Oppure scrivimi',
+            'hero.scroll': 'scorri',
+            'chip.now': '/now — in sviluppo',
+            'chip.nowMeta': 'Action-RPG server-authoritative · 9 ADR'
           };
           for (var k in h) {
             var el = document.querySelector('[data-i18n="' + k + '"]');
@@ -109,19 +144,32 @@
         })();
       </script>
 
-      <!-- Proof strip -->
-      <div class="proof-strip" role="group" aria-label="Key numbers">
-        <span class="mono-label" data-i18n="proof.label">In numbers</span>
-        <span class="item"><strong>6</strong> <span data-i18n="proof.p1">open-source projects</span></span>
-        <span class="item"><strong>~30k</strong> LOC</span>
-        <span class="item"><strong>2.6k</strong> <span data-i18n="proof.p2">lines of tests</span></span>
-        <span class="item"><strong>9</strong> ADR</span>
+      <!-- Meta numbers -->
+      <div class="meta-numbers" role="group" aria-label="Key numbers">
+        <div class="cell"><span class="k" data-i18n="proof.p1">open-source projects</span><strong>6</strong></div>
+        <div class="cell"><span class="k">LOC</span><strong>~30k</strong></div>
+        <div class="cell"><span class="k" data-i18n="proof.p2">lines of tests</span><strong>2.6k</strong></div>
+        <div class="cell"><span class="k">ADR</span><strong>9</strong></div>
       </div>
 
+      <div class="layout">
+        <aside class="toc" aria-label="Section index">
+          <p class="toc-title" data-i18n="toc.title">Index</p>
+          <ul>
+            <li><a href="#work" data-i18n="work.title">Work</a></li>
+            <li><a href="#method" data-i18n="method.title">Method</a></li>
+            <li><a href="#timeline" data-i18n="timeline.title">Timeline</a></li>
+            <li><a href="#skills" data-i18n="skills.title">Skills, with evidence</a></li>
+            <li><a href="#contact" data-i18n="contact.title">Get in touch</a></li>
+          </ul>
+          <p class="toc-stamp">v.2026 · WCAG AAA</p>
+        </aside>
+        <div class="flow">
+
       <!-- 01 — Work -->
+      <div class="rail" aria-hidden="true"><span>§ 01</span><span data-i18n="work.title">Work</span></div>
       <section id="work" class="section">
         <div class="section-head">
-          <span class="num">01</span>
           <h2 data-i18n="work.title">Work</h2>
         </div>
 
@@ -181,9 +229,9 @@
       </section>
 
       <!-- 02 — Method -->
+      <div class="rail" aria-hidden="true"><span>§ 02</span><span data-i18n="method.title">Method</span></div>
       <section id="method" class="section">
         <div class="section-head">
-          <span class="num">02</span>
           <h2 data-i18n="method.title">Method</h2>
         </div>
         <p data-i18n="method.l1">Spec → plan → test → audit — every project, every time.</p>
@@ -193,9 +241,9 @@
       </section>
 
       <!-- 03 — Timeline -->
+      <div class="rail" aria-hidden="true"><span>§ 03</span><span data-i18n="timeline.title">Timeline</span></div>
       <section id="timeline" class="section">
         <div class="section-head">
-          <span class="num">03</span>
           <h2 data-i18n="timeline.title">Timeline</h2>
         </div>
         <p data-i18n="timeline.bio">I'm Aronne Zanichelli, a junior software developer working AI-augmented. I write code, but I also write the spec, the plan, and the audit around it — the discipline is the point, not just the output. My path here wasn't linear: a technical diploma, a year selling utility contracts, then a creative-and-AI program that put me inside a real production pipeline. Along the way I built six projects I still maintain — none of them portfolio filler; all of them on GitHub, with commits, tests, and the occasional documented mistake. I'm looking for a first developer role, in Italy or abroad, where "I can prove it" counts for more than "I'm passionate about it."</p>
@@ -224,9 +272,9 @@
       </section>
 
       <!-- 04 — Skills -->
+      <div class="rail" aria-hidden="true"><span>§ 04</span><span data-i18n="skills.title">Skills, with evidence</span></div>
       <section id="skills" class="section">
         <div class="section-head">
-          <span class="num">04</span>
           <h2 data-i18n="skills.title">Skills, with evidence</h2>
         </div>
         <p data-i18n="skills.intro">No bars, no percentages — every skill below links to the project that proves it.</p>
@@ -281,9 +329,9 @@
       </section>
 
       <!-- 05 — Contact -->
+      <div class="rail" aria-hidden="true"><span>§ 05</span><span data-i18n="contact.title">Get in touch</span></div>
       <section id="contact" class="section">
         <div class="section-head">
-          <span class="num">05</span>
           <h2 data-i18n="contact.title">Get in touch</h2>
         </div>
         <p data-i18n="contact.sub">Have a role, a project, or a question? Write me directly, or use the form below.</p>
@@ -323,6 +371,9 @@
           <figcaption class="mono" data-i18n="contact.cvCaption">Click to open the PDF</figcaption>
         </figure>
       </section>
+
+        </div><!-- /.flow -->
+      </div><!-- /.layout -->
     </main>
 
     <footer class="footer container">
@@ -332,7 +383,7 @@
         <a href="https://github.com/AronneZanichelli" data-i18n="footer.github">View on GitHub</a><br />
         <a href="https://www.linkedin.com/in/aronne-zanichelli-62668b241" data-i18n="footer.linkedin">Connect on LinkedIn</a>
       </div>
-      <div data-i18n="footer.colophon">Set in Syne, Space Grotesk &amp; JetBrains Mono. Static HTML, no build step, no framework.</div>
+      <div data-i18n="footer.colophon">Set in Space Grotesk, Inter &amp; JetBrains Mono. Static HTML, no build step, no framework.</div>
       <div class="copyright">© 2026 Aronne Zanichelli.</div>
     </footer>
   </body>

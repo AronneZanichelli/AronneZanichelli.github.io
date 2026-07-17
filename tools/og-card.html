@@ -5,17 +5,35 @@
   <title>og-card 1200×630</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Space+Grotesk:wght@400&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@800&family=Inter:wght@400&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
   <style>
     /* Rigenerazione: vedi README §OG card. Token allineati a style.css :root (dark). */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { width: 1200px; height: 630px; overflow: hidden; }
     body {
-      background: #0A0E0B;
+      background: #1A1A1A;
       position: relative;
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'Inter', sans-serif;
     }
-    .topbar { position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: #00FF41; }
+    /* dot-field + griglia vermiglio mascherata, al posto della rain */
+    .grid-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(rgba(245, 242, 237, 0.05) 1px, transparent 1px) 0 0 / 22px 22px,
+        linear-gradient(rgba(232, 57, 14, 0.06) 1px, transparent 1px) 0 0 / 56px 56px,
+        linear-gradient(90deg, rgba(232, 57, 14, 0.06) 1px, transparent 1px) 0 0 / 56px 56px;
+      -webkit-mask-image: radial-gradient(ellipse 85% 80% at 70% 45%, #000 30%, transparent 85%);
+              mask-image: radial-gradient(ellipse 85% 80% at 70% 45%, #000 30%, transparent 85%);
+      z-index: 1;
+    }
+    .orb { position: absolute; border-radius: 999px; filter: blur(70px); z-index: 1; }
+    .orb--a { width: 380px; height: 380px; background: #E8390E; opacity: 0.30; right: -90px; top: -60px; }
+    .orb--b { width: 300px; height: 300px; background: #C0922A; opacity: 0.22; right: 140px; bottom: -120px; }
+    .topbar {
+      position: absolute; top: 0; left: 0; width: 100%; height: 6px;
+      background: linear-gradient(90deg, #E8390E, #C0922A);
+      z-index: 3;
+    }
     .content {
       position: absolute; left: 72px; top: 0; height: 100%;
       display: flex; flex-direction: column; justify-content: center;
@@ -23,149 +41,48 @@
     }
     .eyebrow {
       font-family: 'JetBrains Mono', monospace; font-weight: 500;
-      font-size: 26px; color: #3FE07F; letter-spacing: 0.08em;
+      font-size: 26px; color: #FFA184; letter-spacing: 0.14em;
+      text-transform: uppercase;
       margin-bottom: 28px;
     }
     h1 {
-      font-family: 'Syne', sans-serif; font-weight: 800;
-      font-size: 96px; line-height: 1.02; color: #E4EDE4;
-      max-width: 760px;
+      position: relative;
+      font-family: 'Space Grotesk', sans-serif; font-weight: 800;
+      font-size: 96px; line-height: 1.02; letter-spacing: -0.03em;
+      color: #F5F2ED;
+      max-width: 820px;
+      text-shadow: 0 0 40px rgba(232, 57, 14, 0.18);
     }
-    .tagline {
-      font-size: 34px; color: #93A793; margin-top: 30px;
+    /* glitch congelato: due copie sfalsate vermiglio/oro */
+    h1::before, h1::after {
+      content: attr(data-text);
+      position: absolute; inset: 0;
+      mix-blend-mode: screen; opacity: 0.85;
+      text-shadow: none;
     }
+    h1::before { color: #E8390E; transform: translate(3px, 0); clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%); }
+    h1::after  { color: #C0922A; transform: translate(-3px, 0); clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%); }
+    .tagline { font-size: 34px; color: #E0DCD3; margin-top: 30px; }
+    .tagline .ai { color: #FFA184; }
+    .tagline .design { color: #E5B752; }
+    .tagline .code { color: #F5F2ED; }
     .url {
       position: absolute; left: 72px; bottom: 56px;
       font-family: 'JetBrains Mono', monospace; font-weight: 500;
-      font-size: 24px; color: #3FE07F; z-index: 2;
+      font-size: 24px; color: #E5B752; z-index: 2;
     }
-    .rain {
-      position: absolute; right: 0; top: 0; height: 100%; width: 420px;
-      display: flex; justify-content: space-evenly;
-      font-family: 'JetBrains Mono', monospace; font-size: 30px;
-      line-height: 1.5; color: #00FF41; text-align: center;
-      -webkit-mask-image: linear-gradient(to left, #000 55%, transparent);
-              mask-image: linear-gradient(to left, #000 55%, transparent);
-      z-index: 1;
-    }
-    .rain span { display: block; white-space: pre-line; }
-    .c1 { opacity: 0.50; } .c2 { opacity: 0.16; margin-top: -140px; }
-    .c3 { opacity: 0.34; margin-top: 60px; } .c4 { opacity: 0.10; margin-top: -60px; }
-    .c5 { opacity: 0.42; margin-top: 130px; } .c6 { opacity: 0.22; margin-top: -190px; }
   </style>
 </head>
 <body>
+  <div class="grid-bg"></div>
+  <div class="orb orb--a"></div>
+  <div class="orb orb--b"></div>
   <div class="topbar"></div>
   <div class="content">
-    <div class="eyebrow">// junior software developer (AI-augmented)</div>
-    <h1>Aronne Zanichelli</h1>
-    <div class="tagline">Code, method, evidence.</div>
+    <div class="eyebrow">junior software developer (AI-augmented)</div>
+    <h1 data-text="Aronne Zanichelli">Aronne Zanichelli</h1>
+    <div class="tagline">Merging <span class="ai">AI</span>, <span class="design">Design</span> &amp; <span class="code">Code</span>.</div>
   </div>
   <div class="url">aronnezanichelli.github.io</div>
-  <div class="rain" aria-hidden="true">
-    <span class="c1">ア
-ウ
-7
-{
-カ
-<
-0
-サ
-;
-タ
-3
-}
-ナ
-=
-9
-ク
-1
-></span>
-    <span class="c2">5
-シ
-/
-キ
-2
-[
-ソ
-8
-テ
-=
-0
-コ
-<
-4
-セ
-]
-6</span>
-    <span class="c3">タ
-1
->
-ス
-6
-{
-チ
-0
-ケ
-;
-8
-オ
-/
-2
-ツ
-=
-5</span>
-    <span class="c4">エ
-9
-[
-ト
-4
-サ
-<
-7
-イ
-}
-3
-テ
-;
-1
-カ
->
-0</span>
-    <span class="c5">0
-ナ
-=
-6
-シ
-{
-2
-ク
-/
-9
-ウ
-]
-5
-ソ
-<
-8
-ア</span>
-    <span class="c6">セ
-3
-;
-7
-コ
->
-1
-チ
-[
-4
-ス
-=
-0
-キ
-}
-6
-タ</span>
-  </div>
 </body>
 </html>
