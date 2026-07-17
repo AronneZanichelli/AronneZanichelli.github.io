@@ -7,12 +7,14 @@ const translations = {
     'nav.projects': 'Projects', 'nav.editing': 'Editing', 'nav.method': 'Method', 'nav.contact': 'Contact',
     'cmdbar.status': 'Available for junior roles', 'cmdbar.loc': 'Reggio Emilia, Italy',
     'toc.title': 'Index',
-    'hero.eyebrow': 'Junior Software Developer (AI-augmented)',
-    'hero.tagline': 'Code, method, evidence.',
-    'hero.subline': 'Junior software developer working AI-augmented — every claim on this site links to a repository.',
-    'hero.fact1': 'ITIS diploma 2025', 'hero.fact2': 'IFTS Creative & AI 2026', 'hero.fact3': '6 repos',
-    'hero.cta': 'View projects',
-    'proof.label': 'In numbers', 'proof.p1': 'open-source projects', 'proof.p2': 'lines of tests',
+    'hero.status': 'Available for junior roles · Italy / Remote',
+    'hero.subA': 'Merging ', 'hero.subAi': 'AI', 'hero.subB': ', ', 'hero.subDesign': 'Design',
+    'hero.subC': ' & ', 'hero.subCode': 'Code', 'hero.subD': '.',
+    'hero.lead': 'Junior Software Developer (AI-augmented) — every claim on this site links to a repository.',
+    'hero.ctaPrimary': 'View my projects', 'hero.ctaCv': 'Download CV', 'hero.ctaContact': 'Or get in touch',
+    'hero.scroll': 'scroll',
+    'chip.now': '/now — building', 'chip.nowMeta': 'Server-authoritative action-RPG · 9 ADRs',
+    'proof.p1': 'open-source projects', 'proof.p2': 'lines of tests',
     'work.title': 'Work',
     'status.active': 'Active', 'status.alpha': 'Alpha', 'status.done': 'Completed',
     'status.paused': 'Paused', 'status.paused2': 'Paused', 'status.paused3': 'Paused',
@@ -124,12 +126,14 @@ const translations = {
     'nav.projects': 'Progetti', 'nav.editing': 'Editing', 'nav.method': 'Metodo', 'nav.contact': 'Contatti',
     'cmdbar.status': 'Disponibile per ruoli junior', 'cmdbar.loc': 'Reggio Emilia, Italia',
     'toc.title': 'Indice',
-    'hero.eyebrow': 'Sviluppatore Software Junior (AI-augmented)',
-    'hero.tagline': 'Codice, metodo, evidenza.',
-    'hero.subline': 'Sviluppatore software junior con metodo AI-augmented — ogni affermazione di questo sito punta a un repository.',
-    'hero.fact1': 'Diploma ITIS 2025', 'hero.fact2': 'IFTS Creative & AI 2026', 'hero.fact3': '6 repository',
-    'hero.cta': 'Vedi i progetti',
-    'proof.label': 'In numeri', 'proof.p1': 'progetti open source', 'proof.p2': 'righe di test',
+    'hero.status': 'Disponibile per ruoli junior · Italia / Remoto',
+    'hero.subA': 'Unisco ', 'hero.subAi': 'AI', 'hero.subB': ', ', 'hero.subDesign': 'Design',
+    'hero.subC': ' e ', 'hero.subCode': 'Codice', 'hero.subD': '.',
+    'hero.lead': 'Sviluppatore Software Junior (AI-augmented) — ogni affermazione di questo sito punta a un repository.',
+    'hero.ctaPrimary': 'Vedi i miei progetti', 'hero.ctaCv': 'Scarica il CV', 'hero.ctaContact': 'Oppure scrivimi',
+    'hero.scroll': 'scorri',
+    'chip.now': '/now — in sviluppo', 'chip.nowMeta': 'Action-RPG server-authoritative · 9 ADR',
+    'proof.p1': 'progetti open source', 'proof.p2': 'righe di test',
     'work.title': 'Progetti',
     'status.active': 'Attivo', 'status.alpha': 'Alpha', 'status.done': 'Concluso',
     'status.paused': 'In pausa', 'status.paused2': 'In pausa', 'status.paused3': 'In pausa',
@@ -253,6 +257,8 @@ function applyLang(lang) {
     b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
   const cv = document.getElementById('cvLink');
   if (cv) cv.href = 'assets/cv-' + lang + '.pdf';
+  const heroCv = document.getElementById('cvHero');
+  if (heroCv) heroCv.href = 'assets/cv-' + lang + '.pdf';
   const pvLink = document.getElementById('cvPreviewLink');
   if (pvLink) pvLink.href = 'assets/cv-' + lang + '.pdf';
   const pvImg = document.getElementById('cvPreviewImg');
