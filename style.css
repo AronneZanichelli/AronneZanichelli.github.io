@@ -73,35 +73,35 @@
 :root[data-theme="light"] {
   color-scheme: light;
 
-  /* Colore — light (carta calda) */
-  --bg:          #F6F1E9;
-  --bg-deep:     #EFE9DF;
-  --surface:     #EFE9DF;
-  --surface-2:   #E7E0D4;
-  --ink:         #1A1A1A;   /* 15.5:1 */
+  /* Colore — light (carta calda scurita per far vivere gli fx · tutti AAA verificati) */
+  --bg:          #F0EADD;
+  --bg-deep:     #E6DDCB;
+  --surface:     #E6DDCB;
+  --surface-2:   #DBD0BA;
+  --ink:         #1A1A1A;   /* 14.5:1 */
   --ink-hi:      #111111;
-  --ink-2:       #504A43;   /* 7.8:1 su bg · 7.2 su surface */
-  --hairline:    #D8D2C7;
-  --fog:         #8A8378;
+  --ink-2:       #453F38;   /* 8.7:1 su bg · 7.7 su surface */
+  --hairline:    #CFC5B2;
+  --fog:         #7E766A;   /* 3.7:1 su bg — solo non-testo */
   --accent:      #B82A09;   /* non-testo */
   --accent-2:    #8E6B16;
-  --accent-text: #8A2408;   /* 8.0:1 su bg · 7.4 su surface */
-  --gold-text:   #5C430F;   /* 8.3:1 */
+  --accent-text: #7C1F06;   /* 8.5:1 su bg · 7.6 su surface */
+  --gold-text:   #4E380C;   /* 9.2:1 su bg */
   --accent-fill: #9E2408;
   --accent-fill-hover: #8A1F07;
   --on-fill:     #FFFFFF;
   --live:        #2E7C4A;   /* dot su carta: scurito per il 3:1 */
-  --live-text:   #143D22;
+  --live-text:   #123920;   /* 10.7:1 */
   --focus-ring:  #8E6B16;   /* oro scurito: sul chiaro l'anello deve scurire, non brillare */
   --scrim:       0 0 12px rgba(0, 0, 0, 0.6); /* i glifi poggiano su thumbnail, resta scuro anche in light */
   --shadow-1:    0 12px 28px rgba(26, 26, 26, 0.12);
-  --fx-alpha:    0.4;
-  --dot-field:   rgba(26, 26, 26, 0.06);
-  --grid-line:   rgba(184, 42, 9, 0.06);
-  --vignette:    rgba(26, 26, 26, 0.06);
-  --scanline-fx: transparent;
-  --chip-bg:     rgba(239, 233, 223, 0.7);
-  --glitch-glow: none;      /* la carta non emette luce */
+  --fx-alpha:    0.75;      /* fx visibili sulla carta (feedback: prima quasi invisibili) */
+  --dot-field:   rgba(26, 26, 26, 0.07);
+  --grid-line:   rgba(184, 42, 9, 0.10);
+  --vignette:    rgba(59, 44, 20, 0.14);
+  --scanline-fx: rgba(26, 26, 26, 0.02);
+  --chip-bg:     rgba(230, 221, 203, 0.7);
+  --glitch-glow: 0 0 28px rgba(184, 42, 9, 0.28);  /* glow tenue anche su carta */
   --sheen:       rgba(255, 255, 255, 0.35);
 }
 
@@ -131,6 +131,57 @@ body::before {
   pointer-events: none;
   z-index: -1;
 }
+
+/* ============ Effetti globali (layer fisso dietro tutto · tutte le pagine) ============ */
+
+.bg-fx {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  transform: translateZ(0); /* isola il layer: le animazioni orb non ridipingono il contenuto */
+}
+/* grid-line vermiglio: intensa in alto (zona hero), sfuma verso il fondo pagina */
+.bg-fx::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0 / 56px 56px,
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0 / 56px 56px;
+  -webkit-mask-image: linear-gradient(180deg, #000 0, #000 45vh, rgba(0, 0, 0, 0.2) 100%);
+  mask-image: linear-gradient(180deg, #000 0, #000 45vh, rgba(0, 0, 0, 0.2) 100%);
+  opacity: var(--fx-alpha);
+}
+/* vignette + scanline (nel background: dietro il contenuto, niente mix-blend col testo) */
+.bg-fx::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(0deg, var(--scanline-fx) 0 1px, transparent 1px 3px),
+    radial-gradient(ellipse 90% 55% at 50% 22%, transparent 45%, var(--vignette) 100%);
+  opacity: var(--fx-alpha);
+}
+/* orbs: radial pre-sfumato (no filter:blur — troppo caro su layer fixed full-page) */
+.bg-fx .orb { position: absolute; border-radius: var(--r-full); }
+.bg-fx .orb--a {
+  width: 560px; height: 560px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent) 55%, transparent), transparent 68%);
+  opacity: calc(0.45 * var(--fx-alpha));
+  top: 6%; right: -120px;
+  animation: orb-a 14s ease-in-out infinite;
+}
+.bg-fx .orb--b {
+  width: 440px; height: 440px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent-2) 50%, transparent), transparent 68%);
+  opacity: calc(0.32 * var(--fx-alpha));
+  bottom: -80px; left: 6%;
+  animation: orb-b 18s ease-in-out infinite;
+}
+@keyframes orb-a { 50% { transform: translate(-20px, 30px); } }
+@keyframes orb-b { 50% { transform: translate(30px, -20px); } }
 
 h1, h2, h3, h4, h5, h6 { margin: 0 0 var(--sp-4); text-wrap: balance; }
 h1, .display {
@@ -411,45 +462,7 @@ blockquote {
   overflow: hidden;
   padding-block: var(--sp-8);
 }
-/* layer 1: griglia vermiglio mascherata */
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0 / 56px 56px,
-    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0 / 56px 56px;
-  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 30% 40%, #000 30%, transparent 80%);
-  mask-image: radial-gradient(ellipse 70% 60% at 30% 40%, #000 30%, transparent 80%);
-  pointer-events: none;
-}
-/* layer 4: vignette */
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 80% 60% at 50% 50%, transparent 40%, var(--vignette) 100%);
-  pointer-events: none;
-}
-/* layer 2-3: orbs + scanline */
-.hero-fx { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
-.orb {
-  position: absolute;
-  border-radius: var(--r-full);
-  filter: blur(60px);
-  opacity: calc(0.45 * var(--fx-alpha));
-}
-.orb--a { width: 360px; height: 360px; background: var(--accent); top: 15%; right: -80px; animation: orb-a 14s ease-in-out infinite; }
-.orb--b { width: 280px; height: 280px; background: var(--accent-2); bottom: -40px; left: 10%; opacity: calc(0.32 * var(--fx-alpha)); animation: orb-b 18s ease-in-out infinite; }
-@keyframes orb-a { 50% { transform: translate(-20px, 30px); } }
-@keyframes orb-b { 50% { transform: translate(30px, -20px); } }
-.scanlines {
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(0deg, var(--scanline-fx) 0 1px, transparent 1px 3px);
-  mix-blend-mode: overlay;
-}
-.hero > :not(.hero-fx) { position: relative; z-index: 1; } /* contenuto sopra i layer */
+/* Il grid-line / orbs / vignette vivono ora su .bg-fx globale (sotto, sez. Effetti globali) */
 
 .hero-status {
   display: flex;
@@ -518,7 +531,7 @@ blockquote {
   animation: glitch-bot 4.6s steps(1, end) infinite;
 }
 [data-theme="light"] .glitch::before,
-[data-theme="light"] .glitch::after { mix-blend-mode: multiply; opacity: 0.5; }
+[data-theme="light"] .glitch::after { mix-blend-mode: multiply; opacity: 0.65; }
 @keyframes glitch-top {
   0%, 92%, 100% { transform: translate(2px, 0);   clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%); }
   93%           { transform: translate(-3px, -1px); clip-path: polygon(0 8%, 100% 8%, 100% 22%, 0 22%); }
