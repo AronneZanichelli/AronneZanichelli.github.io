@@ -30,6 +30,7 @@
   --focus-ring:  #E5B752;   /* firma a11y: anello oro, non negoziabile */
   --scrim:       0 0 12px rgba(0, 0, 0, 0.6); /* leggibilità glifi sovrapposti a immagini */
   --shadow-1:    0 12px 28px rgba(0, 0, 0, 0.35);
+  --shadow-2:    0 20px 44px rgba(0, 0, 0, 0.45);
   --fx-alpha:    1;         /* intensità layer decorativi (dot-field, orbs) */
   --dot-field:   rgba(245, 242, 237, 0.05);
   --grid-line:   rgba(232, 57, 14, 0.05);
@@ -59,6 +60,11 @@
   /* Radii */
   --r-xs: 4px; --r-sm: 6px; --r-md: 10px; --r-lg: 14px; --r-xl: 24px; --r-full: 999px;
 
+  /* Layout (wide) */
+  --container-max: min(1680px, 100%);
+  --gutter:        clamp(20px, 3.5vw, 64px);
+  --nav-h:         78px;
+
   /* Motion */
   --ease-out-expo:  cubic-bezier(0.22, 1, 0.36, 1);
   --ease-out-quart: cubic-bezier(0.22, 1, 0.36, 1);
@@ -68,35 +74,36 @@
 :root[data-theme="light"] {
   color-scheme: light;
 
-  /* Colore — light (carta calda) */
-  --bg:          #F6F1E9;
-  --bg-deep:     #EFE9DF;
-  --surface:     #EFE9DF;
-  --surface-2:   #E7E0D4;
-  --ink:         #1A1A1A;   /* 15.5:1 */
+  /* Colore — light (carta calda scurita per far vivere gli fx · tutti AAA verificati) */
+  --bg:          #F0EADD;
+  --bg-deep:     #E6DDCB;
+  --surface:     #E6DDCB;
+  --surface-2:   #DBD0BA;
+  --ink:         #1A1A1A;   /* 14.5:1 */
   --ink-hi:      #111111;
-  --ink-2:       #504A43;   /* 7.8:1 su bg · 7.2 su surface */
-  --hairline:    #D8D2C7;
-  --fog:         #8A8378;
+  --ink-2:       #453F38;   /* 8.7:1 su bg · 7.7 su surface */
+  --hairline:    #CFC5B2;
+  --fog:         #7E766A;   /* 3.7:1 su bg — solo non-testo */
   --accent:      #B82A09;   /* non-testo */
   --accent-2:    #8E6B16;
-  --accent-text: #8A2408;   /* 8.0:1 su bg · 7.4 su surface */
-  --gold-text:   #5C430F;   /* 8.3:1 */
+  --accent-text: #7C1F06;   /* 8.5:1 su bg · 7.6 su surface */
+  --gold-text:   #4E380C;   /* 9.2:1 su bg */
   --accent-fill: #9E2408;
   --accent-fill-hover: #8A1F07;
   --on-fill:     #FFFFFF;
   --live:        #2E7C4A;   /* dot su carta: scurito per il 3:1 */
-  --live-text:   #143D22;
+  --live-text:   #123920;   /* 10.7:1 */
   --focus-ring:  #8E6B16;   /* oro scurito: sul chiaro l'anello deve scurire, non brillare */
   --scrim:       0 0 12px rgba(0, 0, 0, 0.6); /* i glifi poggiano su thumbnail, resta scuro anche in light */
   --shadow-1:    0 12px 28px rgba(26, 26, 26, 0.12);
-  --fx-alpha:    0.4;
-  --dot-field:   rgba(26, 26, 26, 0.06);
-  --grid-line:   rgba(184, 42, 9, 0.06);
-  --vignette:    rgba(26, 26, 26, 0.06);
-  --scanline-fx: transparent;
-  --chip-bg:     rgba(239, 233, 223, 0.7);
-  --glitch-glow: none;      /* la carta non emette luce */
+  --shadow-2:    0 20px 44px rgba(26, 26, 26, 0.18);
+  --fx-alpha:    0.75;      /* fx visibili sulla carta (feedback: prima quasi invisibili) */
+  --dot-field:   rgba(26, 26, 26, 0.07);
+  --grid-line:   rgba(184, 42, 9, 0.10);
+  --vignette:    rgba(59, 44, 20, 0.14);
+  --scanline-fx: rgba(26, 26, 26, 0.02);
+  --chip-bg:     rgba(230, 221, 203, 0.7);
+  --glitch-glow: 0 0 28px rgba(184, 42, 9, 0.28);  /* glow tenue anche su carta */
   --sheen:       rgba(255, 255, 255, 0.35);
 }
 
@@ -125,6 +132,82 @@ body::before {
   mask-image: linear-gradient(180deg, transparent 0, #000 12%, #000 88%, transparent 100%);
   pointer-events: none;
   z-index: -1;
+}
+
+/* ============ Effetti globali (layer fisso dietro tutto · tutte le pagine) ============ */
+
+.bg-fx {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  transform: translateZ(0); /* isola il layer: le animazioni orb non ridipingono il contenuto */
+}
+/* grid-line vermiglio: intensa in alto (zona hero), sfuma verso il fondo pagina */
+.bg-fx::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0 / 56px 56px,
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0 / 56px 56px;
+  -webkit-mask-image: linear-gradient(180deg, #000 0, #000 45vh, rgba(0, 0, 0, 0.2) 100%);
+  mask-image: linear-gradient(180deg, #000 0, #000 45vh, rgba(0, 0, 0, 0.2) 100%);
+  opacity: var(--fx-alpha);
+}
+/* vignette + scanline (nel background: dietro il contenuto, niente mix-blend col testo) */
+.bg-fx::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(0deg, var(--scanline-fx) 0 1px, transparent 1px 3px),
+    radial-gradient(ellipse 90% 55% at 50% 22%, transparent 45%, var(--vignette) 100%);
+  opacity: var(--fx-alpha);
+}
+/* orbs: radial pre-sfumato (no filter:blur — troppo caro su layer fixed full-page) */
+.bg-fx .orb { position: absolute; border-radius: var(--r-full); }
+.bg-fx .orb--a {
+  width: 560px; height: 560px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent) 55%, transparent), transparent 68%);
+  opacity: calc(0.45 * var(--fx-alpha));
+  top: 6%; right: -120px;
+  animation: orb-a 14s ease-in-out infinite;
+}
+.bg-fx .orb--b {
+  width: 440px; height: 440px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent-2) 50%, transparent), transparent 68%);
+  opacity: calc(0.32 * var(--fx-alpha));
+  bottom: -80px; left: 6%;
+  animation: orb-b 18s ease-in-out infinite;
+}
+@keyframes orb-a { 50% { transform: translate(-20px, 30px); } }
+@keyframes orb-b { 50% { transform: translate(30px, -20px); } }
+
+/* Scroll-driven: grid-line sfuma, orbs derivano — solo dove supportato e a motion non ridotto.
+   from implicito = valore base (opacity var(--fx-alpha)); orbs usano `translate` che compone
+   col `transform` dei keyframe idle. animation-timeline/-range dopo lo shorthand (che li resetta). */
+@keyframes fx-grid-fade { to { opacity: 0.4; } }
+@keyframes fx-orb-drift { to { translate: 0 -12vh; } }
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .bg-fx::before {
+      animation: fx-grid-fade linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 1200px;
+    }
+    .bg-fx .orb--a {
+      animation: orb-a 14s ease-in-out infinite, fx-orb-drift linear both;
+      animation-timeline: auto, scroll(root);
+      animation-range: normal, 0 1600px;
+    }
+    .bg-fx .orb--b {
+      animation: orb-b 18s ease-in-out infinite, fx-orb-drift linear both;
+      animation-timeline: auto, scroll(root);
+      animation-range: normal, 0 1600px;
+    }
+  }
 }
 
 h1, h2, h3, h4, h5, h6 { margin: 0 0 var(--sp-4); text-wrap: balance; }
@@ -180,14 +263,15 @@ blockquote {
 /* ============ Layout ============ */
 
 .container {
-  max-width: 1200px;
+  max-width: var(--container-max);
   margin-inline: auto;
-  padding-inline: var(--sp-5);
+  padding-inline: var(--gutter);
 }
 
 .section {
   padding-block: var(--sp-9);
   border-top: 1px solid var(--hairline);
+  scroll-margin-top: calc(var(--nav-h) + var(--sp-6));
 }
 @media (min-width: 1024px) {
   .section { padding-block: var(--sp-10); }
@@ -223,7 +307,7 @@ blockquote {
 
 .layout {
   display: grid;
-  grid-template-columns: 240px minmax(0, 1fr);
+  grid-template-columns: 260px minmax(0, 1fr);
   gap: var(--sp-6);
   align-items: start;
 }
@@ -231,7 +315,7 @@ blockquote {
 .flow .section { border-top: 0; padding-block: var(--sp-6) var(--sp-8); }
 .toc {
   position: sticky;
-  top: 90px;
+  top: calc(var(--nav-h) + var(--sp-4));
   background: var(--surface);
   border: 2px solid var(--hairline);
   border-radius: var(--r-lg);
@@ -265,7 +349,35 @@ blockquote {
 }
 @media (max-width: 979px) {
   .layout { display: block; }
-  .toc { display: none; }
+  /* TOC: riga orizzontale sticky sotto la nav, full-bleed edge-to-edge */
+  .toc {
+    position: sticky;
+    top: var(--nav-h);
+    z-index: 40;
+    margin-inline: calc(var(--gutter) * -1);
+    margin-bottom: var(--sp-6);
+    padding: 0 var(--gutter);
+    background: var(--bg);
+    border: 0;
+    border-bottom: 1px solid var(--hairline);
+    border-radius: 0;
+    box-shadow: none;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .toc::-webkit-scrollbar { display: none; }
+  .toc-title, .toc-stamp { display: none; }
+  .toc ul { display: flex; flex-wrap: nowrap; gap: var(--sp-4); }
+  .toc a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 var(--sp-1);
+    white-space: nowrap;
+    border-left: 0;
+    border-bottom: 2px solid transparent;
+  }
+  .toc a.is-active { border-bottom-color: var(--accent); }
 }
 
 /* ============ Skip link ============ */
@@ -288,7 +400,7 @@ blockquote {
   display: flex;
   justify-content: space-between;
   gap: var(--sp-4);
-  padding: var(--sp-2) var(--sp-5);
+  padding: var(--sp-2) var(--gutter);
   background: var(--bg-deep);
   border-bottom: 1px solid var(--hairline);
   font: 500 var(--fs-xs)/1.6 var(--font-mono);
@@ -301,8 +413,8 @@ blockquote {
 @keyframes cmd-pulse { 50% { opacity: 0.45; } }
 .cmdbar a { color: var(--ink-2); text-decoration: none; }
 .cmdbar a:hover { color: var(--accent-text); }
-@media (max-width: 700px) {
-  .cmdbar { white-space: normal; } /* nowrap allargherebbe il body: overflow globale */
+@media (max-width: 979px) {
+  .cmdbar { white-space: normal; } /* nowrap allargherebbe il body: overflow globale (email lunga fin sotto ~980px) */
   .cmdbar-right { display: none; }
 }
 
@@ -317,7 +429,7 @@ blockquote {
   display: flex;
   align-items: center;
   gap: var(--sp-5);
-  padding: var(--sp-4) var(--sp-5);
+  padding: var(--sp-4) var(--gutter);
 }
 .nav .brand {
   font: 700 var(--fs-sm)/1 var(--font-display);
@@ -377,45 +489,7 @@ blockquote {
   overflow: hidden;
   padding-block: var(--sp-8);
 }
-/* layer 1: griglia vermiglio mascherata */
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0 / 56px 56px,
-    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0 / 56px 56px;
-  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 30% 40%, #000 30%, transparent 80%);
-  mask-image: radial-gradient(ellipse 70% 60% at 30% 40%, #000 30%, transparent 80%);
-  pointer-events: none;
-}
-/* layer 4: vignette */
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 80% 60% at 50% 50%, transparent 40%, var(--vignette) 100%);
-  pointer-events: none;
-}
-/* layer 2-3: orbs + scanline */
-.hero-fx { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
-.orb {
-  position: absolute;
-  border-radius: var(--r-full);
-  filter: blur(60px);
-  opacity: calc(0.45 * var(--fx-alpha));
-}
-.orb--a { width: 360px; height: 360px; background: var(--accent); top: 15%; right: -80px; animation: orb-a 14s ease-in-out infinite; }
-.orb--b { width: 280px; height: 280px; background: var(--accent-2); bottom: -40px; left: 10%; opacity: calc(0.32 * var(--fx-alpha)); animation: orb-b 18s ease-in-out infinite; }
-@keyframes orb-a { 50% { transform: translate(-20px, 30px); } }
-@keyframes orb-b { 50% { transform: translate(30px, -20px); } }
-.scanlines {
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(0deg, var(--scanline-fx) 0 1px, transparent 1px 3px);
-  mix-blend-mode: overlay;
-}
-.hero > :not(.hero-fx) { position: relative; z-index: 1; } /* contenuto sopra i layer */
+/* Il grid-line / orbs / vignette vivono ora su .bg-fx globale (sotto, sez. Effetti globali) */
 
 .hero-status {
   display: flex;
@@ -484,7 +558,7 @@ blockquote {
   animation: glitch-bot 4.6s steps(1, end) infinite;
 }
 [data-theme="light"] .glitch::before,
-[data-theme="light"] .glitch::after { mix-blend-mode: multiply; opacity: 0.5; }
+[data-theme="light"] .glitch::after { mix-blend-mode: multiply; opacity: 0.65; }
 @keyframes glitch-top {
   0%, 92%, 100% { transform: translate(2px, 0);   clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%); }
   93%           { transform: translate(-3px, -1px); clip-path: polygon(0 8%, 100% 8%, 100% 22%, 0 22%); }
@@ -540,9 +614,9 @@ blockquote {
 .stack-line { color: var(--ink-2); margin: var(--sp-6) 0 0; }
 .stack-line .k { color: var(--accent-text); }
 
-/* chips glass (solo desktop largo) */
+/* chips glass (solo desktop molto largo: sotto ~1360px la TOC + il titolo 11vw non lasciano spazio) */
 .chip-stack { display: none; }
-@media (min-width: 1100px) {
+@media (min-width: 1360px) {
   .chip-stack { display: grid; gap: var(--sp-4); align-content: start; justify-items: end; }
 }
 .chip {
@@ -639,17 +713,33 @@ blockquote {
   border-top: 1px solid var(--hairline);
   padding-block: var(--sp-5);
   color: var(--ink);
+  position: relative;
+  isolation: isolate;
+  transition: border-color var(--t-med) var(--ease-out-quart);
 }
-.project-row:hover { color: var(--ink); }
+.project-row::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 7%, transparent), transparent 55%);
+  opacity: 0;
+  transition: opacity var(--t-med) var(--ease-out-quart);
+}
+.project-row:is(:hover, :focus-visible) { color: var(--ink); border-top-color: var(--accent); }
+.project-row:is(:hover, :focus-visible)::before { opacity: 1; }
 .project-row .num {
   font: 400 var(--fs-xs)/1 var(--font-mono);
   color: var(--gold-text);
+  transition: color var(--t-med) var(--ease-out-quart);
 }
+.project-row:is(:hover, :focus-visible) .num { color: var(--accent-text); }
 .project-row h3 {
   margin: 0;
-  transition: transform 200ms var(--ease-out-quart);
+  transform-origin: left;
+  transition: transform var(--t-med) var(--ease-out-quart), color var(--t-med) var(--ease-out-quart);
 }
-.project-row:hover h3 { transform: translateX(4px); }
+.project-row:is(:hover, :focus-visible) h3 { transform: translateX(6px) scale(1.04); color: var(--ink-hi); }
 .project-row .stack {
   grid-column: 2;
   font: 400 var(--fs-xs)/1.4 var(--font-mono);
@@ -659,7 +749,9 @@ blockquote {
   grid-column: 2;
   margin: var(--sp-1) 0 0;
   color: var(--ink-2);
+  transition: color var(--t-med) var(--ease-out-quart);
 }
+.project-row:is(:hover, :focus-visible) .desc { color: var(--ink); }
 .project-row .arrow {
   opacity: 0;
   transform: translateX(-4px);
@@ -667,7 +759,7 @@ blockquote {
   color: var(--accent-text);
   align-self: center;
 }
-.project-row:hover .arrow { opacity: 1; transform: translateX(0); }
+.project-row:is(:hover, :focus-visible) .arrow { opacity: 1; transform: translateX(0); }
 @media (max-width: 768px) {
   .project-row { grid-template-columns: auto 1fr; }
   .project-row .badge { grid-column: 2; justify-self: start; }
@@ -821,31 +913,6 @@ blockquote {
   }
 }
 
-/* ============ Method ============ */
-
-.method-steps {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--sp-3) var(--sp-5);
-  margin: var(--sp-5) 0;
-  padding: 0;
-  list-style: none;
-}
-.method-step {
-  font: 500 var(--fs-sm)/1 var(--font-mono);
-  color: var(--ink);
-  white-space: nowrap;
-}
-.method-step:hover { color: var(--accent-text); }
-.method-step .ext { margin-left: 2px; }
-
-.method-closing {
-  border-top: 1px solid var(--hairline);
-  margin-top: var(--sp-7);
-  padding-top: var(--sp-5);
-  font: 400 italic var(--fs-lg)/1.5 var(--font-sans);
-}
-
 /* ============ Blocco commento (nota post-produzione) ============ */
 
 .comment-block {
@@ -906,7 +973,8 @@ blockquote {
   border-radius: var(--r-lg);
   box-shadow: var(--shadow-1);
   color: var(--ink);
-  transition: border-color 200ms var(--ease-out-quart);
+  overflow: hidden; /* clippa lo zoom img entro i corner arrotondati (l'ombra resta) */
+  transition: border-color var(--t-med) var(--ease-out-quart), transform var(--t-med) var(--ease-out-quart), box-shadow var(--t-med) var(--ease-out-quart);
 }
 .video-card[hidden] { display: none; } /* vince su display:block quando il filtro nasconde */
 .video-card .frame { display: block; border: 0; border-radius: 0; }
@@ -914,6 +982,7 @@ blockquote {
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
+  transition: transform var(--t-slow) var(--ease-out-quart);
 }
 .video-card .play {
   position: absolute;
@@ -924,16 +993,23 @@ blockquote {
   color: var(--ink-hi);
   text-shadow: var(--scrim);
   pointer-events: none;
+  transition: transform var(--t-med) var(--ease-out-quart);
 }
 .video-card:hover, .video-card:focus-visible {
   border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-2);
 }
+.video-card:hover .frame img, .video-card:focus-visible .frame img { transform: scale(1.06); }
+.video-card:hover .play, .video-card:focus-visible .play { transform: scale(1.25); }
 .video-card .video-title {
   display: block;
   padding: var(--sp-3) var(--sp-4);
   font: 400 var(--fs-xs)/1.5 var(--font-mono);
   color: var(--ink-2);
 }
+/* Teaser singolo in home (#graphics): card non a piena larghezza */
+#graphics .video-card { max-width: 480px; margin-block: var(--sp-5); }
 .no-results {
   font: 400 var(--fs-sm)/1.5 var(--font-mono);
   color: var(--ink-2);
@@ -1083,7 +1159,7 @@ blockquote {
 
 /* ============ Dossier (projects.html) ============ */
 
-.dossier { padding-block: var(--sp-8); border-top: 1px solid var(--hairline); }
+.dossier { padding-block: var(--sp-8); border-top: 1px solid var(--hairline); scroll-margin-top: calc(var(--nav-h) + var(--sp-6)); }
 .dossier:first-of-type { border-top: 0; }
 .dossier .next-link { margin-top: var(--sp-6); }
 .dossier h2 .num { color: var(--gold-text); margin-right: var(--sp-2); font: 400 var(--fs-sm)/1 var(--font-mono); }
@@ -1123,5 +1199,6 @@ body, .nav, .footer, .field input, .field textarea, .btn-primary, .btn-secondary
   .glitch::before, .glitch::after { animation: none !important; opacity: 0; }
   .hero-sub .w-code::after { animation: none !important; transform: scaleX(1); opacity: 1; }
   .orb { animation: none !important; }
+  .bg-fx .orb { translate: none !important; }
   .dot { animation: none !important; }
 }

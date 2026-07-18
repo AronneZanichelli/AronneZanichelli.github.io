@@ -41,6 +41,10 @@
     <script src="script.js" defer></script>
   </head>
   <body>
+    <div class="bg-fx" aria-hidden="true">
+      <div class="orb orb--a"></div>
+      <div class="orb orb--b"></div>
+    </div>
     <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
     <div class="cmdbar">
       <span><span class="dot" aria-hidden="true"></span><span data-i18n="cmdbar.status">Available for junior roles</span> · <span data-i18n="cmdbar.loc">Reggio Emilia, Italy</span></span>
@@ -52,7 +56,6 @@
       <div class="nav-links">
         <a href="projects.html" data-i18n="nav.projects">Projects</a>
         <a href="editing.html" aria-current="page" data-i18n="nav.editing">Editing</a>
-        <a href="method.html" data-i18n="nav.method">Method</a>
         <a href="index.html#contact" data-i18n="nav.contact">Contact</a>
         <button class="lang-btn" data-lang="en" aria-label="Switch to English" aria-pressed="true">EN</button>
         <button class="lang-btn" data-lang="it" aria-label="Passa all'italiano" aria-pressed="false">IT</button>
@@ -67,12 +70,40 @@
         <div class="comment-block">
           <strong data-i18n="edit.postprodLabel">Post-production scope: </strong><span data-i18n="edit.postprodText">Full pipeline handled end-to-end — editing, upload, titles, descriptions, keyword research, custom thumbnails, timestamps, and multilingual translation across 9 languages via a custom AI agent.</span>
         </div>
-        <div class="filter-row" role="group" aria-label="Filter videos by client">
-          <button class="filter-chip" data-filter="labelbike" aria-pressed="true">Labelbike <span class="count">6</span></button>
-          <button class="filter-chip" data-filter="freelance" disabled aria-pressed="false">Freelance <span class="count" data-i18n="edit.soon">soon</span></button>
-          <button class="filter-chip" data-filter="personal" disabled aria-pressed="false">Personal <span class="count" data-i18n="edit.soon2">soon</span></button>
-        </div>
       </header>
+
+      <!-- Labelbike — dossier (spostato da projects.html) -->
+      <article class="dossier" id="labelbike">
+        <h2>Labelbike</h2>
+        <p data-i18n="p6.intro">Development is the core of what I do; creative and AI-content work is the differentiator that came with it. At Labelbike I ran a video pipeline that went from script to published upload, using AI tooling to localize every video into nine languages instead of one. It's not a hobby bolted onto a dev portfolio — it's a second skill set, proven the same way as the code: with published output, not a claim.</p>
+        <div class="repo-card">
+          <div class="cell"><span class="label" data-i18n="repo.stack">Stack</span><span class="value">Video · AI pipeline</span></div>
+          <div class="cell"><span class="label" data-i18n="repo.metric">Key metric</span><span class="value">6 video / 9 <span data-i18n="m.langsWord">languages</span></span></div>
+          <div class="cell"><span class="label" data-i18n="repo.status">Status</span><span class="value"><span class="badge badge--done" data-i18n="status.done">Completed</span></span></div>
+          <div class="cell"><span class="label" data-i18n="repo.link">Link</span><span class="value"><a href="https://www.youtube.com/@Labelbike_prezzopazzo" data-i18n="repo.youtube">Watch on YouTube</a></span></div>
+        </div>
+        <h3 data-i18n="dossier.problem">Problem</h3>
+        <p data-i18n="p6.problem">Labelbike needed video content that could reach non-Italian audiences without hiring a translator and a second production team for every language.</p>
+        <h3 data-i18n="dossier.approach">Approach</h3>
+        <p data-i18n="p6.approach">Built and ran an end-to-end video pipeline: scripting, editing, and an AI-agent-driven localization step that adapts each video — not just subtitles, full re-adaptation — into multiple languages, plus social cuts from the same source footage.</p>
+        <div class="table-scroll">
+          <table class="metrics">
+            <tbody>
+              <tr><th scope="row" data-i18n="m.videos">Published videos</th><td>6 (YouTube)</td></tr>
+              <tr><th scope="row" data-i18n="m.langs">Languages</th><td>9 <span data-i18n="m.viaAgents">via AI-agent localization</span></td></tr>
+              <tr><th scope="row" data-i18n="m.dist">Distribution</th><td>YouTube · social</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p data-i18n="p6.result">6 videos published on YouTube, localized into 9 languages via agents. Completed with the Labelbike role (Oct 2025 – Jun 2026).</p>
+        <p><a class="link-arrow" href="https://www.youtube.com/@Labelbike_prezzopazzo" data-i18n="repo.youtube">Watch on YouTube</a></p>
+      </article>
+
+      <div class="filter-row" role="group" aria-label="Filter videos by client">
+        <button class="filter-chip" data-filter="labelbike" aria-pressed="true">Labelbike <span class="count">6</span></button>
+        <button class="filter-chip" data-filter="freelance" disabled aria-pressed="false">Freelance <span class="count" data-i18n="edit.soon">soon</span></button>
+        <button class="filter-chip" data-filter="personal" disabled aria-pressed="false">Personal <span class="count" data-i18n="edit.soon2">soon</span></button>
+      </div>
 
       <section class="video-grid" id="videoGrid" aria-label="Video gallery">
         <a class="video-card" data-tags="labelbike" href="https://www.youtube.com/watch?v=BirILFe52Ik" target="_blank" rel="noopener">
