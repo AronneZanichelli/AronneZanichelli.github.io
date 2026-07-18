@@ -30,6 +30,7 @@
   --focus-ring:  #E5B752;   /* firma a11y: anello oro, non negoziabile */
   --scrim:       0 0 12px rgba(0, 0, 0, 0.6); /* leggibilità glifi sovrapposti a immagini */
   --shadow-1:    0 12px 28px rgba(0, 0, 0, 0.35);
+  --shadow-2:    0 20px 44px rgba(0, 0, 0, 0.45);
   --fx-alpha:    1;         /* intensità layer decorativi (dot-field, orbs) */
   --dot-field:   rgba(245, 242, 237, 0.05);
   --grid-line:   rgba(232, 57, 14, 0.05);
@@ -95,6 +96,7 @@
   --focus-ring:  #8E6B16;   /* oro scurito: sul chiaro l'anello deve scurire, non brillare */
   --scrim:       0 0 12px rgba(0, 0, 0, 0.6); /* i glifi poggiano su thumbnail, resta scuro anche in light */
   --shadow-1:    0 12px 28px rgba(26, 26, 26, 0.12);
+  --shadow-2:    0 20px 44px rgba(26, 26, 26, 0.18);
   --fx-alpha:    0.75;      /* fx visibili sulla carta (feedback: prima quasi invisibili) */
   --dot-field:   rgba(26, 26, 26, 0.07);
   --grid-line:   rgba(184, 42, 9, 0.10);
@@ -182,6 +184,31 @@ body::before {
 }
 @keyframes orb-a { 50% { transform: translate(-20px, 30px); } }
 @keyframes orb-b { 50% { transform: translate(30px, -20px); } }
+
+/* Scroll-driven: grid-line sfuma, orbs derivano — solo dove supportato e a motion non ridotto.
+   from implicito = valore base (opacity var(--fx-alpha)); orbs usano `translate` che compone
+   col `transform` dei keyframe idle. animation-timeline/-range dopo lo shorthand (che li resetta). */
+@keyframes fx-grid-fade { to { opacity: 0.4; } }
+@keyframes fx-orb-drift { to { translate: 0 -12vh; } }
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .bg-fx::before {
+      animation: fx-grid-fade linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 1200px;
+    }
+    .bg-fx .orb--a {
+      animation: orb-a 14s ease-in-out infinite, fx-orb-drift linear both;
+      animation-timeline: auto, scroll(root);
+      animation-range: normal, 0 1600px;
+    }
+    .bg-fx .orb--b {
+      animation: orb-b 18s ease-in-out infinite, fx-orb-drift linear both;
+      animation-timeline: auto, scroll(root);
+      animation-range: normal, 0 1600px;
+    }
+  }
+}
 
 h1, h2, h3, h4, h5, h6 { margin: 0 0 var(--sp-4); text-wrap: balance; }
 h1, .display {
@@ -686,17 +713,33 @@ blockquote {
   border-top: 1px solid var(--hairline);
   padding-block: var(--sp-5);
   color: var(--ink);
+  position: relative;
+  isolation: isolate;
+  transition: border-color var(--t-med) var(--ease-out-quart);
 }
-.project-row:hover { color: var(--ink); }
+.project-row::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 7%, transparent), transparent 55%);
+  opacity: 0;
+  transition: opacity var(--t-med) var(--ease-out-quart);
+}
+.project-row:is(:hover, :focus-visible) { color: var(--ink); border-top-color: var(--accent); }
+.project-row:is(:hover, :focus-visible)::before { opacity: 1; }
 .project-row .num {
   font: 400 var(--fs-xs)/1 var(--font-mono);
   color: var(--gold-text);
+  transition: color var(--t-med) var(--ease-out-quart);
 }
+.project-row:is(:hover, :focus-visible) .num { color: var(--accent-text); }
 .project-row h3 {
   margin: 0;
-  transition: transform 200ms var(--ease-out-quart);
+  transform-origin: left;
+  transition: transform var(--t-med) var(--ease-out-quart), color var(--t-med) var(--ease-out-quart);
 }
-.project-row:hover h3 { transform: translateX(4px); }
+.project-row:is(:hover, :focus-visible) h3 { transform: translateX(6px) scale(1.04); color: var(--ink-hi); }
 .project-row .stack {
   grid-column: 2;
   font: 400 var(--fs-xs)/1.4 var(--font-mono);
@@ -706,7 +749,9 @@ blockquote {
   grid-column: 2;
   margin: var(--sp-1) 0 0;
   color: var(--ink-2);
+  transition: color var(--t-med) var(--ease-out-quart);
 }
+.project-row:is(:hover, :focus-visible) .desc { color: var(--ink); }
 .project-row .arrow {
   opacity: 0;
   transform: translateX(-4px);
@@ -714,7 +759,7 @@ blockquote {
   color: var(--accent-text);
   align-self: center;
 }
-.project-row:hover .arrow { opacity: 1; transform: translateX(0); }
+.project-row:is(:hover, :focus-visible) .arrow { opacity: 1; transform: translateX(0); }
 @media (max-width: 768px) {
   .project-row { grid-template-columns: auto 1fr; }
   .project-row .badge { grid-column: 2; justify-self: start; }
@@ -928,7 +973,8 @@ blockquote {
   border-radius: var(--r-lg);
   box-shadow: var(--shadow-1);
   color: var(--ink);
-  transition: border-color 200ms var(--ease-out-quart);
+  overflow: hidden; /* clippa lo zoom img entro i corner arrotondati (l'ombra resta) */
+  transition: border-color var(--t-med) var(--ease-out-quart), transform var(--t-med) var(--ease-out-quart), box-shadow var(--t-med) var(--ease-out-quart);
 }
 .video-card[hidden] { display: none; } /* vince su display:block quando il filtro nasconde */
 .video-card .frame { display: block; border: 0; border-radius: 0; }
@@ -936,6 +982,7 @@ blockquote {
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
+  transition: transform var(--t-slow) var(--ease-out-quart);
 }
 .video-card .play {
   position: absolute;
@@ -946,10 +993,15 @@ blockquote {
   color: var(--ink-hi);
   text-shadow: var(--scrim);
   pointer-events: none;
+  transition: transform var(--t-med) var(--ease-out-quart);
 }
 .video-card:hover, .video-card:focus-visible {
   border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-2);
 }
+.video-card:hover .frame img, .video-card:focus-visible .frame img { transform: scale(1.06); }
+.video-card:hover .play, .video-card:focus-visible .play { transform: scale(1.25); }
 .video-card .video-title {
   display: block;
   padding: var(--sp-3) var(--sp-4);
@@ -1147,5 +1199,6 @@ body, .nav, .footer, .field input, .field textarea, .btn-primary, .btn-secondary
   .glitch::before, .glitch::after { animation: none !important; opacity: 0; }
   .hero-sub .w-code::after { animation: none !important; transform: scaleX(1); opacity: 1; }
   .orb { animation: none !important; }
+  .bg-fx .orb { translate: none !important; }
   .dot { animation: none !important; }
 }
